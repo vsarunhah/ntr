@@ -1,6 +1,6 @@
 export const navbarStyles = {
     drawer: {
-        width: 220,
+        width: 300,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
             width: 220,
