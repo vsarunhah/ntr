@@ -1,11 +1,56 @@
-import React from 'react'
+
 import Grid from '@mui/material/Grid';
 import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextField, Typography, CardContent, Button, FormControlLabel, Checkbox } from '@mui/material';
 
-const Form = () => {
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+ 
+export default function Form() {
+ const [form, setForm] = useState({
+   first_name: "",
+   last_name: "",
+   email: "",
+   phone: "",
+   address: "",
+ });
+ const navigate = useNavigate();
+ 
+ // These methods will update the state properties.
+ function updateForm(value: { name?: any; first_name?: string; last_name?: string; email?: string; phone?: string; address?: string; }) {
+   return setForm((prev) => {
+     return { ...prev, ...value };
+   });
+ }
+ 
+ // This function will handle the submission.
+ async function onSubmit(e: { preventDefault: () => void; }) {
+   e.preventDefault();
+ 
+   // When a post request is sent to the create url, we'll add a new record to the database.
+   const newPerson = { ...form };
+ 
+   await fetch("http://localhost:5000/dbprofile/add", {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify(newPerson),
+   })
+   .catch(error => {
+     window.alert(error);
+     return;
+   });
+ 
+   setForm({ first_name: "",
+   last_name: "",
+   email: "",
+   phone: "",
+   address: ""});
+   navigate("/");
+ }
+ 
   return (
     <Grid>
-
       <Typography gutterBottom variant="h5">
         Profile
       </Typography>
@@ -15,19 +60,24 @@ const Form = () => {
       <form>
         <Grid container spacing={1}>
           <Grid xs={12} sm={6} item>
-            <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required />
+            <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required  value={form.first_name}
+           onChange={(e: { target: { value: any; }; }) => updateForm({ first_name: e.target.value })}/>
           </Grid>
           <Grid xs={12} sm={6} item>
-            <TextField placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required />
+            <TextField placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required value={form.last_name}
+           onChange={(e: { target: { value: any; }; }) => updateForm({ last_name: e.target.value })}/>
           </Grid>
           <Grid item xs={12}>
-            <TextField type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required />
+            <TextField type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required value={form.email}
+           onChange={(e: { target: { value: any; }; }) => updateForm({ email: e.target.value })}/>
           </Grid>
           <Grid item xs={12}>
-            <TextField type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required />
+            <TextField type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required value={form.phone}
+           onChange={(e: { target: { value: any; }; }) => updateForm({ phone: e.target.value })}/>
           </Grid>
           <Grid item xs={12}>
-            <TextField placeholder="Enter address" label="Address" variant="outlined" fullWidth required />
+            <TextField placeholder="Enter address" label="Address" variant="outlined" fullWidth required value={form.address}
+           onChange={(e: { target: { value: any; }; }) => updateForm({ address: e.target.value })}/>
           </Grid>
         </Grid>
       </form>
@@ -236,5 +286,3 @@ const Form = () => {
     </Grid>
   )
 }
-
-export default Form
