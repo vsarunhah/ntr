@@ -16,7 +16,7 @@ export default function Form() {
  //const navigate = useNavigate();
  
  // These methods will update the state properties.
- function updateForm(value: { name?: any; first_name?: string; last_name?: string; email?: string; phone?: string; address?: string; }) {
+ function updateForm(value: { first_name?: string; last_name?: string; email?: string; phone?: string; address?: string; }) {
   console.log('I was triggered during updateForm'); 
   return setForm((prev) => {
      return { ...prev, ...value };
@@ -64,24 +64,24 @@ export default function Form() {
       </Typography>
         <Grid container spacing={1}>
           <Grid xs={12} sm={6} item className="form-group">
-            <TextField id ="first_name" className="form-control" placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required  value={form.first_name}
-           onChange={(e: { target: { value: any; }; }) => updateForm({ first_name: e.target.value })}/>
+            <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required  value={form.first_name}
+           onChange={(e) => setForm({...form, first_name: e.target.value})}/>
           </Grid>
           <Grid xs={12} sm={6} item className="form-group">
             <TextField id ="last_name" className="form-control" placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required value={form.last_name}
-           onChange={(e: { target: { value: any; }; }) => updateForm({ last_name: e.target.value })}/>
+           onChange={(e) => setForm({...form, last_name: e.target.value})}/>
           </Grid>
           <Grid item xs={12} className="form-group">
             <TextField id ="email" className="form-control" type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required value={form.email}
-           onChange={(e: { target: { value: any; }; }) => updateForm({ email: e.target.value })}/>
+           onChange={(e) => setForm({...form, email: e.target.value})}/>
           </Grid>
           <Grid item xs={12} className="form-group">
             <TextField id ="phone" className="form-control" type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required value={form.phone}
-           onChange={(e: { target: { value: any; }; }) => updateForm({ phone: e.target.value })}/>
+           onChange={(e) => setForm({...form, phone: e.target.value})}/>
           </Grid>
           <Grid item xs={12} className="form-group">
             <TextField id ="address" className="form-control" placeholder="Enter address" label="Address" variant="outlined" fullWidth required value={form.address}
-           onChange={(e: { target: { value: any; }; }) => updateForm({ address: e.target.value })}/>
+           onChange={(e) => setForm({...form, address: e.target.value})}/>
           </Grid>
         </Grid>
         <Box my={10}>
