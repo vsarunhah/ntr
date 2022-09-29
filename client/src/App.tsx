@@ -9,6 +9,7 @@ const App = () => {
  return (
    <Grid container>
      <Navbar />
+     {/* <MainPage /> */}
      <Outlet/>
    </Grid>
  );

@@ -5,14 +5,15 @@ import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextFi
 const Form = () => {
   return (
     <Grid>
-
+      <Box my={10}>
+      </Box>
+      <form>
       <Typography gutterBottom variant="h5">
         Profile
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in your personal information.
       </Typography>
-      <form>
         <Grid container spacing={1}>
           <Grid xs={12} sm={6} item>
             <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required />
@@ -30,9 +31,7 @@ const Form = () => {
             <TextField placeholder="Enter address" label="Address" variant="outlined" fullWidth required />
           </Grid>
         </Grid>
-      </form>
-
-      <Box my={10}>
+        <Box my={10}>
       </Box>
 
       <Typography gutterBottom variant="h5">
@@ -41,7 +40,7 @@ const Form = () => {
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in your education information.
       </Typography>
-      <form >
+
         <Grid container spacing={1}>
           <Grid xs={12} sm={6} item>
             <TextField placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth required />
@@ -93,11 +92,8 @@ const Form = () => {
               }}
             />       
           </Grid>
-
-
-
         </Grid>
-      </form>
+
 
       <Box my={10}>
       </Box>
@@ -108,7 +104,7 @@ const Form = () => {
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in your education information.
       </Typography>
-      <form>
+
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
             <TextField placeholder="Google" label="Employer Name" variant="outlined" fullWidth required />
@@ -152,7 +148,7 @@ const Form = () => {
             <TextField multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth required />
           </Grid>
         </Grid>
-      </form>
+
 
 
       <Box my={10}>
@@ -164,7 +160,7 @@ const Form = () => {
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in your projects information.
       </Typography>
-      <form>
+
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
             <TextField placeholder="Chefly" label="Project Name" variant="outlined" fullWidth required />
@@ -197,7 +193,7 @@ const Form = () => {
             <TextField multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth required />
           </Grid>
         </Grid>
-      </form>
+
 
 
       <Box my={10}>
@@ -209,11 +205,11 @@ const Form = () => {
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in your skills.
       </Typography>
-      <form>
+
         <Grid item xs={12} sm={6}>
           <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth />
         </Grid>
-      </form>
+
 
       <Box my={10}>
       </Box>
@@ -224,7 +220,7 @@ const Form = () => {
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in any links you would like to share.
       </Typography>
-      <form>
+
         <Grid item xs={12} sm={6}>
           <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth />
         </Grid>
