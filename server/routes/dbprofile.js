@@ -51,7 +51,7 @@ dbprofileRoutes.route("/dbprofile/add").post(function (req, response) {
  });
 });
 // This section will help you update a record by id.
-dbprofileRoutes.route("/update/:id").post(function (req, response) {
+dbprofileRoutes.route("/profileUpdate/:id").post(function (req, response) {
  let db_connect = dbo.getDb("employees");
  let myquery = { _id: ObjectId(req.params.id) };
  let newvalues = {
@@ -71,16 +71,5 @@ dbprofileRoutes.route("/update/:id").post(function (req, response) {
      response.json(res);
    });
 });
- 
-// This section will help you delete a record TODO
-dbprofileRoutes.route("/:id").delete((req, response) => {
- let db_connect = dbo.getDb("employees");
- let myquery = { _id: ObjectId(req.params.id) };
- db_connect.collection("records").deleteOne(myquery, function (err, obj) {
-   if (err) throw err;
-   console.log("1 document deleted");
-   response.json(obj);
- });
-});
- 
+
 module.exports = dbprofileRoutes;
