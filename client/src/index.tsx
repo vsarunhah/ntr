@@ -10,14 +10,16 @@ import {
 import Profile from './pages/Profile/Profile';
 import Applications from './pages/Applications/Applications';
 import Reviews from './pages/Reviews/Reviews';
+import Form from "./pages/Profile/Form";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
+        <Route path="/" element={<App />}>
         <Route path="profile" element={<Profile />} />
         <Route path="applications" element={<Applications />} />
         <Route path="reviews" element={<Reviews />} />
+        <Route path="form" element={<Form />} />
       </Route>
     </Routes>
   </BrowserRouter>,
