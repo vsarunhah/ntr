@@ -3,9 +3,11 @@ import Grid from '@mui/material/Grid';
 import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextField, Typography, CardContent, Button, FormControlLabel, Checkbox } from '@mui/material';
 
 import React, { useState } from "react";
+
+import MaxWidthDialog from '../../components/DialogueBox/Confirmation';
 //import { useNavigate } from "react-router";
- 
-export default function Form() {
+
+export  default function Form() {
  const [form, setForm] = useState({
    first_name: "",
    last_name: "",
@@ -30,7 +32,7 @@ export default function Form() {
  
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form };
- 
+  
    await fetch("http://localhost:5000/dbprofile/add", {
      method: "POST",
      headers: {
@@ -42,19 +44,25 @@ export default function Form() {
      window.alert(error);
      return;
    });
+
+   
  
    setForm({ first_name: "",
    last_name: "",
    email: "",
    phone: "",
    address: ""});
+   
    //navigate("/");
  }
  
   return (
-    <Grid>
+    
+    <Grid mx ={35}>
+      
       <Box my={10}>
       </Box>
+      
       <form onSubmit={onSubmit}>
       <Typography gutterBottom variant="h5">
         Profile
@@ -277,14 +285,12 @@ export default function Form() {
         <Grid item xs={12} sm={6}>
           <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth />
         </Grid>
-
-        <div className="form-group">
-         <input
-           type="submit"
-           value="Create person"
-           className="btn btn-primary"
-         />
-       </div>
+        <Box my={10}>
+      </Box>
+        <Grid item xs={12} sm={6}>
+          <Button type="submit" variant="contained" color="primary" >Submit </Button>
+          
+        </Grid>
 
       </form>
 
@@ -296,3 +302,5 @@ export default function Form() {
     </Grid>
   )
 }
+
+
