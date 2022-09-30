@@ -277,14 +277,11 @@ export default function Form() {
         <Grid item xs={12} sm={6}>
           <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth />
         </Grid>
-
-        <div className="form-group">
-         <input
-           type="submit"
-           value="Create person"
-           className="btn btn-primary"
-         />
-       </div>
+        <Box my={10}>
+      </Box>
+        <Grid item xs={12} sm={6}>
+          <Button type="submit" variant="contained" color="primary">Submit</Button>
+        </Grid>
 
       </form>
 
