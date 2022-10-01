@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
- 
+import axios from "axios";
+
 export default function CreateReview() {
  const [form, setForm] = useState({
     companyName: "",
@@ -21,18 +22,14 @@ export default function CreateReview() {
  
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newReview= { ...form };
- 
-   await fetch("http://localhost:5000/review/add", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify(newReview),
-   })
-   .catch(error => {
-     window.alert(error);
-     return;
-   });
+
+  try {
+    await axios.post("http://localhost:5000/review/add", newReview).then(res => {
+      console.log(res.data);
+    })
+  } catch (error) {
+    console.log("oops");
+  }
  
    setForm({ companyName: "", description: ""});
    navigate("/");
