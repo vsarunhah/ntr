@@ -7,7 +7,8 @@ const client = new MongoClient(Db, {
 });
 
 
-var _db;
+var _mongoClientDB;
+var _mongooseDB;
 
 module.exports = {
 	connectionParams: {
@@ -16,8 +17,10 @@ module.exports = {
   },
   mongooseConnect: function () {
     try {
-      console.log("connection params: ", this.connectionParams);
+      // console.log("connection params: ", this.connectionParams);
       mongoose.connect(process.env.ATLAS_URI, this.connectionParams);
+      _mongooseDB = mongoose.connection;
+      // console.log("mongoose connection: ", _mongooseDB);
       console.log("Connected to database successfully");
     } catch (error) {
       console.log(error);
@@ -29,7 +32,7 @@ module.exports = {
       // Verify we got a good "db" object
       if (db)
       {
-        _db = db.db("employees");
+        _mongoClientDB = db.db("employees");
         console.log("Successfully connected to MongoDB."); 
       }
       return callback(err);
@@ -37,6 +40,6 @@ module.exports = {
   },
  
   getDb: function () {
-    return _db;
+    return _mongoClientDB;
   },
 };

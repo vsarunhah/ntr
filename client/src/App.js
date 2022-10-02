@@ -12,6 +12,7 @@ import Create from "./components/create";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import Main from "./components/Main";
+import EmailVerify from "./components/EmailVerify";
  
 const App = () => {
   const user = localStorage.getItem("token");
@@ -23,10 +24,11 @@ const App = () => {
        {/* <Route exact path="/" element={<RecordList />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} /> */}
-        <Route exact path="/" element={<Main />} />
-       <Route path="/signup" element={<Signup />} />
-       <Route path="/login" element={<Login />} />
-        <Route path="/" exact element={<Navigate replace to="/login" />} />
+      <Route exact path="/" element={<Main />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/" exact element={<Navigate replace to="/login" />} />
+      <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
      </Routes>
    </div>
  );

@@ -3,6 +3,9 @@ const Joi = require("joi");
 const router = express.Router();
 const {User} = require("../models/user");
 const bcrypt = require("bcrypt");
+const Token = require("../models/token");
+const sendEmail = require("../utils/sendEmail");
+const crypto = require("crypto");
 
 router.route("/auth").post(async function (req, res) {
     console.log("auth HERE");
@@ -23,6 +26,21 @@ router.route("/auth").post(async function (req, res) {
         if (!validPassword) {
             return res.status(400).send("Invalid email or password");
         }
+
+        console.log("auth before verified");
+
+        if (!user.verified) {
+            let token = await Token.findOne({userId: user._id});
+            if (!token) {
+                token = await new Token({
+                    userId: user._id,
+                    token: crypto.randomBytes(32).toString("hex") 
+                }).save();
+            }
+            console.log("auth user not verified");
+            return res.status(400).send("An Email has been sen to your account. Please verify your email");
+        }
+
         const token = user.generateAuthToken();
         res.status(200).send({data: token, message: "User logged in successfully"});
     } catch (error) {
