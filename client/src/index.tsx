@@ -11,6 +11,7 @@ import Profile from './pages/Profile/Profile';
 import Applications from './pages/Applications/Applications';
 import Reviews from './pages/Reviews/Reviews';
 import Form from "./pages/Profile/Form";
+import EditProfile from "./pages/Profile/EditProfile";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="applications" element={<Applications />} />
         <Route path="reviews" element={<Reviews />} />
         <Route path="form" element={<Form />} />
+        <Route path="editProfile/" element={<EditProfile />} />
       </Route>
     </Routes>
   </BrowserRouter>,

@@ -1,15 +1,48 @@
-import React from 'react'
 import Grid from '@mui/material/Grid';
 import {Button, Box, Typography } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-
+import React, { useState, useEffect } from "react";
+const id = "6336412aab0f0f35a5c36faf";
 const Profile = () => {
+  const [form, setForm] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
 
+ 
+   useEffect(() => {
+     async function fetchData() {
+       const response = await fetch(`http://localhost:5000/dbprofile/${id}`);
+   
+       if (!response.ok) {
+         const message = `An error has occurred: ${response.statusText}`;
+         window.alert(message);
+         return;
+       }
+   
+       const profile = await response.json();
+       if (!profile) {
+         window.alert(`Record with id ${id} not found`);
+         return;
+       }
+   
+       setForm(profile);
+     }
+   
+     fetchData();
+  
+     return;
+   }, []);
     let navigate = useNavigate(); 
+    //use this once the id comes
     const routeChange = () => { 
-        let path = '/form'; 
+        let path = `/editProfile/`; 
+        console.log("sent : "+path);
         navigate(path);
       }
 
@@ -24,23 +57,23 @@ const Profile = () => {
       </Typography>
 
         <Typography  variant="body1" color="textSecondary">
-        First Name: first_name
+        First Name: {form.first_name}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Last Name: last_name
+        Last Name: {form.last_name}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Email: email
+        Email: {form.email}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Phone: phone
+        Phone: {form.phone}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Address: address
+        Address: {form.address}
        </Typography>
        <Box my={10}>
       </Box>
@@ -159,8 +192,8 @@ const Profile = () => {
         Links: Java, C, C++, C#
        </Typography>  
 
-        <Box my={5}>
-      </Box> 
+        <Box my={10}>
+      </Box>
 
       <Button onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
         Edit
@@ -331,7 +364,9 @@ const Profile = () => {
     //   </Box>
 
 
-    // </Grid>
+      </Grid>
+      </Grid>
+    
     )
 }
 
