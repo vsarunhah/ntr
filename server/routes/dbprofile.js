@@ -26,6 +26,7 @@ dbprofileRoutes.route("/dbprofile").get(function (req, res) {
 // This section will help you get a single record by id
 dbprofileRoutes.route("/dbprofile/:id").get(function (req, res) {
  let db_connect = dbo.getDb("employees");
+ console.log("params : "+params); console.log("id : "+params._id)
  let myquery = { _id: ObjectId(req.params.id) };
  db_connect
    .collection("profiles")

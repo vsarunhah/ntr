@@ -4,7 +4,7 @@ import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextFi
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
- 
+const id = "6336412aab0f0f35a5c36faf";
 export default function EditProfile() {
  const [form, setForm] = useState({
    first_name: "",
@@ -15,10 +15,9 @@ export default function EditProfile() {
  });
  const params = useParams();
 
- useEffect(() => {
+  useEffect(() => {
     async function fetchData() {
-      const id = params.id.toString();
-      const response = await fetch(`http://localhost:5000/dbprofile/${params.id.toString()}`);
+      const response = await fetch(`http://localhost:5000/dbprofile/${id}`);
   
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
@@ -36,8 +35,9 @@ export default function EditProfile() {
     }
   
     fetchData();
+ 
     return;
-  }, [params.id]);
+  }, []);
  
  // These methods will update the state properties.
  function updateForm(value: { first_name?: string; last_name?: string; email?: string; phone?: string; address?: string; }) {
@@ -60,8 +60,10 @@ export default function EditProfile() {
     phone: form.phone,
     address: form.address,    
   };
- 
-   await fetch(`http://localhost:5000/profileUpdate/${params.id}`, {
+  console.log("params : "+params);
+  console.log("id : "+params.id);
+  
+   await fetch(`http://localhost:5000/profileUpdate/${id}`, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
