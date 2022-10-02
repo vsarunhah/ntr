@@ -362,10 +362,6 @@ const Profile = () => {
 
     //   <Box my={10}>
     //   </Box>
-
-
-      </Grid>
-      </Grid>
     
     )
 }
