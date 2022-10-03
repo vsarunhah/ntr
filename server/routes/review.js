@@ -54,12 +54,28 @@ reviewRoutes.route("/reviews/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   db_connect.collection("reviews").deleteOne(myquery, function (err, obj) {
-    //console.log("This is id: ", _id);
     if (err) throw err;
-    //console.log("1 document deleted");
-    //console.log
     response.json(obj);
   });
+ });
+
+ //Updating a review
+ reviewRoutes.route("/review/update/:id").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  let newvalues = {
+    $set: {
+      companyName: req.body.companyName,
+      description: req.body.description,
+    },
+  };
+  db_connect
+    .collection("reviews")
+    .updateOne(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log("1 document updated");
+      response.json(res);
+    });
  });
 
 

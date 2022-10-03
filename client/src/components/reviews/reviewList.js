@@ -7,7 +7,7 @@ const Review = (props) => (
    <td>{props.review.companyName}</td>
    <td>{props.review.description}</td>
    <td>
-     <Link className="btn btn-link" to={`/edit/${props.review._id}`}>Edit</Link> |
+     <Link className="btn btn-link" to={`/review/edit/${props.review._id}`}>Edit</Link> |
      <button className="btn btn-link"
        onClick={() => {
          props.deleteReview(props.review._id);

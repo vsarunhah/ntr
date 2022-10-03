@@ -35,7 +35,7 @@ export default function CreateReview() {
   }
  
    setForm({ companyName: "", description: ""});
-   navigate("/");
+   navigate("/reviews");
  }
  
 
