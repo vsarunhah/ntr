@@ -12,7 +12,7 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the reviews.
-reviewRoutes.route("/review").get(function (req, res) {
+reviewRoutes.route("/reviews").get(function (req, res) {
     let db_connect = dbo.getDb("employees");
     db_connect
       .collection("reviews")
@@ -35,6 +35,32 @@ reviewRoutes.route("/review/add").post(function (req, response) {
       response.json(res);
     });
    });
+
+// This section will help you get a single record by id
+reviewRoutes.route("/reviews/:id").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect
+    .collection("reviews")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+ });
+
+// This section will help you delete a review
+reviewRoutes.route("/reviews/:id").delete((req, response) => {
+  console.log("backend is reached");
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect.collection("reviews").deleteOne(myquery, function (err, obj) {
+    //console.log("This is id: ", _id);
+    if (err) throw err;
+    //console.log("1 document deleted");
+    //console.log
+    response.json(obj);
+  });
+ });
 
 
 
