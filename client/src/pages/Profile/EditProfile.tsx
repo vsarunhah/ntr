@@ -61,7 +61,7 @@ export default function EditProfile() {
     address: form.address,    
   };
   console.log("params : "+params);
-  console.log("id : "+params.id);
+  console.log("id : "+id);
   
    await fetch(`http://localhost:5000/profileUpdate/${id}`, {
      method: "POST",
@@ -77,7 +77,7 @@ export default function EditProfile() {
  }
  
   return (
-    <Grid>
+    <Grid mx ={35}>
       <Box my={10}>
       </Box>
       <form onSubmit={onSubmit}>
@@ -303,14 +303,15 @@ export default function EditProfile() {
           <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth />
         </Grid>
 
-        <div className="form-group">
+
+       {/* <Button type="submit" variant="contained" color="primary" >Submit </Button> */}
+       <div className="form-group">
          <input
            type="submit"
            value="Create person"
            className="btn btn-primary"
          />
        </div>
-
       </form>
 
       
