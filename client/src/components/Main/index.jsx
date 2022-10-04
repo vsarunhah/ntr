@@ -3,6 +3,8 @@ import styles from "./styles.module.css";
 
 const Main = () => {
 	const handleLogout = () => {
+		console.log("logout");
+		window.open("http://localhost:5000/auth/logout", "_self");
 		localStorage.removeItem("token");
 		window.location.reload();
 	};

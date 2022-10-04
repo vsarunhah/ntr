@@ -58,4 +58,11 @@ const validate = (data) => {
     return schema.validate(data);
 }
 
+router.get("/auth/logout", (req, res) => {
+    console.log("logout HERE");
+	// req.logout();
+	res.redirect(process.env.CLIENT_URL);
+});
+
+
 module.exports = router;

@@ -21,6 +21,7 @@ googleRouter.route("/google").post(async(req, res) => {
         } else {
             token = user.generateAuthToken();
         }
+        console.log("token: ", token);
         res.status(200).send({data: token, message: "Google User signed in successfully"});
     } catch (error) {
         console.error(error.message);

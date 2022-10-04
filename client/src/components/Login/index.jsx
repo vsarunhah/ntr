@@ -43,9 +43,13 @@ const Login = () => {
 		const url = "http://localhost:5000/google";
 		console.log("user: ", userObj);
 		const { data: res } = await axios.post(url, userObj);
-		// console.log("login res: ", res);
-		localStorage.setItem("token", res.token);
+		console.log("res data: ", res.data);
+		localStorage.setItem("token", res.data);
+		// if (res.data) {
+			// console.log("res data");
 		window.location = "/";
+		// }
+		// window.location = "/";
 		} catch (err) {
 			if (
 				err.response &&
@@ -102,6 +106,7 @@ const Login = () => {
 							Sign In
 						</button>
 					</form>
+					<div id="googleSignInDiv"></div>
 				</div>
 				<div className={styles.right}>
 					<h1>New Here ?</h1>
@@ -110,7 +115,6 @@ const Login = () => {
 							Sign Up
 						</button>
 					</Link>
-					<div id="googleSignInDiv"></div>
 				</div>
 			</div>
 		</div>

@@ -26,10 +26,11 @@ const App = () => {
        {/* <Route exact path="/" element={<RecordList />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} /> */}
-      <Route exact path="/" element={<Main />} />
+      {/* <Route exact path="/" element={<Main />} /> */}
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/" exact element={<Navigate replace to="/login" />} />
+      {/* <Route path="/" exact element={<Navigate replace to="/login" />} /> */}
+      <Route exact path="/" element={user ? <Main /> : <Navigate to="/login" />}/>
       <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
