@@ -42,7 +42,7 @@ router.route("/auth").post(async function (req, res) {
         }
 
         const token = user.generateAuthToken();
-        res.status(200).send({data: token, message: "User logged in successfully"});
+        res.status(200).send({data: token, message: "User logged in successfully", uid: user._id});
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');

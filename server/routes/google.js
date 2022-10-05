@@ -22,7 +22,7 @@ googleRouter.route("/google").post(async(req, res) => {
             token = user.generateAuthToken();
         }
         console.log("token: ", token);
-        res.status(200).send({data: token, message: "Google User signed in successfully"});
+        res.status(200).send({data: token, message: "Google User signed in successfully", uid: user._id});
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');

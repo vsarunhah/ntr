@@ -19,6 +19,8 @@ import PasswordReset from "./components/PasswordReset";
 const App = () => {
   const user = localStorage.getItem("token");
   console.log("user:", user);
+  const uid = localStorage.getItem("uid");
+  console.log("uid:", uid);
  return (
    <div>
      <Navbar />

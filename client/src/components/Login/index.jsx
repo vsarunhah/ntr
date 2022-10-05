@@ -18,9 +18,10 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			console.log("HERE");
-			const url = "http://localhost:5000/auth";
+			const url = "	";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
+			localStorage.setItem("uid", res.uid);
 			window.location = "/";
 			console.log("login res: ", res);
 		} catch (err) {
@@ -45,6 +46,7 @@ const Login = () => {
 		const { data: res } = await axios.post(url, userObj);
 		console.log("res data: ", res.data);
 		localStorage.setItem("token", res.data);
+		localStorage.setItem("uid", res.uid);
 		// if (res.data) {
 			// console.log("res data");
 		window.location = "/";
