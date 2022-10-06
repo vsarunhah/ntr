@@ -15,6 +15,12 @@ export const mainNavbarItems = [
         route: 'profile',
     },
     {
+        id: 0,
+        icon: <PersonRoundedIcon />,
+        label: 'New Profile',
+        route: 'form',
+    },
+    {
         id: 1,
         icon: <AppRegistrationRoundedIcon />,
         label: 'Applications',

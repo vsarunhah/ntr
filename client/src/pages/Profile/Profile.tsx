@@ -4,7 +4,14 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-const id = "6336412aab0f0f35a5c36faf";
+
+localStorage.setItem("user_id", "idme");
+
+if (localStorage.getItem("user_id") === null) {
+  alert("Please login first");
+  window.location.href = "/login";
+}
+const user_id = localStorage.getItem("user_id");
 const Profile = () => {
   const [form, setForm] = useState({
     first_name: "",
@@ -12,13 +19,22 @@ const Profile = () => {
     email: "",
     phone: "",
     address: "",
+    user_id: user_id,
   });
 
  
    useEffect(() => {
      async function fetchData() {
-       const response = await fetch(`http://localhost:5000/dbprofile/${id}`);
-   
+       const response = await fetch("http://localhost:5000/dbprofile/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: localStorage.getItem("user_id"),
+        }),
+       });
+       console.log("response : ", response);
        if (!response.ok) {
          const message = `An error has occurred: ${response.statusText}`;
          window.alert(message);
@@ -27,10 +43,11 @@ const Profile = () => {
    
        const profile = await response.json();
        if (!profile) {
-         window.alert(`Record with id ${id} not found`);
+         window.alert(`Record with id not found`);
          return;
        }
-   
+       profile["user_id"] = user_id;
+
        setForm(profile);
      }
    
@@ -41,7 +58,7 @@ const Profile = () => {
     let navigate = useNavigate(); 
     //use this once the id comes
     const routeChange = () => { 
-        let path = `/editProfile/${id}`; 
+        let path = `/editProfile/`; 
         console.log("sent : "+path);
         navigate(path);
       }

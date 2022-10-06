@@ -5,8 +5,14 @@ import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextFi
 import React, { useState } from "react";
 
 import MaxWidthDialog from '../../components/DialogueBox/Confirmation';
+import { List } from '@material-ui/core';
 //import { useNavigate } from "react-router";
+localStorage.setItem("user_id", "idme");
 
+if (localStorage.getItem("user_id") === null) {
+  alert("Please login first");
+  window.location.href = "/login";
+}
 export  default function Form() {
  const [form, setForm] = useState({
    first_name: "",
@@ -14,25 +20,29 @@ export  default function Form() {
    email: "",
    phone: "",
    address: "",
+   user_id : localStorage.getItem("user_id"),
+   links : [],
  });
+
+
+
  //const navigate = useNavigate();
  
  // These methods will update the state properties.
- function updateForm(value: { first_name?: string; last_name?: string; email?: string; phone?: string; address?: string; }) {
+ function updateForm(value) {
   console.log('I was triggered during updateForm'); 
   return setForm((prev) => {
      return { ...prev, ...value };
    });
  }
- 
- // This function will handle the submission.
- async function onSubmit(e: { preventDefault: () => void; }) {
+
+ async function onSubmit(e) {
    e.preventDefault();
    console.log('I was triggered during onSubmit');
  
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form };
-  
+   newPerson.links.push("linkedin.com");
    await fetch("http://localhost:5000/dbprofile/add", {
      method: "POST",
      headers: {
@@ -51,7 +61,9 @@ export  default function Form() {
    last_name: "",
    email: "",
    phone: "",
-   address: ""});
+   address: "",
+   user_id : "",
+   links: [],});
    
    //navigate("/");
  }
@@ -281,15 +293,16 @@ export  default function Form() {
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in any links you would like to share.
       </Typography>
-
-        <Grid item xs={12} sm={6}>
-          <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth />
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={6} >
+          <TextField placeholder="linkedin" label="links" variant="outlined" fullWidth required value={form.links.push}
+           onChange={(e) => setForm({...form, links: e.target.value})}/>
+        </Grid>
         </Grid>
         <Box my={10}>
       </Box>
         <Grid item xs={12} sm={6}>
           <Button type="submit" variant="contained" color="primary" >Submit </Button>
-          
         </Grid>
 
       </form>

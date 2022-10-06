@@ -10,6 +10,7 @@ app.use(require("./routes/dbprofile"));
 app.use(require("./routes/users"));
 app.use(require("./routes/auth"));
 app.use(require("./routes/passwordReset"));
+app.use(require("./routes/exp"));
 // get driver connection
 const dbo = require("./db/conn");
 
