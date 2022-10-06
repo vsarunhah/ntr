@@ -109,11 +109,6 @@ const handleChangeLink = (id, event) => {
 setLinks(newLink);
 }
 
-// function handleChangeInput(value: any) {
-//   return setInputFields((prev) => {
-//     return { ...prev,  ...value};
-//   });
-// }
 
 const handleAddExperiences = () => {
   setExperiences([...experiences, { id: uuidv4(),  employerName: '', position: '', 

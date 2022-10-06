@@ -40,6 +40,8 @@ expRoutes.route("/exp/add").post(function (req, response) {
    current_job: req.body.current_job,
    description: req.body.description,
    location: req.body.location,
+   exp_id: req.body.exp_id,
+   user_id: req.body.user_id
  };
  db_connect.collection("exp").insertOne(myobj, function (err, res) {
    if (err) throw err;
@@ -47,28 +49,28 @@ expRoutes.route("/exp/add").post(function (req, response) {
  });
 });
 
-// This section will help you update a record by id.
-// expRoutes.route("/profileUpdate/").post(function (req, response) {
-//  let db_connect = dbo.getDb("employees");
-//  let myquery = { user_id: req.body.user_id };
-//  let newvalues = {
-//    $set: {
-//     first_name: req.body.first_name,
-//     last_name: req.body.last_name,
-//     email: req.body.email,
-//     phone: req.body.phone,
-//     address: req.body.address,
-//     user_id: req.body.user_id,
-//     links: req.body.links,
-//    },
-//  };
-//  db_connect
-//    .collection("profiles")
-//    .updateOne(myquery, newvalues, function (err, res) {
-//      if (err) throw err;  ``
-//      console.log("1 document updated");
-//      response.json(res);
-//    });
-// });
+
+expRoutes.route("/expUpdate/").post(function (req, response) {
+ let db_connect = dbo.getDb("employees");
+ let myquery = { user_id: req.body.user_id };
+ let newvalues = {
+   $set: {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    phone: req.body.phone,
+    address: req.body.address,
+    user_id: req.body.user_id,
+    links: req.body.links,
+   },
+ };
+ db_connect
+   .collection("profiles")
+   .updateOne(myquery, newvalues, function (err, res) {
+     if (err) throw err;  ``
+     console.log("1 document updated");
+     response.json(res);
+   });
+});
 
 module.exports = expRoutes;
