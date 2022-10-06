@@ -4,14 +4,9 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-localStorage.setItem("user_id", "idme");
-
-if (localStorage.getItem("user_id") === null) {
-  alert("Please login first");
-  window.location.href = "/login";
-}
-const user_id = localStorage.getItem("user_id");
+const id = "6336412aab0f0f35a5c36faf";
 const Profile = () => {
   const [form, setForm] = useState({
     first_name: "",
@@ -19,13 +14,22 @@ const Profile = () => {
     email: "",
     phone: "",
     address: "",
-    user_id: user_id,
   });
+
+
+  const [links, setLinks] = useState([
+    { id: uuidv4(), link: "" },
+  ]);
+
+  const [experiences, setExperiences] = useState([
+    { id: uuidv4(), employerName: "", position: "", 
+    location: "", startDate: "", endDate: "", description: "" },
+  ]);
 
  
    useEffect(() => {
      async function fetchData() {
-       const response = await fetch("http://localhost:5000/dbprofile/", {
+      const response = await fetch("http://localhost:5000/dbprofile/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +38,7 @@ const Profile = () => {
           user_id: localStorage.getItem("user_id"),
         }),
        });
-       console.log("response : ", response);
+   
        if (!response.ok) {
          const message = `An error has occurred: ${response.statusText}`;
          window.alert(message);
@@ -43,12 +47,12 @@ const Profile = () => {
    
        const profile = await response.json();
        if (!profile) {
-         window.alert(`Record with id not found`);
+         window.alert(`Record with id ${id} not found`);
          return;
        }
-       profile["user_id"] = user_id;
-
+   
        setForm(profile);
+       //setLinks(profile);
      }
    
      fetchData();
@@ -98,29 +102,29 @@ const Profile = () => {
         Experiences
       </Typography>
 
-      <Typography  variant="body1" color="textSecondary">
-      Employer Name: Employer Name
-       </Typography>
-
+      {experiences.map(experience => (
+          <div key={experience.id}>     
+        <Grid item xs={12} sm={6}>
+        <Typography variant="body1" color="textSecondary">
+        Employer Name: {experience.employerName}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Position: Position
-       </Typography>
-
+       Position: {experience.position}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Location: Location
-       </Typography>
-
+       Location: {experience.location}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Start date: Start date
-       </Typography>
-       
+       startDate: {experience.startDate}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       End date: End date
-       </Typography>
-       
+       endDate: {experience.endDate}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Description: Description
-       </Typography>
+       description: {experience.description}
+       </Typography> 
+        </Grid>
+            </div> ))}
 
        <Box my={10}>
       </Box>
@@ -208,6 +212,15 @@ const Profile = () => {
       <Typography variant="body1" color="textSecondary">
         Links: Java, C, C++, C#
        </Typography>  
+       {links.map(link => (
+          <div key={link.id}>     
+        <Grid item xs={12} sm={6}>
+        <Typography variant="body1" color="textSecondary">
+          Link: {link.link}
+       </Typography> 
+        </Grid>
+            </div> ))}
+      
 
         <Box my={10}>
       </Box>
