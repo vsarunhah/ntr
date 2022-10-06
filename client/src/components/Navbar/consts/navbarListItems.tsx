@@ -12,7 +12,7 @@ export const mainNavbarItems = [
         id: 0,
         icon: <PersonRoundedIcon />,
         label: 'Profile',
-        route: 'profile',
+        route: 'manualorresume',
     },
     {
         id: 0,

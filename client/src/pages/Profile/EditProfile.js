@@ -1,9 +1,11 @@
-
 import Grid from '@mui/material/Grid';
-import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextField, Typography, CardContent, Button, FormControlLabel, Checkbox } from '@mui/material';
-
+import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextField, Typography, CardContent, Button, FormControlLabel, Checkbox, IconButton } from '@mui/material';
+import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { v4 as uuidv4 } from 'uuid';
+
 const id = "6336412aab0f0f35a5c36faf";
 export default function EditProfile() {
  const [form, setForm] = useState({
@@ -13,6 +15,15 @@ export default function EditProfile() {
    phone: "",
    address: "",
  });
+
+ const [experiences, setExperiences] = useState([
+  { id: uuidv4(), employerName: "", position: "", 
+  location: "", startDate: "", endDate: "", description: "" },
+]);
+
+const [links, setLinks] = useState([
+  { id: uuidv4(), link: "" },
+]);
  const params = useParams();
 
   useEffect(() => {
@@ -40,7 +51,7 @@ export default function EditProfile() {
   }, []);
  
  // These methods will update the state properties.
- function updateForm(value: { first_name?: string; last_name?: string; email?: string; phone?: string; address?: string; }) {
+ function updateForm(value) {
   console.log('I was triggered during updateForm'); 
   return setForm((prev) => {
      return { ...prev, ...value };
@@ -48,7 +59,7 @@ export default function EditProfile() {
  }
  
  // This function will handle the submission.
- async function onSubmit(e: { preventDefault: () => void; }) {
+ async function onSubmit(e) {
    e.preventDefault();
    console.log('I was triggered during onSubmit');
  
@@ -61,7 +72,7 @@ export default function EditProfile() {
     address: form.address,    
   };
   console.log("params : "+params);
-  console.log("id : "+id);
+  console.log("id : "+params.id);
   
    await fetch(`http://localhost:5000/profileUpdate/${id}`, {
      method: "POST",
@@ -75,6 +86,55 @@ export default function EditProfile() {
      return;
    });
  }
+
+
+
+const handleChangeExperience = (id, event) => {
+  const newExperiences = experiences.map(i => {
+    if(id === i.id) {
+      i[event.target.name] = event.target.value;
+    }
+    return i;
+  })
+  setExperiences(newExperiences);
+}
+
+const handleChangeLink = (id, event) => {
+  const newLink = links.map(i => {
+    if(id === i.id) {
+      i[event.target.name] = event.target.value;
+    }
+    return i;
+  })
+setLinks(newLink);
+}
+
+// function handleChangeInput(value: any) {
+//   return setInputFields((prev) => {
+//     return { ...prev,  ...value};
+//   });
+// }
+
+const handleAddExperiences = () => {
+  setExperiences([...experiences, { id: uuidv4(),  employerName: '', position: '', 
+  location: '', startDate: '', endDate: '', description: '' }])
+}
+
+const handleRemoveExperiences = (id) => {
+  const values  = [...experiences];
+  values.splice(values.findIndex(value => value.id === id), 1);
+  setExperiences(values);
+}
+
+const handleAddLinks = () => {
+  setLinks([...links, { id: uuidv4(),  link: ''}])
+}
+
+const handleRemoveLinks = (id) => {
+  const values  = [...links];
+  values.splice(values.findIndex(value => value.id === id), 1);
+  setLinks(values);
+}
  
   return (
     <Grid mx ={35}>
@@ -183,7 +243,92 @@ export default function EditProfile() {
         Please fill in your education information.
       </Typography>
 
-        <Grid container spacing={1}>
+      {experiences.map(experience => (
+          <div key={experience.id}>
+            <Grid container spacing={1}>
+            <Grid item xs={12} sm={6}>
+            <TextField placeholder="Google" 
+              label="Employer Name" 
+              variant="outlined" fullWidth
+              name="firstName"
+              //value = {experience.employerName}
+              //onChange= {(e) => handleChangeExperience(experience.id, e)}
+             // onChange={event => handleChangeInput(inputField.id, event)}
+              //onChange={(e) => handleChangeInput({ firstName: e.target.value })}
+            />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField placeholder="Software Engineer" 
+              label="Position" 
+              variant="outlined" fullWidth
+              name="lastName"
+              //value = {experience.position}
+              //onChange= {(e) => handleChangeExperience(experience.id, e)}
+             //onChange={(e) => handleChangeInput({ lastName: e.target.value })}
+            />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField placeholder="San Diego" 
+              label="Location" 
+              variant="outlined" fullWidth
+              name="lastName"
+              //value={experience.location}
+              //onChange={event => handleChangeInput(inputField.id, event)}
+             //onChange={(e) => handleChangeInput({ lastName: e.target.value })}
+            />
+            </Grid>
+            <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="I currently work here" />
+            </FormGroup>
+            <Grid item xs={12} sm={6}>
+            <TextField
+              id="date"
+              label="Start date"
+              //value={experience.startDate}
+              type="date"
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />       
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="date"
+              label="End date"
+              //value={experience.endDate}
+              type="date"
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />       
+          </Grid>
+          <Grid item xs={12}>
+            <TextField multiline rows={4} placeholder="" label="Description" 
+            variant="outlined" fullWidth
+            //value={experience.description} 
+            />
+          </Grid>
+            </Grid>
+            <IconButton disabled={experience.length === 1} 
+            //onClick={() => handleRemoveExperiences(experience.id)}
+            >
+              <RemoveCircleOutlineRoundedIcon />
+            </IconButton>
+            <IconButton
+            //  onClick={handleAddExperiences}
+            >
+              <AddCircleOutlineRoundedIcon />
+            </IconButton>
+          </div>
+        )) }
+
+
+
+        {/* <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
             <TextField placeholder="Google" label="Employer Name" variant="outlined" fullWidth  />
           </Grid>
@@ -195,9 +340,6 @@ export default function EditProfile() {
           </Grid>
           <Box mx={5}>
           </Box>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="I currently work here" />
-          </FormGroup>
           <Grid item xs={12} sm={6}>
             <TextField
               id="date"
@@ -225,7 +367,7 @@ export default function EditProfile() {
           <Grid item xs={12}>
             <TextField multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth  />
           </Grid>
-        </Grid>
+        </Grid> */}
 
 
 
@@ -299,19 +441,34 @@ export default function EditProfile() {
         Please fill in any links you would like to share.
       </Typography>
 
+      {links.map(link => (
+          <div key={link.id}>     
         <Grid item xs={12} sm={6}>
-          <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth />
+          <TextField placeholder="Java" label="Link" variant="outlined" fullWidth value = {links.link}
+          onChange= {(e) => handleChangeLink(links.id, e)}
+          />
         </Grid>
+        <IconButton disabled={links.length === 1} 
+            onClick={() => handleRemoveLinks(links.id)}
+            >
+              <RemoveCircleOutlineRoundedIcon />
+            </IconButton>
+            <IconButton
+              onClick={handleAddLinks}
+            >
+              <AddCircleOutlineRoundedIcon />
+            </IconButton>
+            </div> ))}
 
-
-       {/* <Button type="submit" variant="contained" color="primary" >Submit </Button> */}
-       <div className="form-group">
+        <div className="form-group">
          <input
            type="submit"
            value="Create person"
            className="btn btn-primary"
          />
        </div>
+
+
       </form>
 
       
@@ -321,4 +478,5 @@ export default function EditProfile() {
 
     </Grid>
   )
+
 }

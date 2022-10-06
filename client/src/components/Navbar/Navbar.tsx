@@ -9,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { mainNavbarItems } from './consts/navbarListItems';
 import { navbarStyles } from './styles';
 import { useNavigate } from "react-router-dom";
+import logo from "../../images/ntrlogoinverted.png";
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -19,6 +20,9 @@ const Navbar = () => {
           variant="permanent"
           anchor="left"
       >
+        <img src={logo} 
+              alt="ntr logo"
+              />
         <Toolbar />
         <Divider />
         <List>
