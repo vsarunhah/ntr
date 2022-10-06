@@ -40,7 +40,6 @@ expRoutes.route("/exp/add").post(function (req, response) {
    current_job: req.body.current_job,
    description: req.body.description,
    location: req.body.location,
-   exp_id: req.body.exp_id,
    user_id: req.body.user_id
  };
  db_connect.collection("exp").insertOne(myobj, function (err, res) {

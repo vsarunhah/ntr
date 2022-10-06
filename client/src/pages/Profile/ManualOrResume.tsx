@@ -7,7 +7,7 @@ const ManualOrResume = () => {
     let navigate = useNavigate(); 
 
     const routeChange = () => { 
-        let path = `/profile`; 
+        let path = `/form`; 
         console.log("sent : "+path);
         navigate(path);
       }
