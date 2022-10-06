@@ -4,6 +4,8 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
+
 const id = "6336412aab0f0f35a5c36faf";
 const Profile = () => {
   const [form, setForm] = useState({
@@ -13,6 +15,11 @@ const Profile = () => {
     phone: "",
     address: "",
   });
+
+
+  const [links, setLinks] = useState([
+    { id: uuidv4(), link: "" },
+  ]);
 
  
    useEffect(() => {
@@ -32,6 +39,7 @@ const Profile = () => {
        }
    
        setForm(profile);
+       //setLinks(profile);
      }
    
      fetchData();
@@ -191,6 +199,15 @@ const Profile = () => {
       <Typography variant="body1" color="textSecondary">
         Links: Java, C, C++, C#
        </Typography>  
+       {links.map(link => (
+          <div key={link.id}>     
+        <Grid item xs={12} sm={6}>
+        <Typography variant="body1" color="textSecondary">
+          Link: {link.link}
+       </Typography> 
+        </Grid>
+            </div> ))}
+      
 
         <Box my={10}>
       </Box>
@@ -367,3 +384,5 @@ const Profile = () => {
 }
 
 export default Profile
+
+
