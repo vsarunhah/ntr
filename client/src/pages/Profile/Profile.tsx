@@ -21,6 +21,11 @@ const Profile = () => {
     { id: uuidv4(), link: "" },
   ]);
 
+  const [experiences, setExperiences] = useState([
+    { id: uuidv4(), employerName: "", position: "", 
+    location: "", startDate: "", endDate: "", description: "" },
+  ]);
+
  
    useEffect(() => {
      async function fetchData() {
@@ -89,29 +94,29 @@ const Profile = () => {
         Experiences
       </Typography>
 
-      <Typography  variant="body1" color="textSecondary">
-      Employer Name: Employer Name
-       </Typography>
-
+      {experiences.map(experience => (
+          <div key={experience.id}>     
+        <Grid item xs={12} sm={6}>
+        <Typography variant="body1" color="textSecondary">
+        Employer Name: {experience.employerName}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Position: Position
-       </Typography>
-
+       Position: {experience.position}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Location: Location
-       </Typography>
-
+       Location: {experience.location}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Start date: Start date
-       </Typography>
-       
+       startDate: {experience.startDate}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       End date: End date
-       </Typography>
-       
+       endDate: {experience.endDate}
+       </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Description: Description
-       </Typography>
+       description: {experience.description}
+       </Typography> 
+        </Grid>
+            </div> ))}
 
        <Box my={10}>
       </Box>
