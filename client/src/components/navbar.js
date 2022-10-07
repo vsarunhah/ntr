@@ -32,9 +32,6 @@ export default function Navbar() {
              <NavLink className="nav-link" to="/create">
                Create Record
              </NavLink>
-             <NavLink className="nav-link1" to="/review/add">
-               Add Review
-             </NavLink>
            </li>
          </ul>
        </div>
