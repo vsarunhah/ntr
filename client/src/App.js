@@ -28,6 +28,8 @@ import Applied from "./components/applied";
 const App = () => {
   const user = localStorage.getItem("token");
   console.log("user:", user);
+  const user_id = localStorage.getItem("user_id");
+  console.log("user_id:", user_id);
  return (
    <div>
     <Routes>

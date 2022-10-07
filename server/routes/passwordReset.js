@@ -30,7 +30,7 @@ passwordRoutes.route("/password-reset").post(async(req, res) => {
 			}).save();
 		}
 
-		const url = `${process.env.BASE_URL}password-reset/${user._id}/${token.token}/`;
+		const url = `${process.env.CLIENT_URL}password-reset/${user._id}/${token.token}/`;
 		await sendEmail(user.email, "Password Reset", url);
 
 		res.status(200).send({ message: "Password reset link sent to your email account" });
@@ -41,6 +41,7 @@ passwordRoutes.route("/password-reset").post(async(req, res) => {
 
 // verify password reset link
 passwordRoutes.get("/password-reset/:id/:token", async (req, res) => {
+	console.log("in password reset get");
 	try {
 		const user = await User.findOne({ _id: req.params.id });
 		if (!user) return res.status(400).send({ message: "Invalid link" });

@@ -248,7 +248,7 @@ export default function Applied() {
   }, [applications.length, filter]);
 
   return (
-    <Grid>
+    <Grid mx={35}>
       <Navbar />
     <ThemeProvider theme={theme}>
       <TableContainer component={Paper}>

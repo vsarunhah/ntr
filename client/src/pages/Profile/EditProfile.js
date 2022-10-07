@@ -3,11 +3,17 @@ import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextFi
 import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import { v4 as uuidv4 } from 'uuid';
 import Navbar from '../../components/Navbar/Navbar'
+import { useNavigate } from "react-router-dom";
 
 export default function EditProfile() {
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/profile`; 
+    navigate(path);
+  }
  const [form, setForm] = useState({
    first_name: "",
    last_name: "",
@@ -254,6 +260,8 @@ const [links, setLinks] = useState([
     window.alert(error);
     return;
   });
+
+  routeChange();
  }
 
 
@@ -581,14 +589,23 @@ const handleRemoveLinks = (id) => {
           onChange= {(e) => setForm({...form, links: e.target.value})}/>
         </Grid>
 
-        <div className="form-group">
+        {/* <div className="form-group">
          <input
            type="submit"
            value="Create person"
            className="btn btn-primary"
+           //onClick={routeChange}
          />
-       </div>
-
+       </div> */}
+       <Box my={10}>
+      </Box>
+      
+       <div className="form-group">
+       <Grid item xs={12} sm={6}>
+          <Button type="submit" value="Create person"
+           className="btn btn-primary" variant="contained" color="primary" >Submit </Button>
+        </Grid>
+        </div>
 
       </form>
 

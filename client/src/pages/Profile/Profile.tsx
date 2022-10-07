@@ -122,7 +122,8 @@ const Profile = () => {
       }
        const profile = await response.json();
        if (!profile) {
-         window.alert(`Record with id not found`);
+         window.alert(`Please create a profile first`);
+         window.location.href = "/form";
          return;
        }
        const experience = await response2.json();
