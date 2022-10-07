@@ -49,7 +49,7 @@ const Signup = () => {
 		const { data: res } = await axios.post(url, userObj);
 		console.log("res data: ", res.data);
 		localStorage.setItem("token", res.data);
-		localStorage.setItem("uid", res.uid);
+		localStorage.setItem("user_id", res.user_id);
 		// if (res.data) {
 			// console.log("res data");
 		window.location = "/";

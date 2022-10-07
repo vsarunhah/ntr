@@ -6,7 +6,8 @@ const Main = () => {
 		console.log("logout");
 		window.open("http://localhost:5000/auth/logout", "_self");
 		localStorage.removeItem("token");
-		window.location.reload();
+		localStorage.removeItem("user_id");
+		window.location = "/login";
 	};
 
 	return (

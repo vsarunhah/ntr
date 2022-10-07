@@ -21,7 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "mongodb": "^4.9.1",
-    "mongoose": "^6.6.2",
+    "mongoose": "^6.6.3",
     "nodemailer": "^6.8.0",
     "nodemon": "^2.0.20",
     "react-router-dom": "^6.4.1"

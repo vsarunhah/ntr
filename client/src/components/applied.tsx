@@ -9,7 +9,9 @@ import Paper from "@mui/material/Paper";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Navbar from '../components/Navbar/Navbar'
 import {
+  Grid,
   Button,
   Dialog,
   DialogActions,
@@ -246,6 +248,8 @@ export default function Applied() {
   }, [applications.length, filter]);
 
   return (
+    <Grid mx={35}>
+      <Navbar />
     <ThemeProvider theme={theme}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -434,6 +438,7 @@ export default function Applied() {
         </Table>
       </TableContainer>
     </ThemeProvider>
+  </Grid>
   );
 }
 // filter out the keys that are numbers (i.e. the enum values) and map the remaining keys to menu items
