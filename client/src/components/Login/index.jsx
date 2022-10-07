@@ -18,7 +18,7 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			console.log("HERE");
-			const url = "	";
+			const url = "http://localhost:5000/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			localStorage.setItem("uid", res.uid);
