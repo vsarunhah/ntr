@@ -21,7 +21,7 @@ const Login = () => {
 			const url = "http://localhost:5000/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
-			localStorage.setItem("uid", res.uid);
+			localStorage.setItem("user_id", res.user_id);
 			window.location = "/";
 			console.log("login res: ", res);
 		} catch (err) {
@@ -46,7 +46,7 @@ const Login = () => {
 		const { data: res } = await axios.post(url, userObj);
 		console.log("res data: ", res.data);
 		localStorage.setItem("token", res.data);
-		localStorage.setItem("uid", res.uid);
+		localStorage.setItem("user_id", res.user_id);
 		// if (res.data) {
 			// console.log("res data");
 		window.location = "/";

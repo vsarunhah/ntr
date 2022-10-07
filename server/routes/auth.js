@@ -42,7 +42,7 @@ router.route("/auth").post(async function (req, res) {
         }
 
         const token = user.generateAuthToken();
-        res.status(200).send({data: token, message: "User logged in successfully", uid: user._id});
+        res.status(200).send({data: token, message: "User logged in successfully", user_id: user._id});
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');
@@ -60,7 +60,7 @@ const validate = (data) => {
 
 router.get("/auth/logout", (req, res) => {
     console.log("logout HERE");
-	// req.logout();
+	req.logout();
 	res.redirect(process.env.CLIENT_URL);
 });
 
