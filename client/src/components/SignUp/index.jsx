@@ -26,6 +26,7 @@ const Signup = () => {
 			const { data: res } = await axios.post(url, data);
 			console.log("signup res: ", res)
 			setMsg(res);
+			setError("");
 		} catch (error) {
 			console.log("error", error);
 			if (
