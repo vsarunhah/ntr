@@ -13,6 +13,7 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
+import Navbar from "../../components/Navbar/Navbar";
 
 const styles = {
   card: {
@@ -104,16 +105,17 @@ export default function ReviewList() {
 
   // This following section will display the table with the reviews of individuals.
   return (
-    <div>
+    <Grid mx={35}>
+      <Navbar />
       <Typography
         gutterBottom
         variant="h5"
-        style={{ margin: "100px", fontWeight: "bold" }}
+        style={{ margin: "70px", fontWeight: "bold" }}
       >
         Company Reviews
       </Typography>
       <ul>
-        <Grid container direction="row" spacing={2} style={{ margin: "50px" }}>
+        <Grid container direction="row" spacing={2} style={{ margin: "20px" }}>
           {reviews.map((review) => (
             <Grid item>
               <Review
@@ -126,7 +128,7 @@ export default function ReviewList() {
         </Grid>
       </ul>
       <Button
-        style={{ margin: "100px", height: "56px", width: "30%" }}
+        style={{ margin: "70px", height: "56px", width: "30%" }}
         variant="outlined"
         component={Link}
         to="/review/add"
@@ -134,6 +136,6 @@ export default function ReviewList() {
       >
         Add review
       </Button>
-    </div>
+    </Grid>
   );
 }
