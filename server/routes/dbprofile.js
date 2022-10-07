@@ -39,6 +39,7 @@ dbprofileRoutes.route("/dbprofile").post(function (req, res) {
  
 // This section will help you create a new record.
 dbprofileRoutes.route("/dbprofile/add").post(function (req, response) {
+  console.log("adding profile");
  let db_connect = dbo.getDb("employees");
  let myobj = {
    first_name: req.body.first_name,
@@ -48,6 +49,7 @@ dbprofileRoutes.route("/dbprofile/add").post(function (req, response) {
    address: req.body.address,
    user_id: req.body.user_id,
    links: req.body.links,
+   skills: req.body.skills,
  };
  db_connect.collection("profiles").insertOne(myobj, function (err, res) {
    if (err) throw err;
@@ -67,12 +69,13 @@ dbprofileRoutes.route("/profileUpdate/").post(function (req, response) {
     address: req.body.address,
     user_id: req.body.user_id,
     links: req.body.links,
+    skills: req.body.skills,
    },
  };
  db_connect
    .collection("profiles")
    .updateOne(myquery, newvalues, function (err, res) {
-     if (err) throw err;  ``
+     if (err) throw err;  
      console.log("1 document updated");
      response.json(res);
    });
