@@ -6,16 +6,20 @@ import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRou
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import {MuiDialog} from '../../components/DialogueBox/Confirmation';
+import Navbar from '../../components/Navbar/Navbar'
+import { useNavigate } from "react-router-dom";
 
 import { List } from '@material-ui/core';
 //import { useNavigate } from "react-router";
-localStorage.setItem("user_id", "overallprofiletestid2");
+//localStorage.setItem("user_id", "overallprofiletestid2");
 
-if (localStorage.getItem("user_id") === null) {
-  alert("Please login first");
-  window.location.href = "/login";
-}
+
 export  default function Form() {
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/profile`; 
+    navigate(path);
+  }
  const [form, setForm] = useState({
    first_name: "",
    last_name: "",
@@ -188,10 +192,12 @@ const handleChangeExperience = (id, event) => {
   });
    
    //navigate("/");
+   routeChange();
  }
  
   return (
-    
+    <Grid>
+      <Navbar />
     <Grid mx ={35}>
       
       <Box my={10}>
@@ -466,7 +472,7 @@ const handleChangeExperience = (id, event) => {
         <Box my={10}>
       </Box>
         <Grid item xs={12} sm={6}>
-          <Button type="submit" variant="contained" color="primary" >Submit </Button>
+          <Button type="submit" variant="contained" color="primary">Submit </Button>
         </Grid>
 
       </form>
@@ -476,6 +482,7 @@ const handleChangeExperience = (id, event) => {
       <Box my={10}>
       </Box>
 
+    </Grid>
     </Grid>
   )
 }

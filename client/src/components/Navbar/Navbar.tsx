@@ -10,9 +10,22 @@ import { mainNavbarItems } from './consts/navbarListItems';
 import { navbarStyles } from './styles';
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/ntrlogoinverted.png";
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 
 const Navbar = () => {
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+      console.log("logout");
+      // window.open("http://localhost:5000/auth/logout", "_self");
+      // localStorage.removeItem("token");
+      // localStorage.removeItem("user_id");
+      // window.open("http://localhost:5000/auth/logout", "_self");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      console.log("logged out");
+      window.location.href = "/login";
+    };
 
     return (
         <Drawer
@@ -43,6 +56,17 @@ const Navbar = () => {
               />
             </ListItem>
           ))}
+          <ListItem button onClick={handleLogout}>
+          <ListItemIcon
+                sx={navbarStyles.icons}
+              >
+               < ExitToAppOutlinedIcon></ExitToAppOutlinedIcon>
+              </ListItemIcon>
+          <ListItemText
+                sx={navbarStyles.text}
+                primary="LogOut"
+              />
+          </ListItem>
         </List>
       </Drawer>
     );

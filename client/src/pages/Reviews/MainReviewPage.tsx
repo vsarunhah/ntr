@@ -9,6 +9,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Navbar from '../../components/Navbar/Navbar'
 
 
 
@@ -18,6 +19,8 @@ function MainReviewPage() {
 
 
   return (
+    <Grid>
+      <Navbar />
     <Grid mx ={35}>
     
             <Box my={10}>
@@ -88,6 +91,7 @@ function MainReviewPage() {
         
      
 		</Grid>
+    </Grid>
   );
 }
 

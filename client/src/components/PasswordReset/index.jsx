@@ -17,6 +17,7 @@ const PasswordReset = () => {
 		const verifyUrl = async () => {
 			try {
 				await axios.get(url);
+				console.log("valid url");
 				setValidUrl(true);
 			} catch (error) {
 				setValidUrl(false);

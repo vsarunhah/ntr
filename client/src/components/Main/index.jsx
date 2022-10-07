@@ -3,14 +3,17 @@ import styles from "./styles.module.css";
 
 const Main = () => {
 	const handleLogout = () => {
+		console.log("logout");
+		window.open("http://localhost:5000/auth/logout", "_self");
 		localStorage.removeItem("token");
-		window.location.reload();
+		localStorage.removeItem("user_id");
+		window.location = "/login";
 	};
 
 	return (
 		<div className={styles.main_container}>
 			<nav className={styles.navbar}>
-				<h1>fakebook</h1>
+				<h1>NTR</h1>
 				<button className={styles.white_btn} onClick={handleLogout}>
 					Logout
 				</button>
