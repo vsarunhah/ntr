@@ -16,6 +16,8 @@ import EmailVerify from "./components/EmailVerify";
 import ForgotPassword from "./components/ForgotPassword";
 import PasswordReset from "./components/PasswordReset";
  
+import Applied from "./components/applied";
+
 const App = () => {
   const user = localStorage.getItem("token");
   console.log("user:", user);
@@ -25,17 +27,14 @@ const App = () => {
    <div>
      <Navbar />
      <Routes>
-       {/* <Route exact path="/" element={<RecordList />} />
-       <Route path="/edit/:id" element={<Edit />} />
-       <Route path="/create" element={<Create />} /> */}
-      {/* <Route exact path="/" element={<Main />} /> */}
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      {/* <Route path="/" exact element={<Navigate replace to="/login" />} /> */}
       <Route exact path="/" element={user ? <Main /> : <Navigate to="/login" />}/>
       <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+      <Route path="/create" element={<Create />} />
+      <Route path="/applied" element={<Applied />} />
      </Routes>
    </div>
  );
