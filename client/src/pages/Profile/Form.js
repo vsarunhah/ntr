@@ -5,8 +5,8 @@ import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutl
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-
-import MaxWidthDialog from '../../components/DialogueBox/Confirmation';
+import { Routes ,Route } from 'react-router-dom';
+import {MuiDialog} from '../../components/DialogueBox/Confirmation';
 //import { useNavigate } from "react-router";
 
 export  default function Form() {
@@ -357,7 +357,8 @@ const handleRemoveExperiences = (id) => {
         <Box my={10}>
       </Box>
         <Grid item xs={12} sm={6}>
-          <Button type="submit" variant="contained" color="primary" >Submit </Button>
+          {/* <Button type="submit" variant="contained" color="primary" >Submit </Button> */}
+          <MuiDialog/>
           
         </Grid>
 
