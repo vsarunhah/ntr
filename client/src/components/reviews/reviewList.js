@@ -1,22 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {Button, Box, Typography, Grid } from '@mui/material';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import { NavLink } from "react-router-dom";
  
 const Review = (props) => (
- <tr>
-   <td>{props.review.companyName}</td>
-   <td>{props.review.description}</td>
-   <td>
-     <Link className="btn btn-link" to={`/review/edit/${props.review._id}`}>Edit</Link> |
-     <button className="btn btn-link"
+<Grid>
+  <Typography variant="body1" color="textSecondary" component="p" gutterBottom>
+  {props.review.companyName}
+	</Typography>
+  <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+  {props.review.description}
+        </Typography>
+    <Button  className="btn btn-link" to={`/review/edit/${props.review._id}`} startIcon={<EditOutlinedIcon /> } > </Button>
+    <Button  className="btn btn-link"
+       onClick={() => {
+         props.deleteReview(props.review._id);
+       }}startIcon={<RemoveCircleOutlineRoundedIcon /> } > </Button>
+     {/* <Link className="btn btn-link" to={`/review/edit/${props.review._id}`}>Edit</Link> | */}
+     {/* <button className="btn btn-link"
        onClick={() => {
          props.deleteReview(props.review._id);
        }}
      >
        Delete
-     </button>
-   </td>
- </tr>
+     </button> */}
+   </Grid>
+
 );
  
 export default function ReviewList() {
@@ -62,16 +75,22 @@ export default function ReviewList() {
  // This following section will display the table with the reviews of individuals.
  return (
    <div>
-     <h3>Review List</h3>
+     <Typography gutterBottom variant="h5">
+					Company Reviews
+				</Typography>
+        
      <table className="table table-striped" style={{ marginTop: 20 }}>
-       <thead>
-         <tr>
-           <th>CompanyName</th>
-           <th>Description</th>
-         </tr>
-       </thead>
        <tbody>{reviewList()}</tbody>
      </table>
+     <Button
+  style={{ "height": "56px", "width": "30%",}}
+  variant="outlined"
+  to="/review/add"
+  startIcon={<AddCircleOutlineRoundedIcon />}> Add review </Button>
+  <NavLink className="nav-link1" to="/review/add">
+               Add Review
+             </NavLink>
    </div>
+   
  );
 }

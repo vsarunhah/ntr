@@ -59,6 +59,7 @@ export default function CreateReview() {
                     <TextField multiline rows={4} placeholder="" label="Review description" variant="outlined" fullWidth
                     value={form.description} onChange={(e) => updateForm({ description: e.target.value })} />
                 </Grid>
+                <Box my={10}></Box>
                 <div className="form-group">
                   <input
                     type="submit"
