@@ -12,25 +12,25 @@ export const mainNavbarItems = [
         id: 0,
         icon: <PersonRoundedIcon />,
         label: 'Profile',
-        route: 'manualorresume',
+        route: '/manualorresume',
     },
     {
         id: 0,
         icon: <PersonRoundedIcon />,
         label: 'New Profile',
-        route: 'form',
+        route: '/form',
     },
     {
         id: 1,
         icon: <AppRegistrationRoundedIcon />,
         label: 'Applications',
-        route: 'applications',
+        route: '/applied',
     },
     {
         id: 2,
         icon: <ReviewsRoundedIcon />,
         label: 'Reviews',
-        route: 'reviews',
+        route: '/reviews',
     },
 
 ]

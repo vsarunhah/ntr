@@ -5,6 +5,7 @@ import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import Navbar from '../../components/Navbar/Navbar'
 
 const Profile = () => {
   const [form, setForm] = useState({
@@ -159,7 +160,8 @@ const Profile = () => {
       }
 
     return (
-    
+      <Grid>
+      <Navbar />
     <Grid container mx ={35}>
      <Grid item xs={6}>
      <Box my={10}>
@@ -308,6 +310,7 @@ const Profile = () => {
         Edit
       </Button>
      </Grid>
+    </Grid>
     </Grid>
 
 

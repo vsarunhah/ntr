@@ -1,10 +1,12 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Box, TextField, Typography } from '@mui/material';
+import Navbar from '../../components/Navbar/Navbar'
 
 const Reviews = () => {
 	return (
-        
+        <Grid>
+      <Navbar />
 		<Grid  mx ={35}>
 			
             <Box my={10}>
@@ -26,6 +28,7 @@ const Reviews = () => {
                 </Grid>
                 </Grid>
 			</form>
+		</Grid>
 		</Grid>
 	);
 };

@@ -5,11 +5,12 @@ import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutl
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import Navbar from '../../components/Navbar/Navbar'
 
 import MaxWidthDialog from '../../components/DialogueBox/Confirmation';
 import { List } from '@material-ui/core';
 //import { useNavigate } from "react-router";
-localStorage.setItem("user_id", "overallprofiletestid2");
+//localStorage.setItem("user_id", "overallprofiletestid2");
 
 if (localStorage.getItem("user_id") === null) {
   alert("Please login first");
@@ -191,7 +192,8 @@ const handleChangeExperience = (id, event) => {
  }
  
   return (
-    
+    <Grid>
+      <Navbar />
     <Grid mx ={35}>
       
       <Box my={10}>
@@ -476,6 +478,7 @@ const handleChangeExperience = (id, event) => {
       <Box my={10}>
       </Box>
 
+    </Grid>
     </Grid>
   )
 }

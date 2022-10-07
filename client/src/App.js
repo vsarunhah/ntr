@@ -5,7 +5,6 @@ import { Route, Routes, Navigate } from "react-router-dom";
  
 // We import all the components we need in our app
 import Navbar from './components/Navbar/Navbar'
-import RecordList from "./components/recordList";
 import Edit from "./components/edit";
 import Create from "./components/create";
 
@@ -24,30 +23,33 @@ import Form from "./pages/Profile/Form";
 import EditProfile from "./pages/Profile/EditProfile";
 import ManualOrResume from "./pages/Profile/ManualOrResume"
  
+import Applied from "./components/applied";
+
 const App = () => {
   const user = localStorage.getItem("token");
   console.log("user:", user);
  return (
    <div>
-     <Navbar />
-     <Routes>
+    <Routes>
+    <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/" exact element={<Navigate replace to="/login" />} /> */}
+        <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+        <Route exact path="/" element={user ? <Profile /> : <Navigate to="/login" />}/>
        {/* <Route exact path="/" element={<RecordList />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} /> */}
-        <Route path="/" element={<ManualOrResume />}/>
-        <Route path="manualorresume" element={< ManualOrResume/>} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="applications" element={<Applications />} />
-        <Route path="reviews" element={<MainReviewPage />} />
-        <Route path="form" element={<Form />} />
-        <Route path="editProfile/" element={<EditProfile />} />
-      {/* <Route exact path="/" element={<Main />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/" exact element={<Navigate replace to="/login" />} />
-      <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/password-reset/:id/:token" element={<PasswordReset />} /> */}
+        <Route path="/manualorresume" element={< ManualOrResume/>} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/applications" element={<Applications />} />
+        <Route path="/reviews" element={<MainReviewPage />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/editProfile/" element={<EditProfile />} />
+        <Route exact path="/" element={<Main />} />
+       <Route path="/create" element={<Create />} />
+       <Route path="/applied" element={<Applied />} />
      </Routes>
    </div>
  );

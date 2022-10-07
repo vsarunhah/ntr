@@ -5,6 +5,7 @@ import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRou
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { v4 as uuidv4 } from 'uuid';
+import Navbar from '../../components/Navbar/Navbar'
 
 export default function EditProfile() {
  const [form, setForm] = useState({
@@ -300,6 +301,8 @@ const handleRemoveLinks = (id) => {
 }
  
   return (
+    <Grid>
+      <Navbar />
     <Grid mx ={35}>
       <Box my={10}>
       </Box>
@@ -595,6 +598,7 @@ const handleRemoveLinks = (id) => {
       </Box>
 
     </Grid>
+     </Grid>
   )
 
 }
