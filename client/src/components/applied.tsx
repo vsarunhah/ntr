@@ -105,12 +105,12 @@ const selectProps = {
   },
 };
 
-localStorage.setItem("user_id", "6336395ebee55c95f269e98d");
+// localStorage.setItem("user_id", "6336395ebee55c95f269e98d");
 
-if (localStorage.getItem("user_id") === null) {
-  alert("Please login first");
-  window.location.href = "/login";
-}
+// if (localStorage.getItem("user_id") === null) {
+//   alert("Please login first");
+//   window.location.href = "/login";
+// }
 
 export default function Applied() {
   const [applications, setApplications] = useState<any[]>([]);
