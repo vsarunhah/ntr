@@ -9,11 +9,14 @@ import {
   Card,
   CardContent,
   Divider,
+  CardActions,
 } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Navbar from "../../components/Navbar/Navbar";
+import IconButton from "@mui/material/IconButton";
+import Rating from "@mui/material/Rating";
 
 const styles = {
   card: {
@@ -24,12 +27,13 @@ const styles = {
     "&:hover": {
       boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
     },
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
   },
   content: {
     textAlign: "left",
-  },
-  divider: {
-    margin: "40px",
+    direction: "column",
   },
   heading: {
     fontWeight: "bold",
@@ -37,40 +41,63 @@ const styles = {
   subheading: {
     lineHeight: 1.8,
   },
+  actions: {
+    marginBottom: "10px",
+  },
 };
 
 const Review = (props) => (
-  <Grid item direction="row" alignItems="center">
+  <Grid container direction="column" alignItems="center">
     <Card className="card" style={styles.card}>
       <CardContent className="content" style={styles.content}>
-        <Typography
-          className={"MuiTypography--heading"}
-          variant={"h6"}
-          gutterBottom
-        >
-          {props.review.companyName}
-        </Typography>
-        <Typography className={"MuiTypography--subheading"} variant={"caption"}>
-          {props.review.description}
-        </Typography>
-        <Button
-          marginLeft="auto"
+        <Grid item>
+          <Typography
+            className={"MuiTypography--heading"}
+            variant={"h6"}
+            gutterBottom
+          >
+            {props.review.companyName}
+          </Typography>
+        </Grid>
+        {/* <Grid item>
+          <Rating
+            size="small"
+            // name="simple-controlled"
+            // value={value}
+            // onChange={(event, newValue) => {
+            //   setValue(newValue);
+            // }}
+          />
+        </Grid> */}
+        <Grid item>
+          <Typography
+            className={"MuiTypography--subheading"}
+            variant={"caption"}
+          >
+            {props.review.description}
+          </Typography>
+        </Grid>
+      </CardContent>
+      <CardActions
+        disableSpacing
+        sx={{ borderTop: 0.5, justifyContent: "flex-end" }}
+      >
+        <IconButton
           className="btn btn-link"
           component={Link}
           to={`/review/edit/${props.review._id}`}
-          startIcon={<EditOutlinedIcon />}
-        ></Button>
-        <Button
+        >
+          <EditOutlinedIcon />
+        </IconButton>
+        <IconButton
           className="btn btn-link"
           onClick={() => {
             props.deleteReview(props.review._id);
           }}
-          startIcon={<RemoveCircleOutlineRoundedIcon />}
         >
-          {" "}
-        </Button>
-        <Divider className="divider" style={styles.divider} />
-      </CardContent>
+          <RemoveCircleOutlineRoundedIcon />
+        </IconButton>
+      </CardActions>
     </Card>
   </Grid>
 );
