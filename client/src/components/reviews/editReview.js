@@ -3,11 +3,14 @@ import { useParams, useNavigate } from "react-router";
 import Grid from "@mui/material/Grid";
 import { Box, TextField, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar";
+import Rating from "@mui/material/Rating";
+import axios from "axios";
 
 export default function EditReview() {
   const [form, setForm] = useState({
     companyName: "",
     description: "",
+    rating: "0",
     records: [],
   });
   const params = useParams();
@@ -48,84 +51,77 @@ export default function EditReview() {
     });
   }
 
+  const handleChange = (event) => {
+    updateForm({ rating: event.target.value });
+  };
+
   async function onSubmit(e) {
     e.preventDefault();
     const editedReview = {
       companyName: form.companyName,
       description: form.description,
+      rating: form.rating,
     };
 
-    // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5000/review/update/${params.id}`, {
-      method: "POST",
-      body: JSON.stringify(editedReview),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await axios
+      .post(`http://localhost:5000/review/update/${params.id}`, editedReview)
+      .catch((err) => window.alert(err));
 
     navigate("/reviews");
   }
 
-  // This following section will display the form that takes input from the user to update the data.
-
   return (
-    <Grid>
+    <Grid mx={35} style={{ display: "grid" }}>
       <Navbar />
-      <Grid mx={35}>
-        <Box my={10}></Box>
-        <form onSubmit={onSubmit}>
-          <Typography style={{ margin: "20px" }} gutterBottom variant="h5">
-            Review
+      <form onSubmit={onSubmit}>
+        <Grid item>
+          <Typography my={"20px"} variant="h5">
+            Edit Review
           </Typography>
-          <Typography
-            style={{ margin: "20px" }}
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            gutterBottom
-          >
+          <Typography my={"20px"} variant="body2" color="textSecondary">
             Please update the review information.
           </Typography>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} className="form-group">
-              <TextField
-                style={{ width: "1000px", margin: "20px" }}
-                placeholder="Enter company name"
-                label="Company Name"
-                variant="outlined"
-                fullWidth
-                required
-                value={form.companyName}
-                onChange={(e) => updateForm({ companyName: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                style={{ width: "1000px", margin: "20px" }}
-                multiline
-                rows={4}
-                placeholder=""
-                label="Review Description"
-                variant="outlined"
-                fullWidth
-                required
-                value={form.description}
-                onChange={(e) => updateForm({ description: e.target.value })}
-              />
-            </Grid>
-            <Box my={10}></Box>
-            <div className="form-group">
-              <input
-                style={{ width: "200px", margin: "30px" }}
-                type="submit"
-                value="Update Review"
-                className="btn btn-primary"
-              />
-            </div>
-          </Grid>
-        </form>
-      </Grid>
+        </Grid>
+        <Grid item>
+          <TextField
+            my={"20px"}
+            style={{ width: "1000px" }}
+            placeholder="Enter company name"
+            label="Company Name"
+            variant="outlined"
+            fullWidth
+            required
+            value={form.companyName}
+            onChange={(e) => updateForm({ companyName: e.target.value })}
+          />
+        </Grid>
+        <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
+          <Rating size="small" value={form.rating} onChange={handleChange} />
+        </Grid>
+        <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
+          <TextField
+            style={{ width: "1000px" }}
+            multiline
+            rows={4}
+            placeholder="Enter Review Description"
+            label="Review Description"
+            variant="outlined"
+            fullWidth
+            required
+            value={form.description}
+            onChange={(e) => updateForm({ description: e.target.value })}
+          />
+        </Grid>
+        <div className="form-group">
+          <input
+            style={{ width: "200px" }}
+            my={"20px"}
+            type="submit"
+            value="Update Review"
+            className="btn btn-primary"
+          />
+        </div>
+      </form>
     </Grid>
   );
 }

@@ -59,16 +59,9 @@ const Review = (props) => (
             {props.review.companyName}
           </Typography>
         </Grid>
-        {/* <Grid item>
-          <Rating
-            size="small"
-            // name="simple-controlled"
-            // value={value}
-            // onChange={(event, newValue) => {
-            //   setValue(newValue);
-            // }}
-          />
-        </Grid> */}
+        <Grid item>
+          <Rating size="small" value={props.review.rating} readOnly />
+        </Grid>
         <Grid item>
           <Typography
             className={"MuiTypography--subheading"}
@@ -120,11 +113,9 @@ export default function ReviewList() {
 
   // This method will delete a review
   async function deleteReview(id) {
-    //await axios.delete(`http://localhost:5000/${id}`);
-    console.log("frontend reached");
-    await fetch(`http://localhost:5000/reviews/${id}`, {
-      method: "DELETE",
-    });
+    await axios
+      .delete(`http://localhost:5000/reviews/${id}`)
+      .catch((err) => window.alert(err));
 
     const newReviews = reviews.filter((el) => el._id !== id);
     setReviews(newReviews);
@@ -134,11 +125,7 @@ export default function ReviewList() {
   return (
     <Grid mx={35}>
       <Navbar />
-      <Typography
-        gutterBottom
-        variant="h5"
-        style={{ margin: "70px", fontWeight: "bold" }}
-      >
+      <Typography variant="h5" style={{ margin: "70px", fontWeight: "bold" }}>
         Company Reviews
       </Typography>
       <ul>

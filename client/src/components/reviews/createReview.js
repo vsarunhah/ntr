@@ -4,11 +4,14 @@ import axios from "axios";
 import Grid from "@mui/material/Grid";
 import { Box, TextField, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar";
+import Rating from "@mui/material/Rating";
+import { NextWeek } from "@mui/icons-material";
 
 export default function CreateReview() {
   const [form, setForm] = useState({
     companyName: "",
     description: "",
+    rating: "0",
   });
   const navigate = useNavigate();
 
@@ -23,80 +26,72 @@ export default function CreateReview() {
   async function onSubmit(e) {
     e.preventDefault();
 
-    // When a post request is sent to the create url, we'll add a new record to the database.
     const newReview = { ...form };
 
-    try {
-      await axios
-        .post("http://localhost:5000/review/add", newReview)
-        .then((res) => {
-          console.log(res.data);
-        });
-    } catch (error) {
-      console.log("oops");
-    }
+    await axios
+      .post("http://localhost:5000/review/add", newReview)
+      .catch((err) => window.alert(err));
 
     setForm({ companyName: "", description: "" });
     navigate("/reviews");
   }
 
+  const handleChange = (event) => {
+    updateForm({ rating: event.target.value });
+  };
+
   return (
-    <Grid>
+    <Grid mx={35} style={{ display: "grid" }}>
       <Navbar />
-      <Grid mx={35}>
-        <Box my={10}></Box>
-        <form onSubmit={onSubmit}>
-          <Typography style={{ margin: "20px" }} gutterBottom variant="h5">
-            Review
+      <form onSubmit={onSubmit}>
+        <Grid item>
+          <Typography my={"20px"} variant="h5">
+            New Review
           </Typography>
-          <Typography
-            style={{ margin: "20px" }}
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            gutterBottom
-          >
+          <Typography my={"20px"} variant="body2" color="textSecondary">
             Please fill in the review information.
           </Typography>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} className="form-group">
-              <TextField
-                style={{ width: "1000px", margin: "20px" }}
-                placeholder="Enter company name"
-                label="Company Name"
-                variant="outlined"
-                fullWidth
-                required
-                value={form.companyName}
-                onChange={(e) => updateForm({ companyName: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                style={{ width: "1000px", margin: "20px" }}
-                multiline
-                rows={4}
-                placeholder=""
-                label="Review Description"
-                variant="outlined"
-                fullWidth
-                required
-                value={form.description}
-                onChange={(e) => updateForm({ description: e.target.value })}
-              />
-            </Grid>
-            <Box my={10}></Box>
-            <div className="form-group">
-              <input
-                style={{ width: "200px", margin: "30px" }}
-                type="submit"
-                value="Add review"
-                className="btn btn-primary"
-              />
-            </div>
-          </Grid>
-        </form>
-      </Grid>
+        </Grid>
+        <Grid item>
+          <TextField
+            my={"20px"}
+            style={{ width: "1000px" }}
+            placeholder="Enter company name"
+            label="Company Name"
+            variant="outlined"
+            fullWidth
+            required
+            value={form.companyName}
+            onChange={(e) => updateForm({ companyName: e.target.value })}
+          />
+        </Grid>
+        <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
+          <Rating size="small" value={form.rating} onChange={handleChange} />
+        </Grid>
+        <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
+          <TextField
+            style={{ width: "1000px" }}
+            multiline
+            rows={4}
+            placeholder="Enter Review Description"
+            label="Review Description"
+            variant="outlined"
+            fullWidth
+            required
+            value={form.description}
+            onChange={(e) => updateForm({ description: e.target.value })}
+          />
+        </Grid>
+        <div className="form-group">
+          <input
+            style={{ width: "200px" }}
+            my={"20px"}
+            type="submit"
+            value="Create Review"
+            className="btn btn-primary"
+          />
+        </div>
+      </form>
     </Grid>
   );
 }
