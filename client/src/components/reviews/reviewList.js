@@ -14,8 +14,8 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
-import Navbar from "../../components/Navbar/Navbar";
 import IconButton from "@mui/material/IconButton";
+import Navbar from "../../components/Navbar/Navbar";
 import Rating from "@mui/material/Rating";
 
 const styles = {
@@ -46,6 +46,16 @@ const styles = {
   },
 };
 
+function displayRating(rating) {
+  if (rating) {
+    return (
+      <Grid item>
+        <Rating size="small" value={rating} readOnly />
+      </Grid>
+    );
+  }
+}
+
 const Review = (props) => (
   <Grid container direction="column" alignItems="center">
     <Card className="card" style={styles.card}>
@@ -59,9 +69,7 @@ const Review = (props) => (
             {props.review.companyName}
           </Typography>
         </Grid>
-        <Grid item>
-          <Rating size="small" value={props.review.rating} readOnly />
-        </Grid>
+        {displayRating(props.review.rating)}
         <Grid item>
           <Typography
             className={"MuiTypography--subheading"}
@@ -123,10 +131,10 @@ export default function ReviewList() {
 
   // This following section will display the table with the reviews of individuals.
   return (
-    <Grid mx={35}>
+    <Grid mx={25}>
       <Navbar />
       <Typography variant="h5" style={{ margin: "70px", fontWeight: "bold" }}>
-        Company Reviews
+        All Company Reviews
       </Typography>
       <ul>
         <Grid container direction="row" spacing={2} style={{ margin: "20px" }}>

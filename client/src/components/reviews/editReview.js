@@ -5,6 +5,8 @@ import { Box, TextField, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar";
 import Rating from "@mui/material/Rating";
 import axios from "axios";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import IconButton from "@mui/material/IconButton";
 
 export default function EditReview() {
   const [form, setForm] = useState({
@@ -70,6 +72,10 @@ export default function EditReview() {
     navigate("/reviews");
   }
 
+  function deleteRating() {
+    updateForm({ rating: null });
+  }
+
   return (
     <Grid mx={35} style={{ display: "grid" }}>
       <Navbar />
@@ -96,9 +102,6 @@ export default function EditReview() {
           />
         </Grid>
         <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
-          <Rating size="small" value={form.rating} onChange={handleChange} />
-        </Grid>
-        <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
           <TextField
             style={{ width: "1000px" }}
             multiline
@@ -111,6 +114,30 @@ export default function EditReview() {
             value={form.description}
             onChange={(e) => updateForm({ description: e.target.value })}
           />
+        </Grid>
+        <Grid
+          item
+          container
+          style={{ display: "flex", alignItems: "left" }}
+          my={"20px"}
+          flex-direction="row"
+        >
+          <Grid item>
+            <Typography variant="body2" color="textSecondary">
+              Rating:
+            </Typography>
+            <Rating size="small" value={form.rating} onChange={handleChange} />
+          </Grid>
+          <Grid item marginLeft={"20px"}>
+            <IconButton
+              onClick={() => {
+                deleteRating();
+              }}
+              size="small"
+            >
+              <DeleteOutlineIcon />
+            </IconButton>
+          </Grid>
         </Grid>
         <div className="form-group">
           <input

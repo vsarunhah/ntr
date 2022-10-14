@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import { Box, TextField, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar";
 import Rating from "@mui/material/Rating";
-import { NextWeek } from "@mui/icons-material";
 
 export default function CreateReview() {
   const [form, setForm] = useState({
@@ -66,6 +65,9 @@ export default function CreateReview() {
           />
         </Grid>
         <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
+          <Typography variant="body2" color="textSecondary">
+            Rating:
+          </Typography>
           <Rating size="small" value={form.rating} onChange={handleChange} />
         </Grid>
         <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
