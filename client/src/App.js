@@ -27,6 +27,8 @@ import ManualOrResume from "./pages/Profile/ManualOrResume";
 
 import Applied from "./components/applied";
 
+import SampleForm from "./components/sampleForm";
+
 const App = () => {
   const user = localStorage.getItem("token");
   console.log("user:", user);
@@ -54,12 +56,12 @@ const App = () => {
         <Route path="/applications" element={<Applications />} />
         <Route path="/form" element={<Form />} />
         <Route path="/editProfile/" element={<EditProfile />} />
-        <Route exact path="/" element={<Main />} />
         <Route path="/create" element={<Create />} />
         <Route path="/review/edit/:id" element={<EditReview />} />
         <Route path="/reviews" element={<ReviewList />} />
         <Route path="/review/add" element={<CreateReview />} />
         <Route path="/applied" element={<Applied />} />
+        <Route path="/sampleForm" element={<SampleForm />} />
       </Routes>
     </div>
   );
