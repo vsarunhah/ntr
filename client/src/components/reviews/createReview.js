@@ -4,9 +4,11 @@ import axios from "axios";
 import Grid from "@mui/material/Grid";
 import { Box, TextField, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function CreateReview() {
   const [form, setForm] = useState({
+    id: uuidv4(),
     companyName: "",
     description: "",
   });
@@ -26,9 +28,14 @@ export default function CreateReview() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newReview = { ...form };
 
+    const data = {
+      user_id: localStorage.getItem('user_id'),
+      newReview: newReview,
+    }
+
     try {
       await axios
-        .post("http://localhost:5000/review/add", newReview)
+        .post("http://localhost:5000/review/add", data)
         .then((res) => {
           console.log(res.data);
         });

@@ -7,6 +7,7 @@ const experienceSchema = require('./experience.js');
 const educationSchema = require('./education.js');
 const applicationSchema = require('./application.js');
 const projectSchema = require('./project.js');
+const reviewSchema = require('./review.js');
 
 
 
@@ -26,6 +27,7 @@ const userSchema = mongoose.Schema({
     projects: [projectSchema],
     educations: [educationSchema],
     applications: [applicationSchema],
+    reviews: [reviewSchema],
 });
 
 userSchema.methods.generateAuthToken = function() {

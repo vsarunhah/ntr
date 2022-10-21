@@ -30,7 +30,8 @@ router.route("/profile/get_experiences").post(async function (req, res) {
         let user = await User.findOne({_id: req.body.user_id}).select("experiences");
         console.log("user:", user);
 
-        res.status(200).send({data: user, message: "User retrieved"});
+        res.json(user.experiences);
+        // res.status(200).send({data: user.experiences, message: "User retrieved"});
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');
