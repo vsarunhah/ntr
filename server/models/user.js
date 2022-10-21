@@ -6,20 +6,25 @@ const passwordComplexity = require('joi-password-complexity');
 const experienceSchema = require('./experience.js');
 const educationSchema = require('./education.js');
 const applicationSchema = require('./application.js');
+const projectSchema = require('./project.js');
 
 
 
 const userSchema = mongoose.Schema({
     name: String,
+    firstName: String,
+    lastName: String,
     address: String,
     email: {type: String, required: true, unique: true},
+    profileEmail: String,
     verified: {type: Boolean, default: false},
     password: String,
     phoneNumber: Number,
     links: [String],
     skills: [String],
     experiences: [experienceSchema],
-    education: [educationSchema],
+    projects: [projectSchema],
+    educations: [educationSchema],
     applications: [applicationSchema],
 });
 
@@ -28,7 +33,7 @@ userSchema.methods.generateAuthToken = function() {
     return token;
 }
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema, "ntr_user");
 
 const validate = (data) => {
     console.log("user.js validate", data);
