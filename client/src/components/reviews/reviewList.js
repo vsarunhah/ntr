@@ -14,6 +14,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Navbar from "../../components/Navbar/Navbar";
+import { v4 as uuidv4 } from 'uuid';
 
 const styles = {
   card: {
@@ -83,7 +84,10 @@ export default function ReviewList() {
     async function getReviews() {
       await axios
         .get("http://localhost:5000/reviews/")
-        .then((res) => setReviews(res.data))
+        .then((res) => {
+          setReviews(res.data);
+          console.log("res: ", res);
+        })
         .catch((err) => window.alert(err));
     }
 
