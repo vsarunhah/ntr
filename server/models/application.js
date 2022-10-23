@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 const applicationSchema = new mongoose.Schema({
+    id: String,
     roleName: String,
     companyName: String,
     applicationDate: Date,
     applicationStatus: {type: String,
-        enum: ['Applied', 'Interviewing', 'Offered', 'Rejected']
+        enum: ['Applied', 'Interview', 'Offer', 'Rejected']
     },
 });
