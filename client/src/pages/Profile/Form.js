@@ -14,8 +14,8 @@ import { List } from '@material-ui/core';
 //localStorage.setItem("user_id", "overallprofiletestid2");
 
 if (localStorage.getItem("user_id") === null) {
-  alert("Please login first");
-  window.location.href = "/login";
+  // alert("Please login first");
+  // window.location.href = "/login";
 }
 export  default function Form() {
   let navigate = useNavigate(); 
