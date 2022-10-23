@@ -65,12 +65,14 @@ function SampleForm () {
     }
     // RETRIEVE EXPERIENCES
     try {
-      await axios
-        .post("http://localhost:5000/profile/get_experiences", data)
-        .then((res) => {
-          console.log(res.data);
-        });
+      const { data: res } = await axios.post("http://localhost:5000/profile/get_experiences", data);
+      console.log(data);
+      console.log(res);
+      console.log(res.data);
+      console.log(res.data);
+      // data.map((i)=> {console.log("i : ", i)});
     } catch (error) {
+      console.log(error);
       console.log("oops");
     }
   }
