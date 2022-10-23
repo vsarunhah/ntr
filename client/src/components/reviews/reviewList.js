@@ -58,13 +58,13 @@ const Review = (props) => (
           marginLeft="auto"
           className="btn btn-link"
           component={Link}
-          to={`/review/edit/${props.review._id}`}
+          to={`/review/edit/${props.review.id}`}
           startIcon={<EditOutlinedIcon />}
         ></Button>
         <Button
           className="btn btn-link"
           onClick={() => {
-            props.deleteReview(props.review._id);
+            props.deleteReview(props.review.id);
           }}
           startIcon={<RemoveCircleOutlineRoundedIcon />}
         >
@@ -97,13 +97,19 @@ export default function ReviewList() {
 
   // This method will delete a review
   async function deleteReview(id) {
-    //await axios.delete(`http://localhost:5000/${id}`);
-    console.log("frontend reached");
-    await fetch(`http://localhost:5000/reviews/${id}`, {
-      method: "DELETE",
-    });
+    console.log("delete review: ", id);
+    const data = {
+      user_id: localStorage.getItem('user_id'),
+      reviewId: id,
+    }
+    await axios
+        .post("http://localhost:5000/reviews/delete", data)
+        .then((res) => {
+          console.log("res: ", res);
+        })
+        .catch((err) => window.alert(err));
 
-    const newReviews = reviews.filter((el) => el._id !== id);
+    const newReviews = reviews.filter((el) => el.id !== id);
     setReviews(newReviews);
   }
 
@@ -124,8 +130,8 @@ export default function ReviewList() {
             <Grid item>
               <Review
                 review={review}
-                deleteReview={() => deleteReview(review._id)}
-                key={review._id}
+                deleteReview={() => deleteReview(review.id)}
+                key={review.id}
               />
             </Grid>
           ))}

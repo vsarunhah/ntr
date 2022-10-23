@@ -5,15 +5,15 @@ const {User} = require("../models/user");
 const crypto = require("crypto"); 
 
 googleRouter.route("/google").post(async(req, res) => {
-    console.log("req: ", req.body);
-    console.log("google HERE");
+    // console.log("req: ", req.body);
+    // console.log("google HERE");
     var token;
     try {
         var user = await User.findOne({email: req.body.email});
         console.log("existing google user:", user);
         if (!user) {
             user = await new User({...req.body, verified: true}).save();
-            console.log("new google user:", user);
+            // console.log("new google user:", user);
             token = await new Token({
                 userId: user._id,
                 token: crypto.randomBytes(32).toString("hex") 
@@ -21,7 +21,7 @@ googleRouter.route("/google").post(async(req, res) => {
         } else {
             token = user.generateAuthToken();
         }
-        console.log("token: ", token);
+        // console.log("token: ", token);
         res.status(200).send({data: token, message: "Google User signed in successfully", user_id: user._id});
     } catch (error) {
         console.error(error.message);
