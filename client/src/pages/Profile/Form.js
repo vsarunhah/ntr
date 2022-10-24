@@ -5,11 +5,8 @@ import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutl
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import {MuiDialog} from '../../components/DialogueBox/Confirmation';
 import Navbar from '../../components/Navbar/Navbar'
 import { useNavigate } from "react-router-dom";
-
-import { List } from '@material-ui/core';
 //import { useNavigate } from "react-router";
 //localStorage.setItem("user_id", "overallprofiletestid2");
 
