@@ -10,7 +10,10 @@ import { useNavigate } from "react-router-dom";
 //import { useNavigate } from "react-router";
 //localStorage.setItem("user_id", "overallprofiletestid2");
 
-
+if (localStorage.getItem("user_id") === null) {
+  // alert("Please login first");
+  // window.location.href = "/login";
+}
 export  default function Form() {
   let navigate = useNavigate(); 
   const routeChange = () =>{ 

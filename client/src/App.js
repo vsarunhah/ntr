@@ -29,11 +29,13 @@ import Applied from "./components/applied";
 
 import SampleForm from "./components/sampleForm";
 
+import PersonalWebsiteEdit from "./pages/PersonalWebsite/PersonalWebsiteEdit";
+
 const App = () => {
   const user = localStorage.getItem("token");
-  console.log("user:", user);
+  // console.log("user:", user);
   const user_id = localStorage.getItem("user_id");
-  console.log("user_id:", user_id);
+  // console.log("user_id:", user_id);
   return (
     <div>
       <Routes>
@@ -62,6 +64,7 @@ const App = () => {
         <Route path="/review/add" element={<CreateReview />} />
         <Route path="/applied" element={<Applied />} />
         <Route path="/sampleForm" element={<SampleForm />} />
+        <Route path="/personalwebsiteedit" element={<PersonalWebsiteEdit />} />
       </Routes>
     </div>
   );
