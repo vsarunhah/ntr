@@ -2,9 +2,25 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import {Grid, IconButton, FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextField, Typography, CardContent, Button, FormControlLabel, Checkbox } from '@mui/material';
+import Navbar from '../components/Navbar/Navbar'
+import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 // import './App.css';
 
 function SampleForm () {
+
+  const [profile, setProfile] = useState({
+    first_name: "",
+    last_name: "",
+    profileEmail: "",
+    phone: "",
+    address: "",
+    user_id : localStorage.getItem("user_id"),
+    links : "",
+    skills: "",
+  });
+
   const [experiences, setExperiences] = useState([
     {
       id: uuidv4(), 
@@ -32,6 +48,28 @@ function SampleForm () {
     },
   ])
 
+  const [projects, setProjects] = useState([
+    {
+      id: uuidv4(), 
+      name: "", 
+      start_date: "", 
+      end_date: "",
+      description: ""
+    },
+  ])
+
+  const [skills, setSkills] = useState([
+    {
+      skill: "",
+    }
+  ])
+  const [links, setLinks] = useState([
+    {
+      link: "",
+    }
+  ])
+
+
   const handleExperienceChange = (event, index) => {
     let data = [...experiences];
     data[index][event.target.name] = event.target.value;
@@ -44,6 +82,23 @@ function SampleForm () {
     setEducations(data);
   }
 
+  const handleProjectChange = (event, index) => {
+    let data = [...projects];
+    data[index][event.target.name] = event.target.value;
+    setProjects(data);
+  }
+
+  const handleSkillChange = (event, index) => {
+    let data = [...skills];
+    data[index][event.target.name] = event.target.value;
+    setSkills(data);
+  }
+  const handleLinkChange = (event, index) => {
+    let data = [...links];
+    data[index][event.target.name] = event.target.value;
+    setLinks(data);
+  }
+
   const submit = async (e) => {
     e.preventDefault();
     console.log(experiences);
@@ -53,6 +108,14 @@ function SampleForm () {
       user_id: localStorage.getItem('user_id'),
       experiences: experiences,
       educations: educations,
+      projects: projects,
+      firstName: profile.first_name,
+      lastName: profile.last_name,
+      profileEmail: profile.profileEmail,
+      phoneNumber: profile.phone,
+      address: profile.address,
+      links: links,
+      skills: skills
     }
     try {
       await axios
@@ -68,14 +131,13 @@ function SampleForm () {
       const { data: res } = await axios.post("http://localhost:5000/profile/get_experiences", data);
       console.log(data);
       console.log(res);
-      console.log(res.data);
-      console.log(res.data);
       // data.map((i)=> {console.log("i : ", i)});
     } catch (error) {
       console.log(error);
       console.log("oops");
     }
   }
+
 
   const addExperiences = () => {
     let object = {
@@ -108,6 +170,31 @@ function SampleForm () {
     setEducations([...educations, object])
   }
 
+  const addProjects = () => {
+    let object = {
+      id: uuidv4(),
+      name: "", 
+      start_date: "", 
+      end_date: "",
+      description: "",
+    }
+
+    setProjects([...projects, object])
+  }
+
+  const addSkills = () => {
+    let object = {
+      skill : ""
+    }
+    setSkills([...skills, object])
+  }
+  const addLinks = () => {
+    let object = {
+      link : ""
+    }
+    setLinks([...links, object])
+  }
+
   const removeExperiences = (index) => {
     let data = [...experiences];
     data.splice(index, 1)
@@ -120,36 +207,146 @@ function SampleForm () {
     setEducations(data)
   }
 
+  const removeProjects = (index) => {
+    let data = [...projects];
+    data.splice(index, 1);
+    setProjects(data);
+  }
+
+  const removeSkills = (index) => {
+    let data = [...skills];
+    data.splice(index, 1);
+    setSkills(data);
+  }
+  const removeLinks = (index) => {
+    let data = [...links];
+    data.splice(index, 1);
+    setLinks(data);
+  }
+
   return (
+    <Grid>
     <div className="App">
+       <Navbar />
+    <Grid mx ={35}>
+
+    <Box my={10}>
+      </Box>
+      <Typography gutterBottom variant="h5">
+        Profile
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+        Please fill in your personal information.
+      </Typography>
       <form onSubmit={submit}>
-        {experiences.map((form, index) => {
-          return (
-            <div key={index}>
-              <input
-                name='title'
-                placeholder='Title'
-                onChange={event => handleExperienceChange(event, index)}
-                value={form.name}
-              />
-              <input
-                name='company_name'
-                placeholder='Company Name'
-                onChange={event => handleExperienceChange(event, index)}
-                value={form.age}
-              />
-              <button onClick={() => removeExperiences(index)}>Remove</button>
-            </div>
-          )
-        })}
-      </form>
-      <button onClick={addExperiences}>Add Experience..</button>
-      <br />
+      <Grid container spacing={1}>
+          <Grid xs={12} sm={6} item className="form-group">
+            <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required  value={profile.first_name}
+           onChange={(e) => setProfile({...profile, first_name: e.target.value})}/>
+          </Grid>
+          <Grid xs={12} sm={6} item className="form-group">
+            <TextField id ="last_name" className="form-control" placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required value={profile.last_name}
+           onChange={(e) => setProfile({...profile, last_name: e.target.value})}/>
+          </Grid>
+          <Grid item xs={12} className="form-group">
+            <TextField id ="email" className="form-control" type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required value={profile.email}
+           onChange={(e) => setProfile({...profile, profileEmail: e.target.value})}/>
+          </Grid>
+          <Grid item xs={12} className="form-group">
+            <TextField id ="phone" className="form-control" type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required value={profile.phone}
+           onChange={(e) => setProfile({...profile, phone: e.target.value})}/>
+          </Grid>
+          <Grid item xs={12} className="form-group">
+            <TextField id ="address" className="form-control" placeholder="Enter address" label="Address" variant="outlined" fullWidth required value={profile.address}
+           onChange={(e) => setProfile({...profile, address: e.target.value})}/>
+          </Grid>
+        </Grid>
+        </form>
+        <Box my={10}>
+      </Box>
       <form onSubmit={submit}>
+      <Typography gutterBottom variant="h5">
+        Education
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+        Please fill in your education information.
+      </Typography>
         {educations.map((form, index) => {
           return (
             <div key={index}>
-              <input
+              <Grid container spacing={1}>
+                <Grid xs={12} sm={6} item>
+                <TextField name='university'
+                onChange={event => handleEducationChange(event, index)}
+                value={form.name}
+                placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth required
+                />
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Degree</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      label="Degree"
+                      required
+                      name='degree'
+                      placeholder='Degree'
+                      onChange={event => handleEducationChange(event, index)}
+                      value={form.age}
+                    >
+                      <MenuItem value={10}>Bachelors</MenuItem>
+                      <MenuItem value={20}>Masters</MenuItem>
+                      <MenuItem value={30}>PHD</MenuItem>
+                    </Select>
+                  </FormControl>                
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField placeholder="Software Engineering" label="Major" variant="outlined" fullWidth  required
+                name='major'
+                onChange={event => handleEducationChange(event, index)}
+                value={form.name}/>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField name = "minor" placeholder="Art and Design Studio" label="Minor" variant="outlined" fullWidth required value={educations.minor}
+                onChange={event => handleEducationChange(event, index)}/>
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                  <TextField name = "gpa" type="number" placeholder="4.0" label="GPA" variant="outlined" fullWidth  required value={educations.gpa}
+                onChange={event => handleEducationChange(event, index)}/>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    id="date"
+                    label="Start date"
+                    type="date"
+                    name="start_date"
+                    required value={educations.start_date}
+                    onChange={event => handleEducationChange(event, index)}
+                    defaultValue="2017-05-24"
+                    sx={{ width: 220 }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />       
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    id="date"
+                    label="End date"
+                    type="date"
+                    name="end_date"
+                    required value={educations.end_date}
+                    onChange={event => handleEducationChange(event, index)}
+                    defaultValue="2017-05-24"
+                    sx={{ width: 220 }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />       
+                </Grid>
+              </Grid>
+              {/* <input
                 name='university'
                 placeholder='University'
                 onChange={event => handleEducationChange(event, index)}
@@ -160,16 +357,258 @@ function SampleForm () {
                 placeholder='Degree'
                 onChange={event => handleEducationChange(event, index)}
                 value={form.age}
-              />
-              <button onClick={() => removeEducations(index)}>Remove</button>
+              /> */}
+              <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeEducations(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
             </div>
           )
         })}
       </form>
-      <button onClick={addEducations}>Add Education..</button>
-      <br />
-      <button onClick={submit}>Submit</button>
+      <Grid item xs={12} sm={6}>
+        <Button onClick={addEducations} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+      
+      <Box my={10}>
+      </Box>
+
+      <form onSubmit={submit}>
+      <Typography gutterBottom variant="h5">
+        Experiences
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+        Please fill in your experience information.
+      </Typography>
+        {experiences.map((form, index) => {
+          return (
+            
+            <div key={index}>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6}>
+              <TextField placeholder="Google" 
+              label="Employer Name" 
+              variant="outlined" fullWidth
+              name='company_name'
+              onChange={event => handleExperienceChange(event, index)}
+              value={form.age}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField placeholder="Software Engineer" 
+              label="Position" 
+              variant="outlined" fullWidth
+              name='title'
+              onChange={event => handleExperienceChange(event, index)}
+              value={form.name}
+            />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField placeholder="San Diego" 
+              label="Location" 
+              variant="outlined" fullWidth
+              name="location"
+              value={experiences.location}
+              onChange={event => handleExperienceChange(event, index)}
+            />
+            </Grid>
+            <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="I currently work here" value={experiences.current_job }/>
+            </FormGroup>
+            <Grid item xs={12} sm={6}>
+            <TextField
+              id="date"
+              label="Start date"
+              name="start_date"
+              value={experiences.start_date}
+              type="date"
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={event => handleExperienceChange(event, index)}
+            />       
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="date"
+              label="End date"
+              name="end_date"
+              value={experiences.end_date}
+              type="date"
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={event => handleExperienceChange(event, index)}
+            />       
+          </Grid>
+          <Grid item xs={12}>
+            <TextField multiline rows={4} placeholder="" label="Description" 
+            variant="outlined" fullWidth
+            name="description"
+            value={experiences.description} 
+            onChange={event => handleExperienceChange(event, index)}
+            />
+          </Grid>
+
+              
+              <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeExperiences(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+              </Grid>
+            </div>
+          )
+        })}
+      </form>
+      <Grid item xs={12} sm={6}>
+        <Button onClick={addExperiences} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+      <Box my={10}>
+      </Box>
+      
+      <form onSubmit={submit}>
+      <Typography gutterBottom variant="h5">
+        Projects
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+        Please fill in your projects information.
+      </Typography>
+      {projects.map((form, index) => {
+          return (
+            
+        <div key={index}>
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={6}>
+            <TextField name= "name" placeholder="Chefly" label="Project Name" variant="outlined" fullWidth value = {projects.company_name}
+              onChange={event => handleProjectChange(event, index)}/>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name= "start_date"
+              id="date"
+              label="Start date"
+              type="date"
+              value = {projects.start_date}
+              onChange={event => handleProjectChange(event, index)}
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />       
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name= "end_date"
+              id="date"
+              label="End date"
+              type="date"
+              value = {projects.end_date}
+              onChange={event => handleProjectChange(event, index)}
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />       
+          </Grid>
+          <Grid item xs={12}>
+            <TextField name= "description" multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth  value = {projects.description}
+              onChange={event => handleProjectChange(event, index)}/>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeProjects(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+        </Grid>
+        </div>
+          )
+        })}
+      </form>
+      <Grid item xs={12} sm={6}>
+        <Button onClick={addProjects} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+      <Box my={10}>
+      </Box>
+
+      <form onSubmit={submit}>
+      <Typography gutterBottom variant="h5">
+        Skills
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+        Please fill in your skills.
+      </Typography>
+      {skills.map((form, index) => {
+          return (
+            
+        <div key={index}>
+
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={6} >
+          <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth required value={profile.skills}
+           onChange={event => handleSkillChange(event, index)}/>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeSkills(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+        </Grid>
+
+        </div>
+          )
+        })}
+        </form>
+
+    <Grid item xs={12} sm={6}>
+        <Button onClick={addSkills} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+        
+
+
+      <Box my={10}>
+      </Box>
+
+
+      <form onSubmit={submit}>
+      <Typography gutterBottom variant="h5">
+        Links
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+        Please fill in any links you would like to share.
+      </Typography>
+      {links.map((form, index) => {
+          return (
+            
+        <div key={index}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={6} >
+          <TextField name = 'link' placeholder="LinkedIn" label="Links" variant="outlined" fullWidth required value={profile.links.push}
+           onChange={event => handleLinkChange(event, index)}/>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeLinks(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+        </Grid>
+        </div>
+          )
+        })}
+        </form>
+
+        <Grid item xs={12} sm={6}>
+        <Button onClick={addLinks} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+        
+        <Box my={10}>
+      </Box>
+
+      <Grid item xs={12} sm={6}>
+        <Button onClick={submit} variant="contained" color="primary">Submit </Button>
+      </Grid>
+      </Grid>
     </div>
+    </Grid>
   );
 }
 
