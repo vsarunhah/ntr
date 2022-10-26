@@ -12,6 +12,7 @@ var _mongooseDB;
 
 module.exports = {
 	connectionParams: {
+    dbName: "ntr",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
@@ -32,7 +33,7 @@ module.exports = {
       // Verify we got a good "db" object
       if (db)
       {
-        _mongoClientDB = db.db("employees");
+        _mongoClientDB = db.db("ntr");
         console.log("Successfully connected to MongoDB."); 
       }
       return callback(err);
