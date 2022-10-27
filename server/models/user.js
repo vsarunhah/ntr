@@ -9,6 +9,7 @@ const applicationSchema = require('./application.js');
 const projectSchema = require('./project.js');
 const reviewSchema = require('./review.js');
 const linksSchema = require('./links.js');
+const skillsSchema = require('./skills.js');
 
 
 
@@ -23,7 +24,7 @@ const userSchema = mongoose.Schema({
     password: String,
     phoneNumber: Number,
     links: [linksSchema],
-    skills: [String],
+    skills: [skillsSchema],
     experiences: [experienceSchema],
     projects: [projectSchema],
     educations: [educationSchema],

@@ -17,8 +17,6 @@ function SampleForm () {
     phone: "",
     address: "",
     user_id : localStorage.getItem("user_id"),
-    links : "",
-    skills: "",
   });
 
   const [experiences, setExperiences] = useState([
@@ -66,7 +64,7 @@ function SampleForm () {
   const [links, setLinks] = useState([
     {
       link: "",
-    }
+    },
   ])
 
 
@@ -346,18 +344,6 @@ function SampleForm () {
                   />       
                 </Grid>
               </Grid>
-              {/* <input
-                name='university'
-                placeholder='University'
-                onChange={event => handleEducationChange(event, index)}
-                value={form.name}
-              />
-              <input
-                name='degree'
-                placeholder='Degree'
-                onChange={event => handleEducationChange(event, index)}
-                value={form.age}
-              /> */}
               <Grid item xs={12} sm={6}>
                 <Button onClick={() => removeEducations(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
@@ -532,42 +518,39 @@ function SampleForm () {
       </Grid>
       <Box my={10}>
       </Box>
-
       <form onSubmit={submit}>
       <Typography gutterBottom variant="h5">
         Skills
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-        Please fill in your skills.
+        Please fill in any links you would like to share.
       </Typography>
       {skills.map((form, index) => {
           return (
             
         <div key={index}>
-
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} >
-          <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth required value={profile.skills}
+          <TextField name = 'skill' placeholder="Java" label="Skills" variant="outlined" fullWidth required value={skills.skill}
            onChange={event => handleSkillChange(event, index)}/>
         </Grid>
-
         <Grid item xs={12} sm={6}>
                 <Button onClick={() => removeSkills(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
         </Grid>
-
+        <Box my={1}>
+        </Box>
         </div>
+        
           )
         })}
         </form>
 
-    <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6}>
         <Button onClick={addSkills} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
       </Grid>
         
-
-
-      <Box my={10}>
+        <Box my={10}>
       </Box>
 
 
@@ -584,7 +567,7 @@ function SampleForm () {
         <div key={index}>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} >
-          <TextField name = 'link' placeholder="LinkedIn" label="Links" variant="outlined" fullWidth required value={profile.links.push}
+          <TextField name = "link" placeholder="LinkedIn" label="link" variant="outlined" fullWidth required value={links.link}
            onChange={event => handleLinkChange(event, index)}/>
         </Grid>
         <Grid item xs={12} sm={6}>
