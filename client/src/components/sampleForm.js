@@ -279,7 +279,7 @@ function SampleForm () {
                 <TextField name='university'
                 onChange={event => handleEducationChange(event, index)}
                 value={form.name}
-                placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth required
+                placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth
                 />
                 </Grid>
                 <Grid xs={12} sm={6} item>
@@ -289,30 +289,29 @@ function SampleForm () {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Degree"
-                      required
                       name='degree'
                       placeholder='Degree'
                       onChange={event => handleEducationChange(event, index)}
-                      value={form.age}
+                      //value={educations.degree} 
                     >
-                      <MenuItem value={10}>Bachelors</MenuItem>
-                      <MenuItem value={20}>Masters</MenuItem>
-                      <MenuItem value={30}>PHD</MenuItem>
+                      <MenuItem value={educations.degree} >Bachelors</MenuItem>
+                      <MenuItem value={educations.degree} >Masters</MenuItem>
+                      <MenuItem value={educations.degree} >PHD</MenuItem>
                     </Select>
                   </FormControl>                
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <TextField placeholder="Software Engineering" label="Major" variant="outlined" fullWidth  required
+                  <TextField placeholder="Software Engineering" label="Major" variant="outlined" fullWidth
                 name='major'
                 onChange={event => handleEducationChange(event, index)}
                 value={form.name}/>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <TextField name = "minor" placeholder="Art and Design Studio" label="Minor" variant="outlined" fullWidth required value={educations.minor}
+                  <TextField name = "minor" placeholder="Art and Design Studio" label="Minor" variant="outlined" fullWidth value={educations.minor}
                 onChange={event => handleEducationChange(event, index)}/>
                 </Grid>
                 <Grid item xs={6} sm={3}>
-                  <TextField name = "gpa" type="number" placeholder="4.0" label="GPA" variant="outlined" fullWidth  required value={educations.gpa}
+                  <TextField name = "gpa" type="number" placeholder="4.0" label="GPA" variant="outlined" fullWidth  value={educations.gpa}
                 onChange={event => handleEducationChange(event, index)}/>
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -321,7 +320,7 @@ function SampleForm () {
                     label="Start date"
                     type="date"
                     name="start_date"
-                    required value={educations.start_date}
+                    value={educations.start_date}
                     onChange={event => handleEducationChange(event, index)}
                     defaultValue="2017-05-24"
                     sx={{ width: 220 }}
@@ -336,7 +335,7 @@ function SampleForm () {
                     label="End date"
                     type="date"
                     name="end_date"
-                    required value={educations.end_date}
+                    value={educations.end_date}
                     onChange={event => handleEducationChange(event, index)}
                     defaultValue="2017-05-24"
                     sx={{ width: 220 }}
@@ -346,18 +345,6 @@ function SampleForm () {
                   />       
                 </Grid>
               </Grid>
-              {/* <input
-                name='university'
-                placeholder='University'
-                onChange={event => handleEducationChange(event, index)}
-                value={form.name}
-              />
-              <input
-                name='degree'
-                placeholder='Degree'
-                onChange={event => handleEducationChange(event, index)}
-                value={form.age}
-              /> */}
               <Grid item xs={12} sm={6}>
                 <Button onClick={() => removeEducations(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
@@ -399,7 +386,7 @@ function SampleForm () {
               variant="outlined" fullWidth
               name='title'
               onChange={event => handleExperienceChange(event, index)}
-              value={form.name}
+              //value={}
             />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -538,36 +525,34 @@ function SampleForm () {
         Skills
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-        Please fill in your skills.
+        Please fill in any links you would like to share.
       </Typography>
       {skills.map((form, index) => {
           return (
             
         <div key={index}>
-
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} >
-          <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth required value={profile.skills}
+          <TextField name = 'skill' placeholder="Java" label="Skills" variant="outlined" fullWidth required value={profile.skills.push}
            onChange={event => handleSkillChange(event, index)}/>
         </Grid>
-
         <Grid item xs={12} sm={6}>
                 <Button onClick={() => removeSkills(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
         </Grid>
-
+        <Box my={1}>
+        </Box>
         </div>
+        
           )
         })}
         </form>
 
-    <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6}>
         <Button onClick={addSkills} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
       </Grid>
         
-
-
-      <Box my={10}>
+        <Box my={10}>
       </Box>
 
 
@@ -607,6 +592,8 @@ function SampleForm () {
         <Button onClick={submit} variant="contained" color="primary">Submit </Button>
       </Grid>
       </Grid>
+      <Box my={1}>
+        </Box>
     </div>
     </Grid>
   );

@@ -196,9 +196,8 @@ const Profile = () => {
         Experiences
       </Typography>
 
-      {/* {educations.map((form, index) => {
-        return (
-          <div key={index}> */}
+      {/* {experiences.map(experience => (
+          <div key={experience.index}> */}
         <Grid item xs={12} sm={6}>
         <Typography variant="body1" color="textSecondary">
         Employer Name: {experiences.company_name}
@@ -220,8 +219,8 @@ const Profile = () => {
        </Typography> 
         </Grid>
         {/* </div>
-        )
-        })} */}
+        ))
+      } */}
 
 
        <Box my={10}>
