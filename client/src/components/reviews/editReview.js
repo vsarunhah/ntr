@@ -7,13 +7,19 @@ import Rating from "@mui/material/Rating";
 import axios from "axios";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import IconButton from "@mui/material/IconButton";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import { tagList, MenuProps } from "./createReview.js";
 
 export default function EditReview() {
   const [form, setForm] = useState({
     companyName: "",
     description: "",
-    rating: "0",
-    records: [],
+    rating: null, //set back to 0 if things break
+    tags: [],
   });
   const params = useParams();
   const navigate = useNavigate();
@@ -53,16 +59,13 @@ export default function EditReview() {
     });
   }
 
-  const handleChange = (event) => {
-    updateForm({ rating: event.target.value });
-  };
-
   async function onSubmit(e) {
     e.preventDefault();
     const editedReview = {
       companyName: form.companyName,
       description: form.description,
       rating: form.rating,
+      tags: form.tags,
     };
 
     await axios
@@ -70,10 +73,6 @@ export default function EditReview() {
       .catch((err) => window.alert(err));
 
     navigate("/reviews");
-  }
-
-  function deleteRating() {
-    updateForm({ rating: null });
   }
 
   return (
@@ -126,18 +125,39 @@ export default function EditReview() {
             <Typography variant="body2" color="textSecondary">
               Rating:
             </Typography>
-            <Rating size="small" value={form.rating} onChange={handleChange} />
+            <Rating
+              value={form.rating}
+              onChange={(e) => updateForm({ rating: e.target.value })}
+            />
           </Grid>
           <Grid item marginLeft={"20px"}>
             <IconButton
               onClick={() => {
-                deleteRating();
+                updateForm({ rating: null });
               }}
               size="small"
             >
               <DeleteOutlineIcon />
             </IconButton>
           </Grid>
+        </Grid>
+        <Grid item my={"20px"}>
+          <FormControl sx={{ width: 300 }}>
+            <InputLabel>Tags</InputLabel>
+            <Select
+              multiple
+              value={form.tags}
+              onChange={(e) => updateForm({ tags: e.target.value })}
+              input={<OutlinedInput label="Tags" />}
+              MenuProps={MenuProps}
+            >
+              {tagList.map((tag) => (
+                <MenuItem key={tag} value={tag}>
+                  {tag}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
         <div className="form-group">
           <input

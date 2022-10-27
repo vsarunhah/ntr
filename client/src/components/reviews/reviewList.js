@@ -17,6 +17,118 @@ import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRou
 import IconButton from "@mui/material/IconButton";
 import Navbar from "../../components/Navbar/Navbar";
 import Rating from "@mui/material/Rating";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import Diversity1Icon from "@mui/icons-material/Diversity1";
+import BalanceIcon from "@mui/icons-material/Balance";
+import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
+import GroupsIcon from "@mui/icons-material/Groups";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
+import Diversity2Icon from "@mui/icons-material/Diversity2";
+// import { tagList } from "./createReview.js";
+import Chip from "@mui/material/Chip";
+
+let tagIconMap = new Map([
+  ["None", <div></div>],
+  [
+    "Compensation",
+    <Box
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        backgroundColor: "#ECECEC",
+        padding: "2px",
+      }}
+    >
+      <AttachMoneyIcon fontSize="small" sx={{}} />
+    </Box>,
+    // <Chip
+    //   icon={<AttachMoneyIcon fontSize="small" sx={{ marginRight: 0.5 }} />}
+    // />,
+  ],
+  [
+    "Culture",
+    <Box
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        backgroundColor: "#ECECEC",
+        padding: "2px",
+      }}
+    >
+      <Diversity1Icon fontSize="small" sx={{}} />
+    </Box>,
+  ],
+  [
+    "Work/Life Balance",
+    <Box
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        backgroundColor: "#ECECEC",
+        padding: "2px",
+      }}
+    >
+      <BalanceIcon fontSize="small" sx={{}} />
+    </Box>,
+    // <BalanceIcon fontSize="small" sx={{ marginRight: 1 }} />,
+  ],
+  [
+    "Benefits",
+    <Box
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        backgroundColor: "#ECECEC",
+        padding: "2px",
+      }}
+    >
+      <VolunteerActivismIcon fontSize="small" sx={{}} />
+    </Box>,
+    //<VolunteerActivismIcon fontSize="small" sx={{ marginRight: 1 }} />,
+  ],
+  [
+    "Management",
+    <Box
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        backgroundColor: "#ECECEC",
+        padding: "2px",
+      }}
+    >
+      <GroupsIcon fontSize="small" sx={{}} />
+    </Box>,
+    // <GroupsIcon fontSize="small" sx={{ marginRight: 1 }} />,
+  ],
+  [
+    "Career Growth",
+    // <ShowChartIcon fontSize="small" sx={{ marginRight: 1 }} />,
+    <Box
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        backgroundColor: "#ECECEC",
+        padding: "2px",
+      }}
+    >
+      <ShowChartIcon fontSize="small" sx={{}} />
+    </Box>,
+  ],
+  [
+    "Diversity",
+    <Box
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        backgroundColor: "#ECECEC",
+        padding: "2px",
+      }}
+    >
+      <Diversity2Icon fontSize="small" sx={{}} />
+    </Box>,
+    //<Diversity2Icon fontSize="small" sx={{ marginRight: 1 }} />
+  ],
+]);
 
 const styles = {
   card: {
@@ -80,24 +192,45 @@ const Review = (props) => (
         </Grid>
       </CardContent>
       <CardActions
-        disableSpacing
-        sx={{ borderTop: 0.5, justifyContent: "flex-end" }}
+        sx={{
+          borderTop: 0.5,
+          justifyContent: "space-between",
+          flexDirection: "row",
+        }}
       >
-        <IconButton
-          className="btn btn-link"
-          component={Link}
-          to={`/review/edit/${props.review._id}`}
+        <Grid
+          container
+          sx={{ justifyContent: "space-between", flexDirection: "row" }}
         >
-          <EditOutlinedIcon />
-        </IconButton>
-        <IconButton
-          className="btn btn-link"
-          onClick={() => {
-            props.deleteReview(props.review._id);
-          }}
-        >
-          <RemoveCircleOutlineRoundedIcon />
-        </IconButton>
+          <Grid item style={{ display: "flex" }} flex-direction="row">
+            {props.review.tags.map((tag) => (
+              <Grid item mr="7px" mt="9px">
+                {tagIconMap.get(tag)}
+              </Grid>
+            ))}
+          </Grid>
+          <Grid item style={{ display: "flex" }} flex-direction="row">
+            <Grid item>
+              <IconButton
+                className="btn btn-link"
+                component={Link}
+                to={`/review/edit/${props.review._id}`}
+              >
+                <EditOutlinedIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton
+                className="btn btn-link"
+                onClick={() => {
+                  props.deleteReview(props.review._id);
+                }}
+              >
+                <RemoveCircleOutlineRoundedIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Grid>
       </CardActions>
     </Card>
   </Grid>

@@ -25,11 +25,13 @@ reviewRoutes.route("/reviews").get(function (req, res) {
 
 // This section will help you create a new review.
 reviewRoutes.route("/review/add").post(function (req, response) {
+  //console.log(req.body);
   let db_connect = dbo.getDb();
   let myobj = {
     companyName: req.body.companyName,
     description: req.body.description,
     rating: req.body.rating,
+    tags: req.body.tags,
   };
   db_connect.collection("reviews").insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -66,6 +68,7 @@ reviewRoutes.route("/review/update/:id").post(function (req, response) {
       companyName: req.body.companyName,
       description: req.body.description,
       rating: req.body.rating,
+      tags: req.body.tags,
     },
   };
   db_connect
