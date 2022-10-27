@@ -2,21 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
-import { Box, TextField, Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar";
 import Rating from "@mui/material/Rating";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import Diversity1Icon from "@mui/icons-material/Diversity1";
-import BalanceIcon from "@mui/icons-material/Balance";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
-import GroupsIcon from "@mui/icons-material/Groups";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
-import Diversity2Icon from "@mui/icons-material/Diversity2";
+import { v4 as uuidv4 } from "uuid";
 
 const tagList = [
   "Compensation",
@@ -38,7 +32,6 @@ const MenuProps = {
     },
   },
 };
-import { v4 as uuidv4 } from "uuid";
 
 export default function CreateReview() {
   const [form, setForm] = useState({
@@ -50,24 +43,16 @@ export default function CreateReview() {
   });
   const navigate = useNavigate();
 
-  // These methods will update the state properties.
   function updateForm(value) {
     return setForm((prev) => {
       return { ...prev, ...value };
     });
   }
 
-  // This function will handle the submission.
   async function onSubmit(e) {
     e.preventDefault();
 
     const newReview = { ...form };
-    console.log(newReview);
-
-    // await axios
-    //   .post("http://localhost:5000/review/add", newReview)
-    //   .catch((err) => window.alert(err));
-
     const data = {
       user_id: localStorage.getItem("user_id"),
       newReview: newReview,

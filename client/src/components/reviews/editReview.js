@@ -13,7 +13,6 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { tagList, MenuProps } from "./createReview.js";
-import axios from "axios";
 
 export default function EditReview() {
   const [form, setForm] = useState({
@@ -57,7 +56,6 @@ export default function EditReview() {
     return;
   }, [params.id, navigate]);
 
-  // These methods will update the state properties.
   function updateForm(value) {
     return setForm((prev) => {
       return { ...prev, ...value };
@@ -75,18 +73,9 @@ export default function EditReview() {
       tags: form.tags,
     };
 
-    // await axios
-    //   .post(`http://localhost:5000/review/update/${params.id}`, editedReview)
-    //   .catch((err) => window.alert(err));
-
-    // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5000/review/update/`, {
-      method: "POST",
-      body: JSON.stringify(editedReview),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await axios
+      .post(`http://localhost:5000/review/update/`, editedReview)
+      .catch((err) => window.alert(err));
 
     navigate("/reviews");
   }
