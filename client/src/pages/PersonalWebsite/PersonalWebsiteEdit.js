@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Navbar from '../../components/Navbar/Navbar'
 import CoPresentRoundedIcon from '@mui/icons-material/CoPresentRounded';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 
 
 const PersonalWebsiteEdit = () => {
@@ -176,6 +177,47 @@ const PersonalWebsiteEdit = () => {
       </Button>
       <Box my={10}>
       </Box>
+      <Typography gutterBottom variant="h5">
+        Profile
+      </Typography>
+      <Button color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+
+      <Box my={10}>
+      </Box>
+
+      <Typography gutterBottom variant="h5">
+        Education
+      </Typography>
+      <Button color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+
+      <Box my={10}>
+      </Box>
+
+      <Typography gutterBottom variant="h5">
+        Profile
+      </Typography>
+      <Button color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+
+      <Box my={10}>
+      </Box>
+
+      <Typography gutterBottom variant="h5">
+        Profile
+      </Typography>
+      <Button color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+
+      <Box my={10}>
+      </Box>
+
+      <Typography gutterBottom variant="h5">
+        Profile
+      </Typography>
+      <Button color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+
+      <Box my={10}>
+      </Box>
+
+       
       <Button onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
         Edit Website
       </Button>

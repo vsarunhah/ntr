@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import {Button, Box, Typography } from '@mui/material';
+import {Button, Box, Typography, CardContent } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";

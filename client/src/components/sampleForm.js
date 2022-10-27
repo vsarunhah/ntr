@@ -6,9 +6,16 @@ import {Grid, IconButton, FormGroup, Box, MenuItem, InputLabel, Select, FormCont
 import Navbar from '../components/Navbar/Navbar'
 import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import { useNavigate } from "react-router-dom";
 // import './App.css';
 
 function SampleForm () {
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/profile`; 
+    navigate(path);
+  }
 
   const [profile, setProfile] = useState({
     first_name: "",
@@ -134,6 +141,8 @@ function SampleForm () {
       console.log(error);
       console.log("oops");
     }
+
+    routeChange();
   }
 
 
@@ -287,14 +296,14 @@ function SampleForm () {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Degree"
-                      name='degree'
+                      name="degree"
                       placeholder='Degree'
                       onChange={event => handleEducationChange(event, index)}
                       //value={educations.degree} 
                     >
-                      <MenuItem value={educations.degree} >Bachelors</MenuItem>
-                      <MenuItem value={educations.degree} >Masters</MenuItem>
-                      <MenuItem value={educations.degree} >PHD</MenuItem>
+                      <MenuItem value={'Bachelors'} >Bachelors</MenuItem>
+                      <MenuItem value={'Masters'} >Masters</MenuItem>
+                      <MenuItem value={'PHD'} >PHD</MenuItem>
                     </Select>
                   </FormControl>                
                 </Grid>
@@ -573,6 +582,8 @@ function SampleForm () {
                 <Button onClick={() => removeLinks(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
         </Grid>
+        <Box my={1}>
+        </Box>
         </div>
           )
         })}
@@ -589,8 +600,7 @@ function SampleForm () {
         <Button onClick={submit} variant="contained" color="primary">Submit </Button>
       </Grid>
       </Grid>
-      <Box my={1}>
-        </Box>
+      
     </div>
     </Grid>
   );
