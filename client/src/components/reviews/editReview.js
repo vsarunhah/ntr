@@ -13,6 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { tagList, MenuProps } from "./createReview.js";
+import axios from "axios";
 
 export default function EditReview() {
   const [form, setForm] = useState({
@@ -27,17 +28,21 @@ export default function EditReview() {
   useEffect(() => {
     async function fetchData() {
       const id = params.id.toString();
-      const response = await fetch(
-        `http://localhost:5000/reviews/${params.id.toString()}`
-      );
+      const data = {
+        user_id: localStorage.getItem("user_id"),
+        reviewId: id,
+      };
 
-      if (!response.ok) {
-        const message = `An error has occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
+      let review;
+      await axios
+        .post("http://localhost:5000/reviews/get", data)
+        .then((res) => {
+          console.log("res: ", res);
+          console.log("res.data: ", res.data);
+          review = res.data;
+        })
+        .catch((err) => window.alert(err));
 
-      const review = await response.json();
       if (!review) {
         window.alert(`Review with id ${id} not found`);
         navigate("/");
@@ -62,15 +67,26 @@ export default function EditReview() {
   async function onSubmit(e) {
     e.preventDefault();
     const editedReview = {
+      user_id: localStorage.getItem("user_id"),
+      reviewId: params.id,
       companyName: form.companyName,
       description: form.description,
       rating: form.rating,
       tags: form.tags,
     };
 
-    await axios
-      .post(`http://localhost:5000/review/update/${params.id}`, editedReview)
-      .catch((err) => window.alert(err));
+    // await axios
+    //   .post(`http://localhost:5000/review/update/${params.id}`, editedReview)
+    //   .catch((err) => window.alert(err));
+
+    // This will send a post request to update the data in the database.
+    await fetch(`http://localhost:5000/review/update/`, {
+      method: "POST",
+      body: JSON.stringify(editedReview),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     navigate("/reviews");
   }

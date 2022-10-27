@@ -129,6 +129,7 @@ let tagIconMap = new Map([
     //<Diversity2Icon fontSize="small" sx={{ marginRight: 1 }} />
   ],
 ]);
+import { v4 as uuidv4 } from "uuid";
 
 const styles = {
   card: {
@@ -190,6 +191,33 @@ const Review = (props) => (
             {props.review.description}
           </Typography>
         </Grid>
+        {/* <Typography
+          className={"MuiTypography--heading"}
+          variant={"h6"}
+          gutterBottom
+        >
+          {props.review.companyName}
+        </Typography>
+        <Typography className={"MuiTypography--subheading"} variant={"caption"}>
+          {props.review.description}
+        </Typography>
+        <Button
+          marginLeft="auto"
+          className="btn btn-link"
+          component={Link}
+          to={`/review/edit/${props.review.id}`}
+          startIcon={<EditOutlinedIcon />}
+        ></Button>
+        <Button
+          className="btn btn-link"
+          onClick={() => {
+            props.deleteReview(props.review.id);
+          }}
+          startIcon={<RemoveCircleOutlineRoundedIcon />}
+        >
+          {" "}
+        </Button>
+        <Divider className="divider" style={styles.divider} /> */}
       </CardContent>
       <CardActions
         sx={{
@@ -244,7 +272,10 @@ export default function ReviewList() {
     async function getReviews() {
       await axios
         .get("http://localhost:5000/reviews/")
-        .then((res) => setReviews(res.data))
+        .then((res) => {
+          setReviews(res.data);
+          console.log("res: ", res);
+        })
         .catch((err) => window.alert(err));
     }
 
@@ -254,11 +285,22 @@ export default function ReviewList() {
 
   // This method will delete a review
   async function deleteReview(id) {
+    // await axios
+    //   .delete(`http://localhost:5000/reviews/${id}`)
+    //   .catch((err) => window.alert(err));
+    console.log("delete review: ", id);
+    const data = {
+      user_id: localStorage.getItem("user_id"),
+      reviewId: id,
+    };
     await axios
-      .delete(`http://localhost:5000/reviews/${id}`)
+      .post("http://localhost:5000/reviews/delete", data)
+      .then((res) => {
+        console.log("res: ", res);
+      })
       .catch((err) => window.alert(err));
 
-    const newReviews = reviews.filter((el) => el._id !== id);
+    const newReviews = reviews.filter((el) => el.id !== id);
     setReviews(newReviews);
   }
 
@@ -275,8 +317,8 @@ export default function ReviewList() {
             <Grid item>
               <Review
                 review={review}
-                deleteReview={() => deleteReview(review._id)}
-                key={review._id}
+                deleteReview={() => deleteReview(review.id)}
+                key={review.id}
               />
             </Grid>
           ))}

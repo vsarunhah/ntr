@@ -38,9 +38,11 @@ const MenuProps = {
     },
   },
 };
+import { v4 as uuidv4 } from "uuid";
 
 export default function CreateReview() {
   const [form, setForm] = useState({
+    id: uuidv4(),
     companyName: "",
     description: "",
     rating: "0",
@@ -62,9 +64,22 @@ export default function CreateReview() {
     const newReview = { ...form };
     console.log(newReview);
 
-    await axios
-      .post("http://localhost:5000/review/add", newReview)
-      .catch((err) => window.alert(err));
+    // await axios
+    //   .post("http://localhost:5000/review/add", newReview)
+    //   .catch((err) => window.alert(err));
+
+    const data = {
+      user_id: localStorage.getItem("user_id"),
+      newReview: newReview,
+    };
+
+    try {
+      await axios.post("http://localhost:5000/review/add", data).then((res) => {
+        console.log(res.data);
+      });
+    } catch (error) {
+      console.log("oops");
+    }
 
     navigate("/reviews");
   }
