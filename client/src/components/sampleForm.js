@@ -17,8 +17,6 @@ function SampleForm () {
     phone: "",
     address: "",
     user_id : localStorage.getItem("user_id"),
-    links : "",
-    skills: "",
   });
 
   const [experiences, setExperiences] = useState([
@@ -66,7 +64,7 @@ function SampleForm () {
   const [links, setLinks] = useState([
     {
       link: "",
-    }
+    },
   ])
 
 
@@ -519,7 +517,6 @@ function SampleForm () {
       </Grid>
       <Box my={10}>
       </Box>
-
       <form onSubmit={submit}>
       <Typography gutterBottom variant="h5">
         Skills
@@ -533,7 +530,7 @@ function SampleForm () {
         <div key={index}>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} >
-          <TextField name = 'skill' placeholder="Java" label="Skills" variant="outlined" fullWidth required value={profile.skills.push}
+          <TextField name = 'skill' placeholder="Java" label="Skills" variant="outlined" fullWidth required value={skills.skill}
            onChange={event => handleSkillChange(event, index)}/>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -569,7 +566,7 @@ function SampleForm () {
         <div key={index}>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} >
-          <TextField name = 'link' placeholder="LinkedIn" label="Links" variant="outlined" fullWidth required value={profile.links.push}
+          <TextField name = "link" placeholder="LinkedIn" label="link" variant="outlined" fullWidth required value={links.link}
            onChange={event => handleLinkChange(event, index)}/>
         </Grid>
         <Grid item xs={12} sm={6}>
