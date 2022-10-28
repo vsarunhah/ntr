@@ -1,447 +1,441 @@
-import Grid from '@mui/material/Grid';
-import { FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextField, Typography, CardContent, Button, FormControlLabel, Checkbox, IconButton } from '@mui/material';
+import axios from 'axios';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import {Grid, IconButton, FormGroup, Box, MenuItem, InputLabel, Select, FormControl, Card, TextField, Typography, CardContent, Button, FormControlLabel, Checkbox } from '@mui/material';
+import Navbar from '../../components/Navbar/Navbar'
 import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
-import React, { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router";
-import { v4 as uuidv4 } from 'uuid';
-import Navbar from '../../components/Navbar/Navbar'
 import { useNavigate } from "react-router-dom";
+// import './App.css';
 
-export default function EditProfile() {
+function EditProfile () {
+
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
     let path = `/profile`; 
     navigate(path);
   }
- const [form, setForm] = useState({
-   first_name: "",
-   last_name: "",
-   email: "",
-   phone: "",
-   address: "",
-   links : "",
-   skills: "",
-   user_id: localStorage.getItem("user_id"),
- });
 
- const [experiences, setExperiences] = useState(
-  { id: uuidv4(), 
-    title: "", 
-    company_name: "", 
-    start_date: "", 
-    end_date: "", 
-    current_job: "",
-    description: "",
-    location: "",
-    user_id: localStorage.getItem("user_id"),
-  },
-);
-const [projects, setProjects] = useState(
-  { id: uuidv4(), 
-    title: "", 
-    company_name: "", 
-    start_date: "", 
-    end_date: "", 
-    current_job: "",
-    description: "",
-    location: "",
-    user_id: localStorage.getItem("user_id"),
-  },
-);
-const [educations, setEducations] = useState(
-  { id: uuidv4(), 
-    university: "",
-    degree: "",
-    start_date: "",
-    end_date: "",
-    major: "",
-    minor: "",
-    gpa: "",
-    other: "",
-    user_id: localStorage.getItem("user_id"),
-  },
-);
-const [links, setLinks] = useState([
-  { id: uuidv4(), link: "" },
-]);
- const params = useParams();
+  const [profile, setProfile] = useState({
+    first_name: "",
+    last_name: "",
+    profileEmail: "",
+    phone: "",
+    address: "",
+    user_id : localStorage.getItem("user_id"),
+  });
 
+  const [experiences, setExperiences] = useState([
+    {
+      id: uuidv4(), 
+      title: "", 
+      company_name: "", 
+      start_date: "", 
+      end_date: "", 
+      current_job: "",
+      description: "",
+      location: ""
+    },
+  ])
+
+  const [educations, setEducations] = useState([
+    {
+      id: uuidv4(), 
+      university: "",
+      degree: "",
+      start_date: "",
+      end_date: "",
+      major: "",
+      minor: "",
+      gpa: "",
+      other: "",
+    },
+  ])
+
+  const [projects, setProjects] = useState([
+    {
+      id: uuidv4(), 
+      name: "", 
+      start_date: "", 
+      end_date: "",
+      description: ""
+    },
+  ])
+
+  const [skills, setSkills] = useState([
+    {
+      skill: "",
+    }
+  ])
+  const [links, setLinks] = useState([
+    {
+      link: "",
+    },
+  ])
+
+ 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:5000/dbprofile/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: localStorage.getItem("user_id"),
-        }),
-       });
-       const response2 = await fetch("http://localhost:5000/exp/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: localStorage.getItem("user_id"),
-        }),
-       });
-       const response3 = await fetch("http://localhost:5000/education/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: localStorage.getItem("user_id"),
-        }),
-       });
-       const response4 = await fetch("http://localhost:5000/project/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: localStorage.getItem("user_id"),
-        }),
-       });
-      if (!response.ok) {
-        const message = `An error has occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
-      if (!response2.ok) {
-        const message = `An error has occurred: ${response2.statusText}`;
-        window.alert(message);
-        return;
-      }
-      if (!response3.ok) {
-        const message = `An error has occurred: ${response3.statusText}`;
-        window.alert(message);
-        return;
-      }
-      if (!response4.ok) {
-        const message = `An error has occurred: ${response4.statusText}`;
-        window.alert(message);
-        return;
-      }
-      const profile = await response.json();
-      if (!profile) {
-        window.alert(`Record with id not found`);
-        return;
-      }
-      const experience = await response2.json();
-       console.log(experience);
-       if (!experience) {
-        window.alert(`Record with id not found`);
-        return;
-      }
-      const education = await response3.json();
-      if (!education) {
-       window.alert(`Record with id not found`);
-       return;
-      }
-      const project = await response4.json();
-      if (!project) {
-       window.alert(`Record with id not found`);
-       return;
+     const data = {
+       user_id: localStorage.getItem('user_id'),
+       experiences: experiences,
+       educations: educations,
+       projects: projects,
+       firstName: profile.first_name,
+       lastName: profile.last_name,
+       profileEmail: profile.profileEmail,
+       phoneNumber: profile.phone,
+       address: profile.address,
+       links: links,
+       skills: skills
      }
-       setForm(profile);
-       setExperiences(experience);
-       setEducations(education);
-       setProjects(project);
+     await axios.post("http://localhost:5000/profile/get_profile", data).then((res) => {
+       console.log("inside profile post req");
+       console.log(res.data);
+       const user_profile = {
+         first_name: res.data.firstName,
+         last_name: res.data.lastName,
+         profileEmail: res.data.profileEmail,
+         phone: res.data.phoneNumber,
+         address: res.data.address,
+         user_id : localStorage.getItem("user_id"),
+       };
+       console.log("user profile : ", user_profile);
+       setProfile(user_profile);
+       setLinks(res.data.links);
+       setSkills(res.data.skills);
+     });
+      await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
+       console.log("inside experiences post req");
+       console.log(res.data);
+       setExperiences(res.data);
+     });
+     await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
+       console.log("inside educations post req");
+       console.log(res.data);
+       setEducations(res.data);
+     });
+     await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
+       console.log("inside projects post req");
+       console.log(res.data);
+       setProjects(res.data);
+     });
     }
   
     fetchData();
  
     return;
   }, []);
- 
- // These methods will update the state properties.
- function updateForm(value) {
-  console.log('I was triggered during updateForm'); 
-  return setForm((prev) => {
-     return { ...prev, ...value };
-   });
- }
- 
- // This function will handle the submission.
- async function onSubmit(e) {
-   e.preventDefault();
-   console.log('I was triggered during onSubmit');
- 
-   // When a post request is sent to the create url, we'll add a new record to the database.
-   const editedPerson = {
-    first_name: form.first_name,
-    last_name: form.last_name,
-    email: form.email,
-    phone: form.phone,
-    address: form.address,
-    links : form.links,
-    skills: form.skills,
-    user_id: localStorage.getItem("user_id"),    
-  };
-  const editedExp = {
-    id: experiences.id, 
-    title: experiences.title, 
-    company_name: experiences.company_name, 
-    start_date: experiences.start_date, 
-    end_date: experiences.end_date, 
-    current_job: experiences.current_job,
-    description: experiences.description,
-    location: experiences.location,
-    user_id: localStorage.getItem("user_id"),
-  };
-  const editedEducation = {
-      id: educations.id, 
-      university: educations.university,
-      degree: educations.degree,
-      start_date: educations.start_date,
-      end_date: educations.end_date,
-      major: educations.major,
-      minor: educations.minor,
-      gpa: educations.gpa,
-      other: educations.other,
-      user_id: localStorage.getItem("user_id"),
-  };
-  const editedProject = {
-    id: projects.id, 
-    title: projects.title, 
-    company_name: projects.company_name, 
-    start_date: projects.start_date, 
-    end_date: projects.end_date, 
-    current_job: projects.current_job,
-    description: projects.description,
-    location: projects.location,
-    user_id: localStorage.getItem("user_id"),
-  };
-  
-   await fetch(`http://localhost:5000/profileUpdate/`, {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify(editedPerson),
-   })
-   .catch(error => {
-     window.alert(error);
-     return;
-   });
-   await fetch(`http://localhost:5000/expUpdate/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(editedExp),
-  })
-  .catch(error => {
-    window.alert(error);
-    return;
-  });
-  await fetch(`http://localhost:5000/educationUpdate/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(editedEducation),
-  })
-  .catch(error => {
-    window.alert(error);
-    return;
-  });
-  await fetch(`http://localhost:5000/projectUpdate/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(editedProject),
-  })
-  .catch(error => {
-    window.alert(error);
-    return;
-  });
 
-  routeChange();
- }
+  const handleExperienceChange = (event, index) => {
+    let data = [...experiences];
+    data[index][event.target.name] = event.target.value;
+    setExperiences(data);
+  }
 
+  const handleEducationChange = (event, index) => {
+    let data = [...educations];
+    data[index][event.target.name] = event.target.value;
+    setEducations(data);
+  }
 
+  const handleProjectChange = (event, index) => {
+    let data = [...projects];
+    data[index][event.target.name] = event.target.value;
+    setProjects(data);
+  }
 
-const handleChangeExperience = (id, event) => {
-  const newExperiences = experiences.map(i => {
-    if(id === i.id) {
-      i[event.target.name] = event.target.value;
+  const handleSkillChange = (event, index) => {
+    let data = [...skills];
+    data[index][event.target.name] = event.target.value;
+    setSkills(data);
+  }
+  const handleLinkChange = (event, index) => {
+    let data = [...links];
+    data[index][event.target.name] = event.target.value;
+    setLinks(data);
+  }
+
+  const submit = async (e) => {
+    e.preventDefault();
+    console.log(experiences);
+    console.log(educations);
+    // SEND EXPERIENCES AND EDUCATIONS TO SERVER
+    const data = {
+      user_id: localStorage.getItem('user_id'),
+      experiences: experiences,
+      educations: educations,
+      projects: projects,
+      firstName: profile.first_name,
+      lastName: profile.last_name,
+      profileEmail: profile.profileEmail,
+      phoneNumber: profile.phone,
+      address: profile.address,
+      links: links,
+      skills: skills
     }
-    return i;
-  })
-  setExperiences(newExperiences);
-}
-
-const handleChangeLink = (id, event) => {
-  const newLink = links.map(i => {
-    if(id === i.id) {
-      i[event.target.name] = event.target.value;
+    try {
+      await axios
+        .post("http://localhost:5000/profile/add", data)
+        .then((res) => {
+          console.log(res.data);
+        });
+    } catch (error) {
+      console.log("oops");
     }
-    return i;
-  })
-setLinks(newLink);
-}
+    routeChange();
+  }
 
 
-const handleAddExperiences = () => {
-  setExperiences([...experiences, { id: uuidv4(),  employerName: '', position: '', 
-  location: '', startDate: '', endDate: '', description: '' }])
-}
+  const addExperiences = () => {
+    let object = {
+      id: uuidv4(), 
+      title: "", 
+      company_name: "", 
+      start_date: "", 
+      end_date: "", 
+      current_job: "",
+      description: "",
+      location: ""
+    }
 
-const handleRemoveExperiences = (id) => {
-  const values  = [...experiences];
-  values.splice(values.findIndex(value => value.id === id), 1);
-  setExperiences(values);
-}
+    setExperiences([...experiences, object])
+  }
 
-const handleAddLinks = () => {
-  setLinks([...links, { id: uuidv4(),  link: ''}])
-}
+  const addEducations = () => {
+    let object = {
+      id: uuidv4(), 
+      university: "",
+      degree: "",
+      start_date: "",
+      end_date: "",
+      major: "",
+      minor: "",
+      gpa: "",
+      other: "",
+    }
 
-const handleRemoveLinks = (id) => {
-  const values  = [...links];
-  values.splice(values.findIndex(value => value.id === id), 1);
-  setLinks(values);
-}
- 
+    setEducations([...educations, object])
+  }
+
+  const addProjects = () => {
+    let object = {
+      id: uuidv4(),
+      name: "", 
+      start_date: "", 
+      end_date: "",
+      description: "",
+    }
+
+    setProjects([...projects, object])
+  }
+
+  const addSkills = () => {
+    let object = {
+      skill : ""
+    }
+    setSkills([...skills, object])
+  }
+  const addLinks = () => {
+    let object = {
+      link : ""
+    }
+    setLinks([...links, object])
+  }
+
+  const removeExperiences = (index) => {
+    let data = [...experiences];
+    data.splice(index, 1)
+    setExperiences(data)
+  }
+
+  const removeEducations = (index) => {
+    let data = [...educations];
+    data.splice(index, 1)
+    setEducations(data)
+  }
+
+  const removeProjects = (index) => {
+    let data = [...projects];
+    data.splice(index, 1);
+    setProjects(data);
+  }
+
+  const removeSkills = (index) => {
+    let data = [...skills];
+    data.splice(index, 1);
+    setSkills(data);
+  }
+  const removeLinks = (index) => {
+    let data = [...links];
+    data.splice(index, 1);
+    setLinks(data);
+  }
+
   return (
     <Grid>
-      <Navbar />
+    <div className="App">
+       <Navbar />
     <Grid mx ={35}>
-      <Box my={10}>
+
+    <Box my={10}>
       </Box>
-      <form onSubmit={onSubmit}>
       <Typography gutterBottom variant="h5">
         Profile
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-        Please Edit your personal information.
+        Please fill in your personal information.
       </Typography>
-        <Grid container spacing={1}>
+      <form onSubmit={submit}>
+      <Grid container spacing={1}>
           <Grid xs={12} sm={6} item className="form-group">
-            <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required  value={form.first_name}
-           onChange={(e) => setForm({...form, first_name: e.target.value})}/>
+            <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required  value={profile.first_name}
+           onChange={(e) => setProfile({...profile, first_name: e.target.value})}/>
           </Grid>
           <Grid xs={12} sm={6} item className="form-group">
-            <TextField id ="last_name" className="form-control" placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required value={form.last_name}
-           onChange={(e) => setForm({...form, last_name: e.target.value})}/>
+            <TextField id ="last_name" className="form-control" placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required value={profile.last_name}
+           onChange={(e) => setProfile({...profile, last_name: e.target.value})}/>
           </Grid>
           <Grid item xs={12} className="form-group">
-            <TextField id ="email" className="form-control" type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required value={form.email}
-           onChange={(e) => setForm({...form, email: e.target.value})}/>
+            <TextField id ="email" className="form-control" type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required value={profile.profileEmail}
+           onChange={(e) => setProfile({...profile, profileEmail: e.target.value})}/>
           </Grid>
           <Grid item xs={12} className="form-group">
-            <TextField id ="phone" className="form-control" type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required value={form.phone}
-           onChange={(e) => setForm({...form, phone: e.target.value})}/>
+            <TextField id ="phone" className="form-control" type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required value={profile.phone}
+           onChange={(e) => setProfile({...profile, phone: e.target.value})}/>
           </Grid>
           <Grid item xs={12} className="form-group">
-            <TextField id ="address" className="form-control" placeholder="Enter address" label="Address" variant="outlined" fullWidth required value={form.address}
-           onChange={(e) => setForm({...form, address: e.target.value})}/>
+            <TextField id ="address" className="form-control" placeholder="Enter address" label="Address" variant="outlined" fullWidth required value={profile.address}
+           onChange={(e) => setProfile({...profile, address: e.target.value})}/>
           </Grid>
         </Grid>
+        </form>
         <Box my={10}>
       </Box>
-
+      <form onSubmit={submit}>
       <Typography gutterBottom variant="h5">
         Education
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in your education information.
       </Typography>
-
-        <Grid container spacing={1}>
-          <Grid xs={12} sm={6} item>
-            <TextField placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth required value={educations.university}
-           onChange={(e) => setEducations({...educations, university: e.target.value})}/>
-          </Grid>
-          <Grid xs={12} sm={6} item>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Degree</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Degree"
-                required value={educations.degree}
-                onChange={(e) => setEducations({...educations, degree: e.target.value})}
-              >
-                <MenuItem value={10}>Bachelors</MenuItem>
-                <MenuItem value={20}>Masters</MenuItem>
-                <MenuItem value={30}>PHD</MenuItem>
-              </Select>
-            </FormControl>                
-            </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField placeholder="Software Engineering" label="Major" variant="outlined" fullWidth required value={educations.major}
-                onChange={(e) => setEducations({...educations, major: e.target.value})}/>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField placeholder="Art and Design Studio" label="Minor" variant="outlined" fullWidth  required value={educations.minor}
-           onChange={(e) => setEducations({...educations, minor: e.target.value})}/>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <TextField type="number" placeholder="4.0" label="GPA" variant="outlined" fullWidth required value={educations.gpa}
-           onChange={(e) => setEducations({...educations, gpa: e.target.value})}/>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="date"
-              label="Start date"
-              type="date"
-              required value={educations.start_date}
-              onChange={(e) => setEducations({...educations, start_date: e.target.value})}
-              defaultValue="2017-05-24"
-              sx={{ width: 220 }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />       
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="date"
-              label="End date"
-              type="date"
-              required value={educations.end_date}
-              defaultValue="2017-05-24"
-              sx={{ width: 220 }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />       
-          </Grid>
-        </Grid>
-
-
+        {educations.map((form, index) => {
+          return (
+            <div key={index}>
+              <Grid container spacing={1}>
+                <Grid xs={12} sm={6} item>
+                <TextField name='university'
+                onChange={event => handleEducationChange(event, index)}
+                value={form.university}
+                placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth
+                />
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Degree</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      label="Degree"
+                      name="degree"
+                      placeholder='Degree'
+                      onChange={event => handleEducationChange(event, index)}
+                      value={form.degree} 
+                    >
+                      <MenuItem value={'Bachelors'} >Bachelors</MenuItem>
+                      <MenuItem value={'Masters'} >Masters</MenuItem>
+                      <MenuItem value={'PHD'} >PHD</MenuItem>
+                    </Select>
+                  </FormControl>                
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField placeholder="Software Engineering" label="Major" variant="outlined" fullWidth
+                name='major'
+                onChange={event => handleEducationChange(event, index)}
+                value={form.major}/>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField name = "minor" placeholder="Art and Design Studio" label="Minor" variant="outlined" fullWidth value={educations.minor}
+                onChange={event => handleEducationChange(event, index)}/>
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                  <TextField name = "gpa" type="number" placeholder="4.0" label="GPA" variant="outlined" fullWidth  value={form.gpa}
+                onChange={event => handleEducationChange(event, index)}/>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    id="date"
+                    label="Start date"
+                    type="date"
+                    name="start_date"
+                    value={form.start_date}
+                    onChange={event => handleEducationChange(event, index)}
+                    defaultValue="2017-05-24"
+                    sx={{ width: 220 }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />       
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    id="date"
+                    label="End date"
+                    type="date"
+                    name="end_date"
+                    value={form.end_date}
+                    onChange={event => handleEducationChange(event, index)}
+                    defaultValue="2017-05-24"
+                    sx={{ width: 220 }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />       
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeEducations(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+            </div>
+          )
+        })}
+      </form>
+      <Grid item xs={12} sm={6}>
+        <Button onClick={addEducations} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+      
       <Box my={10}>
       </Box>
 
+      <form onSubmit={submit}>
       <Typography gutterBottom variant="h5">
         Experiences
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-        Please fill in your education information.
+        Please fill in your experience information.
       </Typography>
+        {experiences.map((form, index) => {
+          return (
+            
+            <div key={index}>
             <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-            <TextField placeholder="Google" 
+              <Grid item xs={12} sm={6}>
+              <TextField placeholder="Google" 
               label="Employer Name" 
               variant="outlined" fullWidth
-              name="company_name"
-              value = {experiences.company_name}
-              onChange={(e) => setExperiences({...experiences, company_name: e.target.value})}
-            />
+              name='company_name'
+              onChange={event => handleExperienceChange(event, index)}
+              value={form.company_name}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
             <TextField placeholder="Software Engineer" 
               label="Position" 
               variant="outlined" fullWidth
-              name="title"
-              value = {experiences.title}
-              onChange={(e) => setExperiences({...experiences, title: e.target.value})}
+              name='title'
+              onChange={event => handleExperienceChange(event, index)}
+              value={form.title}
             />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -449,87 +443,91 @@ const handleRemoveLinks = (id) => {
               label="Location" 
               variant="outlined" fullWidth
               name="location"
-              value = {experiences.location}
-              onChange={(e) => setExperiences({...experiences, location: e.target.value})}
+              value={form.location}
+              onChange={event => handleExperienceChange(event, index)}
             />
             </Grid>
             <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="I currently work here" name="current_job"
-              value = {experiences.current_job}
-              onChange={(e) => setExperiences({...experiences, current_job: e.target.value})}/>
+            <FormControlLabel control={<Checkbox />} label="I currently work here" value={form.current_job }/>
             </FormGroup>
             <Grid item xs={12} sm={6}>
             <TextField
               id="date"
               label="Start date"
               name="start_date"
-              value = {experiences.start_date}
-              onChange={(e) => setExperiences({...experiences, start_date: e.target.value})}
+              value={form.start_date}
               type="date"
               defaultValue="2017-05-24"
               sx={{ width: 220 }}
               InputLabelProps={{
                 shrink: true,
               }}
+              onChange={event => handleExperienceChange(event, index)}
             />       
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               id="date"
               label="End date"
-              name="start_date"
-              value = {experiences.end_date}
-              onChange={(e) => setExperiences({...experiences, end_date: e.target.value})}
+              name="end_date"
+              value={form.end_date}
               type="date"
               defaultValue="2017-05-24"
               sx={{ width: 220 }}
               InputLabelProps={{
                 shrink: true,
               }}
+              onChange={event => handleExperienceChange(event, index)}
             />       
           </Grid>
           <Grid item xs={12}>
             <TextField multiline rows={4} placeholder="" label="Description" 
             variant="outlined" fullWidth
-             name="description"
-              value = {experiences.description}
-              onChange={(e) => setExperiences({...experiences, description: e.target.value})}
+            name="description"
+            value={form.description} 
+            onChange={event => handleExperienceChange(event, index)}
             />
           </Grid>
-            </Grid>
-            <IconButton disabled={true} 
-            //onClick={() => handleRemoveExperiences(experience.id)}
-            >
-              <RemoveCircleOutlineRoundedIcon />
-            </IconButton>
-            <IconButton
-            //  onClick={handleAddExperiences}
-            >
-              <AddCircleOutlineRoundedIcon />
-            </IconButton>
 
+              
+              <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeExperiences(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+              </Grid>
+            </div>
+          )
+        })}
+      </form>
+      <Grid item xs={12} sm={6}>
+        <Button onClick={addExperiences} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
       <Box my={10}>
       </Box>
-
+      
+      <form onSubmit={submit}>
       <Typography gutterBottom variant="h5">
         Projects
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in your projects information.
       </Typography>
-
+      {projects.map((form, index) => {
+          return (
+            
+        <div key={index}>
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
-            <TextField placeholder="Chefly" label="Project Name" variant="outlined" fullWidth value = {projects.company_name}
-              onChange= {(e) => setProjects({...projects, company_name: e.target.value})}/>
+            <TextField name= "name" placeholder="Chefly" label="Project Name" variant="outlined" fullWidth value = {form.name}
+              onChange={event => handleProjectChange(event, index)}/>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              name= "start_date"
               id="date"
               label="Start date"
               type="date"
-              value = {projects.start_date}
-              onChange= {(e) => setProjects({...projects, start_date: e.target.value})}
+              value = {form.start_date}
+              onChange={event => handleProjectChange(event, index)}
               defaultValue="2017-05-24"
               sx={{ width: 220 }}
               InputLabelProps={{
@@ -539,11 +537,12 @@ const handleRemoveLinks = (id) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              name= "end_date"
               id="date"
               label="End date"
               type="date"
-              value = {projects.end_date}
-              onChange= {(e) => setProjects({...projects, end_date: e.target.value})}
+              value = {form.end_date}
+              onChange={event => handleProjectChange(event, index)}
               defaultValue="2017-05-24"
               sx={{ width: 220 }}
               InputLabelProps={{
@@ -552,70 +551,101 @@ const handleRemoveLinks = (id) => {
             />       
           </Grid>
           <Grid item xs={12}>
-            <TextField multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth value = {projects.description}
-              onChange= {(e) => setProjects({...projects, description: e.target.value})}/>
+            <TextField name= "description" multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth  value = {form.description}
+              onChange={event => handleProjectChange(event, index)}/>
           </Grid>
+
+          <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeProjects(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
         </Grid>
-
-
-
+        </div>
+          )
+        })}
+      </form>
+      <Grid item xs={12} sm={6}>
+        <Button onClick={addProjects} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
       <Box my={10}>
       </Box>
-
+      <form onSubmit={submit}>
       <Typography gutterBottom variant="h5">
         Skills
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-        Please fill in your skills.
+        Please fill in any links you would like to share.
       </Typography>
+      {skills.map((form, index) => {
+          return (
+            
+        <div key={index}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={6} >
+          <TextField name = 'skill' placeholder="Java" label="Skills" variant="outlined" fullWidth required value={form.skill}
+           onChange={event => handleSkillChange(event, index)}/>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeSkills(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+        </Grid>
+        <Box my={1}>
+        </Box>
+        </div>
+        
+          )
+        })}
+        </form>
 
         <Grid item xs={12} sm={6}>
-          <TextField placeholder="Java" label="Skills" variant="outlined" fullWidth  value = {form.skills}
-              onChange= {(e) => setForm({...form, skills: e.target.value})}/>
-        </Grid>
-
-
-      <Box my={10}>
+        <Button onClick={addSkills} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+        
+        <Box my={10}>
       </Box>
 
+
+      <form onSubmit={submit}>
       <Typography gutterBottom variant="h5">
         Links
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
         Please fill in any links you would like to share.
       </Typography>
-      <Grid item xs={12} sm={6}>
-          <TextField placeholder="Java" label="Link" variant="outlined" fullWidth value = {form.links}
-          onChange= {(e) => setForm({...form, links: e.target.value})}/>
+      {links.map((form, index) => {
+          return (
+            
+        <div key={index}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={6} >
+          <TextField name = "link" placeholder="LinkedIn" label="link" variant="outlined" fullWidth required value={form.link}
+           onChange={event => handleLinkChange(event, index)}/>
         </Grid>
-
-        {/* <div className="form-group">
-         <input
-           type="submit"
-           value="Create person"
-           className="btn btn-primary"
-           //onClick={routeChange}
-         />
-       </div> */}
-       <Box my={10}>
-      </Box>
-      
-       <div className="form-group">
-       <Grid item xs={12} sm={6}>
-          <Button type="submit" value="Create person"
-           className="btn btn-primary" variant="contained" color="primary" >Submit </Button>
+        <Grid item xs={12} sm={6}>
+                <Button onClick={() => removeLinks(index)} color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
         </Grid>
+        <Box my={1}>
+        </Box>
         </div>
+          )
+        })}
+        </form>
 
-      </form>
-
-      
-
-      <Box my={10}>
+        <Grid item xs={12} sm={6}>
+        <Button onClick={addLinks} color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+        
+        <Box my={10}>
       </Box>
 
+      <Grid item xs={12} sm={6}>
+        <Button onClick={submit} variant="contained" color="primary">Submit </Button>
+      </Grid>
+      </Grid>
+      
+    </div>
     </Grid>
-     </Grid>
-  )
-
+  );
 }
+
+export default EditProfile;

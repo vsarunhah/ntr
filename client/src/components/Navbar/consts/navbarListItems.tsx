@@ -6,6 +6,7 @@ import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputCompone
 import ReviewsRoundedIcon from '@mui/icons-material/ReviewsRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import AppRegistrationRoundedIcon from '@mui/icons-material/AppRegistrationRounded';
+import CoPresentRoundedIcon from '@mui/icons-material/CoPresentRounded';
 
 export const mainNavbarItems = [
     {
@@ -25,6 +26,12 @@ export const mainNavbarItems = [
         icon: <ReviewsRoundedIcon />,
         label: 'Reviews',
         route: '/reviews',
+    },
+    {
+        id: 3,
+        icon: <CoPresentRoundedIcon />,
+        label: 'Website',
+        route: '/personalwebsiteedit',
     },
 
 ]
