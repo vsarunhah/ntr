@@ -200,6 +200,7 @@ const Profile = () => {
 
       {experiences.map(experience => (
           <div key={experience.index}>
+        <br></br>
         <Grid item xs={12} sm={6}>
         <Typography variant="body1" color="textSecondary">
         Employer Name: {experience.company_name}
@@ -233,6 +234,7 @@ const Profile = () => {
       </Typography>
       {skills.map(skill => (
           <div key={skill.index}>
+                <br></br>
       <Typography variant="body1" color="textSecondary">
         Skills: {skill.skill}
        </Typography>  
@@ -255,6 +257,7 @@ const Profile = () => {
       </Typography>
       {educations.map(education => (
           <div key={education.index}>
+                <br></br>
       <Typography  variant="body1" color="textSecondary">
       Insitute Name: {education.university}
        </Typography>
@@ -295,7 +298,7 @@ const Profile = () => {
       </Typography>
       {projects.map(project => (
           <div key={project.index}>
-      
+                <br></br>
       <Typography  variant="body1" color="textSecondary">
         Project Name: {project.name}
        </Typography>
@@ -326,7 +329,7 @@ const Profile = () => {
       </Typography>
       {links.map(link => (
           <div key={link.index}>
-
+          <br></br>
       <Typography variant="body1" color="textSecondary">
         Links: {link.link}
        </Typography>  
