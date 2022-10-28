@@ -30,6 +30,7 @@ import Applied from "./components/applied";
 import SampleForm from "./components/sampleForm";
 
 import PersonalWebsiteEdit from "./pages/PersonalWebsite/PersonalWebsiteEdit";
+import PersonalWebsite from "./pages/PersonalWebsite/PersonalWebsite";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -65,6 +66,7 @@ const App = () => {
         <Route path="/applied" element={<Applied />} />
         <Route path="/sampleForm" element={<SampleForm />} />
         <Route path="/personalwebsiteedit" element={<PersonalWebsiteEdit />} />
+        <Route path="/personalwebsite" element={<PersonalWebsite />} />
       </Routes>
     </div>
   );

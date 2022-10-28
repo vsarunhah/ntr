@@ -33,6 +33,20 @@ router.route("/profile/add").post(async function (req, res) {
     }
 });
 
+router.route("/profile/get_profile").post(async function (req, res) {
+    console.log("get profile HERE ----------------------");
+    //console.log(req.body);
+    try {
+        let user = await User.findOne({_id: req.body.user_id});
+        console.log("user:", user);
+        //console.log("exps : ", user.experiences);
+        res.json(user);
+        // res.status(200).send({data: user.experiences, message: "User retrieved"});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
 router.route("/profile/get_experiences").post(async function (req, res) {
     console.log("profile/get_experiences HERE");
     console.log(req.body);
