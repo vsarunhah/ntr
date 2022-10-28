@@ -20,7 +20,6 @@ import PasswordReset from "./components/PasswordReset";
 
 import Profile from "./pages/Profile/Profile";
 import Applications from "./pages/Applications/Applications";
-import Reviews from "./pages/Reviews/Reviews";
 import Form from "./pages/Profile/Form";
 import EditProfile from "./pages/Profile/EditProfile";
 import ManualOrResume from "./pages/Profile/ManualOrResume";
