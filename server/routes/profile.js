@@ -5,19 +5,31 @@ const {User} = require("../models/user");
 router.route("/profile/add").post(async function (req, res) {
     console.log("profile HERE");
     console.log(req.body);
+    console.log("links: ");
+    console.log(req.body.links);
     try {
         let user = await User.findOne({_id: req.body.user_id});
         let update_query = {
             $set: {
-                experiences: req.body.experiences,
-                educations: req.body.educations,
-                projects: req.body.projects,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 profileEmail: req.body.profileEmail,
                 phoneNumber: req.body.phoneNumber,
                 links: req.body.links,
                 skills: req.body.skills,
+                address: req.body.address,
+                experiences: req.body.experiences,
+                educations: req.body.educations,
+                projects: req.body.projects,
+<<<<<<< HEAD
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                profileEmail: req.body.profileEmail,
+                phoneNumber: req.body.phoneNumber,
+                links: req.body.links,
+                skills: req.body.skills,
+=======
+>>>>>>> 226702b6441adf17487b61b29c078eec7a3755a4
             },
           };
         user = await User.updateOne({_id: req.body.user_id}, update_query);
@@ -30,13 +42,27 @@ router.route("/profile/add").post(async function (req, res) {
     }
 });
 
+router.route("/profile/get_profile").post(async function (req, res) {
+    console.log("get profile HERE ----------------------");
+    //console.log(req.body);
+    try {
+        let user = await User.findOne({_id: req.body.user_id});
+        console.log("user:", user);
+        //console.log("exps : ", user.experiences);
+        res.json(user);
+        // res.status(200).send({data: user.experiences, message: "User retrieved"});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
 router.route("/profile/get_experiences").post(async function (req, res) {
     console.log("profile/get_experiences HERE");
     console.log(req.body);
     try {
         let user = await User.findOne({_id: req.body.user_id}).select("experiences");
         console.log("user:", user);
-
+        console.log("exps : ", user.experiences);
         res.json(user.experiences);
         // res.status(200).send({data: user.experiences, message: "User retrieved"});
     } catch (error) {
@@ -51,6 +77,16 @@ router.route("/profile/get_educations").post(async function (req, res) {
         let user = await User.findOne({_id: req.body.user_id}).select("educations");
         console.log("user:", user);
 
+<<<<<<< HEAD
+=======
+router.route("/profile/get_educations").post(async function (req, res) {
+    console.log("profile/get_educations HERE");
+    console.log(req.body);
+    try {
+        let user = await User.findOne({_id: req.body.user_id}).select("educations");
+        console.log("user:", user);
+
+>>>>>>> 226702b6441adf17487b61b29c078eec7a3755a4
         res.json(user.educations);
     } catch (error) {
         console.error(error.message);
@@ -69,4 +105,8 @@ router.route("/profile/get_projects").post(async function (req, res) {
         res.status(500).send('Server Error');
     }
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 226702b6441adf17487b61b29c078eec7a3755a4
 module.exports = router;

@@ -1,64 +1,37 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Dialog, { DialogProps } from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
-
-export default function MaxWidthDialog() {
-  const [open, setOpen] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('sm');
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-
-
-
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions
+} from '@mui/material'
+import { useState } from 'react'
+import { Routes ,Route } from 'react-router-dom';
+export default function MuiDialog() {
+  const [open, setOpen] = useState(false)
   return (
-    <React.Fragment>
+    <>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
       <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
         open={open}
-        onClose={handleClose}
-      >
-        <DialogTitle>Success</DialogTitle>
+        onClose={() => setOpen(false)}
+        aria-labelledby='dialog-title'
+        aria-describedby='dialog-description'>
+        <DialogTitle id='dialog-title'>Submit the test?</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            You have successfully updated your profile!
+          <DialogContentText id='dialog-description'>
+            Are you sure you want to submit the test? You will not be able to
+            edit it after submitting.
           </DialogContentText>
-          <Box
-            noValidate
-            component="form"
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              m: 'auto',
-              width: 'fit-content',
-            }}
-          >
-
-          </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Yay</Button>
+          <Button onClick={() => setOpen(false)}>Cancel</Button>
+          <Button onClick={() => setOpen(false)} autoFocus>
+            Submit
+          </Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
-  );
+    </>
+  )
 }
