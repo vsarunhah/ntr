@@ -1,85 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import {
-  Button,
-  Box,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Divider,
-} from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
+import { Box, Button, Typography, Grid } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Navbar from "../../components/Navbar/Navbar";
-import { v4 as uuidv4 } from 'uuid';
-
-const styles = {
-  card: {
-    width: 300,
-    height: 200,
-    margin: "auto",
-    transition: "0.3s",
-    "&:hover": {
-      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
-    },
-  },
-  content: {
-    textAlign: "left",
-  },
-  divider: {
-    margin: "40px",
-  },
-  heading: {
-    fontWeight: "bold",
-  },
-  subheading: {
-    lineHeight: 1.8,
-  },
-};
-
-const Review = (props) => (
-  <Grid item direction="row" alignItems="center">
-    <Card className="card" style={styles.card}>
-      <CardContent className="content" style={styles.content}>
-        <Typography
-          className={"MuiTypography--heading"}
-          variant={"h6"}
-          gutterBottom
-        >
-          {props.review.companyName}
-        </Typography>
-        <Typography className={"MuiTypography--subheading"} variant={"caption"}>
-          {props.review.description}
-        </Typography>
-        <Button
-          marginLeft="auto"
-          className="btn btn-link"
-          component={Link}
-          to={`/review/edit/${props.review.id}`}
-          startIcon={<EditOutlinedIcon />}
-        ></Button>
-        <Button
-          className="btn btn-link"
-          onClick={() => {
-            props.deleteReview(props.review.id);
-          }}
-          startIcon={<RemoveCircleOutlineRoundedIcon />}
-        >
-          {" "}
-        </Button>
-        <Divider className="divider" style={styles.divider} />
-      </CardContent>
-    </Card>
-  </Grid>
-);
+import { Review } from "./reviewCard";
+import SearchIcon from "@mui/icons-material/Search";
+import TextField from "@mui/material/TextField";
 
 export default function ReviewList() {
   const [reviews, setReviews] = useState([]);
 
-  // This method fetches the reviews from the database.
   useEffect(() => {
     async function getReviews() {
       await axios
@@ -95,38 +26,73 @@ export default function ReviewList() {
     return;
   }, [reviews.length]);
 
-  // This method will delete a review
   async function deleteReview(id) {
-    console.log("delete review: ", id);
     const data = {
-      user_id: localStorage.getItem('user_id'),
+      user_id: localStorage.getItem("user_id"),
       reviewId: id,
-    }
+    };
     await axios
-        .post("http://localhost:5000/reviews/delete", data)
-        .then((res) => {
-          console.log("res: ", res);
-        })
-        .catch((err) => window.alert(err));
+      .post("http://localhost:5000/reviews/delete", data)
+      .then((res) => {
+        console.log("res: ", res);
+      })
+      .catch((err) => window.alert(err));
 
     const newReviews = reviews.filter((el) => el.id !== id);
     setReviews(newReviews);
   }
 
-  // This following section will display the table with the reviews of individuals.
+  const filterReviews = (query, reviews) => {
+    if (!query) {
+      return reviews;
+    } else {
+      return reviews.filter((review) =>
+        review.companyName.toLowerCase().includes(query)
+      );
+    }
+  };
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredReviews = filterReviews(searchQuery, reviews);
+
   return (
-    <Grid mx={35}>
+    <Grid mx={25}>
       <Navbar />
-      <Typography
-        gutterBottom
-        variant="h5"
-        style={{ margin: "70px", fontWeight: "bold" }}
-      >
-        Company Reviews
+      <Typography variant="h5" style={{ margin: "70px", fontWeight: "bold" }}>
+        All Company Reviews
       </Typography>
+      <Grid container item spacing={2}>
+        <Grid item style={{ marginLeft: "70px" }}>
+          <TextField
+            sx={{ width: "300px" }}
+            id="outlined-basic"
+            onInput={(e) => {
+              setSearchQuery(e.target.value.toLowerCase());
+            }}
+            variant="outlined"
+            fullWidth
+            label="Search by company name"
+          />
+        </Grid>
+        <Grid item sx={{ position: "absolute", top: 157, right: 800 }}>
+          <Box
+            sx={{
+              display: "flex",
+              width: "57px",
+              height: "56px",
+              backgroundColor: "#ECECEC",
+              borderRadius: 2,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <SearchIcon fontSize="medium" />
+          </Box>
+        </Grid>
+      </Grid>
       <ul>
         <Grid container direction="row" spacing={2} style={{ margin: "20px" }}>
-          {reviews.map((review) => (
+          {filteredReviews.map((review) => (
             <Grid item>
               <Review
                 review={review}

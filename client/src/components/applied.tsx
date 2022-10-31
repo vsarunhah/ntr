@@ -44,7 +44,7 @@ function createData(
   title: string,
   date_applied: string,
   status: number,
-  user_id: string,
+  user_id: string | null,
   application_id: number
 ) {
   return {
@@ -61,15 +61,15 @@ function createData(
 const initialApplications = [
   createData(
     "h111",
-    "Cupcake",
+    "Google",
     "Software Engineer",
     "2021-08-01",
     status.Rejected,
-    "brh",
+    localStorage.getItem("user_id"),
     0
   ),
-  // createData(1, "Donut", "Software Engineer", "2021-08-01", status.Interview),
-  // createData(2, "Eclair", "Software Engineer", "2021-08-01", status.Interview),
+   createData("hww", "Facebook", "Software Engineer", "2021-08-01", status.Interview, localStorage.getItem("user_id"), 1),
+   createData("hw1", "Microsoft", "Software Engineer", "2021-08-01", status.Interview, localStorage.getItem("user_id"), 2),
   // createData(
   //   3,
   //   "Frozen yoghurt",
@@ -334,7 +334,8 @@ export default function Applied() {
                     <Typography noWrap fontSize={14}>{application.title}</Typography>
                   </MyTableCell>
                   <MyTableCell align="center">
-                    {application.date_applied_formatted}
+                    {application.date_applied}
+                    {/* HIIIIIIII */}
                   </MyTableCell>
                   <MyTableCell align="center">
                     <FormControl sx={{ width: "12vw", m: 0 }} size={"small"}>
