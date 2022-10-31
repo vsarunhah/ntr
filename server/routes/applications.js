@@ -1,4 +1,6 @@
 const express = require("express");
+const crypto = require('crypto');
+const {User} = require("../models/user");
 
 const statuses = {
   Applied: 0,
@@ -82,5 +84,21 @@ applicationRoutes.route("/application/delete").post(function (req, res) {
         }
       }
     );
+});
+
+// This section will help you create a new application.
+applicationRoutes.route("/application/create").post(async function (req, res) {
+  console.log("application create HERE");
+  console.log(req.body);
+  let myobj = {
+    id: crypto.randomUUID(),
+    companyName: req.body.companyName,
+    roleName: req.body.roleName,
+    applicationStatus: req.body.applicationStatus,
+    applicationDate: req.body.applicationDate,
+    location: req.body.location,
+  };
+  let user = await User.findOneAndUpdate({_id: req.body.user_id}, {$push: {applications: myobj}});
+  res.status(200).send({data: user, message: "Application added"});
 });
 module.exports = applicationRoutes;

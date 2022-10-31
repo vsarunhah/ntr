@@ -14,7 +14,7 @@ const ObjectId = require("mongodb").ObjectId;
 // This section will help you get a single record by id
 eduRoutes.route("/education").post(function (req, res) {
  let db_connect = dbo.getDb("employees");
- console.log(req.body.user_id);
+//  console.log(req.body.user_id);
  console.log(req.body);
  let myquery = { user_id: req.body.user_id};
  db_connect

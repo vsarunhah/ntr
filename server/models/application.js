@@ -5,6 +5,7 @@ const applicationSchema = new mongoose.Schema({
     roleName: String,
     companyName: String,
     applicationDate: Date,
+    Location: String,
     applicationStatus: {type: String,
         enum: ['Applied', 'Interview', 'Offer', 'Rejected']
     },
