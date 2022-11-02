@@ -38,54 +38,6 @@ enum status {
   Rejected,
 }
 
-function createData(
-  _id: string,
-  company_name: string,
-  title: string,
-  date_applied: string,
-  status: number,
-  user_id: string | null,
-  application_id: number
-) {
-  return {
-    _id,
-    company_name,
-    title,
-    date_applied,
-    status,
-    user_id,
-    application_id,
-  };
-}
-
-const initialApplications = [
-  createData(
-    "h111",
-    "Google",
-    "Software Engineer",
-    "2021-08-01",
-    status.Rejected,
-    localStorage.getItem("user_id"),
-    0
-  ),
-   createData("hww", "Facebook", "Software Engineer", "2021-08-01", status.Interview, localStorage.getItem("user_id"), 1),
-   createData("hw1", "Microsoft", "Software Engineer", "2021-08-01", status.Interview, localStorage.getItem("user_id"), 2),
-  // createData(
-  //   3,
-  //   "Frozen yoghurt",
-  //   "Software Engineer",
-  //   "2021-08-01",
-  //   status.Offer
-  // ),
-  // createData(
-  //   4,
-  //   "Gingerbread",
-  //   "Software Engineer",
-  //   "2021-08-01",
-  //   status.Rejected
-  // ),
-];
-
 const theme = createMuiTheme({
   typography: {
     fontFamily: ["Montserrat"].join(","),
@@ -136,7 +88,7 @@ export default function Applied() {
   };
 
   async function deleteApplicationAPI(application: any) {
-    console.log(application._id);
+    console.log("deleting application", application);
     console.log(localStorage.getItem("user_id"));
     const response = await fetch(
       `http://localhost:5000/application/delete`,
@@ -146,7 +98,7 @@ export default function Applied() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          application_id: application._id,
+          application_id: application.id,
           user_id: localStorage.getItem("user_id"),
         }),
       }
@@ -159,6 +111,8 @@ export default function Applied() {
 
   function deleteApplication(application_id: number) {
     console.log(application_id + " was deleted");
+    console.log(applications);
+    console.log(applications[application_id]);
     deleteApplicationAPI(applications[application_id]);
     setApplications(
       applications.filter(
@@ -168,6 +122,7 @@ export default function Applied() {
   }
 
   async function updateApplication(application: any) {
+    console.log("updating application", application);
     const response = await fetch(`http://localhost:5000/application/update`, {
       method: "POST",
       headers: {
@@ -176,8 +131,8 @@ export default function Applied() {
       },
       body: JSON.stringify({
         user_id: localStorage.getItem("user_id"),
-        application_id: application._id,
-        status: application.status,
+        application_id: application.id,
+        status: application.applicationStatus,
       }),
     });
     if (!response.ok) {
@@ -199,8 +154,8 @@ export default function Applied() {
   const handleStatusChange = (event: SelectChangeEvent) => {
     event.preventDefault();
     for (let i = 0; i < applications.length; i++) {
-      if (applications[i]._id == event.target.name) {
-        applications[i].status = event.target.value;
+      if (applications[i].id == event.target.name) {
+        applications[i].applicationStatus = event.target.value;
         updateApplication(applications[i]);
         break;
       }
@@ -231,7 +186,9 @@ export default function Applied() {
         return;
       }
 
-      const applications = await response.json();
+      const res = await response.json();
+      const applications = res.data;
+      console.log("---------Applications: ", applications);
       for (let i = 0; i < applications.length; i++) {
         applications[i].date_applied_formatted = moment(
           applications[i].date_applied
@@ -318,11 +275,11 @@ export default function Applied() {
                 application // iterate over all the applications
               ) => (
                 <TableRow
-                  key={application.application_id} // application_id is the company name
+                  key={application.id} // application_id is the company name
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <MyTableCell component="th" scope="row">
-                    {application.company_name}
+                    {application.companyName}
                   </MyTableCell>
                   <MyTableCell align="center">
                     {/* <TextField
@@ -331,24 +288,24 @@ export default function Applied() {
                       defaultValue={application.title}
                       inputProps={textFieldProps}
                     /> */}
-                    <Typography noWrap fontSize={14}>{application.title}</Typography>
+                    <Typography noWrap fontSize={14}>{application.roleName}</Typography>
                   </MyTableCell>
                   <MyTableCell align="center">
-                    {application.date_applied}
+                    {application.applicationDate}
                     {/* HIIIIIIII */}
                   </MyTableCell>
                   <MyTableCell align="center">
                     <FormControl sx={{ width: "12vw", m: 0 }} size={"small"}>
                       <Select
                         defaultValue={
-                          application.status
-                            ? `${application.status}`
+                          application.applicationStatus
+                            ? `${application.applicationStatus}`
                             : `${status.Applied}`
                         } // application status
                         onChange={handleStatusChange}
                         displayEmpty
                         inputProps={selectProps}
-                        name={application._id.toString()}
+                        name={application.id.toString()}
                       >
                         {Object.keys(status)
                           .filter((x) => isNaN(parseInt(x))) // filter out the keys that are numbers because of TS -> JS enum conversion
@@ -367,16 +324,26 @@ export default function Applied() {
                   </MyTableCell>
                   <MyTableCell
                     id={application.application_id + "delete_button"}
-                    key={application.application_id + "cell"}
+                    key={application.id + "cell"}
                   >
                     <IconButton
                       onClick={() => {
-                        setOpenArray(
-                          openArray.map((x, i) =>
-                            i === application.application_id ? true : x
-                          )
-                        ); // open this specific dialog
-                        // console.log(openArray);
+                        console.log("clicked delete button");
+                        console.log("application: ", application);
+                        let data = [...openArray];
+                        data[application.application_id] = true;
+                        setOpenArray(data);
+                        //   openArray.map((x, i) => {
+                        //    // i === application.application_id ? true : x;
+                        //     if (i === application.application_id) {
+                        //       openArray[i] = true;
+                        //     }
+                        //     console.log("i: ", i);
+                        //     console.log("application.application_id: ", application.application_id);
+                        //   }
+                        //   )
+                        //); // open this specific dialog
+                        console.log(openArray);
                       }}
                     >
                       <DeleteOutlineIcon />
@@ -384,16 +351,21 @@ export default function Applied() {
                     <Dialog
                       open={openArray[application.application_id]}
                       onClose={() =>
-                        setOpenArray(
-                          openArray.map((x, i) =>
-                            i === application.application_id ? false : x
-                          )
-                        )
+                        // setOpenArray(
+                        //   openArray.map((x, i) =>
+                        //     i === application.application_id ? false : x
+                        //   )
+                        // ) 
+                        {
+                          let data = [...openArray];
+                          data[application.application_id] = false;
+                          setOpenArray(data);
+                        }
                       } // close this specific dialog
                       aria-labelledby="delete_application_title"
                       aria-describedby="delete_application_text"
                       key={application.application_id}
-                      id={application.application_id.toString() + "dialog"}
+                      id={application.id.toString() + "dialog"}
                     >
                       <DialogTitle id="delete_application_title">
                         {"Delete this application?"}
@@ -406,26 +378,39 @@ export default function Applied() {
                       <DialogActions>
                         <Button
                           onClick={() =>
-                            setOpenArray(
-                              openArray.map((x, i) =>
-                                i === application.application_id ? false : x
-                              )
-                            )
+                            // setOpenArray(
+                            //   openArray.map((x, i) => {
+                            //     i === application.application_id ? false : x;
+                            //     console.log("i: ", i);
+                            //   }
+                                
+                            //   )
+                            // )
+                            {
+                              let data = [...openArray];
+                              data[application.application_id] = false;
+                              setOpenArray(data);
+                            }
                           }
                         >
                           Disagree
                         </Button>
                         <Button
                           onClick={function () {
-                            setOpenArray(
-                              openArray.map((x, i) =>
-                                i === application.application_id ? false : x
-                              )
-                            );
+                            // setOpenArray(
+                            //   openArray.map((x, i) =>
+                            //     i === application.application_id ? false : x
+                            //   )
+                            // );
+                            {
+                              let data = [...openArray];
+                              data[application.application_id] = false;
+                              setOpenArray(data);
+                            }
                             deleteApplication(application.application_id);
                           }}
                           autoFocus
-                          key={application.application_id + "confirm"}
+                          key={application.id + "confirm"}
                         >
                           Agree
                         </Button>

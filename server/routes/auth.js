@@ -16,7 +16,7 @@ router.route("/auth").post(async function (req, res) {
             return res.status(400).send(error.details[0].message);
         }
         const user = await User.findOne({email: req.body.email});
-        console.log("user:", user);
+        // console.log("user:", user);
         if (!user) {
             return res.status(400).send("Invalid email or password");
         }

@@ -15,7 +15,7 @@ app.use(require("./routes/passwordReset"));
 app.use(require("./routes/exp"));
 app.use(require("./routes/education"));
 app.use(require("./routes/project"));
-app.use(require("./routes/applications.tsx"));
+app.use(require("./routes/applications"));
 app.use(require("./routes/google"));
 app.use(require("./routes/profile"));
 // get driver connection
