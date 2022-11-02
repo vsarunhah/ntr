@@ -93,6 +93,7 @@ applicationRoutes.route("/application/create").post(async function (req, res) {
     applicationStatus: Number(req.body.applicationStatus),
     applicationDate: req.body.applicationDate,
     location: req.body.location,
+    application_id: -1,
   };
   let user;
   if (req.body.companyName != null && req.body.companyName != '') {
@@ -107,14 +108,22 @@ applicationRoutes.route("/applications").post(async function (req, res) {
     try {
       if (req.body.status == 'All') {
         let user = await User.findOne({_id: req.body.user_id}).select('applications');
+        for (let i = 0; i < user.applications.length; i++) {
+          user.applications[i].application_id = i;
+        }
+        console.log(user.applications);
         res.status(200).send({data: user.applications, message: "Applications retrieved"});
       } else {
         let status = statuses[req.body.status];
         // let user = await User.findOne({ _id: req.body.user_id, "applications.applicationStatus": status}).select('applications');
         let user = await User.findOne({ _id: req.body.user_id}).select('applications');
+        for (let i = 0; i < user.applications.length; i++) {
+          user.applications[i].application_id = i;
+        }
         let applications = user.applications.filter(application => application.applicationStatus == status);
         console.log("filtered applications: ", applications);
         if (applications.length > 0) {
+          console.log("applications: ", applications);
           res.status(200).send({data: applications, message: "Applications found"});
         } else {
           res.status(200).send({data: [], message: "No applications found"});
@@ -142,9 +151,9 @@ applicationRoutes.route("/application/delete").post(async function (req, res) {
       { $set: { applications: arr.applications } }
     );
 
-    response.status(200).send({ data: user, message: "Application deleted" });
+    res.status(200).send({ data: user, message: "Application deleted" });
   } catch (err) {
-    response.status(500).send({ message: err });
+    res.status(500).send({ message: err });
   }
 });
 

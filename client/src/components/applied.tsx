@@ -111,10 +111,12 @@ export default function Applied() {
 
   function deleteApplication(application_id: number) {
     console.log(application_id + " was deleted");
+    console.log(applications);
+    console.log(applications[application_id]);
     deleteApplicationAPI(applications[application_id]);
     setApplications(
       applications.filter(
-        (application) => application.id !== application_id
+        (application) => application.application_id !== application_id
       )
     );
   }
@@ -321,34 +323,48 @@ export default function Applied() {
                     </FormControl>
                   </MyTableCell>
                   <MyTableCell
-                    id={application.id + "delete_button"}
+                    id={application.application_id + "delete_button"}
                     key={application.id + "cell"}
                   >
                     <IconButton
                       onClick={() => {
                         console.log("clicked delete button");
-                        setOpenArray(
-                          openArray.map((x, i) =>
-                            i === application.id ? true : x
-                          )
-                        ); // open this specific dialog
-                        // console.log(openArray);
+                        console.log("application: ", application);
+                        let data = [...openArray];
+                        data[application.application_id] = true;
+                        setOpenArray(data);
+                        //   openArray.map((x, i) => {
+                        //    // i === application.application_id ? true : x;
+                        //     if (i === application.application_id) {
+                        //       openArray[i] = true;
+                        //     }
+                        //     console.log("i: ", i);
+                        //     console.log("application.application_id: ", application.application_id);
+                        //   }
+                        //   )
+                        //); // open this specific dialog
+                        console.log(openArray);
                       }}
                     >
                       <DeleteOutlineIcon />
                     </IconButton>
                     <Dialog
-                      open={openArray[application.id]}
+                      open={openArray[application.application_id]}
                       onClose={() =>
-                        setOpenArray(
-                          openArray.map((x, i) =>
-                            i === application.id ? false : x
-                          )
-                        )
+                        // setOpenArray(
+                        //   openArray.map((x, i) =>
+                        //     i === application.application_id ? false : x
+                        //   )
+                        // ) 
+                        {
+                          let data = [...openArray];
+                          data[application.application_id] = false;
+                          setOpenArray(data);
+                        }
                       } // close this specific dialog
                       aria-labelledby="delete_application_title"
                       aria-describedby="delete_application_text"
-                      key={application.id}
+                      key={application.application_id}
                       id={application.id.toString() + "dialog"}
                     >
                       <DialogTitle id="delete_application_title">
@@ -362,23 +378,36 @@ export default function Applied() {
                       <DialogActions>
                         <Button
                           onClick={() =>
-                            setOpenArray(
-                              openArray.map((x, i) =>
-                                i === application.id ? false : x
-                              )
-                            )
+                            // setOpenArray(
+                            //   openArray.map((x, i) => {
+                            //     i === application.application_id ? false : x;
+                            //     console.log("i: ", i);
+                            //   }
+                                
+                            //   )
+                            // )
+                            {
+                              let data = [...openArray];
+                              data[application.application_id] = false;
+                              setOpenArray(data);
+                            }
                           }
                         >
                           Disagree
                         </Button>
                         <Button
                           onClick={function () {
-                            setOpenArray(
-                              openArray.map((x, i) =>
-                                i === application.id ? false : x
-                              )
-                            );
-                            deleteApplication(application.id);
+                            // setOpenArray(
+                            //   openArray.map((x, i) =>
+                            //     i === application.application_id ? false : x
+                            //   )
+                            // );
+                            {
+                              let data = [...openArray];
+                              data[application.application_id] = false;
+                              setOpenArray(data);
+                            }
+                            deleteApplication(application.application_id);
                           }}
                           autoFocus
                           key={application.id + "confirm"}
