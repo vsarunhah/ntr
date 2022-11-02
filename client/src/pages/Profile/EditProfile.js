@@ -22,7 +22,10 @@ function EditProfile () {
     last_name: "",
     profileEmail: "",
     phone: "",
-    address: "",
+    address_line: "",
+    city: "",
+    state: "",
+    postal_code: "",
     user_id : localStorage.getItem("user_id"),
   });
 
@@ -86,7 +89,10 @@ function EditProfile () {
        lastName: profile.last_name,
        profileEmail: profile.profileEmail,
        phoneNumber: profile.phone,
-       address: profile.address,
+       address_line: profile.address_line,
+       city: profile.city,
+       state: profile.state,
+       postal_code: profile.postal_code,
        links: links,
        skills: skills
      }
@@ -98,7 +104,10 @@ function EditProfile () {
          last_name: res.data.lastName,
          profileEmail: res.data.profileEmail,
          phone: res.data.phoneNumber,
-         address: res.data.address,
+         address_line: res.data.address_line,
+         city: res.data.city,
+         state: res.data.state,
+         postal_code: res.data.postal_code,
          user_id : localStorage.getItem("user_id"),
        };
        console.log("user profile : ", user_profile);
@@ -107,18 +116,18 @@ function EditProfile () {
        setSkills(res.data.skills);
      });
       await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-       console.log("inside experiences post req");
-       console.log(res.data);
+       //console.log("inside experiences post req");
+       //console.log(res.data);
        setExperiences(res.data);
      });
      await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-       console.log("inside educations post req");
-       console.log(res.data);
+       //console.log("inside educations post req");
+       //console.log(res.data);
        setEducations(res.data);
      });
      await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-       console.log("inside projects post req");
-       console.log(res.data);
+       //console.log("inside projects post req");
+       //console.log(res.data);
        setProjects(res.data);
      });
     }
@@ -171,7 +180,10 @@ function EditProfile () {
       lastName: profile.last_name,
       profileEmail: profile.profileEmail,
       phoneNumber: profile.phone,
-      address: profile.address,
+      address_line: profile.address_line,
+      city: profile.city,
+      state: profile.state,
+      postal_code: profile.postal_code,
       links: links,
       skills: skills
     }
@@ -305,10 +317,84 @@ function EditProfile () {
             <TextField id ="phone" className="form-control" type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required value={profile.phone}
            onChange={(e) => setProfile({...profile, phone: e.target.value})}/>
           </Grid>
+          
           <Grid item xs={12} className="form-group">
-            <TextField id ="address" className="form-control" placeholder="Enter address" label="Address" variant="outlined" fullWidth required value={profile.address}
-           onChange={(e) => setProfile({...profile, address: e.target.value})}/>
+            <TextField id ="address" className="form-control" placeholder="Enter Address Line 1" label="Address Line 1" variant="outlined" fullWidth value={profile.address_line}
+           onChange={(e) => setProfile({...profile, address_line: e.target.value})}/>
           </Grid>
+          <Grid item xs={12} className="form-group">
+            <TextField id ="address" className="form-control" placeholder="Enter City" label="City" variant="outlined" fullWidth required value={profile.city}
+           onChange={(e) => setProfile({...profile, city: e.target.value})}/>
+          </Grid>
+          <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label" required>State</InputLabel>
+                    <Select
+                      labelId=""
+                      id=""
+                      label="State"
+                      name="state"
+                      placeholder='State'
+                      value={profile.state}  onChange={(e) => setProfile({...profile, city: e.target.value})}>
+                      <MenuItem value="AL">Alabama</MenuItem>
+                      <MenuItem value="AK">Alaska</MenuItem>
+                      <MenuItem value="AZ">Arizona</MenuItem>
+                      <MenuItem value="AR">Arkansas</MenuItem>
+                      <MenuItem value="CA">California</MenuItem>
+                      <MenuItem value="CO">Colorado</MenuItem>
+                      <MenuItem value="CT">Connecticut</MenuItem>
+                      <MenuItem value="DE">Delaware</MenuItem>
+                      <MenuItem value="DC">District Of Columbia</MenuItem>
+                      <MenuItem value="FL">Florida</MenuItem>
+                      <MenuItem value="GA">Georgia</MenuItem>
+                      <MenuItem value="HI">Hawaii</MenuItem>
+                      <MenuItem value="ID">Idaho</MenuItem>
+                      <MenuItem value="IL">Illinois</MenuItem>
+                      <MenuItem value="IN">Indiana</MenuItem>
+                      <MenuItem value="IA">Iowa</MenuItem>
+                      <MenuItem value="KS">Kansas</MenuItem>
+                      <MenuItem value="KY">Kentucky</MenuItem>
+                      <MenuItem value="LA">Louisiana</MenuItem>
+                      <MenuItem value="ME">Maine</MenuItem>
+                      <MenuItem value="MD">Maryland</MenuItem>
+                      <MenuItem value="MA">Massachusetts</MenuItem>
+                      <MenuItem value="MI">Michigan</MenuItem>
+                      <MenuItem value="MN">Minnesota</MenuItem>
+                      <MenuItem value="MS">Mississippi</MenuItem>
+                      <MenuItem value="MO">Missouri</MenuItem>
+                      <MenuItem value="MT">Montana</MenuItem>
+                      <MenuItem value="NE">Nebraska</MenuItem>
+                      <MenuItem value="NV">Nevada</MenuItem>
+                      <MenuItem value="NH">New Hampshire</MenuItem>
+                      <MenuItem value="NJ">New Jersey</MenuItem>
+                      <MenuItem value="NM">New Mexico</MenuItem>
+                      <MenuItem value="NY">New York</MenuItem>
+                      <MenuItem value="NC">North Carolina</MenuItem>
+                      <MenuItem value="ND">North Dakota</MenuItem>
+                      <MenuItem value="OH">Ohio</MenuItem>
+                      <MenuItem value="OK">Oklahoma</MenuItem>
+                      <MenuItem value="OR">Oregon</MenuItem>
+                      <MenuItem value="PA">Pennsylvania</MenuItem>
+                      <MenuItem value="RI">Rhode Island</MenuItem>
+                      <MenuItem value="SC">South Carolina</MenuItem>
+                      <MenuItem value="SD">South Dakota</MenuItem>
+                      <MenuItem value="TN">Tennessee</MenuItem>
+                      <MenuItem value="TX">Texas</MenuItem>
+                      <MenuItem value="UT">Utah</MenuItem>
+                      <MenuItem value="VT">Vermont</MenuItem>
+                      <MenuItem value="VA">Virginia</MenuItem>
+                      <MenuItem value="WA">Washington</MenuItem>
+                      <MenuItem value="WV">West Virginia</MenuItem>
+                      <MenuItem value="WI">Wisconsin</MenuItem>
+                      <MenuItem value="WY">Wyoming</MenuItem>
+                    </Select>
+                  </FormControl>                
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                  <TextField name = "postalCode" type="number" placeholder="47906" label="Postal Code" variant="outlined" fullWidth  value={profile.postal_code}
+                onChange={e =>  setProfile({...profile, postal_code: e.target.value})}
+                />
+                </Grid>
         </Grid>
         </form>
         <Box my={10}>

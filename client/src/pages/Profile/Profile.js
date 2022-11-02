@@ -34,23 +34,16 @@ const styles = {
 };
 
 const Profile = () => {
-  const [form, setForm] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone: "",
-    address: "",
-    links : "",
-    skills: "",
-    user_id: localStorage.getItem("user_id"),
-  });
 
   const [profile, setProfile] = useState({
     first_name: "",
     last_name: "",
     profileEmail: "",
     phone: "",
-    address: "",
+    address_line: "",
+    city: "",
+    state: "",
+    postal_code: "",
     user_id : localStorage.getItem("user_id"),
   });
 
@@ -113,7 +106,10 @@ const Profile = () => {
        lastName: profile.last_name,
        profileEmail: profile.profileEmail,
        phoneNumber: profile.phone,
-       address: profile.address,
+       address_line: profile.address_line,
+        city: profile.city,
+        state: profile.state,
+        postal_code: profile.postal_code,
        links: links,
        skills: skills
      }
@@ -125,27 +121,30 @@ const Profile = () => {
          last_name: res.data.lastName,
          profileEmail: res.data.profileEmail,
          phone: res.data.phoneNumber,
-         address: res.data.address,
+         address_line: res.data.address_line,
+         city: res.data.city,
+         state: res.data.state,
+         postal_code: res.data.postal_code,
          user_id : localStorage.getItem("user_id"),
        };
-       console.log("user profile : ", user_profile);
+       //console.log("user profile : ", user_profile);
        setProfile(user_profile);
        setLinks(res.data.links);
        setSkills(res.data.skills);
      });
       await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-       console.log("inside experiences post req");
-       console.log(res.data);
+       //console.log("inside experiences post req");
+       //console.log(res.data);
        setExperiences(res.data);
      });
      await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-       console.log("inside educations post req");
-       console.log(res.data);
+       //console.log("inside educations post req");
+       //console.log(res.data);
        setEducations(res.data);
      });
      await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-       console.log("inside projects post req");
-       console.log(res.data);
+       //console.log("inside projects post req");
+       //console.log(res.data);
        setProjects(res.data);
      });
     }
@@ -190,7 +189,16 @@ const Profile = () => {
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Address: {profile.address}
+        Address Line 1: {profile.address_line}
+       </Typography>
+       <Typography variant="body1" color="textSecondary">
+        City: {profile.city}
+       </Typography>
+       <Typography variant="body1" color="textSecondary">
+        State: {profile.state}
+       </Typography>
+       <Typography variant="body1" color="textSecondary">
+        Postal Code: {profile.postal_code}
        </Typography>
        <Box my={10}>
       </Box>
@@ -236,7 +244,7 @@ const Profile = () => {
           <div key={skill.index}>
                 <br></br>
       <Typography variant="body1" color="textSecondary">
-        Skills: {skill.skill}
+         {skill.skill}
        </Typography>  
        </div>
         ))
@@ -331,7 +339,7 @@ const Profile = () => {
           <div key={link.index}>
           <br></br>
       <Typography variant="body1" color="textSecondary">
-        Links: {link.link}
+        {link.link}
        </Typography>  
 
        </div>

@@ -31,6 +31,7 @@ import SampleForm from "./components/sampleForm";
 
 import PersonalWebsiteEdit from "./pages/PersonalWebsite/PersonalWebsiteEdit";
 import PersonalWebsite from "./pages/PersonalWebsite/PersonalWebsite";
+import ParserResume from "./pages/Profile/ParseResume";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -67,6 +68,7 @@ const App = () => {
         <Route path="/sampleForm" element={<SampleForm />} />
         <Route path="/personalwebsiteedit" element={<PersonalWebsiteEdit />} />
         <Route path="/personalwebsite" element={<PersonalWebsite />} />
+        <Route path="/ParseResume" element={<ParserResume />} />
       </Routes>
     </div>
   );
