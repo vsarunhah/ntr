@@ -68,6 +68,20 @@ router.route("/profile/get_user").post(async function (req, res) {
     try {
         let user = await User.findOne({_id: req.body.user_id});
         console.log("user:", user);
+        res.json(user);
+        // res.status(200).send({data: user, message: "User retrieved"});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    } 
+});
+
+router.route("/profile/get").post(async function (req, res) {
+    console.log("get profile HERE ----------------------");
+    //console.log(req.body);
+    try {
+        let user = await User.findOne({_id: req.body.user_id});
+        console.log("user:", user);
         // res.json(user);
         res.status(200).send({data: user, message: "User retrieved"});
     } catch (error) {

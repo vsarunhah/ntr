@@ -1,6 +1,53 @@
 const init = function() {
     document.getElementById('autofill-button').addEventListener('click', autofill);
     document.getElementById('button-send').addEventListener('click', send);
+    document.getElementById('button-auth').addEventListener('click', auth);
+    document.getElementById('button-logout').addEventListener('click', logout);
+    if (localStorage.getItem("user_id") != null) {
+        console.log("user_id:", localStorage.getItem("user_id"));
+        document.getElementById('validate-user').style.display = "none";
+        document.getElementById('form-user').style.display = "block";
+        document.getElementById('autofill-button').style.display = "block";
+    } else {
+        document.getElementById('validate-user').style.display = "block";
+        document.getElementById('form-user').style.display = "none";
+        document.getElementById('autofill-button').style.display = "none";
+    }
+}
+
+const logout = async function(ev) {
+    ev.preventDefault(); 
+    ev.stopPropagation();
+    console.log("popup logout HERE");
+    localStorage.removeItem("user_id");
+    location.reload();
+}
+
+const auth = async function(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    console.log("popup auth HERE");
+    let urlParams = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+    }
+
+    const response = await fetch("http://localhost:5000/auth", {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify(urlParams),
+   })
+   .catch(error => {
+     window.alert(error);
+     return;
+   });
+
+    const data = await response.json();
+    console.log("data:", data);
+    localStorage.setItem("user_id", data.user_id);
+    location.reload();
 }
 
 async function autofillCurrentTab() {
@@ -13,8 +60,9 @@ async function autofillCurrentTab() {
     async function sendAutofillMessage(tabs) {
         let message = {
             txt: "autofill",
-            user_id: "63544acdd5ce61f94f2ca257",
+            user_id: localStorage.getItem("user_id"),
         };
+        console.log("message:", message);
         await chrome.tabs.sendMessage(tabs[0].id, message);
     }
     return tab;
@@ -39,63 +87,21 @@ const send = async function(ev) {
         location: document.getElementById('location').value,
         applicationStatus: document.getElementById('application-status').value,
         applicationDate: new Date(),
-        user_id: "63544acdd5ce61f94f2ca257",
+        user_id: localStorage.getItem("user_id"),
     }
 
     await fetch("http://localhost:5000/application/create", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify(urlParams),
-   })
-   .catch(error => {
-     window.alert(error);
-     return;
-   });
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(urlParams),
+        })
+        .catch(error => {
+            window.alert(error);
+            return;
+        });
+};
 
-    // req.open("POST", baseUrl, true);
-    // req.setRequestHeader("Content-type", "multipart/form-data");
-    // // req.send(urlParams);
-    // req.send(JSON.stringify(urlParams)); // send data as JSON
-
-    // req.onreadystatechange = function() { // Call a function when the state changes.
-    //     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-    //         console.log("Got response 200!");
-    //     }
-    };
-
-  
-
-const send1 = async function(ev) {
-    ev.preventDefault(); 
-    ev.stopPropagation();
-
-    //IF we wanted to do some async things then use a Promise with .then and .catch
-    console.log("popup.js user_id: ", localStorage.getItem("user_id"));
-    
-    console.log("current tab: ", await getCurrentTab());
-
-    chrome.storage.sync.get(['user_id'], function(result) {
-        console.log('Value currently is ' + result.user_id);
-    });
-    if(localStorage.getItem("user_id") != null){
-        //good to go
-        console.log("user_id:", localStorage.getItem("user_id"));
-        // document.getElementById('form-user').submit();
-        // console.log("form:", document.getElementById('form-user'));
-        let form = {
-            companyName: document.getElementById('company-name').value,
-            roleName: document.getElementById('role-name').value,
-            location: document.getElementById('location').value,
-            applicationStatus: document.getElementById('application-status').value,
-            applicationDate: new Date(),
-            user_id: localStorage.getItem("user_id"),
-        }
-        console.log("form:", form);
-    }else{
-        console.log("need to login");
-    }
-}
 
 document.addEventListener('DOMContentLoaded', init);
