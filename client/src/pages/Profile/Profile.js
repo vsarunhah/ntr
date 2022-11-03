@@ -118,9 +118,10 @@ const Profile = () => {
        profileEmail: profile.profileEmail,
        phoneNumber: profile.phone,
        address_line: profile.address_line,
-        city: profile.city,
-        state: profile.state,
-        postal_code: profile.postal_code,
+       city: profile.city,
+       state: profile.state,
+       postal_code: profile.postal_code,
+       last_modified: profile.last_modified,
        links: links,
        skills: skills
      }
@@ -137,6 +138,7 @@ const Profile = () => {
          state: res.data.state,
          postal_code: res.data.postal_code,
          user_id : localStorage.getItem("user_id"),
+         last_modified: res.data.last_modified,
        };
        //console.log("user profile : ", user_profile);
        setProfile(user_profile);
