@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="popup.css"> -->
+    <meta charset="utf-8">
+    <title>Popup</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2>NTR</h2>
+      <form id="validate-user" action="#" method="post">
+        <div class="form-box error" data-errormsg="">
+          <label for="email">Email</label>
+          <input type="email" id="email" autofocus placeholder="Email" tabindex="1"/>
+        </div>
+        <div class="form-box error" data-errormsg="">
+          <label for="password">Password</label>
+          <input type="password" id="password" autofocus placeholder="Password" tabindex="2"/>
+        </div>
+        <div class="form-box">
+          <button id="button-auth">Login</button>
+        </div>
+        <p><a href="http://localhost:3000/signup" target="_blank">Create NTR Account</a>.</p>       
+      </form>
+      <button id="autofill-button">Auto Fill</button>    
+      <form id="form-user" action="#" method="post">
+          <div class="form-box error" data-errormsg="">
+              <label for="company-name">Company</label>
+              <input type="text" id="company-name" autofocus placeholder="Company" tabindex="1"/>
+          </div>
+          <div class="form-box" data-errormsg="">
+              <label for="role-name">Role</label>
+              <input type="text" id="role-name" required placeholder="Role" tabindex="2" />
+          </div>
+          <div class="form-box" data-errormsg="">
+              <label for="location">Location</label>
+              <input type="text" id="location" required placeholder="Location" tabindex="3" />
+          </div>
+          <div class="form-box" data-errormsg="">
+              <label for="application-status">Application Status</label>
+              <select id="application-status" tabindex="4">
+                  <option value="0">Applied</option>
+                  <option value="1">Interview</option>
+                  <option value="2">Offer</option>
+                  <option value="3">Rejected</option>
+              </select>
+          </div>
+          <div class="form-box">
+              <button id="button-send">Add Application</button>
+          </div>
+          <div class="form-box">
+            <button id="button-logout">Logout</button>
+        </div>
+
+      </form>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

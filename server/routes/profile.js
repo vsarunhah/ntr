@@ -25,7 +25,7 @@ router.route("/profile/add").post(async function (req, res) {
             },
           };
         user = await User.updateOne({_id: req.body.user_id}, update_query);
-        console.log("user:", user);
+        // console.log("user:", user);
 
         res.status(200).send({message: "User profile created"});
     } catch (error) {
@@ -50,17 +50,45 @@ router.route("/profile/get_profile").post(async function (req, res) {
 });
 router.route("/profile/get_experiences").post(async function (req, res) {
     console.log("profile/get_experiences HERE");
-    console.log(req.body);
+    // console.log(req.body);
     try {
         let user = await User.findOne({_id: req.body.user_id}).select("experiences");
-        console.log("user:", user);
-        console.log("exps : ", user.experiences);
+        // console.log("user:", user);
+
         res.json(user.experiences);
         // res.status(200).send({data: user.experiences, message: "User retrieved"});
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');
     }
+});
+
+router.route("/profile/get_user").post(async function (req, res) {
+    console.log("get profile HERE ----------------------");
+    //console.log(req.body);
+    try {
+        let user = await User.findOne({_id: req.body.user_id});
+        console.log("user:", user);
+        res.json(user);
+        // res.status(200).send({data: user, message: "User retrieved"});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    } 
+});
+
+router.route("/profile/get").post(async function (req, res) {
+    console.log("get profile HERE ----------------------");
+    //console.log(req.body);
+    try {
+        let user = await User.findOne({_id: req.body.user_id});
+        console.log("user:", user);
+        // res.json(user);
+        res.status(200).send({data: user, message: "User retrieved"});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    } 
 });
 
 router.route("/profile/get_educations").post(async function (req, res) {

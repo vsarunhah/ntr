@@ -45,7 +45,7 @@ const Signup = () => {
 		var userObj = jwtDecode(response.credential);
 		setUser(userObj);
 		const url = "http://localhost:5000/google";
-		console.log("user: ", userObj);
+		// console.log("user: ", userObj);
 		const { data: res } = await axios.post(url, userObj);
 		console.log("res data: ", res.data);
 		localStorage.setItem("token", res.data);
