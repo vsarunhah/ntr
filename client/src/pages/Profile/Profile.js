@@ -274,6 +274,11 @@ const Profile = () => {
         ))
       }</div>
 
+    <Box my={2}>
+       </Box>
+
+       <Divider></Divider>
+
 
 
 
