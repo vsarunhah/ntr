@@ -17,6 +17,17 @@ function EditProfile () {
     navigate(path);
   }
 
+  const [personalWebsite, setPersonalWebsite] = useState({
+    showProfile: true,
+    showEducation: true,
+    showExperiences: true,
+    showProjects: true,
+    showSkills: true,
+    showLinks: true,
+    theme: "pink",
+    user_id : localStorage.getItem("user_id"),
+  });
+
   const [profile, setProfile] = useState({
     first_name: "",
     last_name: "",
@@ -88,7 +99,8 @@ function EditProfile () {
        phoneNumber: profile.phone,
        address: profile.address,
        links: links,
-       skills: skills
+       skills: skills,
+       personalWebsite: personalWebsite,
      }
      await axios.post("http://localhost:5000/profile/get_profile", data).then((res) => {
        console.log("inside profile post req");
@@ -120,6 +132,11 @@ function EditProfile () {
        console.log("inside projects post req");
        console.log(res.data);
        setProjects(res.data);
+     });
+     await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
+       console.log("inside personal website post req");
+       console.log(res.data);
+       setPersonalWebsite(res.data);
      });
     }
   
@@ -173,7 +190,8 @@ function EditProfile () {
       phoneNumber: profile.phone,
       address: profile.address,
       links: links,
-      skills: skills
+      skills: skills,
+      personalWebsite: personalWebsite,
     }
     try {
       await axios
@@ -305,10 +323,87 @@ function EditProfile () {
             <TextField id ="phone" className="form-control" type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth required value={profile.phone}
            onChange={(e) => setProfile({...profile, phone: e.target.value})}/>
           </Grid>
+          
           <Grid item xs={12} className="form-group">
-            <TextField id ="address" className="form-control" placeholder="Enter address" label="Address" variant="outlined" fullWidth required value={profile.address}
+            <TextField id ="address" className="form-control" placeholder="Enter Address Line 1" label="Address Line 1" variant="outlined" fullWidth //value={profile.address}
+           //onChange={(e) => setProfile({...profile, address: e.target.value})}
+           />
+          </Grid>
+          <Grid item xs={12} className="form-group">
+            <TextField id ="address" className="form-control" placeholder="Enter City" label="City" variant="outlined" fullWidth required value={profile.address}
            onChange={(e) => setProfile({...profile, address: e.target.value})}/>
           </Grid>
+          <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label" required>State</InputLabel>
+                    <Select
+                      labelId=""
+                      id=""
+                      label="State"
+                      name="state"
+                      placeholder='State'
+                      //onChange={}
+                      //value={educations.degree} 
+                    >
+                      <MenuItem value="AL">Alabama</MenuItem>
+                      <MenuItem value="AK">Alaska</MenuItem>
+                      <MenuItem value="AZ">Arizona</MenuItem>
+                      <MenuItem value="AR">Arkansas</MenuItem>
+                      <MenuItem value="CA">California</MenuItem>
+                      <MenuItem value="CO">Colorado</MenuItem>
+                      <MenuItem value="CT">Connecticut</MenuItem>
+                      <MenuItem value="DE">Delaware</MenuItem>
+                      <MenuItem value="DC">District Of Columbia</MenuItem>
+                      <MenuItem value="FL">Florida</MenuItem>
+                      <MenuItem value="GA">Georgia</MenuItem>
+                      <MenuItem value="HI">Hawaii</MenuItem>
+                      <MenuItem value="ID">Idaho</MenuItem>
+                      <MenuItem value="IL">Illinois</MenuItem>
+                      <MenuItem value="IN">Indiana</MenuItem>
+                      <MenuItem value="IA">Iowa</MenuItem>
+                      <MenuItem value="KS">Kansas</MenuItem>
+                      <MenuItem value="KY">Kentucky</MenuItem>
+                      <MenuItem value="LA">Louisiana</MenuItem>
+                      <MenuItem value="ME">Maine</MenuItem>
+                      <MenuItem value="MD">Maryland</MenuItem>
+                      <MenuItem value="MA">Massachusetts</MenuItem>
+                      <MenuItem value="MI">Michigan</MenuItem>
+                      <MenuItem value="MN">Minnesota</MenuItem>
+                      <MenuItem value="MS">Mississippi</MenuItem>
+                      <MenuItem value="MO">Missouri</MenuItem>
+                      <MenuItem value="MT">Montana</MenuItem>
+                      <MenuItem value="NE">Nebraska</MenuItem>
+                      <MenuItem value="NV">Nevada</MenuItem>
+                      <MenuItem value="NH">New Hampshire</MenuItem>
+                      <MenuItem value="NJ">New Jersey</MenuItem>
+                      <MenuItem value="NM">New Mexico</MenuItem>
+                      <MenuItem value="NY">New York</MenuItem>
+                      <MenuItem value="NC">North Carolina</MenuItem>
+                      <MenuItem value="ND">North Dakota</MenuItem>
+                      <MenuItem value="OH">Ohio</MenuItem>
+                      <MenuItem value="OK">Oklahoma</MenuItem>
+                      <MenuItem value="OR">Oregon</MenuItem>
+                      <MenuItem value="PA">Pennsylvania</MenuItem>
+                      <MenuItem value="RI">Rhode Island</MenuItem>
+                      <MenuItem value="SC">South Carolina</MenuItem>
+                      <MenuItem value="SD">South Dakota</MenuItem>
+                      <MenuItem value="TN">Tennessee</MenuItem>
+                      <MenuItem value="TX">Texas</MenuItem>
+                      <MenuItem value="UT">Utah</MenuItem>
+                      <MenuItem value="VT">Vermont</MenuItem>
+                      <MenuItem value="VA">Virginia</MenuItem>
+                      <MenuItem value="WA">Washington</MenuItem>
+                      <MenuItem value="WV">West Virginia</MenuItem>
+                      <MenuItem value="WI">Wisconsin</MenuItem>
+                      <MenuItem value="WY">Wyoming</MenuItem>
+                    </Select>
+                  </FormControl>                
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                  <TextField name = "postalCode" type="number" placeholder="47906" label="Postal Code" variant="outlined" fullWidth  //value={educations.gpa}
+                //onChange={event => handleEducationChange(event, index)}
+                />
+                </Grid>
         </Grid>
         </form>
         <Box my={10}>

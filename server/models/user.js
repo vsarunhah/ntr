@@ -10,6 +10,7 @@ const projectSchema = require('./project.js');
 const reviewSchema = require('./review.js');
 const linksSchema = require('./links.js');
 const skillsSchema = require('./skills.js');
+const personalWebsiteSchema = require('./personalwebsite.js');
 
 
 
@@ -30,6 +31,7 @@ const userSchema = mongoose.Schema({
     educations: [educationSchema],
     applications: [applicationSchema],
     reviews: [reviewSchema],
+    personalWebsite: personalWebsiteSchema,
 });
 
 userSchema.methods.generateAuthToken = function() {

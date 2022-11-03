@@ -31,7 +31,7 @@ export const mainNavbarItems = [
         id: 3,
         icon: <CoPresentRoundedIcon />,
         label: 'Website',
-        route: '/personalwebsiteedit',
+        route: '/personalwebsiteview',
     },
 
 ]
