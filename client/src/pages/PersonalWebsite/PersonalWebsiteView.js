@@ -314,12 +314,12 @@ const PersonalWebsiteEdit = () => {
       {
         personalWebsite.showSkills ?
         <div>
-      <div class="container" style={{display: "flex"}}>
+      <div class="container" style={{display: "flex" , flexWrap: 'wrap'}}>
       {skills.map(skill => (
           <div key={skill.index}>
                 <br></br>
-      <Typography variant="h6" color="textSecondary">
-      <Box fontWeight='fontWeightBold' display='inline'> {skill.skill} | </Box>
+      <Typography variant="body1" color="textSecondary">
+         {skill.skill } &nbsp;
        </Typography>  
        </div>
         ))

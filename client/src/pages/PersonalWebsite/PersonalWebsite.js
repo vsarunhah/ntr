@@ -305,19 +305,16 @@ import { v4 as uuidv4 } from 'uuid';
       <Typography gutterBottom variant="h3">
         Skills
       </Typography>
-      <div class="container" style={{display: "flex"}}>
-      
+      <div class="container" style={{display: "flex" , flexWrap: 'wrap'}}>
       {skills.map(skill => (
-          <div key={skill.index} >  
-          <Typography variant="h6" color="textSecondary" textTransform='capitalize' style={{ fontWeight: 600, marginRight: '5px' }}>
-        {skill.skill} | 
-        </Typography>
-       
+          <div key={skill.index}>
+                <br></br>
+      <Typography variant="body1" color="textSecondary">
+         {skill.skill } &nbsp;
+       </Typography>  
        </div>
         ))
-        
-      }
-      </div>
+      }</div>
       </div>
       : null
       
