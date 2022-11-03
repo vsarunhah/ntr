@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import {Button, Box, Typography, CardContent, Card} from '@mui/material';
+import {Divider, Button, Box, Typography, CardContent, Card} from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -34,6 +34,17 @@ const styles = {
 };
 
 const Profile = () => {
+
+  const [personalWebsite, setPersonalWebsite] = useState({
+    showProfile: true,
+    showEducation: true,
+    showExperiences: true,
+    showProjects: true,
+    showSkills: true,
+    showLinks: true,
+    theme: "Blue",
+    user_id : localStorage.getItem("user_id"),
+  });
 
   const [profile, setProfile] = useState({
     first_name: "",
@@ -147,6 +158,11 @@ const Profile = () => {
        //console.log(res.data);
        setProjects(res.data);
      });
+     await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
+      console.log("inside personal website post req");
+      console.log(res.data);
+      setPersonalWebsite(res.data);
+    });
     }
   
     fetchData();
@@ -162,47 +178,50 @@ const Profile = () => {
       }
 
     return (
-      <Grid>
+      <Grid mx={35}>
       <Navbar />
-    <Grid container mx ={35}>
-     <Grid item xs={6}>
+
      <Box my={10}>
     </Box>
-    <Typography gutterBottom variant="h5">
+    <Typography gutterBottom variant="h4">
         Profile
       </Typography>
 
-        <Typography  variant="body1" color="textSecondary">
-        First Name: {profile.first_name}
+      <Typography  variant="body1" color="textSecondary">
+        <Box fontWeight='fontWeightBold' display='inline'>First Name:</Box> {profile.first_name}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Last Name: {profile.last_name}
+       <Box fontWeight='fontWeightBold' display='inline'>Last Name:</Box> {profile.last_name}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Email: {profile.profileEmail}
+       <Box fontWeight='fontWeightBold' display='inline'>Email:</Box> {profile.profileEmail}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Phone: {profile.phone}
+       <Box fontWeight='fontWeightBold' display='inline'>Phone:</Box>  {profile.phone}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Address Line 1: {profile.address_line}
+       <Box fontWeight='fontWeightBold' display='inline'>Address Line 1: </Box>  {profile.address_line}
        </Typography>
        <Typography variant="body1" color="textSecondary">
-        City: {profile.city}
+       <Box fontWeight='fontWeightBold' display='inline'>City: </Box>  {profile.city}
        </Typography>
        <Typography variant="body1" color="textSecondary">
-        State: {profile.state}
+       <Box fontWeight='fontWeightBold' display='inline'>State: </Box>  {profile.state}
        </Typography>
        <Typography variant="body1" color="textSecondary">
-        Postal Code: {profile.postal_code}
+       <Box fontWeight='fontWeightBold' display='inline'>Postal Code: </Box>  {profile.postal_code}
        </Typography>
+       <Box my={2}>
+       </Box>
+
+       <Divider></Divider>
        <Box my={10}>
       </Box>
-       <Typography gutterBottom variant="h5">
+       <Typography gutterBottom variant="h4">
         Experiences
       </Typography>
 
@@ -211,24 +230,27 @@ const Profile = () => {
         <br></br>
         <Grid item xs={12} sm={6}>
         <Typography variant="body1" color="textSecondary">
-        Employer Name: {experience.company_name}
+        <Box fontWeight='fontWeightBold' display='inline'>Employer Name: </Box>{experience.company_name}
        </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Position: {experience.title}
+       <Box fontWeight='fontWeightBold' display='inline'>Position: </Box> {experience.title}
        </Typography> 
        <Typography variant="body1" color="textSecondary">
-       Location: {experience.location}
+       <Box fontWeight='fontWeightBold' display='inline'>Location: </Box> {experience.location}
        </Typography> 
        <Typography variant="body1" color="textSecondary">
-       startDate: {experience.start_date}
+       <Box fontWeight='fontWeightBold' display='inline'>Start Date: </Box> {experience.start_date}
        </Typography> 
        <Typography variant="body1" color="textSecondary">
-       endDate: {experience.end_date}
+       <Box fontWeight='fontWeightBold' display='inline'>End Date: </Box> {experience.end_date}
        </Typography> 
        <Typography variant="body1" color="textSecondary">
-       description: {experience.description}
+       <Box fontWeight='fontWeightBold' display='inline'>Description: </Box> {experience.description}
        </Typography> 
         </Grid>
+        <Box my={2}>
+       </Box>
+        <Divider></Divider>
         </div>
         ))
       }
@@ -237,62 +259,47 @@ const Profile = () => {
        <Box my={10}>
       </Box>
 
-      <Typography gutterBottom variant="h5">
-        Skills
-      </Typography>
-      {skills.map(skill => (
-          <div key={skill.index}>
-                <br></br>
-      <Typography variant="body1" color="textSecondary">
-         {skill.skill}
-       </Typography>  
-       </div>
-        ))
-      }
-
-
-       </Grid>
-
-    
-
-     <Grid item xs={6}>
-     <Box my={10} mx={30}>
+     <Box my={10}>
     </Box>
 
     
-    <Typography gutterBottom variant="h5">
+    <Typography gutterBottom variant="h4">
         Education
       </Typography>
       {educations.map(education => (
           <div key={education.index}>
                 <br></br>
-      <Typography  variant="body1" color="textSecondary">
-      Insitute Name: {education.university}
+                <Typography  variant="body1" color="textSecondary">
+      <Box fontWeight='fontWeightBold' display='inline'>Insitute Name: </Box>{education.university}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-       Degree: {education.degree}
+       <Box fontWeight='fontWeightBold' display='inline'>Degree: </Box> {education.degree}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-       Major: {education.major}
+       <Box fontWeight='fontWeightBold' display='inline'>Major: </Box> {education.major}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-       Minor: {education.minor}
+       <Box fontWeight='fontWeightBold' display='inline'>Minor: </Box> {education.minor}
        </Typography>
        
        <Typography variant="body1" color="textSecondary">
-       GPA: {education.gpa}
+       <Box fontWeight='fontWeightBold' display='inline'>GPA: </Box>{education.gpa}
        </Typography>
        
        <Typography variant="body1" color="textSecondary">
-       Start date: {education.start_date}
+       <Box fontWeight='fontWeightBold' display='inline'>Start Date: </Box> {education.start_date}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-       End date: {education.end_date}
+       <Box fontWeight='fontWeightBold' display='inline'>End Date: </Box> {education.end_date}
        </Typography>
+       <Box my={2}>
+       </Box>
+
+       <Divider></Divider>
        </div>
        ))
      }
@@ -301,27 +308,30 @@ const Profile = () => {
       </Box>
 
 
-      <Typography gutterBottom variant="h5">
+      <Typography gutterBottom variant="h4">
         Projects
       </Typography>
       {projects.map(project => (
           <div key={project.index}>
                 <br></br>
       <Typography  variant="body1" color="textSecondary">
-        Project Name: {project.name}
+      <Box fontWeight='fontWeightBold' display='inline'>Project Name: </Box> {project.name}
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-        Start date: {project.start_date}
+       <Box fontWeight='fontWeightBold' display='inline'>Start Date: </Box> {project.start_date}
        </Typography>
        
        <Typography variant="body1" color="textSecondary">
-        End date: {project.end_date}
+       <Box fontWeight='fontWeightBold' display='inline'>End Date: </Box> {project.end_date}
        </Typography>
        
        <Typography variant="body1" color="textSecondary">
-        Description: {project.description}
+       <Box fontWeight='fontWeightBold' display='inline'>Description: </Box> {project.description}
        </Typography>  
+       <Box my={2}>
+       </Box>
+        <Divider></Divider>  
        </div>
        ))
      }
@@ -331,23 +341,44 @@ const Profile = () => {
 
       {/* <CardContent className="card" style={styles.card}>
         <Card> */}
+      <Typography gutterBottom variant="h4">
+        Skills
+      </Typography>
+      <div class="container" style={{display: "flex" , flexWrap: 'wrap'}}>
+      {skills.map(skill => (
+          <div key={skill.index}>
+                <br></br>
+      <Typography variant="body1" color="textSecondary">
+         {skill.skill } &nbsp;
+       </Typography>  
+       </div>
+        ))
+      }</div>
 
-      <Typography gutterBottom variant="h5">
+    <Box my={2}>
+       </Box>
+
+       <Divider></Divider>
+       <Box my={10}>
+      </Box>
+      <Typography gutterBottom variant="h4">
         Links
       </Typography>
+      <div class="container" style={{display: "flex"}}>
       {links.map(link => (
           <div key={link.index}>
           <br></br>
-      <Typography variant="body1" color="textSecondary">
-        {link.link}
+      <Typography variant="body1" color="textSecondary"> 
+      <Box fontWeight='fontWeightBold' display='inline'> { link.link} | </Box>
        </Typography>  
 
        </div>
        ))
-     }
+     }</div>
 
-       {/* </Card>
-      </CardContent>      */}
+      <Box my={2}>
+       </Box>
+        <Divider></Divider>
 
         <Box my={10}>
       </Box>
@@ -356,8 +387,8 @@ const Profile = () => {
       <Button onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
         Edit
       </Button>
-     </Grid>
-    </Grid>
+      <Box my={10}>
+      </Box>
     </Grid>
     )
 }

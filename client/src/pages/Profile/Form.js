@@ -17,6 +17,17 @@ function SampleForm () {
     navigate(path);
   }
 
+  const [personalWebsite, setPersonalWebsite] = useState({
+    showProfile: true,
+    showEducation: true,
+    showExperiences: true,
+    showProjects: true,
+    showSkills: true,
+    showLinks: true,
+    theme: "pink",
+    user_id : localStorage.getItem("user_id"),
+  });
+
   const [profile, setProfile] = useState({
     first_name: "",
     last_name: "",
@@ -126,7 +137,8 @@ function SampleForm () {
       state: profile.state,
       postal_code: profile.postal_code,
       links: links,
-      skills: skills
+      skills: skills,
+      personalWebsite: personalWebsite,
     }
     try {
       await axios

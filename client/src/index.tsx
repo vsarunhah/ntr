@@ -5,8 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Link } from "react-router-dom";
 import Profile from "./pages/Profile/Profile";
 import Applications from "./pages/Applications/Applications";
-import Reviews from "./pages/Reviews/Reviews";
-import MainReviewPage from "./pages/Reviews/MainReviewPage";
+// import Reviews from "./pages/Reviews/Reviews";
+// import MainReviewPage from "./pages/Reviews/MainReviewPage";
 import Form from "./pages/Profile/Form";
 import EditProfile from "./pages/Profile/EditProfile";
 import ManualOrResume from "./pages/Profile/ManualOrResume";
@@ -22,10 +22,10 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="manualorresume" element={<Reviews />} />
+        {/* <Route path="manualorresume" element={<Reviews />} /> */}
         <Route path="profile" element={<Profile />} />
         <Route path="applications" element={<Applications />} />
-        <Route path="reviews" element={<MainReviewPage />} />
+        {/* <Route path="reviews" element={<MainReviewPage />} /> */}
         <Route path="form" element={<Form />} />
         <Route path="editProfile/" element={<EditProfile />} />
         {/* <Route exact path="/" element={<Main />} />

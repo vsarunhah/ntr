@@ -17,6 +17,17 @@ function EditProfile () {
     navigate(path);
   }
 
+  const [personalWebsite, setPersonalWebsite] = useState({
+    showProfile: true,
+    showEducation: true,
+    showExperiences: true,
+    showProjects: true,
+    showSkills: true,
+    showLinks: true,
+    theme: "pink",
+    user_id : localStorage.getItem("user_id"),
+  });
+
   const [profile, setProfile] = useState({
     first_name: "",
     last_name: "",
@@ -94,7 +105,8 @@ function EditProfile () {
        state: profile.state,
        postal_code: profile.postal_code,
        links: links,
-       skills: skills
+       skills: skills,
+       personalWebsite: personalWebsite,
      }
      await axios.post("http://localhost:5000/profile/get_profile", data).then((res) => {
        console.log("inside profile post req");
@@ -129,6 +141,11 @@ function EditProfile () {
        //console.log("inside projects post req");
        //console.log(res.data);
        setProjects(res.data);
+     });
+     await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
+       console.log("inside personal website post req");
+       console.log(res.data);
+       setPersonalWebsite(res.data);
      });
     }
   
@@ -185,7 +202,8 @@ function EditProfile () {
       state: profile.state,
       postal_code: profile.postal_code,
       links: links,
-      skills: skills
+      skills: skills,
+      personalWebsite: personalWebsite,
     }
     try {
       await axios
