@@ -8,7 +8,6 @@ import Navbar from '../../components/Navbar/Navbar'
 import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import { useNavigate } from "react-router-dom";
-import { useFilePicker } from 'use-file-picker';
 
 function parserResume() {
     const [selectedFile, setSelectedFile] = useState();
