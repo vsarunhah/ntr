@@ -335,7 +335,7 @@ function EditProfile () {
                       label="State"
                       name="state"
                       placeholder='State'
-                      value={profile.state}  onChange={(e) => setProfile({...profile, city: e.target.value})}>
+                      value={profile.state}  onChange={(e) => setProfile({...profile, state: e.target.value})}>
                       <MenuItem value="AL">Alabama</MenuItem>
                       <MenuItem value="AK">Alaska</MenuItem>
                       <MenuItem value="AZ">Arizona</MenuItem>
