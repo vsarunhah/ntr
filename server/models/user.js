@@ -35,6 +35,7 @@ const userSchema = mongoose.Schema({
     applications: [applicationSchema],
     reviews: [reviewSchema],
     personalWebsite: personalWebsiteSchema,
+    last_modified: Date,
 });
 
 userSchema.methods.generateAuthToken = function() {

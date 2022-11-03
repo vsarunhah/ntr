@@ -185,9 +185,11 @@ function EditProfile () {
 
   const submit = async (e) => {
     e.preventDefault();
+    console.log("Date : ", Date());
     console.log(experiences);
     console.log(educations);
     // SEND EXPERIENCES AND EDUCATIONS TO SERVER
+    let date = Date();
     const data = {
       user_id: localStorage.getItem('user_id'),
       experiences: experiences,
@@ -204,6 +206,7 @@ function EditProfile () {
       links: links,
       skills: skills,
       personalWebsite: personalWebsite,
+      last_modified: date,
     }
     try {
       await axios

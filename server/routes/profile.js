@@ -25,6 +25,7 @@ router.route("/profile/add").post(async function (req, res) {
                 educations: req.body.educations,
                 projects: req.body.projects,
                 personalWebsite: req.body.personalWebsite,
+                last_modified: req.body.last_modified
             },
           };
         user = await User.updateOne({_id: req.body.user_id}, update_query);
