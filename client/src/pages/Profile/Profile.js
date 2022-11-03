@@ -34,16 +34,6 @@ const styles = {
 };
 
 const Profile = () => {
-  const [form, setForm] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone: "",
-    address: "",
-    links : "",
-    skills: "",
-    user_id: localStorage.getItem("user_id"),
-  });
 
   const [personalWebsite, setPersonalWebsite] = useState({
     showProfile: true,
@@ -61,7 +51,10 @@ const Profile = () => {
     last_name: "",
     profileEmail: "",
     phone: "",
-    address: "",
+    address_line: "",
+    city: "",
+    state: "",
+    postal_code: "",
     user_id : localStorage.getItem("user_id"),
   });
 
@@ -124,7 +117,10 @@ const Profile = () => {
        lastName: profile.last_name,
        profileEmail: profile.profileEmail,
        phoneNumber: profile.phone,
-       address: profile.address,
+       address_line: profile.address_line,
+        city: profile.city,
+        state: profile.state,
+        postal_code: profile.postal_code,
        links: links,
        skills: skills
      }
@@ -136,27 +132,30 @@ const Profile = () => {
          last_name: res.data.lastName,
          profileEmail: res.data.profileEmail,
          phone: res.data.phoneNumber,
-         address: res.data.address,
+         address_line: res.data.address_line,
+         city: res.data.city,
+         state: res.data.state,
+         postal_code: res.data.postal_code,
          user_id : localStorage.getItem("user_id"),
        };
-       console.log("user profile : ", user_profile);
+       //console.log("user profile : ", user_profile);
        setProfile(user_profile);
        setLinks(res.data.links);
        setSkills(res.data.skills);
      });
       await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-       console.log("inside experiences post req");
-       console.log(res.data);
+       //console.log("inside experiences post req");
+       //console.log(res.data);
        setExperiences(res.data);
      });
      await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-       console.log("inside educations post req");
-       console.log(res.data);
+       //console.log("inside educations post req");
+       //console.log(res.data);
        setEducations(res.data);
      });
      await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-       console.log("inside projects post req");
-       console.log(res.data);
+       //console.log("inside projects post req");
+       //console.log(res.data);
        setProjects(res.data);
      });
      await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
@@ -205,16 +204,16 @@ const Profile = () => {
        </Typography>
 
        <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Address Line 1: </Box>  {profile.address}
+       <Box fontWeight='fontWeightBold' display='inline'>Address Line 1: </Box>  {profile.address_line}
        </Typography>
        <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>City: </Box> {profile.address}
+       <Box fontWeight='fontWeightBold' display='inline'>City: </Box>  {profile.city}
        </Typography>
        <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>State: </Box>  {profile.address}
+       <Box fontWeight='fontWeightBold' display='inline'>State: </Box>  {profile.state}
        </Typography>
        <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Postal Code: </Box>  {profile.address}
+       <Box fontWeight='fontWeightBold' display='inline'>Postal Code: </Box>  {profile.postal_code}
        </Typography>
        <Box my={2}>
        </Box>
@@ -259,30 +258,6 @@ const Profile = () => {
 
        <Box my={10}>
       </Box>
-
-      <Typography gutterBottom variant="h4">
-        Skills
-      </Typography>
-      <div class="container" style={{display: "flex"}}>
-      {skills.map(skill => (
-          <div key={skill.index}>
-                <br></br>
-      <Typography variant="h6" color="textSecondary">
-      <Box fontWeight='fontWeightBold' display='inline'> {skill.skill} | </Box>
-       </Typography>  
-       </div>
-        ))
-      }</div>
-
-    <Box my={2}>
-       </Box>
-
-       <Divider></Divider>
-
-
-
-
-    
 
      <Box my={10}>
     </Box>
@@ -366,7 +341,26 @@ const Profile = () => {
 
       {/* <CardContent className="card" style={styles.card}>
         <Card> */}
+      <Typography gutterBottom variant="h4">
+        Skills
+      </Typography>
+      <div class="container" style={{display: "flex" , flexWrap: 'wrap'}}>
+      {skills.map(skill => (
+          <div key={skill.index}>
+                <br></br>
+      <Typography variant="body1" color="textSecondary">
+         {skill.skill } &nbsp;
+       </Typography>  
+       </div>
+        ))
+      }</div>
 
+    <Box my={2}>
+       </Box>
+
+       <Divider></Divider>
+       <Box my={10}>
+      </Box>
       <Typography gutterBottom variant="h4">
         Links
       </Typography>
@@ -374,8 +368,8 @@ const Profile = () => {
       {links.map(link => (
           <div key={link.index}>
           <br></br>
-      <Typography variant="body1" color="textSecondary">
-      <Box fontWeight='fontWeightBold' display='inline'> {link.link} | </Box>
+      <Typography variant="body1" color="textSecondary"> 
+      <Box fontWeight='fontWeightBold' display='inline'> { link.link} | </Box>
        </Typography>  
 
        </div>

@@ -80,5 +80,4 @@ dbprofileRoutes.route("/profileUpdate/").post(function (req, response) {
      response.json(res);
    });
 });
-
 module.exports = dbprofileRoutes;

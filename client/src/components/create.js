@@ -34,7 +34,7 @@ export default function Create() {
      window.alert(error);
      return;
    });
- 
+   //empty the form
    setForm({ name: "", position: "", level: "" });
    navigate("/");
  }

@@ -33,7 +33,10 @@ function SampleForm () {
     last_name: "",
     profileEmail: "",
     phone: "",
-    address: "",
+    address_line: "",
+    city: "",
+    state: "",
+    postal_code: "",
     user_id : localStorage.getItem("user_id"),
   });
 
@@ -129,7 +132,10 @@ function SampleForm () {
       lastName: profile.last_name,
       profileEmail: profile.profileEmail,
       phoneNumber: profile.phone,
-      address: profile.address,
+      address_line: profile.address_line,
+      city: profile.city,
+      state: profile.state,
+      postal_code: profile.postal_code,
       links: links,
       skills: skills,
       personalWebsite: personalWebsite,
@@ -278,11 +284,11 @@ function SampleForm () {
 
           <Grid item xs={12} className="form-group">
             <TextField id ="address" className="form-control" placeholder="Enter Address Line 1" label="Address Line 1" variant="outlined" fullWidth value={profile.address}
-           onChange={(e) => setProfile({...profile, address: e.target.value})}/>
+           onChange={(e) => setProfile({...profile, address_line: e.target.value})}/>
           </Grid>
           <Grid item xs={12} className="form-group">
             <TextField id ="address" className="form-control" placeholder="Enter City" label="City" variant="outlined" fullWidth required value={profile.address}
-           onChange={(e) => setProfile({...profile, address: e.target.value})}/>
+           onChange={(e) => setProfile({...profile, city: e.target.value})}/>
           </Grid>
           <Grid xs={12} sm={6} item>
                   <FormControl fullWidth>
@@ -293,8 +299,8 @@ function SampleForm () {
                       label="State"
                       name="state"
                       placeholder='State'
-                      //onChange={}
-                      //value={educations.degree} 
+                      onChange={(e) => setProfile({...profile, state: e.target.value})}
+                      value={profile.state} 
                     >
                       <MenuItem value="AL">Alabama</MenuItem>
                       <MenuItem value="AK">Alaska</MenuItem>
@@ -351,8 +357,8 @@ function SampleForm () {
                   </FormControl>                
                 </Grid>
                 <Grid item xs={6} sm={3}>
-                  <TextField name = "postalCode" type="number" placeholder="47906" label="Postal Code" variant="outlined" fullWidth  //value={educations.gpa}
-                /*onChange={event => handleEducationChange(event, index)}*//>
+                  <TextField name = "postalCode" type="number" placeholder="47906" label="Postal Code" variant="outlined" fullWidth  value={profile.postal_code}
+                  onChange={e =>  setProfile({...profile, postal_code: e.target.value})}/>
                 </Grid>
         </Grid>
         </form>
