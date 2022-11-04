@@ -1,6 +1,7 @@
 const express = require("express");
 const crypto = require('crypto');
 const {User} = require("../models/user");
+const { application } = require("express");
 
 const statuses = {
   Applied: 0,
@@ -61,7 +62,9 @@ applicationRoutes.route("/applications").post(async function (req, res) {
             currVersion = user.last_modified.toString().split("T")[0];
             applications = user.applications.filter(application => application.applicationDate !== currVersion);
           } else {
-            applications = user.applications.filter(application => application.applicationDate == req.body["date_applied"]);
+            req.body["date_applied"] = req.body["date_applied"].split("-").reverse().join("-");
+            console.log(req.body["date_applied"]);
+            applications = user.applications.filter(application => application.applicationDate.split("T")[0] == req.body["date_applied"]);
           }
         }
         if (applications.length > 0) {

@@ -91,6 +91,10 @@ export default function Applied() {
 
   const handleFilterClose = () => {
     setAnchorEl(null);
+    setCompanyAnchorEl(null);
+    setTitleAnchorEl(null);
+    setDateAnchorEl(null);
+    
   };
 
   const handleCompanyFilterClose = () => {
