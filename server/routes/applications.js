@@ -42,7 +42,7 @@ applicationRoutes.route("/applications").post(async function (req, res) {
         res.status(200).send({data: user.applications, message: "Applications retrieved"});
       } else {
         let filt = { _id: req.body.user_id};
-        let user = await User.findOne(filt).select('applications');
+        let user = await User.findOne(filt).select('applications last_modified');
         for (let i = 0; i < user.applications.length; i++) {
           user.applications[i].application_id = i;
         }
@@ -54,7 +54,15 @@ applicationRoutes.route("/applications").post(async function (req, res) {
         } else if (req.body["title"] !== undefined) {
           applications = user.applications.filter(application => application.roleName == req.body["title"]);
         } else if (req.body["date_applied"] !== undefined) {
-          applications = user.applications.filter(application => application.applicationDate == req.body["date_applied"]);
+          if (req.body["date_applied"].includes("curr")) {
+            currVersion = user.last_modified.toString().split("T")[0];
+            applications = user.applications.filter(application => application.applicationDate === currVersion);
+          } else if (req.body["date_applied"].includes("old")) {
+            currVersion = user.last_modified.toString().split("T")[0];
+            applications = user.applications.filter(application => application.applicationDate !== currVersion);
+          } else {
+            applications = user.applications.filter(application => application.applicationDate == req.body["date_applied"]);
+          }
         }
         if (applications.length > 0) {
           res.status(200).send({data: applications, message: "Applications found"});
