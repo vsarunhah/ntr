@@ -58,6 +58,33 @@ export default function ReviewList() {
     setReviews(newReviews);
   }
 
+  async function upvoteReview(id) {
+    const data = {
+      user_id: localStorage.getItem("user_id"),
+      reviewId: id,
+    };
+    await axios
+      .post("http://localhost:5000/review/upvote", data)
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => window.alert(err));
+  }
+
+  async function downvoteReview(id) {
+    const data = {
+      user_id: localStorage.getItem("user_id"),
+      reviewId: id,
+    };
+    await axios
+      .post("http://localhost:5000/review/downvote", data)
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => window.alert(err));
+  }
+
+
   const tagList = [
     "Compensation",
     "Culture",
@@ -158,7 +185,14 @@ export default function ReviewList() {
               <Review
                 review={review}
                 deleteReview={() => deleteReview(review.id)}
+                upvoteReview={() => upvoteReview(review.id)}
+                downvoteReview={() => downvoteReview(review.id)}
+                user={review.user}
                 key={review.id}
+                upvotes={review.upvotes}
+                downvotes={review.downvotes}
+                alreadyUpvoted={review.upvotes.includes(localStorage.getItem("user_id"))}
+                alreadyDownvoted={review.downvotes.includes(localStorage.getItem("user_id"))}
               />
             </Grid>
           ))}

@@ -40,6 +40,7 @@ export default function CreateReview() {
     description: "",
     rating: "0",
     tags: [],
+    user: localStorage.getItem("user_id")
   });
   const navigate = useNavigate();
 

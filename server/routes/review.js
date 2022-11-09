@@ -8,6 +8,7 @@ reviewRoutes.route("/reviews").get(async function (req, res) {
     var reviewsArray = [];
     for (let i = 0; i < reviews.length; i++) {
       for (let j = 0; j < reviews[i].reviews.length; j++) {
+        reviews[i].reviews[j].user = reviews[i]._id;
         reviewsArray.push(reviews[i].reviews[j]);
       }
     }
@@ -25,6 +26,9 @@ reviewRoutes.route("/review/add").post(async function (req, response) {
     description: req.body.newReview.description,
     rating: req.body.newReview.rating,
     tags: req.body.newReview.tags,
+    upvotes: [],
+    downvotes: [],
+    user: req.body.newReview.user,
   };
   let user = await User.findOneAndUpdate(
     { _id: req.body.user_id },
@@ -68,12 +72,84 @@ reviewRoutes.route("/review/update/").post(async function (req, response) {
       "reviews.$.tags": req.body.tags,
     },
   };
-  user = await User.updateOne(
+  user = await User.findOneAndUpdate(
     { _id: req.body.user_id, "reviews.id": req.body.reviewId },
     update_query
   );
 
   response.status(200).send({ message: "review edited" });
+});
+
+reviewRoutes.route("/review/upvote/").post(async function (req, response) {
+  let reviews = await User.find({ reviews: { $ne: [] } }).select("reviews");
+  let review_user = "";
+  let actual_review_list = [];
+  let found = false;
+  for (let i = 0; i < reviews.length; i++) {
+    for (let j = 0; j < reviews[i].reviews.length; j++) {
+      if (reviews[i].reviews[j].id === req.body.reviewId) {
+        if (reviews[i].reviews[j].upvotes.includes(req.body.user_id)) {
+          reviews[i].reviews[j].upvotes.splice(j, 1);
+          review_user = reviews[i]._id;
+          actual_review_list = reviews[i].reviews;
+          found = true;
+          break;
+        } else if (reviews[i].reviews[j].downvotes.includes(req.body.user_id)) {
+          reviews[i].reviews[j].downvotes.splice(j, 1);
+        }
+        reviews[i].reviews[j].upvotes.push(req.body.user_id);
+        review_user = reviews[i]._id;
+        actual_review_list = reviews[i].reviews;
+        found = true;
+        break;
+      }
+      if (found) {
+        break;
+      }
+    }
+  }
+  const resp = await User.findOneAndUpdate(
+    { _id: review_user },
+    { $set: { reviews: actual_review_list } }
+  );
+  response.status(200).send({ message: "review upvoted" });
+});
+
+reviewRoutes.route("/review/downvote/").post(async function (req, response) {
+  let reviews = await User.find({ reviews: { $ne: [] } }).select("reviews");
+  let review_user = "";
+  let actual_review_list = [];
+  let found = false;
+  for (let i = 0; i < reviews.length; i++) {
+    for (let j = 0; j < reviews[i].reviews.length; j++) {
+      if (reviews[i].reviews[j].id === req.body.reviewId) {
+        if (reviews[i].reviews[j].downvotes.includes(req.body.user_id)) {
+          reviews[i].reviews[j].downvotes.splice(j, 1);
+          review_user = reviews[i]._id;
+          actual_review_list = reviews[i].reviews;
+          found = true;
+          break;
+        } else if (reviews[i].reviews[j].upvotes.includes(req.body.user_id)) {
+          reviews[i].reviews[j].upvotes.splice(j, 1);
+        }
+
+        reviews[i].reviews[j].downvotes.push(req.body.user_id);
+        review_user = reviews[i]._id;
+        actual_review_list = reviews[i].reviews;
+        found = true;
+        break;
+      }
+      if (found) {
+        break;
+      }
+    }
+  }
+  const resp = await User.findOneAndUpdate(
+    { _id: review_user },
+    { $set: { reviews: actual_review_list } }
+  );
+  // console.log(resp);
+  response.status(200).send({ message: "review upvoted" });
 });
 
 module.exports = reviewRoutes;
