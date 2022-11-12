@@ -12,6 +12,11 @@ const ManualOrResume = () => {
         console.log("sent : "+path);
         navigate(path);
       }
+      const routeChangeResume = () => { 
+        let path = `/ParseResume`; 
+        console.log("sent : "+path);
+        navigate(path);
+      }
     return (
       
     <Grid>
@@ -25,7 +30,7 @@ const ManualOrResume = () => {
      <Button onClick={routeChange}  variant="contained" color="primary" >Manually </Button>
      </Grid>
     <Grid item xs={6}>
-     <Button variant="contained" color="primary" >Resume </Button>
+     <Button onClick={routeChangeResume} variant="contained" color="primary" >Resume </Button>
     </Grid>
     </Grid>
     </Grid>

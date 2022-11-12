@@ -59,37 +59,62 @@ const selectProps = {
   },
 };
 
-// localStorage.setItem("user_id", "6336395ebee55c95f269e98d");
-
-// if (localStorage.getItem("user_id") === null) {
-//   alert("Please login first");
-//   window.location.href = "/login";
-// }
-
 export default function Applied() {
   const [applications, setApplications] = useState<any[]>([]);
   const falseArray = new Array(applications.length).fill(false);
   const [openArray, setOpenArray] = useState(falseArray);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [companyAnchorEl, setCompanyAnchorEl] = React.useState(null);
+  const [titleAnchorEl, setTitleAnchorEl] = React.useState(null);
+  const [dateAnchorEl, setDateAnchorEl] = React.useState(null);
   const [filter, setFilter] = React.useState("All");
+  
+  const company_names: Set<string> = new Set();
+  const titles: Set<string> = new Set();
+  const dates: Set<string> = new Set(); // TODO: change to date type
   var backupApplications = applications;
 
   const handleFilterClick = (e: any) => {
     setAnchorEl(e.currentTarget);
   };
 
+  const handleCompanyFilterClick = (e: any) => {
+    setCompanyAnchorEl(e.currentTarget);
+  };
+  const handleTitleFilterClick = (e: any) => {
+    setTitleAnchorEl(e.currentTarget);
+  };
+  const handleDateAppliedFilterClick = (e: any) => {
+    setDateAnchorEl(e.currentTarget);
+  
+  };
+
   const handleFilterClose = () => {
     setAnchorEl(null);
+    setCompanyAnchorEl(null);
+    setTitleAnchorEl(null);
+    setDateAnchorEl(null);
+    
+  };
+
+  const handleCompanyFilterClose = () => {
+    setCompanyAnchorEl(null);
+  };
+  const handleTitleFilterClose = () => {
+    setTitleAnchorEl(null);
+  };
+
+  const handleDateFilterClose = () => {
+    setDateAnchorEl(null);
   };
 
   const handleFilterSelect = (e: React.MouseEvent) => {
     setFilter(e.currentTarget.id);
+    console.log(e.currentTarget.id);
     handleFilterClose();
   };
 
   async function deleteApplicationAPI(application: any) {
-    console.log("deleting application", application);
-    console.log(localStorage.getItem("user_id"));
     const response = await fetch(
       `http://localhost:5000/application/delete`,
       {
@@ -110,9 +135,6 @@ export default function Applied() {
   }
 
   function deleteApplication(application_id: number) {
-    console.log(application_id + " was deleted");
-    console.log(applications);
-    console.log(applications[application_id]);
     deleteApplicationAPI(applications[application_id]);
     setApplications(
       applications.filter(
@@ -122,7 +144,6 @@ export default function Applied() {
   }
 
   async function updateApplication(application: any) {
-    console.log("updating application", application);
     const response = await fetch(`http://localhost:5000/application/update`, {
       method: "POST",
       headers: {
@@ -137,7 +158,6 @@ export default function Applied() {
     });
     if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
-      //window.alert(message);
       console.log(message);
       return;
     }
@@ -167,16 +187,35 @@ export default function Applied() {
   // useEffect to get applications from db
   useEffect(() => {
     async function getApplications() {
+      type body = Record<string, string>;
+      let json_body: body = {};
+      json_body["user_id"] = localStorage.getItem("user_id") || "";
+      if (filter.includes("cname")) {
+        const last_ind = filter.lastIndexOf("-");
+        const cname = filter.slice(0, last_ind);
+        json_body["company_name"] = cname;
+      } else if (filter.includes("title")) {
+        const last_ind = filter.lastIndexOf("-");
+        const tit = filter.slice(0, last_ind);
+        json_body["title"] = tit;
+      } else if (filter.includes("date")) {
+        const last_ind = filter.lastIndexOf("-");
+        const date = filter.slice(0, last_ind);
+        json_body["date_applied"] = date;
+      } else if (filter.includes("status")) {
+        const last_ind = filter.lastIndexOf("-");
+        const stat = filter.slice(0, last_ind);
+        json_body["status"] = stat;
+      } else {
+        json_body["status"] = "All";
+      }
       const response = await fetch(`http://localhost:5000/applications/`, {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          user_id: localStorage.getItem("user_id"),
-          status: filter,
-        }),
+        body: JSON.stringify(json_body),
       });
 
       if (!response.ok) {
@@ -187,14 +226,16 @@ export default function Applied() {
       }
 
       const res = await response.json();
-      const applications = res.data;
-      console.log("---------Applications: ", applications);
-      for (let i = 0; i < applications.length; i++) {
-        applications[i].date_applied_formatted = moment(
-          applications[i].date_applied
+      const applications1 = res.data;
+      for (let i = 0; i < applications1.length; i++) {
+        applications1[i].date_applied_formatted = moment(
+          applications1[i].applicationDate
         ).format("DD-MM-YYYY");
+        company_names.add(applications1[i].companyName);
+        titles.add(applications1[i].roleName);
+        dates.add(applications1[i].date_applied_formatted);
       }
-      setApplications(applications);
+      setApplications(applications1);
     }
 
     getApplications();
@@ -203,7 +244,6 @@ export default function Applied() {
     backupApplications = applications;
     return;
   }, [applications.length, filter]);
-
   return (
     <Grid mx={35}>
       <Navbar />
@@ -213,59 +253,203 @@ export default function Applied() {
           <TableHead>
             <TableRow>
               <MyTableCell>
-                <Typography variant="h6">Company Name</Typography>
-              </MyTableCell>
-              <MyTableCell align="center">
-                <Typography variant="h6">Title</Typography>
-              </MyTableCell>
-              <MyTableCell align="center">
-                <Typography variant="h6">Date Applied</Typography>
-              </MyTableCell>
-              <MyTableCell align="center">
-                <Typography variant="h6">Status</Typography>
-              </MyTableCell>
-              <MyTableCell>
-                <IconButton
-                  aria-label="filter"
-                  onClick={handleFilterClick}
-                  title="Open to show more"
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                >
-                  <FilterAltOutlinedIcon />{" "}
-                </IconButton>
-                <Menu
-                  id="filter_menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleFilterClose}
-                >
-                  <MenuItem
-                    value="All"
-                    key="All"
-                    onClick={handleFilterSelect}
-                    id="All"
+              <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                  <Typography variant="h6">Company Name</Typography>
+                  <IconButton
+                    aria-label="filter"
+                    onClick={handleCompanyFilterClick}
+                    title="Open to show more"
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
                   >
-                    <Typography noWrap fontSize={14}>
-                      All
-                    </Typography>
-                  </MenuItem>
-                  {Object.keys(status)
-                    .filter((x) => isNaN(parseInt(x))) // filter out the keys that are numbers because of TS -> JS enum conversion
-                    .map((key) => (
-                      <MenuItem
-                        value={key}
-                        key={key}
-                        onClick={handleFilterSelect}
-                        id={key}
-                      >
-                        <Typography noWrap fontSize={14}>
-                          {key}
-                        </Typography>
-                      </MenuItem>
-                    ))}
-                </Menu>
+                    <FilterAltOutlinedIcon />{" "}
+                  </IconButton>
+                  <Menu
+                    id="filter_by_company"
+                    anchorEl={companyAnchorEl}
+                    keepMounted
+                    open={Boolean(companyAnchorEl)}
+                    onClose={handleCompanyFilterClose}
+                  >
+                    <MenuItem
+                      value="All"
+                      key="All"
+                      onClick={handleFilterSelect}
+                      id="All-cname"
+                    >
+                      <Typography noWrap fontSize={14}>
+                        All
+                      </Typography>
+                    </MenuItem>
+                    {applications.map((key) => (
+                        <MenuItem
+                          value={key.companyName}
+                          key={key.companyName}
+                          onClick={handleFilterSelect}
+                          id={key.companyName + "-cname"}
+                        >
+                          <Typography noWrap fontSize={14}>
+                            {key.companyName}
+                          </Typography>
+                        </MenuItem>
+                      ))
+                      }
+                  </Menu>
+                </div>
+              </MyTableCell>
+              <MyTableCell align="center">
+              <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                 <Typography variant="h6">Title</Typography>
+                  <IconButton
+                    aria-label="filter"
+                    onClick={handleTitleFilterClick}
+                    title="Open to show more"
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                  >
+                    <FilterAltOutlinedIcon />{" "}
+                  </IconButton>
+                  <Menu
+                    id="filter_by_title"
+                    anchorEl={titleAnchorEl}
+                    keepMounted
+                    open={Boolean(titleAnchorEl)}
+                    onClose={handleTitleFilterClose}
+                  >
+                    <MenuItem
+                      value="All"
+                      key="All"
+                      onClick={handleFilterSelect}
+                      id="All-title"
+                    >
+                      <Typography noWrap fontSize={14}>
+                        All
+                      </Typography>
+                    </MenuItem>
+                    {applications.map((key) => (
+                        <MenuItem
+                          value={key.roleName}
+                          key={key.roleName}
+                          onClick={handleFilterSelect}
+                          id={key.roleName + "-title"}
+                        >
+                          <Typography noWrap fontSize={14}>
+                            {key.roleName}
+                          </Typography>
+                        </MenuItem>
+                      ))}
+                  </Menu>
+                </div>
+              </MyTableCell>
+              <MyTableCell align="center">
+              <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                 <Typography variant="h6">Date Applied</Typography>
+                  <IconButton
+                    aria-label="filter"
+                    onClick={handleDateAppliedFilterClick}
+                    title="Open to show more"
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                  >
+                    <FilterAltOutlinedIcon />{" "}
+                  </IconButton>
+                  <Menu
+                    id="filter_by_date"
+                    anchorEl={dateAnchorEl}
+                    keepMounted
+                    open={Boolean(dateAnchorEl)}
+                    onClose={handleDateFilterClose}
+                  >
+                    <MenuItem
+                      value="All"
+                      key="All"
+                      onClick={handleFilterSelect}
+                      id="All-date"
+                    >
+                      <Typography noWrap fontSize={14}>
+                        All
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                      value="Current Resume"
+                      key="curr_resume"
+                      onClick={handleFilterSelect}
+                      id="curr_resume_filter-date"
+                    >
+                      <Typography noWrap fontSize={14}>
+                        Current Resume Versions
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                      value="Old Resume"
+                      key="old_resume"
+                      onClick={handleFilterSelect}
+                      id="old_resume_filter-date"
+                    >
+                      <Typography noWrap fontSize={14}>
+                        Old Resume Versions
+                      </Typography>
+                    </MenuItem>
+                    {applications.map((key) => (
+                        <MenuItem
+                          value={key.date_applied_formatted}
+                          key={key.dateApplied}
+                          onClick={handleFilterSelect}
+                          id={key.date_applied_formatted + "-date"}
+                        >
+                          <Typography noWrap fontSize={14}>
+                            {key.date_applied_formatted}
+                          </Typography>
+                        </MenuItem>
+                      ))}
+                  </Menu>
+                </div>
+              </MyTableCell>
+              <MyTableCell align="center">
+              <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                  <Typography variant="h6">Status</Typography>
+                  <IconButton
+                    aria-label="filter"
+                    onClick={handleFilterClick}
+                    title="Open to show more"
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                  >
+                    <FilterAltOutlinedIcon />{" "}
+                  </IconButton>
+                  <Menu
+                    id="filter_menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleFilterClose}
+                  >
+                    <MenuItem
+                      value="All"
+                      key="All"
+                      onClick={handleFilterSelect}
+                      id="All-status"
+                    >
+                      <Typography noWrap fontSize={14}>
+                        All
+                      </Typography>
+                    </MenuItem>
+                    {Object.keys(status)
+                      .filter((x) => isNaN(parseInt(x))) // filter out the keys that are numbers because of TS -> JS enum conversion
+                      .map((key) => (
+                        <MenuItem
+                          value={key}
+                          key={key}
+                          onClick={handleFilterSelect}
+                          id={key + "-status"}
+                        >
+                          <Typography noWrap fontSize={14}>
+                            {key}
+                          </Typography>
+                        </MenuItem>
+                      ))}
+                  </Menu>
+                </div>
               </MyTableCell>
             </TableRow>
           </TableHead>
@@ -275,24 +459,17 @@ export default function Applied() {
                 application // iterate over all the applications
               ) => (
                 <TableRow
-                  key={application.id} // application_id is the company name
+                  key={application.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <MyTableCell component="th" scope="row">
                     {application.companyName}
                   </MyTableCell>
                   <MyTableCell align="center">
-                    {/* <TextField
-                      id="title" // title you applied for
-                      variant="standard"
-                      defaultValue={application.title}
-                      inputProps={textFieldProps}
-                    /> */}
                     <Typography noWrap fontSize={14}>{application.roleName}</Typography>
                   </MyTableCell>
                   <MyTableCell align="center">
-                    {application.applicationDate}
-                    {/* HIIIIIIII */}
+                    {application.date_applied_formatted}
                   </MyTableCell>
                   <MyTableCell align="center">
                     <FormControl sx={{ width: "12vw", m: 0 }} size={"small"}>
@@ -328,22 +505,9 @@ export default function Applied() {
                   >
                     <IconButton
                       onClick={() => {
-                        console.log("clicked delete button");
-                        console.log("application: ", application);
                         let data = [...openArray];
                         data[application.application_id] = true;
                         setOpenArray(data);
-                        //   openArray.map((x, i) => {
-                        //    // i === application.application_id ? true : x;
-                        //     if (i === application.application_id) {
-                        //       openArray[i] = true;
-                        //     }
-                        //     console.log("i: ", i);
-                        //     console.log("application.application_id: ", application.application_id);
-                        //   }
-                        //   )
-                        //); // open this specific dialog
-                        console.log(openArray);
                       }}
                     >
                       <DeleteOutlineIcon />
@@ -351,11 +515,6 @@ export default function Applied() {
                     <Dialog
                       open={openArray[application.application_id]}
                       onClose={() =>
-                        // setOpenArray(
-                        //   openArray.map((x, i) =>
-                        //     i === application.application_id ? false : x
-                        //   )
-                        // ) 
                         {
                           let data = [...openArray];
                           data[application.application_id] = false;
@@ -378,14 +537,6 @@ export default function Applied() {
                       <DialogActions>
                         <Button
                           onClick={() =>
-                            // setOpenArray(
-                            //   openArray.map((x, i) => {
-                            //     i === application.application_id ? false : x;
-                            //     console.log("i: ", i);
-                            //   }
-                                
-                            //   )
-                            // )
                             {
                               let data = [...openArray];
                               data[application.application_id] = false;

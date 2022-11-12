@@ -29,7 +29,9 @@ import Applied from "./components/applied";
 import SampleForm from "./components/sampleForm";
 
 import PersonalWebsiteEdit from "./pages/PersonalWebsite/PersonalWebsiteEdit";
+import PersonalWebsiteView from "./pages/PersonalWebsite/PersonalWebsiteView";
 import PersonalWebsite from "./pages/PersonalWebsite/PersonalWebsite";
+import ParserResume from "./pages/Profile/ParseResume";
 
 import Salary from "./components/Salary/salary";
 
@@ -67,8 +69,10 @@ const App = () => {
         <Route path="/applied" element={<Applied />} />
         <Route path="/sampleForm" element={<SampleForm />} />
         <Route path="/personalwebsiteedit" element={<PersonalWebsiteEdit />} />
+        <Route path="/personalwebsiteview" element={<PersonalWebsiteView />} />
         <Route path="/personalwebsite" element={<PersonalWebsite />} />
         <Route path="/salary" element={<Salary />} />
+        <Route path="/ParseResume" element={<ParserResume />} />
       </Routes>
     </div>
   );

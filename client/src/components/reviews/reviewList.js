@@ -7,6 +7,22 @@ import Navbar from "../../components/Navbar/Navbar";
 import { Review } from "./reviewCard";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 export default function ReviewList() {
   const [reviews, setReviews] = useState([]);
@@ -42,18 +58,71 @@ export default function ReviewList() {
     setReviews(newReviews);
   }
 
-  const filterReviews = (query, reviews) => {
-    if (!query) {
+  async function upvoteReview(id) {
+    const data = {
+      user_id: localStorage.getItem("user_id"),
+      reviewId: id,
+    };
+    await axios
+      .post("http://localhost:5000/review/upvote", data)
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => window.alert(err));
+  }
+
+  async function downvoteReview(id) {
+    const data = {
+      user_id: localStorage.getItem("user_id"),
+      reviewId: id,
+    };
+    await axios
+      .post("http://localhost:5000/review/downvote", data)
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => window.alert(err));
+  }
+
+
+  const tagList = [
+    "Compensation",
+    "Culture",
+    "Work/Life Balance",
+    "Benefits",
+    "Management",
+    "Career Growth",
+    "Diversity",
+  ];
+
+  const filterReviews = (query, tags, reviews) => {
+    if (!query && (!tags || tags.length == 0)) {
       return reviews;
     } else {
-      return reviews.filter((review) =>
-        review.companyName.toLowerCase().includes(query)
-      );
+      let search = reviews;
+      if (query) {
+        search = search.filter((review) =>
+          review.companyName.toLowerCase().includes(query)
+        );
+      }
+      if (tags && tags.length != 0) {
+        search = search.filter((review) => {
+          let found = false;
+          Array.from(tags).forEach((tag) => {
+            if (review.tags.includes(tag)) {
+              found = true;
+            }
+          });
+          return found;
+        });
+      }
+      return search;
     }
   };
 
   const [searchQuery, setSearchQuery] = useState("");
-  const filteredReviews = filterReviews(searchQuery, reviews);
+  const [tagQuery, updateTagQuery] = useState([]);
+  const filteredReviews = filterReviews(searchQuery, tagQuery, reviews);
 
   return (
     <Grid mx={25}>
@@ -74,7 +143,8 @@ export default function ReviewList() {
             label="Search by company name"
           />
         </Grid>
-        <Grid item sx={{ position: "absolute", top: 157, right: 800 }}>
+
+        <Grid item sx={{ }}>
           <Box
             sx={{
               display: "flex",
@@ -89,6 +159,24 @@ export default function ReviewList() {
             <SearchIcon fontSize="medium" />
           </Box>
         </Grid>
+        <Grid>
+        <FormControl sx={{ width: 300, marginLeft: '5vw', marginTop: '1.75vh' }}>
+            <InputLabel>Tags</InputLabel>
+            <Select
+              multiple
+              value={Array.from(tagQuery)}
+              onChange={(e) => updateTagQuery(Array.from(e.target.value))}
+              input={<OutlinedInput label="Tags" />}
+              MenuProps={MenuProps}
+            >
+              {tagList.map((tag) => (
+                <MenuItem key={tag} value={tag}>
+                  {tag}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
       </Grid>
       <ul>
         <Grid container direction="row" spacing={2} style={{ margin: "20px" }}>
@@ -97,7 +185,14 @@ export default function ReviewList() {
               <Review
                 review={review}
                 deleteReview={() => deleteReview(review.id)}
+                upvoteReview={() => upvoteReview(review.id)}
+                downvoteReview={() => downvoteReview(review.id)}
+                user={review.user}
                 key={review.id}
+                upvotes={review.upvotes}
+                downvotes={review.downvotes}
+                alreadyUpvoted={review.upvotes.includes(localStorage.getItem("user_id"))}
+                alreadyDownvoted={review.downvotes.includes(localStorage.getItem("user_id"))}
               />
             </Grid>
           ))}

@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  Button,
   Box,
   Typography,
   Grid,
   Card,
   CardContent,
-  Divider,
   CardActions,
 } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -21,6 +19,10 @@ import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import GroupsIcon from "@mui/icons-material/Groups";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import ThumbDownAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined';
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 
 const styles = {
   card: {
@@ -157,12 +159,44 @@ const Review = (props) => (
             <Grid item>
               <IconButton
                 className="btn btn-link"
+                onClick={() => {
+                  props.upvoteReview(props.review.user);
+                }}
+              >
+                {props.alreadyUpvoted ? <ThumbUpIcon /> : <ThumbUpAltOutlinedIcon />}
+              </IconButton>
+              <Typography
+            className={"MuiTypography--subheading"}
+            variant={"caption"}
+          >
+            {props.review.upvotes ? props.review.upvotes.length : 0}
+          </Typography>
+            </Grid>
+            <Grid item>
+              <IconButton
+                className="btn btn-link"
+                onClick={() => {
+                  props.downvoteReview(props.review.user);
+                }}
+              >
+                {props.alreadyDownvoted ? <ThumbDownIcon /> : <ThumbDownAltOutlinedIcon />}
+              </IconButton>
+              <Typography
+            className={"MuiTypography--subheading"}
+            variant={"caption"}
+          >
+            {props.review.downvotes ? props.review.downvotes.length : 0}
+          </Typography>
+            </Grid>
+            {props.user == localStorage.getItem("user_id") && <Grid item>
+              <IconButton
+                className="btn btn-link"
                 component={Link}
                 to={`/review/edit/${props.review.id}`}
               >
                 <EditOutlinedIcon />
               </IconButton>
-            </Grid>
+            </Grid>}
             <Grid item>
               <IconButton
                 className="btn btn-link"

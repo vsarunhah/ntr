@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import {Divider, DialogActions, DialogContent, DialogContentText, DialogTitle, Dialog, Button, Box, Typography } from '@mui/material';
+import {Card, Divider, Button, Box, Typography,CardContent } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -7,36 +7,24 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Navbar from '../../components/Navbar/Navbar'
 import CoPresentRoundedIcon from '@mui/icons-material/CoPresentRounded';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
-import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import MuiDialog from '../../components/DialogueBox/Confirmation'
-
-
 const PersonalWebsiteEdit = () => {
 
 
-
-    const viewAllThemes = (index) => {
-      MuiDialog();
-    }
-
-    const changeTheme = (index) => {
-     //MuiDialog();
-    }
-
-    const [open, setOpen] = useState(false)
-
     const openInNewTab = url => {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    };
+        window.open('/personalwebsite/', '_blank', 'noopener,noreferrer');
+      };
     //use this once the id comes
     let navigate = useNavigate();
     const routeChange = () => { 
-        let path = `/personalwebsiteview/`; 
+        let path = `/personalwebsiteedit/`; 
         navigate(path);
       }
-    
+
       const [personalWebsite, setPersonalWebsite] = useState({
         showProfile: true,
         showEducation: true,
@@ -47,7 +35,7 @@ const PersonalWebsiteEdit = () => {
         theme: "pink",
         user_id : localStorage.getItem("user_id"),
       });
-
+    
       const [profile, setProfile] = useState({
         first_name: "",
         last_name: "",
@@ -157,7 +145,6 @@ const PersonalWebsiteEdit = () => {
            console.log(res.data);
            setPersonalWebsite(res.data);
          });
-         //should i copy the above? need to make get_personalWebsite in db functions 
         }
       
         fetchData();
@@ -165,51 +152,21 @@ const PersonalWebsiteEdit = () => {
         return;
       }, []);
 
-      const submit = async (e) => {
-        e.preventDefault();
-        console.log(experiences);
-        console.log(educations);
-        // SEND EXPERIENCES AND EDUCATIONS TO SERVER
-        const data = {
-          user_id: localStorage.getItem('user_id'),
-          personalWebsite: personalWebsite,
-        }
-        try {
-          await axios
-            .post("http://localhost:5000/profile/add", data)
-            .then((res) => {
-              console.log(res.data);
-            });
-        } catch (error) {
-          console.log("oops");
-        }
-        // RETRIEVE EXPERIENCES
-        try {
-          const { data: res } = await axios.post("http://localhost:5000/profile/get_personalWebsite", data);
-          console.log(data);
-          console.log(res);
-          // data.map((i)=> {console.log("i : ", i)});
-        } catch (error) {
-          console.log(error);
-          console.log("oops");
-        }
     
-        routeChange();
-      }
-
-      
+    const [style, setStyle] = useState({display: 'none'});
 
     const styles = {
       circlePink: {
         display: 'inline-block',
         width: '50px',
         height: '50px',
+        //backgroundColor: '#ffafcc',
         background:'linear-gradient(to right bottom, #ffafcc, #430089)',
         borderRadius: 50,
         margin:'10px',
-        //border: '3px solid black',
         border: personalWebsite.theme == "pink" ? '3px solid black': '1px solid white'
       },
+
 
       circlePurple: {
         display: 'inline-block',
@@ -238,36 +195,41 @@ const PersonalWebsiteEdit = () => {
     };
 
     return (
-      <Grid mx ={35}>
+      <Grid mx={35}>
       <Navbar />
-
      <Box my={10}>
+    </Box>
+
+    <Button style={{margin:'10px'}} onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
+        Edit
+      </Button>
+
+      <Button onClick={openInNewTab} variant="outlined" startIcon={<CoPresentRoundedIcon /> } >
+        View Website
+      </Button>
+
+      <Box my={10}>
     </Box>
     <Typography gutterBottom variant="h4">
         Chosen Theme: 
     </Typography>
-    <div style={styles.circlePink} onClick={(e) => setPersonalWebsite({...personalWebsite, theme: "pink"})} >
+    <div style={styles.circlePink}>
     </div>
-    <div style={styles.circlePurple} onClick={(e) => setPersonalWebsite({...personalWebsite, theme: "purple"})}>
+    <div style={styles.circlePurple}>
     </div>
-    <div style={styles.circleBlue} onClick={(e) => setPersonalWebsite({...personalWebsite, theme: "blue"})}>
+    <div style={styles.circleBlue}>
     </div>
-    <Box my={1}>
-    </Box>
-      <MuiDialog></MuiDialog>
+    <Box my={2}>
+       </Box>
+    <Divider></Divider>
     <Box my={10}>
     </Box>
-    <Grid container direction="row" >
-      <Typography gutterBottom variant="h4">
+    <Typography gutterBottom variant="h4">
         Profile
       </Typography>
-      <Button color="primary" onClick={(e) => setPersonalWebsite({...personalWebsite, showProfile: !personalWebsite.showProfile})} startIcon={<VisibilityIcon />}> </Button>
-      </Grid>
       <div>
       {
-       
-
-       personalWebsite.showProfile ? <Grid><Typography  variant="body1" color="textSecondary">
+        personalWebsite.showProfile ? <Grid><Typography  variant="body1" color="textSecondary">
         <Box fontWeight='fontWeightBold' display='inline'>First Name:</Box> {profile.first_name}
        </Typography>
 
@@ -285,24 +247,20 @@ const PersonalWebsiteEdit = () => {
 
        <Typography variant="body1" color="textSecondary">
        <Box fontWeight='fontWeightBold' display='inline'>Address:</Box>  {profile.address}
-        </Typography>  
-        </Grid>: null
-      
-
-      }
-      </div>
-      <Box my={2}>
+       </Typography></Grid>:null
+       }
+       </div>
+       <Box my={2}>
        </Box>
 
        <Divider></Divider>
+
        <Box my={10}>
       </Box>
-      <Grid container direction="row" >
-      <Typography gutterBottom variant="h4">
+
+       <Typography gutterBottom variant="h4">
         Experiences
       </Typography>
-      <Button color="primary" onClick={(e) => setPersonalWebsite({...personalWebsite, showExperiences: !personalWebsite.showExperiences})}  startIcon={<VisibilityIcon />}> </Button>
-      </Grid>
       <div>
       {
        
@@ -337,8 +295,7 @@ const PersonalWebsiteEdit = () => {
         <Divider></Divider>
         </div>
         ))
-      }
-      </div>
+      }</div>
       : null
       
 
@@ -346,20 +303,18 @@ const PersonalWebsiteEdit = () => {
       </div>
 
 
+
        <Box my={10}>
       </Box>
 
-      <Grid container direction="row" >
       <Typography gutterBottom variant="h4">
         Skills
       </Typography>
-      <Button color="primary" onClick={(e) => setPersonalWebsite({...personalWebsite, showSkills: !personalWebsite.showSkills})}  startIcon={<VisibilityIcon />}> </Button>
-      </Grid>
       <div>
       {
-         personalWebsite.showSkills ?
-         <div>
-       <div class="container" style={{display: "flex" , flexWrap: 'wrap'}}>
+        personalWebsite.showSkills ?
+        <div>
+      <div class="container" style={{display: "flex" , flexWrap: 'wrap'}}>
       {skills.map(skill => (
           <div key={skill.index}>
                 <br></br>
@@ -369,8 +324,8 @@ const PersonalWebsiteEdit = () => {
        </div>
         ))
       }</div>
-       </div>
-       : null
+      </div>
+      : null
       
 
       }
@@ -380,18 +335,16 @@ const PersonalWebsiteEdit = () => {
       <Divider></Divider>
 
 
-    
 
-     <Box my={10}>
+    
+     <Box my={10} mx={30}>
     </Box>
 
     
-    <Grid container direction="row" >
-      <Typography gutterBottom variant="h4">
+    <Typography gutterBottom variant="h4">
         Education
       </Typography>
-      <Button color="primary" onClick={(e) => setPersonalWebsite({...personalWebsite, showEducation: !personalWebsite.showEducation})} startIcon={<VisibilityIcon />}> </Button>
-      </Grid>
+
       <div>
       {
        
@@ -401,7 +354,7 @@ const PersonalWebsiteEdit = () => {
       {educations.map(education => (
           <div key={education.index}>
                 <br></br>
-                <Typography  variant="body1" color="textSecondary">
+      <Typography  variant="body1" color="textSecondary">
       <Box fontWeight='fontWeightBold' display='inline'>Insitute Name: </Box>{education.university}
        </Typography>
 
@@ -432,7 +385,6 @@ const PersonalWebsiteEdit = () => {
        </Box>
 
        <Divider></Divider>
-  
        </div>
        ))
      }</div>
@@ -446,12 +398,10 @@ const PersonalWebsiteEdit = () => {
       </Box>
 
 
-      <Grid container direction="row" >
       <Typography gutterBottom variant="h4">
         Projects
       </Typography>
-      <Button color="primary" onClick={(e) => setPersonalWebsite({...personalWebsite, showProjects: !personalWebsite.showProjects})} startIcon={<VisibilityIcon />}> </Button>
-      </Grid>
+
       <div>
       {
        
@@ -461,7 +411,7 @@ const PersonalWebsiteEdit = () => {
       {projects.map(project => (
           <div key={project.index}>
                 <br></br>
-                <Typography  variant="body1" color="textSecondary">
+      <Typography  variant="body1" color="textSecondary">
       <Box fontWeight='fontWeightBold' display='inline'>Project Name: </Box> {project.name}
        </Typography>
 
@@ -491,19 +441,17 @@ const PersonalWebsiteEdit = () => {
      <Box my={10}>
       </Box>
 
-    <Grid container direction="row" >
+
       <Typography gutterBottom variant="h4">
         Links
       </Typography>
-      <Button color="primary" onClick={(e) => setPersonalWebsite({...personalWebsite, showLinks: !personalWebsite.showLinks})}  startIcon={<VisibilityIcon />}> </Button>
-      </Grid>
       <div>
       {
        
 
        personalWebsite.showLinks ?
        <div>
-       <div class="container" style={{display: "flex"}}>
+        <div class="container" style={{display: "flex"}}>
       {links.map(link => (
           <div key={link.index}>
           <br></br>
@@ -529,10 +477,7 @@ const PersonalWebsiteEdit = () => {
       </Box>
 
 
-      <Button onClick={submit} variant="outlined" startIcon={<SaveOutlinedIcon /> } >
-        Save
-      </Button>
-
+      
     </Grid>
     
     )

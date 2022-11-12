@@ -32,6 +32,12 @@ export default function Navbar() {
              <NavLink className="nav-link" to="/create">
                Create Record
              </NavLink>
+             <NavLink className="nav-link" to="/profile">
+               Profile
+             </NavLink>
+             <NavLink className="nav-link" to="/display">
+               Display Profile
+             </NavLink>
            </li>
          </ul>
        </div>

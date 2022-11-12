@@ -6,4 +6,6 @@ const reviewSchema = new mongoose.Schema({
     description: String,
     rating: Number,
     tags: [String],
+    upvotes: [String],
+    downvotes: [String]
 });

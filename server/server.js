@@ -18,6 +18,7 @@ app.use(require("./routes/project"));
 app.use(require("./routes/applications"));
 app.use(require("./routes/google"));
 app.use(require("./routes/profile"));
+app.use(require("./routes/parser"));
 // get driver connection
 const dbo = require("./db/conn");
 

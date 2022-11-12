@@ -10,6 +10,7 @@ const projectSchema = require('./project.js');
 const reviewSchema = require('./review.js');
 const linksSchema = require('./links.js');
 const skillsSchema = require('./skills.js');
+const personalWebsiteSchema = require('./personalwebsite.js');
 
 
 
@@ -17,7 +18,10 @@ const userSchema = mongoose.Schema({
     name: String,
     firstName: String,
     lastName: String,
-    address: String,
+    address_line: String,
+    city: String,
+    state: String,
+    postal_code: Number,
     email: {type: String, required: true, unique: true},
     profileEmail: String,
     verified: {type: Boolean, default: false},
@@ -30,6 +34,8 @@ const userSchema = mongoose.Schema({
     educations: [educationSchema],
     applications: [applicationSchema],
     reviews: [reviewSchema],
+    personalWebsite: personalWebsiteSchema,
+    last_modified: Date,
 });
 
 userSchema.methods.generateAuthToken = function() {
