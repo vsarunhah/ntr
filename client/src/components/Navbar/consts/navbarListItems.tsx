@@ -7,6 +7,7 @@ import ReviewsRoundedIcon from '@mui/icons-material/ReviewsRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import AppRegistrationRoundedIcon from '@mui/icons-material/AppRegistrationRounded';
 import CoPresentRoundedIcon from '@mui/icons-material/CoPresentRounded';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 export const mainNavbarItems = [
     {
@@ -32,6 +33,12 @@ export const mainNavbarItems = [
         icon: <CoPresentRoundedIcon />,
         label: 'Website',
         route: '/personalwebsiteedit',
+    },
+    {
+        id: 4,
+        icon: <AttachMoneyIcon />,
+        label: 'Salary',
+        route: '/salary',
     },
 
 ]
