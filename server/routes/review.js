@@ -42,7 +42,6 @@ reviewRoutes.route("/reviews/get").post(async function (req, res) {
   let review = await User.findOne({
     _id: req.body.user_id,
   }).select("reviews");
-  console.log("review: ", review);
   res.json(review.reviews.find((r) => r.id === req.body.reviewId));
 });
 
@@ -148,7 +147,6 @@ reviewRoutes.route("/review/downvote/").post(async function (req, response) {
     { _id: review_user },
     { $set: { reviews: actual_review_list } }
   );
-  // console.log(resp);
   response.status(200).send({ message: "review upvoted" });
 });
 
