@@ -34,6 +34,7 @@ import PersonalWebsite from "./pages/PersonalWebsite/PersonalWebsite";
 import ParserResume from "./pages/Profile/ParseResume";
 
 import Salary from "./components/Salary/salary";
+import SalaryPage from "./components/Salary/salaryPage";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -73,6 +74,7 @@ const App = () => {
         <Route path="/personalwebsite" element={<PersonalWebsite />} />
         <Route path="/salary" element={<Salary />} />
         <Route path="/ParseResume" element={<ParserResume />} />
+        <Route path="/salary" element={<SalaryPage />} />
       </Routes>
     </div>
   );
