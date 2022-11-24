@@ -17,21 +17,18 @@ export default function SalaryPage() {
 
   const [salary, setSalary] = useState("");
 
-  //runs on first render only
-  useEffect(async () => {
+  useEffect(() => {
+    // declare the data fetching function
     const getSalary = async () => {
       const sal = await scrapeSalary();
       console.log("sal: ", sal.data);
       setSalary(sal.data);
     };
-
-    getSalary();
-    return;
-  }, []);
-
-  // useEffect(() => {
-  //   setSalary("25k");
-  // }, []);
+  
+    getSalary()
+      .catch(console.error);
+  }, [])
+  
 
   return (
     <Grid mx={25}>
@@ -41,6 +38,7 @@ export default function SalaryPage() {
       </Typography>
       <Typography variant="body2" style={{ margin: "70px" }}>
         {salary}
+        HELLO
       </Typography>
     </Grid>
   );
