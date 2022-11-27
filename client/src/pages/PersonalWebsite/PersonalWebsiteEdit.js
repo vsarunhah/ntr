@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import {Divider, DialogActions, DialogContent, DialogContentText, DialogTitle, Dialog, Button, Box, Typography } from '@mui/material';
+import {MenuItem, Select, InputLabel, FormControl, FormControlLabel, FormGroup, Checkbox, TextField, Divider, DialogActions, DialogContent, DialogContentText, DialogTitle, Dialog, Button, Box, Typography } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import MuiDialog from '../../components/DialogueBox/Confirmation'
+import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 
 
 const PersonalWebsiteEdit = () => {
@@ -309,35 +311,100 @@ const PersonalWebsiteEdit = () => {
 
        personalWebsite.showExperiences ?
        <div>
-      {experiences.map(experience => (
-          <div key={experience.index}>
-        <br></br>
+        <form onSubmit={submit}>
+        {experiences.map((form, index) => {
+          return (
+            
+            <div key={index}>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6}>
+              <TextField placeholder="Google" 
+              label="Employer Name" 
+              variant="outlined" fullWidth
+              name='company_name'
+              //onChange={event => handleExperienceChange(event, index)}
+              value={form.company_name}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField placeholder="Software Engineer" 
+              label="Position" 
+              variant="outlined" fullWidth
+              name='title'
+              //onChange={event => handleExperienceChange(event, index)}
+              value={form.title}
+            />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField placeholder="San Diego" 
+              label="Location" 
+              variant="outlined" fullWidth
+              name="location"
+              value={form.location}
+              //onChange={event => handleExperienceChange(event, index)}
+            />
+            </Grid>
+            <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="I currently work here" value={form.current_job }/>
+            </FormGroup>
+            <Grid item xs={12} sm={6}>
+            <TextField
+              id="date"
+              label="Start date"
+              name="start_date"
+              value={form.start_date}
+              type="date"
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              //onChange={event => handleExperienceChange(event, index)}
+            />       
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="date"
+              label="End date"
+              name="end_date"
+              value={form.end_date}
+              type="date"
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              //onChange={event => handleExperienceChange(event, index)}
+            />       
+          </Grid>
+          <Grid item xs={12}>
+            <TextField multiline rows={4} placeholder="" label="Description" 
+            variant="outlined" fullWidth
+            name="description"
+            value={form.description} 
+            //onChange={event => handleExperienceChange(event, index)}
+            />
+          </Grid>
+
+              
+              <Grid item xs={12} sm={6}>
+                <Button 
+                //onClick={() => removeExperiences(index)} 
+                color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+              </Grid>
+              <Box my={2}>
+            </Box>
+            </div>
+            
+          )
+        })}
+        </form>
         <Grid item xs={12} sm={6}>
-        <Typography variant="body1" color="textSecondary">
-        <Box fontWeight='fontWeightBold' display='inline'>Employer Name: </Box>{experience.company_name}
-       </Typography> 
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Position: </Box> {experience.title}
-       </Typography> 
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Location: </Box> {experience.location}
-       </Typography> 
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Start Date: </Box> {experience.start_date}
-       </Typography> 
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>End Date: </Box> {experience.end_date}
-       </Typography> 
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Description: </Box> {experience.description}
-       </Typography> 
-        </Grid>
-        <Box my={2}>
-       </Box>
-        <Divider></Divider>
-        </div>
-        ))
-      }
+        <Button 
+        //onClick={addExperiences} 
+        color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
       </div>
       : null
       
@@ -358,18 +425,44 @@ const PersonalWebsiteEdit = () => {
       <div>
       {
          personalWebsite.showSkills ?
+         <form onSubmit={submit}>
          <div>
        <div class="container" style={{display: "flex" , flexWrap: 'wrap'}}>
-      {skills.map(skill => (
-          <div key={skill.index}>
-                <br></br>
-      <Typography variant="body1" color="textSecondary">
-         {skill.skill } &nbsp;
-       </Typography>  
+       
+       {skills.map((form, index) => {
+          return (
+            
+        <div key={index}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={6} >
+          <TextField name = 'skill' placeholder="Java" label="Skills" variant="outlined" fullWidth required value={form.skill}
+           //onChange={event => handleSkillChange(event, index)}
+           />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+                <Button 
+                //onClick={() => removeSkills(index)} 
+                color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+        </Grid>
+        <Box my={1}>
+        </Box>
+        </div>
+        
+          )
+        })}
+        
+
+      </div>
+        
        </div>
-        ))
-      }</div>
-       </div>
+       <Grid item xs={12} sm={6}>
+        <Button 
+        //onClick={addSkills} 
+        color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
+       </form>
+       
        : null
       
 
@@ -397,45 +490,99 @@ const PersonalWebsiteEdit = () => {
        
 
        personalWebsite.showEducation ?
+       <form onSubmit={submit}>
        <div>
-      {educations.map(education => (
-          <div key={education.index}>
-                <br></br>
-                <Typography  variant="body1" color="textSecondary">
-      <Box fontWeight='fontWeightBold' display='inline'>Insitute Name: </Box>{education.university}
-       </Typography>
-
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Degree: </Box> {education.degree}
-       </Typography>
-
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Major: </Box> {education.major}
-       </Typography>
-
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Minor: </Box> {education.minor}
-       </Typography>
-       
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>GPA: </Box>{education.gpa}
-       </Typography>
-       
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Start Date: </Box> {education.start_date}
-       </Typography>
-
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>End Date: </Box> {education.end_date}
-       </Typography>
-       <Box my={2}>
-       </Box>
-
-       <Divider></Divider>
-  
-       </div>
-       ))
-     }</div>
+      {educations.map((form, index) => {
+          return (
+            <div key={index}>
+              <Grid container spacing={1}>
+                <Grid xs={12} sm={6} item>
+                <TextField name='university'
+                //onChange={event => handleEducationChange(event, index)}
+                value={form.university}
+                placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth
+                />
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Degree</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      label="Degree"
+                      name="degree"
+                      placeholder='Degree'
+                      //onChange={event => handleEducationChange(event, index)}
+                      value={form.degree} 
+                    >
+                      <MenuItem value={'Bachelors'} >Bachelors</MenuItem>
+                      <MenuItem value={'Masters'} >Masters</MenuItem>
+                      <MenuItem value={'PHD'} >PHD</MenuItem>
+                    </Select>
+                  </FormControl>                
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField placeholder="Software Engineering" label="Major" variant="outlined" fullWidth
+                name='major'
+                //onChange={event => handleEducationChange(event, index)}
+                value={form.major}/>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField name = "minor" placeholder="Art and Design Studio" label="Minor" variant="outlined" fullWidth value={educations.minor}
+                //onChange={event => handleEducationChange(event, index)}
+                />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                  <TextField name = "gpa" type="number" placeholder="4.0" label="GPA" variant="outlined" fullWidth  value={form.gpa}
+                //onChange={event => handleEducationChange(event, index)}
+                />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    id="date"
+                    label="Start date"
+                    type="date"
+                    name="start_date"
+                    value={form.start_date}
+                    //onChange={event => handleEducationChange(event, index)}
+                    defaultValue="2017-05-24"
+                    sx={{ width: 220 }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />       
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    id="date"
+                    label="End date"
+                    type="date"
+                    name="end_date"
+                    value={form.end_date}
+                    //onChange={event => handleEducationChange(event, index)}
+                    defaultValue="2017-05-24"
+                    sx={{ width: 220 }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />       
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Button 
+                //onClick={() => removeEducations(index)} 
+                color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+            </div>
+          )
+        })}
+        <Grid item xs={12} sm={6}>
+        <Button 
+        //onClick={addEducations} 
+        color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+        </Grid>
+        </div>
+        </form>
      : null
      
 
@@ -457,31 +604,70 @@ const PersonalWebsiteEdit = () => {
        
 
        personalWebsite.showProjects ?
+       <form onSubmit={submit}>
        <div>
-      {projects.map(project => (
-          <div key={project.index}>
-                <br></br>
-                <Typography  variant="body1" color="textSecondary">
-      <Box fontWeight='fontWeightBold' display='inline'>Project Name: </Box> {project.name}
-       </Typography>
+      {projects.map((form, index) => {
+          return (
+            
+        <div key={index}>
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={6}>
+            <TextField name= "name" placeholder="Chefly" label="Project Name" variant="outlined" fullWidth value = {form.name}
+              //onChange={event => handleProjectChange(event, index)}
+              />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name= "start_date"
+              id="date"
+              label="Start date"
+              type="date"
+              value = {form.start_date}
+              //onChange={event => handleProjectChange(event, index)}
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />       
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name= "end_date"
+              id="date"
+              label="End date"
+              type="date"
+              value = {form.end_date}
+              //onChange={event => handleProjectChange(event, index)}
+              defaultValue="2017-05-24"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />       
+          </Grid>
+          <Grid item xs={12}>
+            <TextField name= "description" multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth  value = {form.description}
+              //onChange={event => handleProjectChange(event, index)}
+              />
+          </Grid>
 
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Start Date: </Box> {project.start_date}
-       </Typography>
-       
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>End Date: </Box> {project.end_date}
-       </Typography>
-       
-       <Typography variant="body1" color="textSecondary">
-       <Box fontWeight='fontWeightBold' display='inline'>Description: </Box> {project.description}
-       </Typography>  
-       <Box my={2}>
-       </Box>
-        <Divider></Divider>
-       </div>
-       ))
-     }</div>
+          <Grid item xs={12} sm={6}>
+                <Button 
+                //onClick={() => removeProjects(index)} 
+                color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+        </Grid>
+        </div>
+          )
+        })}
+        <Grid item xs={12} sm={6}>
+        <Button 
+        //</Grid>onClick={addProjects} 
+        color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+        </Grid>
+        </div>
+        </form>
      : null
      
 
@@ -502,19 +688,36 @@ const PersonalWebsiteEdit = () => {
        
 
        personalWebsite.showLinks ?
+       <form onSubmit={submit}>
        <div>
        <div class="container" style={{display: "flex"}}>
-      {links.map(link => (
-          <div key={link.index}>
-          <br></br>
-      <Typography variant="body1" color="textSecondary">
-      <Box fontWeight='fontWeightBold' display='inline'> {link.link} | </Box>
-       </Typography>  
+       {links.map((form, index) => {
+          return (
+            
+        <div key={index}>
+      <Grid container spacing={1}>
+          <TextField name = "link" placeholder="LinkedIn" label="link" variant="outlined" fullWidth required value={form.link}
+           //onChange={event => handleLinkChange(event, index)}
+           />
 
-       </div>
-       ))
-     }</div>
+        <Grid item xs={12} sm={6}>
+               <Button //</Grid>onClick={() => removeLinks(index)} 
+                color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
+              </Grid>
+        </Grid>
+        <Box my={1}>
+        </Box>
+        </div>
+          )
+        })}</div>
+        <Grid>
+        <Button 
+        //</Grid>onClick={addLinks} 
+        color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
+      </Grid>
      </div>
+     
+     </form>
      : null
      
 
@@ -532,6 +735,8 @@ const PersonalWebsiteEdit = () => {
       <Button onClick={submit} variant="outlined" startIcon={<SaveOutlinedIcon /> } >
         Save
       </Button>
+      <Box my={10}>
+       </Box>
 
     </Grid>
     
