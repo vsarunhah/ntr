@@ -308,7 +308,7 @@ const PersonalWebsiteEdit = () => {
       </Box>
 
       <Typography gutterBottom variant="h4">
-        Skills
+        Skills fgfgdg
       </Typography>
       <div>
       {
