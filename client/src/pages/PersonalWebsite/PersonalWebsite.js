@@ -104,23 +104,13 @@ import { v4 as uuidv4 } from 'uuid';
          };
          console.log("user profile : ", user_profile);
          setProfile(user_profile);
-         setLinks(res.data.links);
-         setSkills(res.data.skills);
        });
-        await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-         console.log("inside experiences post req");
-         console.log(res.data);
-         setExperiences(res.data);
-       });
-       await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-         console.log("inside educations post req");
-         console.log(res.data);
-         setEducations(res.data);
-       });
-       await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-         console.log("inside projects post req");
-         console.log(res.data);
-         setProjects(res.data);
+       await axios.post("http://localhost:5000/profile/get_websiteDetails", data).then((res) => {
+        setLinks(res.data.links);
+        setSkills(res.data.skills);
+         setExperiences(res.data.experiences);
+         setEducations(res.data.educations);
+         setProjects(res.data.projects);
        });
        await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
            console.log("inside personal website post req");

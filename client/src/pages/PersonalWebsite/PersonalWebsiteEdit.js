@@ -106,6 +106,119 @@ const PersonalWebsiteEdit = () => {
           link: "",
         },
       ])
+      const handleExperienceChange = (event, index) => {
+        let data = [...experiences];
+        data[index][event.target.name] = event.target.value;
+        setExperiences(data);
+      }
+    
+      const handleEducationChange = (event, index) => {
+        let data = [...educations];
+        data[index][event.target.name] = event.target.value;
+        setEducations(data);
+      }
+    
+      const handleProjectChange = (event, index) => {
+        let data = [...projects];
+        data[index][event.target.name] = event.target.value;
+        setProjects(data);
+      }
+    
+      const handleSkillChange = (event, index) => {
+        let data = [...skills];
+        data[index][event.target.name] = event.target.value;
+        setSkills(data);
+      }
+      const handleLinkChange = (event, index) => {
+        let data = [...links];
+        data[index][event.target.name] = event.target.value;
+        setLinks(data);
+      }
+      const addExperiences = () => {
+        let object = {
+          id: uuidv4(), 
+          title: "", 
+          company_name: "", 
+          start_date: "", 
+          end_date: "", 
+          current_job: "",
+          description: "",
+          location: ""
+        }
+    
+        setExperiences([...experiences, object])
+      }
+      
+  const addEducations = () => {
+    let object = {
+      id: uuidv4(), 
+      university: "",
+      degree: "",
+      start_date: "",
+      end_date: "",
+      major: "",
+      minor: "",
+      gpa: "",
+      other: "",
+    }
+
+    setEducations([...educations, object])
+  }
+
+  const addProjects = () => {
+    let object = {
+      id: uuidv4(),
+      name: "", 
+      start_date: "", 
+      end_date: "",
+      description: "",
+    }
+
+    setProjects([...projects, object])
+  }
+
+  const addSkills = () => {
+    let object = {
+      skill : ""
+    }
+    setSkills([...skills, object])
+  }
+  const addLinks = () => {
+    let object = {
+      link : ""
+    }
+    setLinks([...links, object])
+  }
+  
+  const removeExperiences = (index) => {
+    let data = [...experiences];
+    data.splice(index, 1)
+    setExperiences(data)
+  }
+
+  const removeEducations = (index) => {
+    let data = [...educations];
+    data.splice(index, 1)
+    setEducations(data)
+  }
+
+  const removeProjects = (index) => {
+    let data = [...projects];
+    data.splice(index, 1);
+    setProjects(data);
+  }
+
+  const removeSkills = (index) => {
+    let data = [...skills];
+    data.splice(index, 1);
+    setSkills(data);
+  }
+  const removeLinks = (index) => {
+    let data = [...links];
+    data.splice(index, 1);
+    setLinks(data);
+  }
+
      
       useEffect(() => {
         async function fetchData() {
@@ -136,24 +249,31 @@ const PersonalWebsiteEdit = () => {
            };
            console.log("user profile : ", user_profile);
            setProfile(user_profile);
-           setLinks(res.data.links);
-           setSkills(res.data.skills);
+           //setLinks(res.data.links);
+           //setSkills(res.data.skills);
          });
-          await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-           console.log("inside experiences post req");
-           console.log(res.data);
-           setExperiences(res.data);
+         await axios.post("http://localhost:5000/profile/get_websiteDetails", data).then((res) => {
+          setLinks(res.data.links);
+          setSkills(res.data.skills);
+           setExperiences(res.data.experiences);
+           setEducations(res.data.educations);
+           setProjects(res.data.projects);
          });
-         await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-           console.log("inside educations post req");
-           console.log(res.data);
-           setEducations(res.data);
-         });
-         await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-           console.log("inside projects post req");
-           console.log(res.data);
-           setProjects(res.data);
-         });
+        //   await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
+        //    console.log("inside experiences post req");
+        //    console.log(res.data);
+        //    setExperiences(res.data);
+        //  });
+        //  await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
+        //    console.log("inside educations post req");
+        //    console.log(res.data);
+        //    setEducations(res.data);
+        //  });
+        //  await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
+        //    console.log("inside projects post req");
+        //    console.log(res.data);
+        //    setProjects(res.data);
+        //  });
          await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
            console.log("inside personal website post req");
            console.log(res.data);
@@ -171,10 +291,18 @@ const PersonalWebsiteEdit = () => {
         e.preventDefault();
         console.log(experiences);
         console.log(educations);
+          const websiteDetails = {
+            experiences: experiences,
+            educations: educations,
+            projects: projects,
+            links: links,
+            skills: skills,
+          };
         // SEND EXPERIENCES AND EDUCATIONS TO SERVER
         const data = {
           user_id: localStorage.getItem('user_id'),
           personalWebsite: personalWebsite,
+          websiteDetails: websiteDetails,
         }
         try {
           await axios
@@ -322,7 +450,7 @@ const PersonalWebsiteEdit = () => {
               label="Employer Name" 
               variant="outlined" fullWidth
               name='company_name'
-              //onChange={event => handleExperienceChange(event, index)}
+              onChange={event => handleExperienceChange(event, index)}
               value={form.company_name}
               />
             </Grid>
@@ -331,7 +459,7 @@ const PersonalWebsiteEdit = () => {
               label="Position" 
               variant="outlined" fullWidth
               name='title'
-              //onChange={event => handleExperienceChange(event, index)}
+              onChange={event => handleExperienceChange(event, index)}
               value={form.title}
             />
             </Grid>
@@ -341,7 +469,7 @@ const PersonalWebsiteEdit = () => {
               variant="outlined" fullWidth
               name="location"
               value={form.location}
-              //onChange={event => handleExperienceChange(event, index)}
+              onChange={event => handleExperienceChange(event, index)}
             />
             </Grid>
             <FormGroup>
@@ -359,7 +487,7 @@ const PersonalWebsiteEdit = () => {
               InputLabelProps={{
                 shrink: true,
               }}
-              //onChange={event => handleExperienceChange(event, index)}
+              onChange={event => handleExperienceChange(event, index)}
             />       
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -374,7 +502,7 @@ const PersonalWebsiteEdit = () => {
               InputLabelProps={{
                 shrink: true,
               }}
-              //onChange={event => handleExperienceChange(event, index)}
+              onChange={event => handleExperienceChange(event, index)}
             />       
           </Grid>
           <Grid item xs={12}>
@@ -382,14 +510,14 @@ const PersonalWebsiteEdit = () => {
             variant="outlined" fullWidth
             name="description"
             value={form.description} 
-            //onChange={event => handleExperienceChange(event, index)}
+            onChange={event => handleExperienceChange(event, index)}
             />
           </Grid>
 
               
               <Grid item xs={12} sm={6}>
                 <Button 
-                //onClick={() => removeExperiences(index)} 
+                onClick={() => removeExperiences(index)} 
                 color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
               </Grid>
@@ -402,7 +530,7 @@ const PersonalWebsiteEdit = () => {
         </form>
         <Grid item xs={12} sm={6}>
         <Button 
-        //onClick={addExperiences} 
+        onClick={addExperiences} 
         color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
       </Grid>
       </div>
@@ -436,12 +564,12 @@ const PersonalWebsiteEdit = () => {
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} >
           <TextField name = 'skill' placeholder="Java" label="Skills" variant="outlined" fullWidth required value={form.skill}
-           //onChange={event => handleSkillChange(event, index)}
+           onChange={event => handleSkillChange(event, index)}
            />
         </Grid>
         <Grid item xs={12} sm={6}>
                 <Button 
-                //onClick={() => removeSkills(index)} 
+                onClick={() => removeSkills(index)} 
                 color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
         </Grid>
@@ -458,7 +586,7 @@ const PersonalWebsiteEdit = () => {
        </div>
        <Grid item xs={12} sm={6}>
         <Button 
-        //onClick={addSkills} 
+        onClick={addSkills} 
         color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
       </Grid>
        </form>
@@ -498,7 +626,7 @@ const PersonalWebsiteEdit = () => {
               <Grid container spacing={1}>
                 <Grid xs={12} sm={6} item>
                 <TextField name='university'
-                //onChange={event => handleEducationChange(event, index)}
+                onChange={event => handleEducationChange(event, index)}
                 value={form.university}
                 placeholder="Purdue University" label="Insitute Name" variant="outlined" fullWidth
                 />
@@ -512,7 +640,7 @@ const PersonalWebsiteEdit = () => {
                       label="Degree"
                       name="degree"
                       placeholder='Degree'
-                      //onChange={event => handleEducationChange(event, index)}
+                      onChange={event => handleEducationChange(event, index)}
                       value={form.degree} 
                     >
                       <MenuItem value={'Bachelors'} >Bachelors</MenuItem>
@@ -524,17 +652,17 @@ const PersonalWebsiteEdit = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField placeholder="Software Engineering" label="Major" variant="outlined" fullWidth
                 name='major'
-                //onChange={event => handleEducationChange(event, index)}
+                onChange={event => handleEducationChange(event, index)}
                 value={form.major}/>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField name = "minor" placeholder="Art and Design Studio" label="Minor" variant="outlined" fullWidth value={educations.minor}
-                //onChange={event => handleEducationChange(event, index)}
+                onChange={event => handleEducationChange(event, index)}
                 />
                 </Grid>
                 <Grid item xs={6} sm={3}>
                   <TextField name = "gpa" type="number" placeholder="4.0" label="GPA" variant="outlined" fullWidth  value={form.gpa}
-                //onChange={event => handleEducationChange(event, index)}
+                onChange={event => handleEducationChange(event, index)}
                 />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -544,7 +672,7 @@ const PersonalWebsiteEdit = () => {
                     type="date"
                     name="start_date"
                     value={form.start_date}
-                    //onChange={event => handleEducationChange(event, index)}
+                    onChange={event => handleEducationChange(event, index)}
                     defaultValue="2017-05-24"
                     sx={{ width: 220 }}
                     InputLabelProps={{
@@ -559,7 +687,7 @@ const PersonalWebsiteEdit = () => {
                     type="date"
                     name="end_date"
                     value={form.end_date}
-                    //onChange={event => handleEducationChange(event, index)}
+                    onChange={event => handleEducationChange(event, index)}
                     defaultValue="2017-05-24"
                     sx={{ width: 220 }}
                     InputLabelProps={{
@@ -570,7 +698,7 @@ const PersonalWebsiteEdit = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Button 
-                //onClick={() => removeEducations(index)} 
+                onClick={() => removeEducations(index)} 
                 color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
             </div>
@@ -578,7 +706,7 @@ const PersonalWebsiteEdit = () => {
         })}
         <Grid item xs={12} sm={6}>
         <Button 
-        //onClick={addEducations} 
+        onClick={addEducations} 
         color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
         </Grid>
         </div>
@@ -613,7 +741,7 @@ const PersonalWebsiteEdit = () => {
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
             <TextField name= "name" placeholder="Chefly" label="Project Name" variant="outlined" fullWidth value = {form.name}
-              //onChange={event => handleProjectChange(event, index)}
+              onChange={event => handleProjectChange(event, index)}
               />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -623,7 +751,7 @@ const PersonalWebsiteEdit = () => {
               label="Start date"
               type="date"
               value = {form.start_date}
-              //onChange={event => handleProjectChange(event, index)}
+              onChange={event => handleProjectChange(event, index)}
               defaultValue="2017-05-24"
               sx={{ width: 220 }}
               InputLabelProps={{
@@ -638,7 +766,7 @@ const PersonalWebsiteEdit = () => {
               label="End date"
               type="date"
               value = {form.end_date}
-              //onChange={event => handleProjectChange(event, index)}
+              onChange={event => handleProjectChange(event, index)}
               defaultValue="2017-05-24"
               sx={{ width: 220 }}
               InputLabelProps={{
@@ -648,13 +776,13 @@ const PersonalWebsiteEdit = () => {
           </Grid>
           <Grid item xs={12}>
             <TextField name= "description" multiline rows={4} placeholder="" label="Description" variant="outlined" fullWidth  value = {form.description}
-              //onChange={event => handleProjectChange(event, index)}
+              onChange={event => handleProjectChange(event, index)}
               />
           </Grid>
 
           <Grid item xs={12} sm={6}>
                 <Button 
-                //onClick={() => removeProjects(index)} 
+                onClick={() => removeProjects(index)} 
                 color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
         </Grid>
@@ -663,7 +791,7 @@ const PersonalWebsiteEdit = () => {
         })}
         <Grid item xs={12} sm={6}>
         <Button 
-        //</Grid>onClick={addProjects} 
+        onClick={addProjects} 
         color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
         </Grid>
         </div>
@@ -697,11 +825,11 @@ const PersonalWebsiteEdit = () => {
         <div key={index}>
       <Grid container spacing={1}>
           <TextField name = "link" placeholder="LinkedIn" label="link" variant="outlined" fullWidth required value={form.link}
-           //onChange={event => handleLinkChange(event, index)}
+           onChange={event => handleLinkChange(event, index)}
            />
 
         <Grid item xs={12} sm={6}>
-               <Button //</Grid>onClick={() => removeLinks(index)} 
+               <Button onClick={() => removeLinks(index)} 
                 color="primary" startIcon={<RemoveCircleOutlineRoundedIcon />}> </Button>
               </Grid>
         </Grid>
@@ -712,7 +840,7 @@ const PersonalWebsiteEdit = () => {
         })}</div>
         <Grid>
         <Button 
-        //</Grid>onClick={addLinks} 
+        onClick={addLinks} 
         color="primary" startIcon={<AddCircleOutlineRoundedIcon />}> </Button>
       </Grid>
      </div>
