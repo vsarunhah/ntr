@@ -197,7 +197,7 @@ const Review = (props) => (
                 <EditOutlinedIcon />
               </IconButton>
             </Grid>}
-            <Grid item>
+            {props.user == localStorage.getItem("user_id") && <Grid item>
               <IconButton
                 className="btn btn-link"
                 onClick={() => {
@@ -206,7 +206,7 @@ const Review = (props) => (
               >
                 <RemoveCircleOutlineRoundedIcon />
               </IconButton>
-            </Grid>
+            </Grid>}
           </Grid>
         </Grid>
       </CardActions>

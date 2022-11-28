@@ -8,7 +8,14 @@ reviewRoutes.route("/reviews").get(async function (req, res) {
     var reviewsArray = [];
     for (let i = 0; i < reviews.length; i++) {
       for (let j = 0; j < reviews[i].reviews.length; j++) {
+        // reviews[i] = user
         reviews[i].reviews[j].user = reviews[i]._id;
+        if (reviews[i].reviews[j].upvotes == undefined) {
+          reviews[i].reviews[j].upvotes = [];
+        }
+        if (reviews[i].reviews[j].downvotes == undefined) {
+          reviews[i].reviews[j].downvotes = [];
+        }
         reviewsArray.push(reviews[i].reviews[j]);
       }
     }
@@ -42,7 +49,6 @@ reviewRoutes.route("/reviews/get").post(async function (req, res) {
   let review = await User.findOne({
     _id: req.body.user_id,
   }).select("reviews");
-  console.log("review: ", review);
   res.json(review.reviews.find((r) => r.id === req.body.reviewId));
 });
 
@@ -148,7 +154,6 @@ reviewRoutes.route("/review/downvote/").post(async function (req, response) {
     { _id: review_user },
     { $set: { reviews: actual_review_list } }
   );
-  // console.log(resp);
   response.status(200).send({ message: "review upvoted" });
 });
 
