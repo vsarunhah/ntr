@@ -16,7 +16,9 @@ const PersonalWebsiteEdit = () => {
 
 
     const openInNewTab = url => {
-        window.open('/personalwebsite/', '_blank', 'noopener,noreferrer');
+       console.log("sending to ", `/personalwebsite/${localStorage.getItem("user_id")}`);
+        window.open(`/personalwebsite/${localStorage.getItem("user_id")}`, '_blank', 'noopener,noreferrer');
+        
       };
     //use this once the id comes
     let navigate = useNavigate();

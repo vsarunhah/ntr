@@ -1,12 +1,14 @@
 
 
 import React, { Component, useState, useEffect } from "react";
+//import { useParams } from "react-router";
+import { useParams } from "react-router";
 import { Link, Grid, Button, Box, Typography, CardContent, Card, Divider} from '@mui/material';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
-
   const PersonalWebsite = () => {
+    const params = useParams();
 
     const [personalWebsite, setPersonalWebsite] = useState({
       showProfile: true,
@@ -78,8 +80,13 @@ import { v4 as uuidv4 } from 'uuid';
    
     useEffect(() => {
       async function fetchData() {
+       console.log("useEffect");
+       
+       const id = params.id;
+       console.log("-----------ID : ",id);
        const data = {
          user_id: localStorage.getItem('user_id'),
+         //user_id: id,
          experiences: experiences,
          educations: educations,
          projects: projects,
