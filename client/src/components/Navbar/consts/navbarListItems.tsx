@@ -7,6 +7,7 @@ import ReviewsRoundedIcon from '@mui/icons-material/ReviewsRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import AppRegistrationRoundedIcon from '@mui/icons-material/AppRegistrationRounded';
 import CoPresentRoundedIcon from '@mui/icons-material/CoPresentRounded';
+import MoodRoundedIcon from '@mui/icons-material/MoodRounded';
 
 export const mainNavbarItems = [
     {
@@ -32,6 +33,12 @@ export const mainNavbarItems = [
         icon: <CoPresentRoundedIcon />,
         label: 'Website',
         route: '/personalwebsiteview',
+    },
+    {
+        id: 3,
+        icon: <MoodRoundedIcon />,
+        label: 'Interviews',
+        route: '/interviewlist',
     },
 
 ]

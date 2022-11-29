@@ -12,12 +12,90 @@ import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutl
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
 import MuiDialog from '../../components/DialogueBox/Confirmation'
+import DeleteDialog from '../../components/DialogueBox/DeleteConfirm';
+import DeleteOutline from '@mui/icons-material/DeleteOutline';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from '@mui/material'
 const PersonalWebsiteEdit = () => {
 
 
     const openInNewTab = url => {
-        window.open('/personalwebsite/', '_blank', 'noopener,noreferrer');
+       console.log("sending to ", `/personalwebsite/${localStorage.getItem("user_id")}`);
+        window.open(`/personalwebsite/${localStorage.getItem("user_id")}`, '_blank', 'noopener,noreferrer');
+        
       };
+    
+    const [open, setOpen] = useState(false);
+
+    const DeleteDialog = () => {
+        
+        console.log("delete dialog");
+      const DeleteWebsite = async () => {
+         
+          const data = {
+            user_id: localStorage.getItem("user_id"),
+          };
+          await axios.post("http://localhost:5000/profile/get_profile", data).then(async (res) => {   
+            setLinks(res.data.links);
+            setSkills(res.data.skills);
+            setExperiences(res.data.experiences);
+            setProjects(res.data.projects);
+            setEducations(res.data.educations);
+            const websiteDetails = {
+              experiences: res.data.experiences,
+              educations: res.data.educations,
+              projects: res.data.projects,
+              links: res.data.links,
+              skills: res.data.skills,
+            };
+            // SEND EXPERIENCES AND EDUCATIONS TO SERVER
+            const data = {
+              user_id: localStorage.getItem('user_id'),
+              websiteDetails: websiteDetails,
+            }
+            try {
+              await axios
+                .post("http://localhost:5000/profile/add", data)
+                .then((res) => {
+                  //console.log(res.data);
+                });
+            } catch (error) {
+              console.log("oops");
+            }
+          });
+          setOpen(false);
+        };
+        console.log("open : ", open)
+      return (
+          <React.Fragment>
+          <Grid>
+            <Dialog
+              open={open}
+              onClose={() => setOpen(false)}
+              aria-labelledby='dialog-title'
+              aria-describedby='dialog-description'>
+              <DialogTitle id='dialog-title'>Delete Website</DialogTitle>
+              <DialogContent>
+                <DialogContentText id='dialog-description'>
+                  Are you sure you want to delete all changes made to the website?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setOpen(false)}>Cancel</Button>
+                <Button autoFocus onClick={DeleteWebsite} >
+                  Yes
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </Grid>
+          </React.Fragment>
+        )
+  };
     //use this once the id comes
     let navigate = useNavigate();
     const routeChange = () => { 
@@ -122,24 +200,14 @@ const PersonalWebsiteEdit = () => {
            };
            console.log("user profile : ", user_profile);
            setProfile(user_profile);
-           setLinks(res.data.links);
-           setSkills(res.data.skills);
          });
-          await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-           console.log("inside experiences post req");
-           console.log(res.data);
-           setExperiences(res.data);
-         });
-         await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-           console.log("inside educations post req");
-           console.log(res.data);
-           setEducations(res.data);
-         });
-         await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-           console.log("inside projects post req");
-           console.log(res.data);
-           setProjects(res.data);
-         });
+         await axios.post("http://localhost:5000/profile/get_websiteDetails", data).then((res) => {
+          setLinks(res.data.links);
+          setSkills(res.data.skills);
+           setExperiences(res.data.experiences);
+           setEducations(res.data.educations);
+           setProjects(res.data.projects);
+        });
          await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
            console.log("inside personal website post req");
            console.log(res.data);
@@ -204,10 +272,19 @@ const PersonalWebsiteEdit = () => {
         Edit
       </Button>
 
-      <Button onClick={openInNewTab} variant="outlined" startIcon={<CoPresentRoundedIcon /> } >
+      <Button style={{margin:'10px'}} onClick={openInNewTab} variant="outlined" startIcon={<CoPresentRoundedIcon /> } >
         View Website
       </Button>
 
+      <Button onClick={() => setOpen(true)} variant="outlined" startIcon={<DeleteOutline /> } >
+        Delete Website
+      </Button>
+      <DeleteDialog />
+      <Box my={1}>
+    </Box>
+      
+    <Box my={10}>
+    </Box>
       <Box my={10}>
     </Box>
     <Typography gutterBottom variant="h4">

@@ -68,7 +68,7 @@ const App = () => {
         <Route path="/sampleForm" element={<SampleForm />} />
         <Route path="/personalwebsiteedit" element={<PersonalWebsiteEdit />} />
         <Route path="/personalwebsiteview" element={<PersonalWebsiteView />} />
-        <Route path="/personalwebsite" element={<PersonalWebsite />} />
+        <Route path="/personalwebsite/:id" element={<PersonalWebsite />} />
         <Route path="/ParseResume" element={<ParserResume />} />
       </Routes>
     </div>

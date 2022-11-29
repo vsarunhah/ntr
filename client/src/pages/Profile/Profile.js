@@ -204,6 +204,7 @@ const Profile = () => {
        <Typography variant="body1" color="textSecondary">
        <Box fontWeight='fontWeightBold' display='inline'>Phone:</Box>  {profile.phone}
        </Typography>
+       
 
        <Typography variant="body1" color="textSecondary">
        <Box fontWeight='fontWeightBold' display='inline'>Address Line 1: </Box>  {profile.address_line}
