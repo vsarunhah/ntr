@@ -214,7 +214,6 @@ function EditProfile () {
       skills: skills,
       personalWebsite: personalWebsite,
       last_modified: date,
-      websiteDetails: websiteDetails,
     }
     try {
       await axios

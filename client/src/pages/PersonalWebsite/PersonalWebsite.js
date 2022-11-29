@@ -85,8 +85,8 @@ import { v4 as uuidv4 } from 'uuid';
        const id = params.id;
        console.log("-----------ID : ",id);
        const data = {
-         user_id: localStorage.getItem('user_id'),
-         //user_id: id,
+         //user_id: localStorage.getItem('user_id'),
+         user_id: id,
          experiences: experiences,
          educations: educations,
          projects: projects,
@@ -115,9 +115,9 @@ import { v4 as uuidv4 } from 'uuid';
        await axios.post("http://localhost:5000/profile/get_websiteDetails", data).then((res) => {
         setLinks(res.data.links);
         setSkills(res.data.skills);
-         setExperiences(res.data.experiences);
-         setEducations(res.data.educations);
-         setProjects(res.data.projects);
+        setExperiences(res.data.experiences);
+        setEducations(res.data.educations);
+        setProjects(res.data.projects);
        });
        await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
            console.log("inside personal website post req");

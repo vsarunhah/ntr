@@ -20,6 +20,39 @@ const PersonalWebsiteEdit = () => {
         window.open(`/personalwebsite/${localStorage.getItem("user_id")}`, '_blank', 'noopener,noreferrer');
         
       };
+    const DeleteWebsite = async () => {
+      const data = {
+        user_id: localStorage.getItem("user_id"),
+      };
+      await axios.post("http://localhost:5000/profile/get_profile", data).then(async (res) => {   
+        setLinks(res.data.links);
+        setSkills(res.data.skills);
+        setExperiences(res.data.experiences);
+        setProjects(res.data.projects);
+        setEducations(res.data.educations);
+        const websiteDetails = {
+          experiences: res.data.experiences,
+          educations: res.data.educations,
+          projects: res.data.projects,
+          links: res.data.links,
+          skills: res.data.skills,
+        };
+        // SEND EXPERIENCES AND EDUCATIONS TO SERVER
+        const data = {
+          user_id: localStorage.getItem('user_id'),
+          websiteDetails: websiteDetails,
+        }
+        try {
+          await axios
+            .post("http://localhost:5000/profile/add", data)
+            .then((res) => {
+              //console.log(res.data);
+            });
+        } catch (error) {
+          console.log("oops");
+        }
+      });
+    };
     //use this once the id comes
     let navigate = useNavigate();
     const routeChange = () => { 
@@ -124,8 +157,6 @@ const PersonalWebsiteEdit = () => {
            };
            console.log("user profile : ", user_profile);
            setProfile(user_profile);
-           //setLinks(res.data.links);
-           //setSkills(res.data.skills);
          });
          await axios.post("http://localhost:5000/profile/get_websiteDetails", data).then((res) => {
           setLinks(res.data.links);
@@ -134,21 +165,6 @@ const PersonalWebsiteEdit = () => {
            setEducations(res.data.educations);
            setProjects(res.data.projects);
         });
-        //   await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-        //    console.log("inside experiences post req");
-        //    console.log(res.data);
-        //    setExperiences(res.data);
-        //  });
-        //  await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-        //    console.log("inside educations post req");
-        //    console.log(res.data);
-        //    setEducations(res.data);
-        //  });
-        //  await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-        //    console.log("inside projects post req");
-        //    console.log(res.data);
-        //    setProjects(res.data);
-        //  });
          await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
            console.log("inside personal website post req");
            console.log(res.data);
@@ -215,6 +231,10 @@ const PersonalWebsiteEdit = () => {
 
       <Button onClick={openInNewTab} variant="outlined" startIcon={<CoPresentRoundedIcon /> } >
         View Website
+      </Button>
+
+      <Button onClick={DeleteWebsite} variant="outlined" startIcon={<CoPresentRoundedIcon /> } >
+        Delete Website
       </Button>
 
       <Box my={10}>
