@@ -4,11 +4,11 @@ import axios from "axios";
 import { Box, Button, Typography, Grid } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Navbar from "../../components/Navbar/Navbar";
-import { Review } from "./reviewCard";
+import { Review } from "./InterviewCard";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
-export default function ReviewList() {
+export default function InterviewList() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function ReviewList() {
     <Grid mx={25}>
       <Navbar />
       <Typography variant="h5" style={{ margin: "70px", fontWeight: "bold" }}>
-        All Interview Reviews
+        All Interview Tips
       </Typography>
       <Grid container item spacing={2}>
         <Grid item style={{ marginLeft: "70px" }}>
@@ -96,7 +96,7 @@ export default function ReviewList() {
             <Grid item>
               <Review
                 review={review}
-                deleteReview={() => deleteReview(review.id)}
+                //deleteReview={() => deleteReview(review.id)}
                 key={review.id}
               />
             </Grid>
@@ -107,10 +107,10 @@ export default function ReviewList() {
         style={{ margin: "70px", height: "56px", width: "30%" }}
         variant="outlined"
         component={Link}
-        to="/review/add"
+        //to="/review/add"
         startIcon={<AddCircleOutlineRoundedIcon />}
       >
-        Add review
+        Add Interview Tip
       </Button>
     </Grid>
   );
