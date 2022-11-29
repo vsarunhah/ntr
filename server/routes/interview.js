@@ -1,5 +1,5 @@
 const express = require("express");
-const { Interview } = require("../models/interview_tips");
+const { Interview } = require("../models/Interview");
 const router = express.Router();
 const {interview} = require("../models/Interview");
 

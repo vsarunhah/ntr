@@ -6,5 +6,5 @@ const interview_tipsSchema = new mongoose.Schema({
     tip: String,
     user: String,
 });
-const Interview = mongoose.model('Interview', interview_tipsSchema, "interview_tips");
+const Interview = mongoose.model('Interview', interview_tipsSchema, "Interview");
 module.exports = {Interview};
