@@ -6,3 +6,5 @@ const interview_tipsSchema = new mongoose.Schema({
     tip: String,
     user: String,
 });
+const Interview = mongoose.model('Interview', interview_tipsSchema, "interview_tips");
+module.exports = {Interview};
