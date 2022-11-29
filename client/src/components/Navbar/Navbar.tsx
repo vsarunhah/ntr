@@ -11,6 +11,7 @@ import { navbarStyles } from './styles';
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/ntrlogoinverted.png";
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import { Box } from '@mui/material';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -54,7 +55,9 @@ const Navbar = () => {
                 sx={navbarStyles.text}
                 primary={item.label}
               />
+              <Box my={3}></Box>
             </ListItem>
+            
           ))}
           <ListItem button onClick={handleLogout}>
           <ListItemIcon
