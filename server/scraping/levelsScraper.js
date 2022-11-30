@@ -3,8 +3,16 @@ const puppeteer = require("puppeteer");
 const { on } = require("events");
 const fileSystem = require("fs");
 
+/*
+ * Scrapes data from levels and writes a map of maps of maps to levelsData.json
+ * Structure of map of maps of maps -> {company : {position : {level : Object of salaries}}}
+ *
+ * Note: To scrape data for a new company, add the company to the list of companies below
+ * Note: To run this file, run "npm run scrape" in the server directory
+ */
+
 // List of Companies
-const companies = ["google"];
+const companies = ["hubspot"];
 
 // Create urls for each company
 const urlArray = companies.map((company) => {
@@ -12,8 +20,8 @@ const urlArray = companies.map((company) => {
 });
 
 //Data structures for scraping
-const positionSalaryData = new Map();
 const positionLinkMap = new Map();
+const companyData = new Map();
 
 scrapeLevels = async () => {
   const browser = await puppeteer.launch();
@@ -32,16 +40,18 @@ scrapeLevels = async () => {
         console.log(`${i}: ${msg.args()[i]}`);
     });
 
+    const company = companies[i];
+    const positionSalaryData = new Map();
+
     //Get links for each position
-    const positionLinks = await page.evaluate(() => {
+    const positionLinks = await page.evaluate((company) => {
       const positionLinks = [];
-      document
-        .querySelectorAll("a[href^='/companies/google/salaries/']")
-        .forEach((link) => {
-          positionLinks.push(link.href);
-        });
+      const searchQuery = "a[href^='/companies/" + company + "/salaries/']";
+      document.querySelectorAll(searchQuery).forEach((link) => {
+        positionLinks.push(link.href);
+      });
       return positionLinks;
-    });
+    }, company);
 
     //Create position : link map
     for (let i = 0; i < positionLinks.length; i++) {
@@ -50,6 +60,7 @@ scrapeLevels = async () => {
     }
 
     //Loop through each position link
+    //TODO: change limit back to 0
     for (let i = 0; i < positionLinks.length; i++) {
       console.log("position link: ", positionLinks[i]);
       await page.goto(positionLinks[i], { waitUntil: "domcontentloaded" });
@@ -149,15 +160,19 @@ scrapeLevels = async () => {
       }
     }
 
-    console.log("positionSalaryData: ", positionSalaryData);
+    //console.log("positionSalaryData: ", positionSalaryData);
+    companyData.set(company, Object.fromEntries(positionSalaryData));
+    // console.log("companyData: ", companyData);
   }
+
   await browser.close();
 };
 
+//Write scraped data to JSON file
 scrapeLevels().then(() => {
   fileSystem.writeFile(
     "levelsData.json",
-    JSON.stringify(Object.fromEntries(positionSalaryData)),
+    JSON.stringify(Object.fromEntries(companyData)),
     (err) => {
       if (err) {
         console.log(err);

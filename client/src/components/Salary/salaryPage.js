@@ -9,32 +9,18 @@ import TextField from "@mui/material/TextField";
 
 export default function SalaryPage() {
   async function scrapeSalary() {
-    // console.log("before scraper");
-    // const sal = await axios.get("http://localhost:5000/salary/scraper");
-    // console.log("after scraper: ", sal.data);
-    // return sal.data;
-    await axios.get("http://localhost:5000/salary/scraper/company");
+    console.log("before scraper");
+    await axios.get("http://localhost:5000/salary/scrape").then((res) => {
+      console.log("after scraper: ", res.data);
+      return res.data;
+    });
     return;
   }
 
-  // const [salary, setSalary] = useState("");
-
-  //runs on first render only
-  useEffect(async () => {
-    // const getSalary = async () => {
-    //   const sal = await scrapeSalary();
-    //   console.log("sal: ", sal.data);
-    //   setSalary(sal.data);
-    // };
-
-    // getSalary();
-    await scrapeSalary();
+  useEffect(() => {
+    scrapeSalary();
     return;
   }, []);
-
-  // useEffect(() => {
-  //   setSalary("25k");
-  // }, []);
 
   return (
     <Grid mx={25}>
@@ -42,9 +28,6 @@ export default function SalaryPage() {
       <Typography variant="h5" style={{ margin: "70px", fontWeight: "bold" }}>
         Salary Page
       </Typography>
-      {/* <Typography variant="body2" style={{ margin: "70px" }}>
-        {salary}
-      </Typography> */}
     </Grid>
   );
 }
