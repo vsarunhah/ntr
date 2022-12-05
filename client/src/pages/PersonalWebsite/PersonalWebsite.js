@@ -432,7 +432,7 @@ import { v4 as uuidv4 } from 'uuid';
       {links.map(link => (
           <div key={link.index}>
           <br></br>
-      <Link href={link.link} variant="h6" color="textSecondary" style={{marginRight: '5px', color: "blue"}}>
+      <Link href={"//"+link.link} variant="h6" color="textSecondary" style={{marginRight: '5px', color: "blue"}}>
         {link.link} | 
        </Link>  
 
