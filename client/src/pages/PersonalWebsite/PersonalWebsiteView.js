@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import { Card, Divider, Button, Box, Typography,CardContent } from '@mui/material';
+import { Avatar, Card, Divider, Button, Box, Typography,CardContent } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -28,12 +28,24 @@ import {
 import {
   FacebookShareButton,
   WhatsappShareButton,
+  EmailShareButton,
   WhatsappIcon,
   FacebookIcon,
+  EmailIcon,
 } from 'react-share';
 
-import { red } from '@mui/material/colors';
+
+
 const PersonalWebsiteEdit = () => {
+
+    const useStyles = {
+      avatar: {
+        //backgroundColor: grey[50],
+        border: `1px solid primary`,
+       // color: theme.palette.info.main,
+      },
+    };
+    const shareUrl = `localhost:3000/personalwebsite/${localStorage.getItem("user_id")}`;
 
 
     const openInNewTab = url => {
@@ -41,12 +53,17 @@ const PersonalWebsiteEdit = () => {
         window.open(`/personalwebsite/${localStorage.getItem("user_id")}`, '_blank', 'noopener,noreferrer');
         
       };
+
+    const handleEmailOnClick = () => {
+      window.location.href = encodeURI(`mailto:
+      ?subject= Subject Here
+      &body=Hi,\n\nYou Can bla Bla bla "" At ${shareUrl}\n\nEnjoy,`);
+    };
     
     const [openDelete, setDeleteOpen] = useState(false);
     const [openShare, setShareOpen] = useState(false);
 
     const ShareOptions = () => {   
-        const shareUrl = `localhost:3000/personalwebsite/${localStorage.getItem("user_id")}`;
         return (
           <div
             style={{
@@ -66,11 +83,25 @@ const PersonalWebsiteEdit = () => {
               <WhatsappIcon size={40} round={true} style={{margin:'10px'}}/>
             </WhatsappShareButton>
 
-            <Button style={{margin:'10px'}}
-                onClick={() => {navigator.clipboard.writeText(shareUrl)}}
-                color="primary" startIcon={<ContentCopyRoundedIcon />}
-                //size={40} variant={"outlined"} round={true}
-                > </Button>
+            <EmailShareButton
+            url={shareUrl}
+            onClick={handleEmailOnClick}
+            >
+              <EmailIcon size={40} round={true} style={{margin:'10px'}}/>
+            </EmailShareButton>
+
+            <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com."
+              title="Share by Email">
+              <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png"></img>
+            </a>
+
+            <Box my={2}></Box>
+
+            <Button onClick={() => {navigator.clipboard.writeText(shareUrl)}}>
+            <Avatar style={useStyles.avatar} >
+                  <ContentCopyRoundedIcon />
+            </Avatar>
+            </Button>
           </div>
         );
     }
