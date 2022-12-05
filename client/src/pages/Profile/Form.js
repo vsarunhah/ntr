@@ -123,13 +123,6 @@ function SampleForm () {
     console.log(experiences);
     console.log(educations);
     // SEND EXPERIENCES AND EDUCATIONS TO SERVER
-    const websiteDetails = {
-      experiences: experiences,
-      educations: educations,
-      projects: projects,
-      links: links,
-      skills: skills,
-    };
     const data = {
       user_id: localStorage.getItem('user_id'),
       experiences: experiences,
@@ -146,7 +139,7 @@ function SampleForm () {
       links: links,
       skills: skills,
       personalWebsite: personalWebsite,
-      websiteDetails: websiteDetails,
+      hasWebsite: false,
     }
     try {
       await axios

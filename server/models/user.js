@@ -36,6 +36,7 @@ const userSchema = mongoose.Schema({
     personalWebsite: personalWebsiteSchema,
     last_modified: Date,
     websiteDetails: websiteDetailsSchema,
+    hasWebsite: Boolean
 });
 
 userSchema.methods.generateAuthToken = function() {

@@ -28,12 +28,12 @@ export const mainNavbarItems = [
         label: 'Reviews',
         route: '/reviews',
     },
-    {
-        id: 3,
-        icon: <CoPresentRoundedIcon />,
-        label: 'Website',
-        route: '/personalwebsiteview',
-    },
+    // {
+    //     id: 3,
+    //     icon: <CoPresentRoundedIcon />,
+    //     label: 'Website',
+    //     route: '/personalwebsiteview',
+    // },
     {
         id: 3,
         icon: <MoodRoundedIcon />,
