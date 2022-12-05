@@ -30,7 +30,7 @@ export default function InterviewList() {
   useEffect(() => {
     async function getReviews() {
       await axios
-        .get("http://localhost:5000/reviews/")
+        .get("http://localhost:5000/interviews/")
         .then((res) => {
           setReviews(res.data);
           console.log("res: ", res);
@@ -42,21 +42,7 @@ export default function InterviewList() {
     return;
   }, [reviews.length]);
 
-  async function deleteReview(id) {
-    const data = {
-      user_id: localStorage.getItem("user_id"),
-      reviewId: id,
-    };
-    await axios
-      .post("http://localhost:5000/reviews/delete", data)
-      .then((res) => {
-        console.log("res: ", res);
-      })
-      .catch((err) => window.alert(err));
 
-    const newReviews = reviews.filter((el) => el.id !== id);
-    setReviews(newReviews);
-  }
 
   async function upvoteReview(id) {
     const data = {
