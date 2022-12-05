@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import {Card, Divider, Button, Box, Typography,CardContent } from '@mui/material';
+import { Card, Divider, Button, Box, Typography,CardContent } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -51,27 +51,26 @@ const PersonalWebsiteEdit = () => {
           <div
             style={{
               background: '#0000',
-              width: '100%',
             }}
           >
     
             <FacebookShareButton
               url={shareUrl}
             >
-              <FacebookIcon size={40} round={true}  mx ={2}/>
+              <FacebookIcon size={40} round={true}  style={{margin:'10px'}}/>
             </FacebookShareButton>
             
             <WhatsappShareButton
               url={shareUrl}
             >
-              <WhatsappIcon size={40} round={true}  mx ={2}/>
+              <WhatsappIcon size={40} round={true} style={{margin:'10px'}}/>
             </WhatsappShareButton>
 
-            <ContentCopyRoundedIcon
-              url={shareUrl}
-            >
-              <ContentCopyRoundedIcon size={40} variant={"outlined"} round={true} />
-            </ContentCopyRoundedIcon>
+            <Button style={{margin:'10px'}}
+                onClick={() => {navigator.clipboard.writeText(shareUrl)}}
+                color="primary" startIcon={<ContentCopyRoundedIcon />}
+                //size={40} variant={"outlined"} round={true}
+                > </Button>
           </div>
         );
     }
@@ -144,8 +143,6 @@ const PersonalWebsiteEdit = () => {
   const ShareDialog = () => {
       
   return (
-      <React.Fragment>
-      <Grid>
         <Dialog
           open={openShare}
           onClose={() => setShareOpen(false)}
@@ -161,8 +158,6 @@ const PersonalWebsiteEdit = () => {
             <Button onClick={() => setShareOpen(false)}>Done</Button>
           </DialogActions>
         </Dialog>
-      </Grid>
-      </React.Fragment>
     )
 };
     //use this once the id comes
@@ -345,7 +340,7 @@ const PersonalWebsiteEdit = () => {
       </Button>
       <Button style={{margin:'10px'}} onClick={() => setShareOpen(true)} variant="outlined" startIcon={<ShareRoundedIcon /> } >
        Share
-      </Button>
+      </Button> 
       <ShareDialog />
       <Button style={{margin:'10px', outlineColor: "red", color: "red",}} onClick={() => setDeleteOpen(true)} variant="outlined" startIcon={<DeleteOutline /> } >
         Delete 

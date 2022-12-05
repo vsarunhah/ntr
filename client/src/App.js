@@ -31,11 +31,14 @@ import SampleForm from "./components/sampleForm";
 import PersonalWebsiteEdit from "./pages/PersonalWebsite/PersonalWebsiteEdit";
 import PersonalWebsiteView from "./pages/PersonalWebsite/PersonalWebsiteView";
 import PersonalWebsite from "./pages/PersonalWebsite/PersonalWebsite";
+import CreatePersonalWebsite from "./pages/PersonalWebsite/CreatePersonalWebsite";
 
 import ParserResume from "./pages/Profile/ParseResume";
 
 import InterviewList from "./pages/Interviews/InterviewList";
 import CreateInterviewTip from "./pages/Interviews/CreateInterviewTip";
+
+
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -76,6 +79,7 @@ const App = () => {
         <Route path="/ParseResume" element={<ParserResume />} />
         <Route path="/interviewlist" element={<InterviewList />} />
         <Route path="/createinterviewtip" element={<CreateInterviewTip />} />
+        <Route path="/createpersonalwebsite" element={<CreatePersonalWebsite />} />
       </Routes>
     </div>
   );

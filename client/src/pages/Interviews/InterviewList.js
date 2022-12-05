@@ -174,9 +174,9 @@ export default function InterviewList() {
             <Grid item>
               <Review
                 review={review}
-                deleteReview={() => deleteReview(review.id)}
-                upvoteReview={() => upvoteReview(review.id)}
-                downvoteReview={() => downvoteReview(review.id)}
+                // deleteReview={() => deleteReview(review.id)}
+                // upvoteReview={() => upvoteReview(review.id)}
+                // downvoteReview={() => downvoteReview(review.id)}
                 user={review.user}
                 key={review.id}
                 upvotes={review.upvotes}
