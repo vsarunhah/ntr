@@ -4,7 +4,7 @@ import axios from "axios";
 import { Box, Button, Typography, Grid } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Navbar from "../../components/Navbar/Navbar";
-import { Review } from "./InterviewCard";
+import { InterviewCard, Review } from "./InterviewCard";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
@@ -25,50 +25,28 @@ const MenuProps = {
 };
 
 export default function InterviewList() {
-  const [reviews, setReviews] = useState([]);
+  const [interview, setInterview] = useState([{
+    company: "",
+    role : "",
+    tip : "",
+    user_id : localStorage.getItem("user_id"),
+  },]);
 
   useEffect(() => {
-    async function getReviews() {
+    async function getInterviews() {
       await axios
-        .get("http://localhost:5000/interviews/")
+        .post("http://localhost:5000/interviews/")
         .then((res) => {
-          setReviews(res.data);
+          setInterview(res.data);
           console.log("res: ", res);
         })
-        .catch((err) => window.alert(err));
+        .catch((err) => window.alert("in interview list", err));
     }
 
-    getReviews();
+    getInterviews();
     return;
-  }, [reviews.length]);
+  }, [interview.length]);
 
-
-
-  async function upvoteReview(id) {
-    const data = {
-      user_id: localStorage.getItem("user_id"),
-      reviewId: id,
-    };
-    await axios
-      .post("http://localhost:5000/review/upvote", data)
-      .then((res) => {
-        window.location.reload();
-      })
-      .catch((err) => window.alert(err));
-  }
-
-  async function downvoteReview(id) {
-    const data = {
-      user_id: localStorage.getItem("user_id"),
-      reviewId: id,
-    };
-    await axios
-      .post("http://localhost:5000/review/downvote", data)
-      .then((res) => {
-        window.location.reload();
-      })
-      .catch((err) => window.alert(err));
-  }
 
 
   const tagList = [
@@ -85,21 +63,21 @@ export default function InterviewList() {
     "Machine Learning Engineer",
   ];
 
-  const filterReviews = (query, tags, reviews) => {
+  const filterInterviews = (query, tags, interviews) => {
     if (!query && (!tags || tags.length == 0)) {
-      return reviews;
+      return interviews;
     } else {
-      let search = reviews;
+      let search = interviews;
       if (query) {
-        search = search.filter((review) =>
-          review.companyName.toLowerCase().includes(query)
+        search = search.filter((i) =>
+          i.company.toLowerCase().includes(query)
         );
       }
       if (tags && tags.length != 0) {
-        search = search.filter((review) => {
+        search = search.filter((i) => {
           let found = false;
           Array.from(tags).forEach((tag) => {
-            if (review.tags.includes(tag)) {
+            if (i.role.includes(tag)) {
               found = true;
             }
           });
@@ -112,7 +90,7 @@ export default function InterviewList() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [tagQuery, updateTagQuery] = useState([]);
-  const filteredReviews = filterReviews(searchQuery, tagQuery, reviews);
+  const filteredInterviews = filterInterviews(searchQuery, tagQuery, interview);
 
   return (
     <Grid mx={25}>
@@ -170,19 +148,10 @@ export default function InterviewList() {
       </Grid>
       <ul>
         <Grid container direction="row" spacing={2} style={{ margin: "20px" }}>
-          {filteredReviews.map((review) => (
+          {filteredInterviews.map((i) => (
             <Grid item>
-              <Review
-                review={review}
-                deleteReview={() => deleteReview(review.id)}
-                upvoteReview={() => upvoteReview(review.id)}
-                downvoteReview={() => downvoteReview(review.id)}
-                user={review.user}
-                key={review.id}
-                upvotes={review.upvotes}
-                downvotes={review.downvotes}
-                alreadyUpvoted={review.upvotes.includes(localStorage.getItem("user_id"))}
-                alreadyDownvoted={review.downvotes.includes(localStorage.getItem("user_id"))}
+              <InterviewCard
+                interview={i}
               />
             </Grid>
           ))}

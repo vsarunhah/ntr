@@ -102,17 +102,8 @@ let tagIconMap = new Map([
   ],
 ]);
 
-function displayRating(rating) {
-  if (rating) {
-    return (
-      <Grid item>
-        <Rating size="small" value={rating} readOnly />
-      </Grid>
-    );
-  }
-}
 
-const Review = (props) => (
+const InterviewCard = (props) => (
   <Grid container direction="column" alignItems="center">
     <Card className="card" style={styles.card}>
       <CardContent className="content" style={styles.content}>
@@ -122,7 +113,7 @@ const Review = (props) => (
             variant={"h6"}
             gutterBottom
           >
-            {props.review.companyName}
+            {props.interview.company}
           </Typography>
         </Grid>
         {/* {displayRating(props.review.rating)} */}
@@ -131,53 +122,13 @@ const Review = (props) => (
             className={"MuiTypography--subheading"}
             variant={"caption"}
           >
-            {props.review.description}
+            {props.interview.tip}
           </Typography>
         </Grid>
       </CardContent>
-      {/* <CardActions
-        sx={{
-          borderTop: 0.5,
-          justifyContent: "space-between",
-          flexDirection: "row",
-        }}
-      >
-        <Grid
-          container
-          sx={{ justifyContent: "space-between", flexDirection: "row" }}
-        >
-          <Grid item style={{ display: "flex" }} flex-direction="row">
-            {props.review.tags.map((tag) => (
-              <Grid item mr="7px" mt="9px">
-                {tagIconMap.get(tag)}
-              </Grid>
-            ))}
-          </Grid>
-          <Grid item style={{ display: "flex" }} flex-direction="row">
-            <Grid item>
-              <IconButton
-                className="btn btn-link"
-                component={Link}
-                to={`/review/edit/${props.review.id}`}
-              >
-                <EditOutlinedIcon />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                className="btn btn-link"
-                onClick={() => {
-                  props.deleteReview(props.review.id);
-                }}
-              >
-                <RemoveCircleOutlineRoundedIcon />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </Grid>
-      </CardActions> */}
+      
     </Card>
   </Grid>
 );
 
-export { Review };
+export { InterviewCard };

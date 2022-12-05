@@ -104,7 +104,7 @@ router.route("/profile/get_projects").post(async function (req, res) {
 router.route("/profile/get_personalWebsite").post(async function (req, res) {
     try {
         let user = await User.findOne({_id: req.body.user_id}).select("personalWebsite");
-        console.log("user:", user);
+        //console.log("user:", user);
         res.json(user.personalWebsite);
     } catch (error) {
         console.error(error.message);

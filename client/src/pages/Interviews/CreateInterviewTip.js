@@ -38,33 +38,26 @@ const MenuProps = {
 };
 
 export default function CreateInterviewTip() {
-  const [form, setForm] = useState({
-    id: uuidv4(),
-    companyName: "",
-    description: "",
-    rating: "0",
-    tags: [],
-    user: localStorage.getItem("user_id")
-  });
+  const [interview, setInterview] = useState({
+    company: "",
+    role : "",
+    tip : "",
+    user_id : localStorage.getItem("user_id"),
+  },);
   const navigate = useNavigate();
 
-  function updateForm(value) {
-    return setForm((prev) => {
-      return { ...prev, ...value };
-    });
-  }
 
   async function onSubmit(e) {
     e.preventDefault();
-
-    const newReview = { ...form };
     const data = {
       user_id: localStorage.getItem("user_id"),
-      newReview: newReview,
+      company : interview.company,
+      role : interview.role,
+      tip : interview.tip,
     };
 
     try {
-      await axios.post("http://localhost:5000/review/add", data).then((res) => {
+      await axios.post("http://localhost:5000/interview/add", data).then((res) => {
         console.log(res.data);
       });
     } catch (error) {
@@ -95,8 +88,8 @@ export default function CreateInterviewTip() {
             variant="outlined"
             fullWidth
             required
-            value={form.companyName}
-            onChange={(e) => updateForm({ companyName: e.target.value })}
+            value={interview.company}
+            onChange={(e) => setInterview({ ...interview, company: e.target.value })}
           />
         </Grid>
         <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
@@ -109,26 +102,16 @@ export default function CreateInterviewTip() {
             variant="outlined"
             fullWidth
             required
-            value={form.description}
-            onChange={(e) => updateForm({ description: e.target.value })}
+            value={interview.tip}
+            onChange={(e) => setInterview({ ...interview, tip: e.target.value })}
           />
         </Grid>
-        {/* <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
-          <Typography variant="body2" color="textSecondary">
-            Rating:
-          </Typography>
-          <Rating
-            value={form.rating}
-            onChange={(e) => updateForm({ rating: e.target.value })}
-          />
-        </Grid> */}
         <Grid item my={"20px"}>
           <FormControl sx={{ width: 300 }}>
             <InputLabel>Tags</InputLabel>
             <Select
-              multiple
-              value={form.tags}
-              onChange={(e) => updateForm({ tags: e.target.value })}
+              value={interview.role}
+              onChange={(e) => setInterview({ ...interview, role: e.target.value })}
               input={<OutlinedInput label="Tags" />}
               MenuProps={MenuProps}
             >
@@ -141,13 +124,6 @@ export default function CreateInterviewTip() {
           </FormControl>
         </Grid>
         <div className="form-group">
-          {/* <input
-            style={{ width: "200px" }}
-            my={"20px"}
-            type="submit"
-            value="Create Interview Tip"
-            className="btn btn-primary"
-          /> */}
           <Button
             style={{height: "56px", width: "30%" }}
             variant="outlined"
