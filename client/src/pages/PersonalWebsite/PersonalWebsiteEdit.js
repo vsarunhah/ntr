@@ -347,7 +347,32 @@ const PersonalWebsiteEdit = () => {
 
       wrapper: {
         border: '1px solid blue',
-      }
+      },
+     
+      rectangle: {
+        //display: 'inline-block',
+        display: 'inline-block',
+        width: '100%',
+        height: '500px',
+        //backgroundColor: '#ffafcc',
+        //backgroundColor: 'linear-gradient(to bottom right, red, yellow)',
+        background: personalWebsite.theme == "pink" ? 'linear-gradient(to right bottom, #ffafcc, #430089)': personalWebsite.theme == "purple" ? 'linear-gradient(to right bottom, #5390d9, #7400b8)':
+        personalWebsite.theme == "blue" ? 'linear-gradient(to right bottom, #000000, #a2d2ff)': '#fffff',
+        position: 'relative',
+        textAlign:"center",
+      },
+
+        rectangleOutline: {
+          //display: 'inline-block',
+          display: 'inline-block',
+          width: '50%',
+          height: '270px',
+          //backgroundColor: '#ffafcc',
+          //backgroundColor: 'linear-gradient(to bottom right, red, yellow)',
+          position: 'relative',
+          textAlign:"center",
+          border: '2px solid white',
+        },
 
     };
 
@@ -369,6 +394,35 @@ const PersonalWebsiteEdit = () => {
     <Box my={1}>
     </Box>
       <MuiDialog></MuiDialog>
+    <Box my={1}>
+    </Box>
+    <div style={styles.rectangle}>
+    <Box my={15}>
+    </Box>
+
+    <div style={styles.rectangleOutline}>
+
+      <Typography gutterBottom variant="h1" color="#ffffff" style={{ fontWeight: 520}}>
+        Hello!
+      </Typography>
+      <div>
+      {
+        personalWebsite.showProfile ? <Grid>
+      <Typography gutterBottom variant="h5" color="#ffffff" >
+        My name is <Box fontWeight='fontWeightBold' display='inline'>{profile.first_name} {profile.last_name}</Box>  and welcome to my page!
+      </Typography>
+      <Typography gutterBottom variant="body1" color="#ffffff" >
+        {profile.profileEmail} | {profile.phone}
+      </Typography>
+      <Typography variant="body1" color="#ffffff" >
+        {profile.address}
+      </Typography></Grid>:null
+      }
+      </div>
+      </div>
+
+    </div>
+    
     <Box my={10}>
     </Box>
     <Grid container direction="row" >
