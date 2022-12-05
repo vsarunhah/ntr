@@ -35,6 +35,7 @@ import PersonalWebsite from "./pages/PersonalWebsite/PersonalWebsite";
 import ParserResume from "./pages/Profile/ParseResume";
 
 import InterviewList from "./pages/Interviews/InterviewList";
+import CreateInterviewTip from "./pages/Interviews/CreateInterviewTip";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -74,6 +75,7 @@ const App = () => {
         <Route path="/personalwebsite/:id" element={<PersonalWebsite />} />
         <Route path="/ParseResume" element={<ParserResume />} />
         <Route path="/interviewlist" element={<InterviewList />} />
+        <Route path="/createinterviewtip" element={<CreateInterviewTip />} />
       </Routes>
     </div>
   );

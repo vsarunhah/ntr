@@ -125,7 +125,7 @@ const Review = (props) => (
             {props.review.companyName}
           </Typography>
         </Grid>
-        {displayRating(props.review.rating)}
+        {/* {displayRating(props.review.rating)} */}
         <Grid item>
           <Typography
             className={"MuiTypography--subheading"}
@@ -135,7 +135,7 @@ const Review = (props) => (
           </Typography>
         </Grid>
       </CardContent>
-      <CardActions
+      {/* <CardActions
         sx={{
           borderTop: 0.5,
           justifyContent: "space-between",
@@ -175,7 +175,7 @@ const Review = (props) => (
             </Grid>
           </Grid>
         </Grid>
-      </CardActions>
+      </CardActions> */}
     </Card>
   </Grid>
 );

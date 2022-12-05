@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
-import { TextField, Typography } from "@mui/material";
+import { TextField, Typography, Button } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar";
 import Rating from "@mui/material/Rating";
 import InputLabel from "@mui/material/InputLabel";
@@ -13,14 +13,18 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { v4 as uuidv4 } from "uuid";
 
 const tagList = [
-  "Compensation",
-  "Culture",
-  "Work/Life Balance",
-  "Benefits",
-  "Management",
-  "Career Growth",
-  "Diversity",
-];
+    "Software Engineer",
+    "Frontend Engineer",
+    "Backend Engineer",
+    "UX Designer",
+    "Product Manager",
+    "Hardware Engineer",
+    "Graphics Tools Engineer",
+    "Validation Engineer",
+    "Marketing",
+    "Publicity",
+    "Machine Learning Engineer",
+  ];
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -33,13 +37,14 @@ const MenuProps = {
   },
 };
 
-export default function CreateReview() {
+export default function CreateInterviewTip() {
   const [form, setForm] = useState({
     id: uuidv4(),
     companyName: "",
     description: "",
     rating: "0",
     tags: [],
+    user: localStorage.getItem("user_id")
   });
   const navigate = useNavigate();
 
@@ -66,7 +71,7 @@ export default function CreateReview() {
       console.log("oops");
     }
 
-    navigate("/reviews");
+    navigate("/interviewlist");
   }
 
   return (
@@ -75,10 +80,10 @@ export default function CreateReview() {
       <form onSubmit={onSubmit}>
         <Grid item>
           <Typography my={"20px"} variant="h5">
-            New Review
+            New Interview Tip
           </Typography>
           <Typography my={"20px"} variant="body2" color="textSecondary">
-            Please fill in the review information.
+            Please fill in the interview tips information.
           </Typography>
         </Grid>
         <Grid item>
@@ -99,8 +104,8 @@ export default function CreateReview() {
             style={{ width: "1000px" }}
             multiline
             rows={4}
-            placeholder="Enter Review Description"
-            label="Review Description"
+            placeholder="Enter Interview Tips"
+            label="Interview Tips"
             variant="outlined"
             fullWidth
             required
@@ -108,7 +113,7 @@ export default function CreateReview() {
             onChange={(e) => updateForm({ description: e.target.value })}
           />
         </Grid>
-        <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
+        {/* <Grid item style={{ display: "grid", alignItems: "left" }} my={"20px"}>
           <Typography variant="body2" color="textSecondary">
             Rating:
           </Typography>
@@ -116,7 +121,7 @@ export default function CreateReview() {
             value={form.rating}
             onChange={(e) => updateForm({ rating: e.target.value })}
           />
-        </Grid>
+        </Grid> */}
         <Grid item my={"20px"}>
           <FormControl sx={{ width: 300 }}>
             <InputLabel>Tags</InputLabel>
@@ -136,13 +141,22 @@ export default function CreateReview() {
           </FormControl>
         </Grid>
         <div className="form-group">
-          <input
+          {/* <input
             style={{ width: "200px" }}
             my={"20px"}
             type="submit"
-            value="Create Review"
+            value="Create Interview Tip"
             className="btn btn-primary"
-          />
+          /> */}
+          <Button
+            style={{height: "56px", width: "30%" }}
+            variant="outlined"
+            type="submit"
+            value="Create Interview Tip"
+            className="btn btn-primary"
+          >
+            Add Interview Tip
+          </Button>
         </div>
       </form>
     </Grid>

@@ -14,6 +14,9 @@ import axios from 'axios';
 import MuiDialog from '../../components/DialogueBox/Confirmation'
 import DeleteDialog from '../../components/DialogueBox/DeleteConfirm';
 import DeleteOutline from '@mui/icons-material/DeleteOutline';
+import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
+import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
+
 import {
   Dialog,
   DialogTitle,
@@ -21,6 +24,15 @@ import {
   DialogContentText,
   DialogActions,
 } from '@mui/material'
+
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+} from 'react-share';
+
+import { red } from '@mui/material/colors';
 const PersonalWebsiteEdit = () => {
 
 
@@ -30,7 +42,39 @@ const PersonalWebsiteEdit = () => {
         
       };
     
-    const [open, setOpen] = useState(false);
+    const [openDelete, setDeleteOpen] = useState(false);
+    const [openShare, setShareOpen] = useState(false);
+
+    const ShareOptions = () => {   
+        const shareUrl = `localhost:3000/personalwebsite/${localStorage.getItem("user_id")}`;
+        return (
+          <div
+            style={{
+              background: '#0000',
+              width: '100%',
+            }}
+          >
+    
+            <FacebookShareButton
+              url={shareUrl}
+            >
+              <FacebookIcon size={40} round={true}  mx ={2}/>
+            </FacebookShareButton>
+            
+            <WhatsappShareButton
+              url={shareUrl}
+            >
+              <WhatsappIcon size={40} round={true}  mx ={2}/>
+            </WhatsappShareButton>
+
+            <ContentCopyRoundedIcon
+              url={shareUrl}
+            >
+              <ContentCopyRoundedIcon size={40} variant={"outlined"} round={true} />
+            </ContentCopyRoundedIcon>
+          </div>
+        );
+    }
 
     const DeleteDialog = () => {
         
@@ -68,15 +112,15 @@ const PersonalWebsiteEdit = () => {
               console.log("oops");
             }
           });
-          setOpen(false);
+          setDeleteOpen(false);
         };
-        console.log("open : ", open)
+        console.log("open : ", openDelete)
       return (
           <React.Fragment>
           <Grid>
             <Dialog
-              open={open}
-              onClose={() => setOpen(false)}
+              open={openDelete}
+              onClose={() => setDeleteOpen(false)}
               aria-labelledby='dialog-title'
               aria-describedby='dialog-description'>
               <DialogTitle id='dialog-title'>Delete Website</DialogTitle>
@@ -86,7 +130,7 @@ const PersonalWebsiteEdit = () => {
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button onClick={() => setOpen(false)}>Cancel</Button>
+                <Button onClick={() => setDeleteOpen(false)}>Cancel</Button>
                 <Button autoFocus onClick={DeleteWebsite} >
                   Yes
                 </Button>
@@ -96,6 +140,31 @@ const PersonalWebsiteEdit = () => {
           </React.Fragment>
         )
   };
+
+  const ShareDialog = () => {
+      
+  return (
+      <React.Fragment>
+      <Grid>
+        <Dialog
+          open={openShare}
+          onClose={() => setShareOpen(false)}
+          aria-labelledby='dialog-title'
+          aria-describedby='dialog-description'>
+          <DialogTitle id='dialog-title'>Share your website!</DialogTitle>
+          <DialogContent>
+            <DialogContentText id='dialog-description'>
+              <ShareOptions></ShareOptions>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setShareOpen(false)}>Done</Button>
+          </DialogActions>
+        </Dialog>
+      </Grid>
+      </React.Fragment>
+    )
+};
     //use this once the id comes
     let navigate = useNavigate();
     const routeChange = () => { 
@@ -268,20 +337,21 @@ const PersonalWebsiteEdit = () => {
      <Box my={10}>
     </Box>
 
-    <Button style={{margin:'10px'}} onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
+    <Button style={{margin:'10px'}} onClick={openInNewTab} variant="contained" startIcon={<CoPresentRoundedIcon /> } >
+        View 
+      </Button>
+      <Button  style={{margin:'10px'}} onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
         Edit
       </Button>
-
-      <Button style={{margin:'10px'}} onClick={openInNewTab} variant="outlined" startIcon={<CoPresentRoundedIcon /> } >
-        View Website
+      <Button style={{margin:'10px'}} onClick={() => setShareOpen(true)} variant="outlined" startIcon={<ShareRoundedIcon /> } >
+       Share
       </Button>
-
-      <Button onClick={() => setOpen(true)} variant="outlined" startIcon={<DeleteOutline /> } >
-        Delete Website
+      <ShareDialog />
+      <Button style={{margin:'10px', outlineColor: "red", color: "red",}} onClick={() => setDeleteOpen(true)} variant="outlined" startIcon={<DeleteOutline /> } >
+        Delete 
       </Button>
       <DeleteDialog />
-      <Box my={1}>
-    </Box>
+      
       
     <Box my={10}>
     </Box>
