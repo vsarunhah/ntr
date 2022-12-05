@@ -51,9 +51,11 @@ const Navbar = () => {
           variant="permanent"
           anchor="left"
       >
+        <a href='/profile'>
         <img src={logo} 
               alt="ntr logo"
-              />
+              style={{width:'210px'}}
+              /></a>
         <Toolbar />
         <Divider />
         <List>
@@ -87,6 +89,7 @@ const Navbar = () => {
                   primary="Website"
                 />
           </ListItem>
+          <Box my={3}></Box>
           <ListItem button onClick={handleLogout}>
           <ListItemIcon
                 sx={navbarStyles.icons}

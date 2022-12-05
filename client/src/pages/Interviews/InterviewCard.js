@@ -116,6 +116,15 @@ const InterviewCard = (props) => (
             {props.interview.company}
           </Typography>
         </Grid>
+        <Grid item>
+          <Typography
+            className={"MuiTypography--heading"}
+            //variant={"h6"}
+            gutterBottom
+          >
+            {props.interview.role}
+          </Typography>
+        </Grid>
         {/* {displayRating(props.review.rating)} */}
         <Grid item>
           <Typography

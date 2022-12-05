@@ -85,16 +85,10 @@ const PersonalWebsiteEdit = () => {
 
             <EmailShareButton
             url={shareUrl}
-            onClick={handleEmailOnClick}
-            >
+            subject={'View this link to my personal website!'}>
               <EmailIcon size={40} round={true} style={{margin:'10px'}}/>
             </EmailShareButton>
-
-            <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com."
-              title="Share by Email">
-              <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png"></img>
-            </a>
-
+                 
             <Box my={2}></Box>
 
             <Button onClick={() => {navigator.clipboard.writeText(shareUrl)}}>
