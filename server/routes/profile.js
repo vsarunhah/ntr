@@ -23,6 +23,7 @@ router.route("/profile/add").post(async function (req, res) {
                 personalWebsite: req.body.personalWebsite,
                 last_modified: req.body.last_modified,
                 websiteDetails: req.body.websiteDetails,
+                hasWebsite: req.body.hasWebsite,
             },
           };
         user = await User.updateOne({_id: req.body.user_id}, update_query);
@@ -106,6 +107,15 @@ router.route("/profile/get_personalWebsite").post(async function (req, res) {
         let user = await User.findOne({_id: req.body.user_id}).select("personalWebsite");
         //console.log("user:", user);
         res.json(user.personalWebsite);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
+router.route("/profile/hasWebsite").post(async function (req, res) {
+    try {
+        let user = await User.findOne({_id: req.body.user_id}).select("hasWebsite");
+        res.json(user.hasWebsite);
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');

@@ -82,36 +82,19 @@ const PersonalWebsiteEdit = () => {
          
           const data = {
             user_id: localStorage.getItem("user_id"),
+            hasWebsite: false,
           };
-          await axios.post("http://localhost:5000/profile/get_profile", data).then(async (res) => {   
-            setLinks(res.data.links);
-            setSkills(res.data.skills);
-            setExperiences(res.data.experiences);
-            setProjects(res.data.projects);
-            setEducations(res.data.educations);
-            const websiteDetails = {
-              experiences: res.data.experiences,
-              educations: res.data.educations,
-              projects: res.data.projects,
-              links: res.data.links,
-              skills: res.data.skills,
-            };
-            // SEND EXPERIENCES AND EDUCATIONS TO SERVER
-            const data = {
-              user_id: localStorage.getItem('user_id'),
-              websiteDetails: websiteDetails,
-            }
-            try {
-              await axios
-                .post("http://localhost:5000/profile/add", data)
-                .then((res) => {
-                  //console.log(res.data);
-                });
-            } catch (error) {
-              console.log("oops");
-            }
-          });
+          try {
+            await axios
+              .post("http://localhost:5000/profile/add", data)
+              .then((res) => {
+                console.log(res.data);
+              });
+          } catch (error) {
+            console.log("oops");
+          }
           setDeleteOpen(false);
+          navigate("/createpersonalwebsite");
         };
         console.log("open : ", openDelete)
       return (
