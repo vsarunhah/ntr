@@ -119,17 +119,19 @@ export default function SalaryPage() {
     )
   }
 
-  // useEffect(() => {
-  //   // declare the data fetching function
-  //   const getSalary = async () => {
-  //     const sal = await scrapeSalary();
-  //     // console.log("sal: ", sal.data);
-  //     setSalary(sal.data);
-  //   };
-
-  //   getSalary()
-  //     .catch(console.error);
-  // },)
+  async function scrapeSalary() {
+    console.log("before scraper");
+    await axios.get("http://localhost:5000/salary/scrape").then((res) => {
+      console.log("after scraper: ", res.data);
+      return res.data;
+    });
+    return;
+  }
+ 
+  useEffect(() => {
+    scrapeSalary();
+    return;
+  }, []);
 
 
   return (
@@ -187,6 +189,6 @@ export default function SalaryPage() {
           </Grid>
         </Typography>
       </Grid>
-    </Grid>
-  );
+  </Grid>
+  )
 }

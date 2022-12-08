@@ -2,6 +2,22 @@ const express = require("express");
 const salaryRoutes = express.Router();
 const { User } = require("../models/user");
 const puppeteer = require("puppeteer");
+const { on } = require("events");
+const fileSystem = require("fs");
+
+/*
+ * Call this API when you want to read scraped data from JSON file
+ * Returns the map of maps of maps of salaries to the frontend
+ */
+salaryRoutes.route("/salary/scrape").get(async (req, res) => {
+  //Read data from JSON file
+  const buffer = fileSystem.readFileSync("levelsData.json");
+  const fileContent = buffer.toString();
+  //console.log(JSON.parse(fileContent));
+  res.status(200).send({ data: JSON.parse(fileContent), message: "Scraped" });
+});
+
+/* Practice scraper ~ Ignore */
 
 salaryRoutes.route("/salary").get(async (req, res) => {
   const browser = await puppeteer.launch({ headless: false });
@@ -62,7 +78,7 @@ salaryRoutes.route("/salary/scraper").get(async function (req, res) {
     if (temp) {
       return temp.textContent;
     } else {
-      console.log(JSON.stringify(document.body));
+      //console.log(JSON.stringify(document.body));
       console.log("here");
     }
   });
