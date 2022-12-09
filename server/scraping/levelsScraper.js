@@ -97,17 +97,32 @@ scrapeLevels = async () => {
 
         //Convert to salaries map
         const salaries = {
-          total: levelSalaryArray[1],
-          base: levelSalaryArray[2],
-          stock: levelSalaryArray[3],
-          bonus: levelSalaryArray[4],
+          total: levelSalaryArray[1].substring(
+            1,
+            levelSalaryArray[1].length - 1
+          ),
+          base: levelSalaryArray[2].substring(
+            1,
+            levelSalaryArray[2].length - 1
+          ),
+          stock: levelSalaryArray[3].substring(
+            1,
+            levelSalaryArray[3].length - 1
+          ),
+          bonus: levelSalaryArray[4].substring(
+            1,
+            levelSalaryArray[4].length - 1
+          ),
         };
 
         const level = levelSalaryArray[0];
-        const levelSalaryData = { level, salaries };
+        const levelSalaryData = new Map();
+        levelSalaryData.set(level, salaries);
+        // const levelSalaryData = { level, salaries };
+        console.log("levelSalaryData: ", levelSalaryData);
 
         const position = positionLinks[i].split("/").pop();
-        positionSalaryData.set(position, levelSalaryData);
+        positionSalaryData.set(position, Object.fromEntries(levelSalaryData));
       } else {
         //multiple levels exist
 
@@ -146,13 +161,26 @@ scrapeLevels = async () => {
         for (let j = 0; j < allSalaries.length; j += 5) {
           const level = allSalaries[j];
           const salaries = {
-            total: allSalaries[j + 1],
-            base: allSalaries[j + 2],
-            stock: allSalaries[j + 3],
-            bonus: allSalaries[j + 4],
+            total: allSalaries[j + 1].substring(
+              1,
+              allSalaries[j + 1].length - 1
+            ),
+            base: allSalaries[j + 2].substring(
+              1,
+              allSalaries[j + 2].length - 1
+            ),
+            stock: allSalaries[j + 3].substring(
+              1,
+              allSalaries[j + 3].length - 1
+            ),
+            bonus: allSalaries[j + 4].substring(
+              1,
+              allSalaries[j + 4].length - 1
+            ),
           };
           levelSalaryData.set(level, salaries);
           //   console.log("levelSalaryData: ", levelSalaryData);
+          console.log("level: ", level);
         }
         //Outer map
         const position = positionLinks[i].split("/").pop();
