@@ -8,6 +8,7 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import AppRegistrationRoundedIcon from '@mui/icons-material/AppRegistrationRounded';
 import CoPresentRoundedIcon from '@mui/icons-material/CoPresentRounded';
 import MoodRoundedIcon from '@mui/icons-material/MoodRounded';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 export const mainNavbarItems = [
     {
@@ -40,5 +41,11 @@ export const mainNavbarItems = [
         label: 'Interviews',
         route: '/interviewlist',
     },
+    {
+        id: 4,
+        icon: <AttachMoneyIcon />,
+        label: "Salary",
+        route: "/salary",
+      }
 
 ]
