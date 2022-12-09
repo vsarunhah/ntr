@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "scrape": "node scraping/levelsScraper.js"
+    "scrape": "node scraping/levelsScraper.js",
+    "test": "run-for-every-file --src 'tests/' --file '**/*.js' --run 'node {{src-file}}'",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

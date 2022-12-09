@@ -31,6 +31,8 @@ import SampleForm from "./components/sampleForm";
 import PersonalWebsiteEdit from "./pages/PersonalWebsite/PersonalWebsiteEdit";
 import PersonalWebsiteView from "./pages/PersonalWebsite/PersonalWebsiteView";
 import PersonalWebsite from "./pages/PersonalWebsite/PersonalWebsite";
+import CreatePersonalWebsite from "./pages/PersonalWebsite/CreatePersonalWebsite";
+
 import ParserResume from "./pages/Profile/ParseResume";
 
 import Salary from "./components/Salary/salary";
@@ -38,6 +40,10 @@ import SalaryPage from "./components/Salary/salaryPage";
 import Company from "./components/Salary/company";
 import Role from "./components/Salary/role";
 import AddSalary from "./components/Salary/addSalary";
+import InterviewList from "./pages/Interviews/InterviewList";
+import CreateInterviewTip from "./pages/Interviews/CreateInterviewTip";
+
+
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -81,6 +87,11 @@ const App = () => {
         <Route path="/salary/company/:id" element={<Company />} />
         <Route path="/salary/role/:id" element={<Role />} />
         <Route path="/addsalary" element={<AddSalary />} />
+        <Route path="/personalwebsite/:id" element={<PersonalWebsite />} />
+        <Route path="/ParseResume" element={<ParserResume />} />
+        <Route path="/interviewlist" element={<InterviewList />} />
+        <Route path="/createinterviewtip" element={<CreateInterviewTip />} />
+        <Route path="/createpersonalwebsite" element={<CreatePersonalWebsite />} />
       </Routes>
     </div>
   );

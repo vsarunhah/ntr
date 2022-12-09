@@ -8,7 +8,14 @@ reviewRoutes.route("/reviews").get(async function (req, res) {
     var reviewsArray = [];
     for (let i = 0; i < reviews.length; i++) {
       for (let j = 0; j < reviews[i].reviews.length; j++) {
+        // reviews[i] = user
         reviews[i].reviews[j].user = reviews[i]._id;
+        if (reviews[i].reviews[j].upvotes == undefined) {
+          reviews[i].reviews[j].upvotes = [];
+        }
+        if (reviews[i].reviews[j].downvotes == undefined) {
+          reviews[i].reviews[j].downvotes = [];
+        }
         reviewsArray.push(reviews[i].reviews[j]);
       }
     }

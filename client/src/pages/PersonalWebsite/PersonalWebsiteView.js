@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import {Card, Divider, Button, Box, Typography,CardContent } from '@mui/material';
+import { Avatar, Card, Divider, Button, Box, Typography,CardContent } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Link, LinkProps } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -12,12 +12,162 @@ import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutl
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
 import MuiDialog from '../../components/DialogueBox/Confirmation'
+import DeleteDialog from '../../components/DialogueBox/DeleteConfirm';
+import DeleteOutline from '@mui/icons-material/DeleteOutline';
+import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
+import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
+
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from '@mui/material'
+
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  EmailShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+  EmailIcon,
+} from 'react-share';
+
+
+
 const PersonalWebsiteEdit = () => {
+
+    const useStyles = {
+      avatar: {
+        //backgroundColor: grey[50],
+        border: `1px solid primary`,
+       // color: theme.palette.info.main,
+      },
+    };
+    const shareUrl = `localhost:3000/personalwebsite/${localStorage.getItem("user_id")}`;
 
 
     const openInNewTab = url => {
-        window.open('/personalwebsite/', '_blank', 'noopener,noreferrer');
+       console.log("sending to ", `/personalwebsite/${localStorage.getItem("user_id")}`);
+        window.open(`/personalwebsite/${localStorage.getItem("user_id")}`, '_blank', 'noopener,noreferrer');
+        
       };
+
+    const handleEmailOnClick = () => {
+      window.location.href = encodeURI(`mailto:
+      ?subject= Subject Here
+      &body=Hi,\n\nYou Can bla Bla bla "" At ${shareUrl}\n\nEnjoy,`);
+    };
+    
+    const [openDelete, setDeleteOpen] = useState(false);
+    const [openShare, setShareOpen] = useState(false);
+
+    const ShareOptions = () => {   
+        return (
+          <div
+            style={{
+              background: '#0000',
+            }}
+          >
+    
+            <FacebookShareButton
+              url={shareUrl}
+            >
+              <FacebookIcon size={40} round={true}  style={{margin:'10px'}}/>
+            </FacebookShareButton>
+            
+            <WhatsappShareButton
+              url={shareUrl}
+            >
+              <WhatsappIcon size={40} round={true} style={{margin:'10px'}}/>
+            </WhatsappShareButton>
+
+            <EmailShareButton
+            url={shareUrl}
+            subject={'View this link to my personal website!'}>
+              <EmailIcon size={40} round={true} style={{margin:'10px'}}/>
+            </EmailShareButton>
+                 
+            <Box my={2}></Box>
+
+            <Button onClick={() => {navigator.clipboard.writeText(shareUrl)}}>
+            <Avatar style={useStyles.avatar} >
+                  <ContentCopyRoundedIcon />
+            </Avatar>
+            </Button>
+          </div>
+        );
+    }
+
+    const DeleteDialog = () => {
+        
+        console.log("delete dialog");
+      const DeleteWebsite = async () => {
+         
+          const data = {
+            user_id: localStorage.getItem("user_id"),
+            hasWebsite: false,
+          };
+          try {
+            await axios
+              .post("http://localhost:5000/profile/add", data)
+              .then((res) => {
+                console.log(res.data);
+              });
+          } catch (error) {
+            console.log("oops");
+          }
+          setDeleteOpen(false);
+          navigate("/createpersonalwebsite");
+        };
+        console.log("open : ", openDelete)
+      return (
+          <React.Fragment>
+          <Grid>
+            <Dialog
+              open={openDelete}
+              onClose={() => setDeleteOpen(false)}
+              aria-labelledby='dialog-title'
+              aria-describedby='dialog-description'>
+              <DialogTitle id='dialog-title'>Delete Website</DialogTitle>
+              <DialogContent>
+                <DialogContentText id='dialog-description'>
+                  Are you sure you want to delete all changes made to the website?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setDeleteOpen(false)}>Cancel</Button>
+                <Button autoFocus onClick={DeleteWebsite} >
+                  Yes
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </Grid>
+          </React.Fragment>
+        )
+  };
+
+  const ShareDialog = () => {
+      
+  return (
+        <Dialog
+          open={openShare}
+          onClose={() => setShareOpen(false)}
+          aria-labelledby='dialog-title'
+          aria-describedby='dialog-description'>
+          <DialogTitle id='dialog-title'>Share your website!</DialogTitle>
+          <DialogContent>
+            <DialogContentText id='dialog-description'>
+              <ShareOptions></ShareOptions>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setShareOpen(false)}>Done</Button>
+          </DialogActions>
+        </Dialog>
+    )
+};
     //use this once the id comes
     let navigate = useNavigate();
     const routeChange = () => { 
@@ -122,24 +272,14 @@ const PersonalWebsiteEdit = () => {
            };
            console.log("user profile : ", user_profile);
            setProfile(user_profile);
-           setLinks(res.data.links);
-           setSkills(res.data.skills);
          });
-          await axios.post("http://localhost:5000/profile/get_experiences", data).then((res) => {
-           console.log("inside experiences post req");
-           console.log(res.data);
-           setExperiences(res.data);
-         });
-         await axios.post("http://localhost:5000/profile/get_educations", data).then((res) => {
-           console.log("inside educations post req");
-           console.log(res.data);
-           setEducations(res.data);
-         });
-         await axios.post("http://localhost:5000/profile/get_projects", data).then((res) => {
-           console.log("inside projects post req");
-           console.log(res.data);
-           setProjects(res.data);
-         });
+         await axios.post("http://localhost:5000/profile/get_websiteDetails", data).then((res) => {
+          setLinks(res.data.links);
+          setSkills(res.data.skills);
+           setExperiences(res.data.experiences);
+           setEducations(res.data.educations);
+           setProjects(res.data.projects);
+        });
          await axios.post("http://localhost:5000/profile/get_personalWebsite", data).then((res) => {
            console.log("inside personal website post req");
            console.log(res.data);
@@ -200,14 +340,24 @@ const PersonalWebsiteEdit = () => {
      <Box my={10}>
     </Box>
 
-    <Button style={{margin:'10px'}} onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
+    <Button style={{margin:'10px'}} onClick={openInNewTab} variant="contained" startIcon={<CoPresentRoundedIcon /> } >
+        View 
+      </Button>
+      <Button  style={{margin:'10px'}} onClick={routeChange} variant="outlined" startIcon={<EditOutlinedIcon /> } >
         Edit
       </Button>
-
-      <Button onClick={openInNewTab} variant="outlined" startIcon={<CoPresentRoundedIcon /> } >
-        View Website
+      <Button style={{margin:'10px'}} onClick={() => setShareOpen(true)} variant="outlined" startIcon={<ShareRoundedIcon /> } >
+       Share
+      </Button> 
+      <ShareDialog />
+      <Button style={{margin:'10px', outlineColor: "red", color: "red",}} onClick={() => setDeleteOpen(true)} variant="outlined" startIcon={<DeleteOutline /> } >
+        Delete 
       </Button>
-
+      <DeleteDialog />
+      
+      
+    <Box my={10}>
+    </Box>
       <Box my={10}>
     </Box>
     <Typography gutterBottom variant="h4">

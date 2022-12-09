@@ -129,6 +129,13 @@ function parserResume() {
                     links.push(data);                   
                 })
                 console.log("links : ", links);
+                const websiteDetails = {
+                    experiences: experiences,
+                    educations: educations,
+                    projects: projects,
+                    links: links,
+                    skills: skills,
+                  };
                 const data = {
                     user_id: localStorage.getItem('user_id'),
                     experiences: experiences,
@@ -143,7 +150,8 @@ function parserResume() {
                     state: profile.state,
                     postal_code: profile.postal_code,
                     links: links,
-                    skills: skills
+                    skills: skills,
+                    websiteDetails: websiteDetails,
                   }
                   console.log(" data: ", data);
                   try {

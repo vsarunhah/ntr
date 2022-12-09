@@ -11,8 +11,7 @@ const reviewSchema = require('./review.js');
 const linksSchema = require('./links.js');
 const skillsSchema = require('./skills.js');
 const personalWebsiteSchema = require('./personalwebsite.js');
-
-
+const websiteDetailsSchema = require('./websiteDetails.js');
 
 const userSchema = mongoose.Schema({
     name: String,
@@ -36,6 +35,8 @@ const userSchema = mongoose.Schema({
     reviews: [reviewSchema],
     personalWebsite: personalWebsiteSchema,
     last_modified: Date,
+    websiteDetails: websiteDetailsSchema,
+    hasWebsite: Boolean
 });
 
 userSchema.methods.generateAuthToken = function() {

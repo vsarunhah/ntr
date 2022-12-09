@@ -139,6 +139,7 @@ function SampleForm () {
       links: links,
       skills: skills,
       personalWebsite: personalWebsite,
+      hasWebsite: false,
     }
     try {
       await axios

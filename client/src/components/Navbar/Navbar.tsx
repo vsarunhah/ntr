@@ -11,7 +11,11 @@ import { navbarStyles } from './styles';
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/ntrlogoinverted.png";
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
-
+import { Box } from '@mui/material';
+import { MailruIcon } from 'react-share';
+import MoodRoundedIcon from '@mui/icons-material/MoodRounded';
+import CoPresentRoundedIcon from '@mui/icons-material/CoPresentRounded';
+import axios from 'axios';
 const Navbar = () => {
     const navigate = useNavigate();
 
@@ -26,6 +30,20 @@ const Navbar = () => {
       console.log("logged out");
       window.location.href = "/login";
     };
+    const handleWebsite = async () => {
+      const data = {
+        user_id: localStorage.getItem('user_id'),
+      }
+      await axios.post("http://localhost:5000/profile/hasWebsite", data).then(async (res) => {
+        console.log(res.data);
+        if (res.data === true){
+         navigate('/personalwebsiteview');
+        }
+        else{
+          navigate('/createpersonalwebsite');
+        }
+      });
+    };
 
     return (
         <Drawer
@@ -33,9 +51,11 @@ const Navbar = () => {
           variant="permanent"
           anchor="left"
       >
+        <a href='/profile'>
         <img src={logo} 
               alt="ntr logo"
-              />
+              style={{width:'210px'}}
+              /></a>
         <Toolbar />
         <Divider />
         <List>
@@ -54,8 +74,22 @@ const Navbar = () => {
                 sx={navbarStyles.text}
                 primary={item.label}
               />
+              <Box my={3}></Box>
             </ListItem>
+            
           ))}
+          <ListItem button onClick={handleWebsite}>
+            <ListItemIcon
+                  sx={navbarStyles.icons}
+                >
+                < CoPresentRoundedIcon></CoPresentRoundedIcon>
+                </ListItemIcon>
+            <ListItemText
+                  sx={navbarStyles.text}
+                  primary="Website"
+                />
+          </ListItem>
+          <Box my={3}></Box>
           <ListItem button onClick={handleLogout}>
           <ListItemIcon
                 sx={navbarStyles.icons}
