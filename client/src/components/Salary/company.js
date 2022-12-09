@@ -154,6 +154,7 @@ export default function Company() {
                 id="company-search-text"
                 variant="outlined"
                 fullWidth
+                defaultValue={companyData[0] ? companyData[0].name : ""}
                 label="Search by company name"
               />
               <Button onClick={() => searchCompany(document.getElementById("company-search-text").value)}>

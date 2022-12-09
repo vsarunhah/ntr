@@ -12,7 +12,7 @@ const fileSystem = require("fs");
  */
 
 // List of Companies
-const companies = ["hubspot"];
+const companies = ["hubspot", "google", "apple", "amazon"];
 
 // Create urls for each company
 const urlArray = companies.map((company) => {

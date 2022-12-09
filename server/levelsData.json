@@ -1,44 +1,1886 @@
 {
-  "hubspot": {
-    "software-engineer": {
-      "Software Engineer\nEntry\n(Entry Level)": {
-        "total": "$143K",
-        "base": "$126K",
-        "stock": "$16K",
-        "bonus": "$2K"
-      },
-      "Senior Software Engineer I\nSenior I": {
-        "total": "$201K",
-        "base": "$161K",
-        "stock": "$38K",
-        "bonus": "$2K"
-      },
-      "Senior Software Engineer II\nSenior II": {
-        "total": "$252K",
-        "base": "$176K",
-        "stock": "$71K",
-        "bonus": "$5K"
-      }
+    "hubspot": {
+        "software-engineer": {
+            "Software Engineer\nEntry\n(Entry Level)": {
+                "total": "$152K",
+                "base": "$132K",
+                "stock": "$17K",
+                "bonus": "$2K"
+            },
+            "Senior Software Engineer I\nSenior I": {
+                "total": "$202K",
+                "base": "$161K",
+                "stock": "$41K",
+                "bonus": "$385"
+            },
+            "Senior Software Engineer II\nSenior II": {
+                "total": "$252K",
+                "base": "$176K",
+                "stock": "$71K",
+                "bonus": "$5K"
+            }
+        },
+        "product-manager": {},
+        "business-analyst": {
+            "level": "2",
+            "salaries": {
+                "total": "$140K",
+                "base": "$100K",
+                "stock": "$40K",
+                "bonus": "$0"
+            }
+        },
+        "product-designer": {
+            "level": "Senior",
+            "salaries": {
+                "total": "$185K",
+                "base": "$160K",
+                "stock": "$25K",
+                "bonus": "$0"
+            }
+        },
+        "program-manager": {}
     },
-    "program-manager": {},
-    "product-manager": {},
-    "business-analyst": {
-      "level": "2",
-      "salaries": {
-        "total": "$140K",
-        "base": "$100K",
-        "stock": "$40K",
-        "bonus": "$0"
-      }
+    "google": {
+        "software-engineer": {
+            "L3\nSWE II\n(Entry Level)": {
+                "total": "$178K",
+                "base": "$140K",
+                "stock": "$28K",
+                "bonus": "$10K"
+            },
+            "L4\nSWE III": {
+                "total": "$249K",
+                "base": "$168K",
+                "stock": "$64K",
+                "bonus": "$18K"
+            },
+            "L5\nSenior SWE": {
+                "total": "$333K",
+                "base": "$197K",
+                "stock": "$110K",
+                "bonus": "$26K"
+            },
+            "L6\nStaff SWE": {
+                "total": "$484K",
+                "base": "$237K",
+                "stock": "$219K",
+                "bonus": "$29K"
+            },
+            "L7\nSenior Staff SWE": {
+                "total": "$688K",
+                "base": "$270K",
+                "stock": "$348K",
+                "bonus": "$70K"
+            },
+            "L8\nPrincipal Engineer": {
+                "total": "$1.13M",
+                "base": "$327K",
+                "stock": "$697K",
+                "bonus": "$101K"
+            }
+        },
+        "technical-program-manager": {
+            "L3\nTPM II": {
+                "total": "$165K",
+                "base": "$123K",
+                "stock": "$27K",
+                "bonus": "$15K"
+            },
+            "L4\nTPM III": {
+                "total": "$235K",
+                "base": "$148K",
+                "stock": "$63K",
+                "bonus": "$25K"
+            },
+            "L5\nSenior TPM": {
+                "total": "$262K",
+                "base": "$175K",
+                "stock": "$62K",
+                "bonus": "$25K"
+            },
+            "L6\nStaff TPM": {
+                "total": "$395K",
+                "base": "$211K",
+                "stock": "$141K",
+                "bonus": "$43K"
+            },
+            "L7\nSenior Staff TPM": {
+                "total": "$505K",
+                "base": "$238K",
+                "stock": "$199K",
+                "bonus": "$68K"
+            },
+            "L8\nPrincipal TPM": {
+                "total": "$890K",
+                "base": "$318K",
+                "stock": "$450K",
+                "bonus": "$122K"
+            }
+        },
+        "product-designer": {
+            "L3\nDesigner II": {
+                "total": "$148K",
+                "base": "$133K",
+                "stock": "$11K",
+                "bonus": "$4K"
+            },
+            "L4\nDesigner III": {
+                "total": "$197K",
+                "base": "$155K",
+                "stock": "$28K",
+                "bonus": "$14K"
+            },
+            "L5\nSenior Designer": {
+                "total": "$298K",
+                "base": "$187K",
+                "stock": "$89K",
+                "bonus": "$22K"
+            },
+            "L6\nStaff Designer": {
+                "total": "$421K",
+                "base": "$214K",
+                "stock": "$158K",
+                "bonus": "$49K"
+            },
+            "L7\nSenior Staff Designer": {
+                "total": "$655K",
+                "base": "$250K",
+                "stock": "$336K",
+                "bonus": "$69K"
+            }
+        },
+        "product-manager": {
+            "Associate Product Manager 1\nAPM1": {
+                "total": "$159K",
+                "base": "$145K",
+                "stock": "$6K",
+                "bonus": "$7K"
+            },
+            "Product Manager 1\nL4": {
+                "total": "$237K",
+                "base": "$158K",
+                "stock": "$60K",
+                "bonus": "$19K"
+            },
+            "Product Manager 2\nL5": {
+                "total": "$310K",
+                "base": "$191K",
+                "stock": "$94K",
+                "bonus": "$25K"
+            },
+            "Senior PM\nL6": {
+                "total": "$377K",
+                "base": "$226K",
+                "stock": "$115K",
+                "bonus": "$36K"
+            },
+            "Group PM\nL7": {
+                "total": "$647K",
+                "base": "$266K",
+                "stock": "$302K",
+                "bonus": "$78K"
+            },
+            "Director\nL8": {
+                "total": "$1.06M",
+                "base": "$307K",
+                "stock": "$652K",
+                "bonus": "$107K"
+            },
+            "Senior Director / VP\nL9 / L10": {
+                "total": "$2.41M",
+                "base": "$422K",
+                "stock": "$1.71M",
+                "bonus": "$276K"
+            }
+        },
+        "sales": {
+            "L3": {
+                "total": "$108K",
+                "base": "$80K",
+                "stock": "$11K",
+                "bonus": "$10K"
+            },
+            "L4": {
+                "total": "$171K",
+                "base": "$123K",
+                "stock": "$23K",
+                "bonus": "$20K"
+            },
+            "L5": {
+                "total": "$267K",
+                "base": "$148K",
+                "stock": "$43K",
+                "bonus": "$49K"
+            },
+            "L6": {
+                "total": "$372K",
+                "base": "$196K",
+                "stock": "$86K",
+                "bonus": "$64K"
+            },
+            "L7": {
+                "total": "$506K",
+                "base": "$208K",
+                "stock": "$108K",
+                "bonus": "$165K"
+            }
+        },
+        "hardware-engineer": {
+            "L3\nHardware Engineer II": {
+                "total": "$199K",
+                "base": "$137K",
+                "stock": "$42K",
+                "bonus": "$19K"
+            },
+            "L4\nHardware Engineer III": {
+                "total": "$275K",
+                "base": "$164K",
+                "stock": "$83K",
+                "bonus": "$28K"
+            },
+            "L5\nSenior Hardware Engineer": {
+                "total": "$351K",
+                "base": "$194K",
+                "stock": "$127K",
+                "bonus": "$30K"
+            },
+            "L6\nStaff Hardware Engineer": {
+                "total": "$442K",
+                "base": "$217K",
+                "stock": "$176K",
+                "bonus": "$48K"
+            },
+            "L7\nSenior Staff Hardware Engineer": {
+                "total": "$598K",
+                "base": "$269K",
+                "stock": "$259K",
+                "bonus": "$70K"
+            }
+        },
+        "marketing": {
+            "L3": {
+                "total": "$154K",
+                "base": "$129K",
+                "stock": "$16K",
+                "bonus": "$10K"
+            },
+            "L4": {
+                "total": "$189K",
+                "base": "$146K",
+                "stock": "$23K",
+                "bonus": "$19K"
+            },
+            "L5": {
+                "total": "$245K",
+                "base": "$173K",
+                "stock": "$43K",
+                "bonus": "$28K"
+            },
+            "L6": {
+                "total": "$350K",
+                "base": "$207K",
+                "stock": "$93K",
+                "bonus": "$50K"
+            },
+            "L7": {
+                "total": "$540K",
+                "base": "$245K",
+                "stock": "$234K",
+                "bonus": "$61K"
+            }
+        },
+        "software-engineering-manager": {
+            "Manager\nL5": {
+                "total": "$387K",
+                "base": "$217K",
+                "stock": "$134K",
+                "bonus": "$35K"
+            },
+            "Manager (L6)\nL6": {
+                "total": "$547K",
+                "base": "$242K",
+                "stock": "$256K",
+                "bonus": "$50K"
+            },
+            "Senior Manager\nL7": {
+                "total": "$618K",
+                "base": "$266K",
+                "stock": "$293K",
+                "bonus": "$60K"
+            },
+            "Director\nL8": {
+                "total": "$1.18M",
+                "base": "$330K",
+                "stock": "$725K",
+                "bonus": "$127K"
+            },
+            "Senior Director\nL9": {
+                "total": "$2.18M",
+                "base": "$519K",
+                "stock": "$1.53M",
+                "bonus": "$140K"
+            }
+        },
+        "program-manager": {
+            "L3\nProgram Manager II": {
+                "total": "$132K",
+                "base": "$106K",
+                "stock": "$15K",
+                "bonus": "$10K"
+            },
+            "L4\nProgram Manager III": {
+                "total": "$204K",
+                "base": "$139K",
+                "stock": "$44K",
+                "bonus": "$20K"
+            },
+            "L5\nSenior Program Manager": {
+                "total": "$260K",
+                "base": "$165K",
+                "stock": "$68K",
+                "bonus": "$27K"
+            },
+            "L6\nStaff Program Manager": {
+                "total": "$359K",
+                "base": "$200K",
+                "stock": "$116K",
+                "bonus": "$43K"
+            },
+            "L7\nSenior Staff Program Manager": {
+                "total": "$505K",
+                "base": "$244K",
+                "stock": "$189K",
+                "bonus": "$73K"
+            }
+        },
+        "business-analyst": {
+            "L3\nBusiness Analyst II": {
+                "total": "$134K",
+                "base": "$115K",
+                "stock": "$9K",
+                "bonus": "$10K"
+            },
+            "L4\nBusiness Analyst III": {
+                "total": "$210K",
+                "base": "$145K",
+                "stock": "$42K",
+                "bonus": "$23K"
+            },
+            "L5\nSenior Business Analyst": {
+                "total": "$266K",
+                "base": "$179K",
+                "stock": "$60K",
+                "bonus": "$27K"
+            }
+        },
+        "data-scientist": {
+            "L3\nData Scientist II": {
+                "total": "$163K",
+                "base": "$142K",
+                "stock": "$13K",
+                "bonus": "$6K"
+            },
+            "L4\nData Scientist III": {
+                "total": "$230K",
+                "base": "$161K",
+                "stock": "$50K",
+                "bonus": "$19K"
+            },
+            "L5\nSenior Data Scientist": {
+                "total": "$319K",
+                "base": "$195K",
+                "stock": "$95K",
+                "bonus": "$29K"
+            },
+            "L6\nStaff Data Scientist": {
+                "total": "$468K",
+                "base": "$218K",
+                "stock": "$209K",
+                "bonus": "$41K"
+            }
+        },
+        "solution-architect": {
+            "L3\nSA II": {
+                "total": "$155K",
+                "base": "$116K",
+                "stock": "$23K",
+                "bonus": "$16K"
+            },
+            "L4\nSA III": {
+                "total": "$221K",
+                "base": "$139K",
+                "stock": "$55K",
+                "bonus": "$27K"
+            },
+            "L5\nSenior SA": {
+                "total": "$237K",
+                "base": "$171K",
+                "stock": "$40K",
+                "bonus": "$18K"
+            },
+            "L6\nStaff SA": {
+                "total": "$372K",
+                "base": "$193K",
+                "stock": "$117K",
+                "bonus": "$37K"
+            },
+            "L7\nSenior Staff SA": {
+                "total": "$535K",
+                "base": "$220K",
+                "stock": "$246K",
+                "bonus": "$70K"
+            }
+        },
+        "recruiter": {
+            "L3\nRecruiter II": {
+                "total": "$131K",
+                "base": "$117K",
+                "stock": "$10K",
+                "bonus": "$4K"
+            },
+            "L4\nRecruiter III": {
+                "total": "$158K",
+                "base": "$125K",
+                "stock": "$20K",
+                "bonus": "$13K"
+            },
+            "L5\nSenior Recruiter": {
+                "total": "$222K",
+                "base": "$165K",
+                "stock": "$38K",
+                "bonus": "$19K"
+            },
+            "L6\nStaff Recruiter": {
+                "total": "$335K",
+                "base": "$200K",
+                "stock": "$90K",
+                "bonus": "$45K"
+            }
+        },
+        "human-resources": {
+            "L3": {
+                "total": "$115K",
+                "base": "$94K",
+                "stock": "$12K",
+                "bonus": "$8K"
+            },
+            "L4": {
+                "total": "$179K",
+                "base": "$122K",
+                "stock": "$38K",
+                "bonus": "$19K"
+            },
+            "L5": {
+                "total": "$267K",
+                "base": "$160K",
+                "stock": "$77K",
+                "bonus": "$29K"
+            },
+            "L6": {
+                "total": "$319K",
+                "base": "$200K",
+                "stock": "$75K",
+                "bonus": "$44K"
+            }
+        },
+        "mechanical-engineer": {
+            "L3\nMechanical Engineer II": {
+                "total": "$172K",
+                "base": "$132K",
+                "stock": "$28K",
+                "bonus": "$12K"
+            },
+            "L4\nMechanical Engineer III": {
+                "total": "$277K",
+                "base": "$158K",
+                "stock": "$91K",
+                "bonus": "$27K"
+            },
+            "L5\nSenior Mechanical Engineer": {
+                "total": "$341K",
+                "base": "$188K",
+                "stock": "$119K",
+                "bonus": "$33K"
+            },
+            "L6\nStaff Mechanical Engineer": {
+                "total": "$371K",
+                "base": "$197K",
+                "stock": "$135K",
+                "bonus": "$39K"
+            }
+        },
+        "accountant": {
+            "L3": {
+                "total": "$127K",
+                "base": "$109K",
+                "stock": "$12K",
+                "bonus": "$6K"
+            },
+            "L4": {
+                "total": "$176K",
+                "base": "$129K",
+                "stock": "$29K",
+                "bonus": "$17K"
+            },
+            "L5": {
+                "total": "$212K",
+                "base": "$144K",
+                "stock": "$43K",
+                "bonus": "$24K"
+            },
+            "L6": {
+                "total": "$277K",
+                "base": "$182K",
+                "stock": "$64K",
+                "bonus": "$31K"
+            }
+        },
+        "project-manager": {
+            "L3\nProject Manager II": {
+                "total": "$172K",
+                "base": "$155K",
+                "stock": "$10K",
+                "bonus": "$7K"
+            },
+            "L4\nProject Manager III": {
+                "total": "$188K",
+                "base": "$139K",
+                "stock": "$26K",
+                "bonus": "$23K"
+            },
+            "L5\nSenior Project Manager": {
+                "total": "$262K",
+                "base": "$176K",
+                "stock": "$67K",
+                "bonus": "$19K"
+            },
+            "L6": {
+                "total": "$294K",
+                "base": "$183K",
+                "stock": "$82K",
+                "bonus": "$29K"
+            }
+        },
+        "marketing-operations": {
+            "L3": {
+                "total": "$153K",
+                "base": "$85K",
+                "stock": "$50K",
+                "bonus": "$18K"
+            },
+            "L4": {
+                "total": "$174K",
+                "base": "$132K",
+                "stock": "$23K",
+                "bonus": "$19K"
+            },
+            "L5": {
+                "total": "$312K",
+                "base": "$178K",
+                "stock": "$113K",
+                "bonus": "$21K"
+            },
+            "L6": {
+                "total": "$372K",
+                "base": "$203K",
+                "stock": "$125K",
+                "bonus": "$44K"
+            },
+            "L7": {
+                "total": "$462K",
+                "base": "$234K",
+                "stock": "$142K",
+                "bonus": "$86K"
+            }
+        },
+        "management-consultant": {
+            "L4": {
+                "total": "$203K",
+                "base": "$157K",
+                "stock": "$30K",
+                "bonus": "$16K"
+            },
+            "L5": {
+                "total": "$231K",
+                "base": "$165K",
+                "stock": "$40K",
+                "bonus": "$26K"
+            },
+            "L6": {
+                "total": "$327K",
+                "base": "$196K",
+                "stock": "$84K",
+                "bonus": "$47K"
+            }
+        },
+        "information-technologist": {
+            "L3": {
+                "total": "$157K",
+                "base": "$136K",
+                "stock": "$10K",
+                "bonus": "$11K"
+            },
+            "L4": {
+                "total": "$215K",
+                "base": "$136K",
+                "stock": "$56K",
+                "bonus": "$23K"
+            },
+            "L6": {
+                "total": "$355K",
+                "base": "$199K",
+                "stock": "$122K",
+                "bonus": "$34K"
+            }
+        },
+        "financial-analyst": {
+            "L4": {
+                "total": "$200K",
+                "base": "$137K",
+                "stock": "$36K",
+                "bonus": "$27K"
+            },
+            "L5": {
+                "total": "$223K",
+                "base": "$150K",
+                "stock": "$48K",
+                "bonus": "$25K"
+            },
+            "L6": {
+                "total": "$312K",
+                "base": "$195K",
+                "stock": "$80K",
+                "bonus": "$37K"
+            }
+        },
+        "business-development": {
+            "L5": {
+                "total": "$267K",
+                "base": "$185K",
+                "stock": "$57K",
+                "bonus": "$25K"
+            },
+            "L6": {
+                "total": "$340K",
+                "base": "$219K",
+                "stock": "$74K",
+                "bonus": "$40K"
+            }
+        },
+        "legal": {
+            "L4": {
+                "total": "$204K",
+                "base": "$146K",
+                "stock": "$42K",
+                "bonus": "$16K"
+            }
+        },
+        "sales-engineer": {
+            "level": "L5",
+            "salaries": {
+                "total": "$284K",
+                "base": "$161K",
+                "stock": "$55K",
+                "bonus": "$68K"
+            }
+        },
+        "technical-writer": {
+            "L4": {
+                "total": "$206K",
+                "base": "$121K",
+                "stock": "$65K",
+                "bonus": "$20K"
+            }
+        },
+        "security-analyst": {
+            "level": "L4",
+            "salaries": {
+                "total": "$203K",
+                "base": "$155K",
+                "stock": "$24K",
+                "bonus": "$24K"
+            }
+        },
+        "product-design-manager": {
+            "level": "L5",
+            "salaries": {
+                "total": "$259K",
+                "base": "$190K",
+                "stock": "$40K",
+                "bonus": "$29K"
+            }
+        }
     },
-    "product-designer": {
-      "level": "Senior",
-      "salaries": {
-        "total": "$185K",
-        "base": "$160K",
-        "stock": "$25K",
-        "bonus": "$0"
-      }
+    "apple": {
+        "software-engineer": {
+            "ICT2\nJunior Software Engineer\n(Entry Level)": {
+                "total": "$166K",
+                "base": "$132K",
+                "stock": "$27K",
+                "bonus": "$5K"
+            },
+            "ICT3\nSoftware Engineer": {
+                "total": "$220K",
+                "base": "$154K",
+                "stock": "$56K",
+                "bonus": "$9K"
+            },
+            "ICT4\nSenior Software Engineer": {
+                "total": "$339K",
+                "base": "$208K",
+                "stock": "$114K",
+                "bonus": "$17K"
+            },
+            "ICT5": {
+                "total": "$481K",
+                "base": "$239K",
+                "stock": "$207K",
+                "bonus": "$35K"
+            },
+            "ICT6": {
+                "total": "$677K",
+                "base": "$275K",
+                "stock": "$354K",
+                "bonus": "$48K"
+            }
+        },
+        "hardware-engineer": {
+            "ICT2\nJunior Hardware Engineer": {
+                "total": "$160K",
+                "base": "$130K",
+                "stock": "$20K",
+                "bonus": "$10K"
+            },
+            "ICT3\nHardware Engineer": {
+                "total": "$207K",
+                "base": "$156K",
+                "stock": "$40K",
+                "bonus": "$11K"
+            },
+            "ICT4\nSenior Hardware Engineer": {
+                "total": "$305K",
+                "base": "$189K",
+                "stock": "$100K",
+                "bonus": "$16K"
+            },
+            "ICT5": {
+                "total": "$455K",
+                "base": "$228K",
+                "stock": "$192K",
+                "bonus": "$35K"
+            },
+            "ICT6": {
+                "total": "$723K",
+                "base": "$285K",
+                "stock": "$363K",
+                "bonus": "$75K"
+            }
+        },
+        "mechanical-engineer": {
+            "ICT2\nJunior Mechanical Engineer": {
+                "total": "$148K",
+                "base": "$120K",
+                "stock": "$12K",
+                "bonus": "$16K"
+            },
+            "ICT3\nMechanical Engineer": {
+                "total": "$228K",
+                "base": "$155K",
+                "stock": "$55K",
+                "bonus": "$18K"
+            },
+            "ICT4\nSenior Mechanical Engineer": {
+                "total": "$306K",
+                "base": "$179K",
+                "stock": "$103K",
+                "bonus": "$24K"
+            },
+            "ICT5": {
+                "total": "$412K",
+                "base": "$206K",
+                "stock": "$174K",
+                "bonus": "$33K"
+            }
+        },
+        "product-manager": {
+            "ICT2\nJunior Product Manager": {
+                "total": "$252K",
+                "base": "$155K",
+                "stock": "$82K",
+                "bonus": "$15K"
+            },
+            "ICT3\nProduct Manager": {
+                "total": "$205K",
+                "base": "$148K",
+                "stock": "$46K",
+                "bonus": "$11K"
+            },
+            "ICT4\nSenior Product Manager": {
+                "total": "$274K",
+                "base": "$179K",
+                "stock": "$74K",
+                "bonus": "$22K"
+            },
+            "ICT5": {
+                "total": "$438K",
+                "base": "$240K",
+                "stock": "$171K",
+                "bonus": "$28K"
+            }
+        },
+        "technical-program-manager": {
+            "ICT2\nJunior TPM": {
+                "total": "$246K",
+                "base": "$146K",
+                "stock": "$75K",
+                "bonus": "$25K"
+            },
+            "ICT3\nTPM": {
+                "total": "$195K",
+                "base": "$154K",
+                "stock": "$34K",
+                "bonus": "$8K"
+            },
+            "ICT4\nSenior TPM": {
+                "total": "$305K",
+                "base": "$192K",
+                "stock": "$90K",
+                "bonus": "$23K"
+            },
+            "ICT5": {
+                "total": "$430K",
+                "base": "$216K",
+                "stock": "$179K",
+                "bonus": "$36K"
+            }
+        },
+        "data-scientist": {
+            "ICT2\nJunior Data Scientist": {
+                "total": "$187K",
+                "base": "$119K",
+                "stock": "$56K",
+                "bonus": "$11K"
+            },
+            "ICT3\nData Scientist": {
+                "total": "$202K",
+                "base": "$159K",
+                "stock": "$32K",
+                "bonus": "$11K"
+            },
+            "ICT4\nSenior Data Scientist": {
+                "total": "$264K",
+                "base": "$175K",
+                "stock": "$71K",
+                "bonus": "$18K"
+            },
+            "ICT5": {
+                "total": "$404K",
+                "base": "$208K",
+                "stock": "$161K",
+                "bonus": "$35K"
+            }
+        },
+        "product-designer": {
+            "ICT2\nJunior Product Designer": {
+                "total": "$205K",
+                "base": "$153K",
+                "stock": "$41K",
+                "bonus": "$11K"
+            },
+            "ICT3\nProduct Designer": {
+                "total": "$158K",
+                "base": "$138K",
+                "stock": "$15K",
+                "bonus": "$5K"
+            },
+            "ICT4\nSenior Product Designer": {
+                "total": "$288K",
+                "base": "$185K",
+                "stock": "$86K",
+                "bonus": "$17K"
+            },
+            "ICT5": {
+                "total": "$423K",
+                "base": "$214K",
+                "stock": "$161K",
+                "bonus": "$49K"
+            }
+        },
+        "program-manager": {
+            "ICT2\nJunior Program Manager": {
+                "total": "$214K",
+                "base": "$145K",
+                "stock": "$53K",
+                "bonus": "$16K"
+            },
+            "ICT3\nProgram Manager": {
+                "total": "$234K",
+                "base": "$146K",
+                "stock": "$73K",
+                "bonus": "$15K"
+            },
+            "ICT4\nSenior Program Manager": {
+                "total": "$285K",
+                "base": "$172K",
+                "stock": "$94K",
+                "bonus": "$20K"
+            },
+            "ICT5": {
+                "total": "$259K",
+                "base": "$171K",
+                "stock": "$65K",
+                "bonus": "$23K"
+            }
+        },
+        "software-engineering-manager": {
+            "M1\nManager 1": {
+                "total": "$402K",
+                "base": "$207K",
+                "stock": "$167K",
+                "bonus": "$29K"
+            },
+            "M2\nManager 2": {
+                "total": "$452K",
+                "base": "$238K",
+                "stock": "$180K",
+                "bonus": "$34K"
+            },
+            "M3\nSenior Manager": {
+                "total": "$681K",
+                "base": "$283K",
+                "stock": "$340K",
+                "bonus": "$58K"
+            }
+        },
+        "business-analyst": {
+            "ICT2\nJunior Business Analyst": {
+                "total": "$110K",
+                "base": "$98K",
+                "stock": "$9K",
+                "bonus": "$3K"
+            },
+            "ICT3\nBusiness Analyst": {
+                "total": "$158K",
+                "base": "$120K",
+                "stock": "$25K",
+                "bonus": "$13K"
+            },
+            "ICT4\nSenior Business Analyst": {
+                "total": "$221K",
+                "base": "$152K",
+                "stock": "$54K",
+                "bonus": "$16K"
+            }
+        },
+        "marketing": {
+            "ICT3": {
+                "total": "$156K",
+                "base": "$119K",
+                "stock": "$32K",
+                "bonus": "$5K"
+            },
+            "ICT4": {
+                "total": "$205K",
+                "base": "$157K",
+                "stock": "$39K",
+                "bonus": "$9K"
+            }
+        },
+        "recruiter": {
+            "ICT3\nRecruiter": {
+                "total": "$127K",
+                "base": "$120K",
+                "stock": "$4K",
+                "bonus": "$3K"
+            },
+            "ICT5": {
+                "total": "$282K",
+                "base": "$184K",
+                "stock": "$77K",
+                "bonus": "$21K"
+            }
+        },
+        "project-manager": {
+            "ICT3\nProject Manager": {
+                "total": "$200K",
+                "base": "$141K",
+                "stock": "$36K",
+                "bonus": "$23K"
+            },
+            "ICT4\nSenior Project Manager": {
+                "total": "$210K",
+                "base": "$166K",
+                "stock": "$36K",
+                "bonus": "$7K"
+            }
+        },
+        "sales": {
+            "ICT2": {
+                "total": "$93K",
+                "base": "$60K",
+                "stock": "$30K",
+                "bonus": "$3K"
+            },
+            "ICT3": {
+                "total": "$88K",
+                "base": "$74K",
+                "stock": "$7K",
+                "bonus": "$1K"
+            },
+            "ICT4": {
+                "total": "$162K",
+                "base": "$125K",
+                "stock": "$20K",
+                "bonus": "$8K"
+            }
+        },
+        "financial-analyst": {
+            "ICT3": {
+                "total": "$133K",
+                "base": "$111K",
+                "stock": "$16K",
+                "bonus": "$5K"
+            },
+            "ICT4": {
+                "total": "$209K",
+                "base": "$157K",
+                "stock": "$39K",
+                "bonus": "$14K"
+            }
+        },
+        "information-technologist": {
+            "ICT3": {
+                "total": "$171K",
+                "base": "$132K",
+                "stock": "$24K",
+                "bonus": "$15K"
+            }
+        },
+        "customer-service": {
+            "ICT4": {
+                "total": "$130K",
+                "base": "$97K",
+                "stock": "$26K",
+                "bonus": "$7K"
+            }
+        },
+        "data-science-manager": {
+            "ICT2": {
+                "total": "$460K",
+                "base": "$241K",
+                "stock": "$175K",
+                "bonus": "$45K"
+            }
+        },
+        "human-resources": {
+            "ICT5": {
+                "total": "$289K",
+                "base": "$203K",
+                "stock": "$57K",
+                "bonus": "$28K"
+            }
+        },
+        "accountant": {
+            "level": "ICT3",
+            "salaries": {
+                "total": "$130K",
+                "base": "$100K",
+                "stock": "$20K",
+                "bonus": "$10K"
+            }
+        },
+        "security-analyst": {}
+    },
+    "amazon": {
+        "software-engineer": {
+            "SDE I\nL4\n(Entry Level)": {
+                "total": "$172K",
+                "base": "$135K",
+                "stock": "$21K",
+                "bonus": "$16K"
+            },
+            "SDE II\nL5": {
+                "total": "$244K",
+                "base": "$168K",
+                "stock": "$64K",
+                "bonus": "$12K"
+            },
+            "SDE III\nL6": {
+                "total": "$343K",
+                "base": "$195K",
+                "stock": "$146K",
+                "bonus": "$2K"
+            },
+            "Principal SDE\nL7": {
+                "total": "$552K",
+                "base": "$241K",
+                "stock": "$310K",
+                "bonus": "$0"
+            },
+            "Senior Principal SDE\nL8": {
+                "total": "$1.04M",
+                "base": "$292K",
+                "stock": "$746K",
+                "bonus": "$0"
+            }
+        },
+        "data-scientist": {
+            "DS I\nL4": {
+                "total": "$178K",
+                "base": "$141K",
+                "stock": "$16K",
+                "bonus": "$21K"
+            },
+            "DS II\nL5": {
+                "total": "$242K",
+                "base": "$162K",
+                "stock": "$56K",
+                "bonus": "$24K"
+            },
+            "DS III\nL6": {
+                "total": "$326K",
+                "base": "$187K",
+                "stock": "$127K",
+                "bonus": "$12K"
+            },
+            "Principal DS\nL7": {
+                "total": "$664K",
+                "base": "$223K",
+                "stock": "$384K",
+                "bonus": "$56K"
+            }
+        },
+        "technical-program-manager": {
+            "TPM I\nL4": {
+                "total": "$146K",
+                "base": "$114K",
+                "stock": "$21K",
+                "bonus": "$11K"
+            },
+            "TPM II\nL5": {
+                "total": "$195K",
+                "base": "$159K",
+                "stock": "$21K",
+                "bonus": "$15K"
+            },
+            "TPM III\nL6": {
+                "total": "$273K",
+                "base": "$189K",
+                "stock": "$44K",
+                "bonus": "$40K"
+            },
+            "Principal TPM\nL7": {
+                "total": "$402K",
+                "base": "$206K",
+                "stock": "$182K",
+                "bonus": "$14K"
+            }
+        },
+        "solution-architect": {
+            "SA I\nL4": {
+                "total": "$165K",
+                "base": "$120K",
+                "stock": "$26K",
+                "bonus": "$19K"
+            },
+            "SA II\nL5": {
+                "total": "$213K",
+                "base": "$157K",
+                "stock": "$41K",
+                "bonus": "$15K"
+            },
+            "SA III\nL6": {
+                "total": "$256K",
+                "base": "$183K",
+                "stock": "$60K",
+                "bonus": "$13K"
+            },
+            "Principal SA\nL7": {
+                "total": "$432K",
+                "base": "$215K",
+                "stock": "$162K",
+                "bonus": "$55K"
+            }
+        },
+        "program-manager": {
+            "Program Manager I\nL4": {
+                "total": "$95K",
+                "base": "$73K",
+                "stock": "$14K",
+                "bonus": "$8K"
+            },
+            "Program Manager II\nL5": {
+                "total": "$131K",
+                "base": "$105K",
+                "stock": "$18K",
+                "bonus": "$9K"
+            },
+            "Program Manager III\nL6": {
+                "total": "$179K",
+                "base": "$140K",
+                "stock": "$25K",
+                "bonus": "$14K"
+            },
+            "Principal Program Manager\nL7": {
+                "total": "$254K",
+                "base": "$168K",
+                "stock": "$76K",
+                "bonus": "$10K"
+            }
+        },
+        "sales": {
+            "L4": {
+                "total": "$123K",
+                "base": "$78K",
+                "stock": "$19K",
+                "bonus": "$19K"
+            },
+            "L5": {
+                "total": "$212K",
+                "base": "$119K",
+                "stock": "$37K",
+                "bonus": "$14K"
+            },
+            "L6": {
+                "total": "$278K",
+                "base": "$155K",
+                "stock": "$42K",
+                "bonus": "$48K"
+            },
+            "L7": {
+                "total": "$400K",
+                "base": "$195K",
+                "stock": "$112K",
+                "bonus": "$44K"
+            }
+        },
+        "product-manager": {
+            "Product Manager\nL5": {
+                "total": "$183K",
+                "base": "$138K",
+                "stock": "$33K",
+                "bonus": "$12K"
+            },
+            "Senior Product Manager\nL6": {
+                "total": "$233K",
+                "base": "$161K",
+                "stock": "$42K",
+                "bonus": "$29K"
+            },
+            "Principal Product Manager\nSenior Manager PM": {
+                "total": "$424K",
+                "base": "$219K",
+                "stock": "$172K",
+                "bonus": "$33K"
+            },
+            "Director\nL8": {
+                "total": "$770K",
+                "base": "$251K",
+                "stock": "$476K",
+                "bonus": "$43K"
+            }
+        },
+        "human-resources": {
+            "L4": {
+                "total": "$77K",
+                "base": "$61K",
+                "stock": "$9K",
+                "bonus": "$7K"
+            },
+            "L5": {
+                "total": "$130K",
+                "base": "$96K",
+                "stock": "$23K",
+                "bonus": "$11K"
+            },
+            "L6": {
+                "total": "$197K",
+                "base": "$144K",
+                "stock": "$39K",
+                "bonus": "$13K"
+            },
+            "L7": {
+                "total": "$309K",
+                "base": "$173K",
+                "stock": "$115K",
+                "bonus": "$21K"
+            }
+        },
+        "software-engineering-manager": {
+            "L5 SDM\nSoftware Dev Manager": {
+                "total": "$289K",
+                "base": "$191K",
+                "stock": "$83K",
+                "bonus": "$15K"
+            },
+            "L6 SDM": {
+                "total": "$388K",
+                "base": "$220K",
+                "stock": "$144K",
+                "bonus": "$24K"
+            },
+            "Senior SDM\nL7": {
+                "total": "$599K",
+                "base": "$248K",
+                "stock": "$319K",
+                "bonus": "$32K"
+            },
+            "Director\nL8": {
+                "total": "$1.19M",
+                "base": "$265K",
+                "stock": "$804K",
+                "bonus": "$120K"
+            }
+        },
+        "business-analyst": {
+            "Business Analyst I\nL4": {
+                "total": "$116K",
+                "base": "$95K",
+                "stock": "$7K",
+                "bonus": "$14K"
+            },
+            "Business Analyst II\nL5": {
+                "total": "$133K",
+                "base": "$112K",
+                "stock": "$9K",
+                "bonus": "$11K"
+            },
+            "Business Analyst III\nL6": {
+                "total": "$205K",
+                "base": "$152K",
+                "stock": "$36K",
+                "bonus": "$17K"
+            },
+            "Principal Business Analyst\nL7": {
+                "total": "$319K",
+                "base": "$161K",
+                "stock": "$123K",
+                "bonus": "$35K"
+            }
+        },
+        "marketing": {
+            "L4": {
+                "total": "$98K",
+                "base": "$84K",
+                "stock": "$7K",
+                "bonus": "$7K"
+            },
+            "L5": {
+                "total": "$154K",
+                "base": "$123K",
+                "stock": "$11K",
+                "bonus": "$19K"
+            },
+            "L6": {
+                "total": "$200K",
+                "base": "$149K",
+                "stock": "$39K",
+                "bonus": "$12K"
+            },
+            "L7": {
+                "total": "$301K",
+                "base": "$210K",
+                "stock": "$80K",
+                "bonus": "$11K"
+            }
+        },
+        "financial-analyst": {
+            "L4": {
+                "total": "$87K",
+                "base": "$76K",
+                "stock": "$5K",
+                "bonus": "$5K"
+            },
+            "L5": {
+                "total": "$112K",
+                "base": "$91K",
+                "stock": "$12K",
+                "bonus": "$10K"
+            },
+            "L6": {
+                "total": "$182K",
+                "base": "$139K",
+                "stock": "$34K",
+                "bonus": "$10K"
+            },
+            "L7": {
+                "total": "$294K",
+                "base": "$178K",
+                "stock": "$103K",
+                "bonus": "$12K"
+            }
+        },
+        "hardware-engineer": {
+            "Hardware Engineer I\nL4": {
+                "total": "$152K",
+                "base": "$117K",
+                "stock": "$21K",
+                "bonus": "$14K"
+            },
+            "Hardware Engineer II\nL5": {
+                "total": "$222K",
+                "base": "$154K",
+                "stock": "$45K",
+                "bonus": "$23K"
+            },
+            "Hardware Engineer III\nL6": {
+                "total": "$308K",
+                "base": "$192K",
+                "stock": "$85K",
+                "bonus": "$31K"
+            },
+            "Principal Hardware Engineer\nL7": {
+                "total": "$468K",
+                "base": "$180K",
+                "stock": "$269K",
+                "bonus": "$19K"
+            }
+        },
+        "mechanical-engineer": {
+            "Mechanical Engineer I\nL4": {
+                "total": "$145K",
+                "base": "$115K",
+                "stock": "$17K",
+                "bonus": "$14K"
+            },
+            "Mechanical Engineer II\nL5": {
+                "total": "$178K",
+                "base": "$129K",
+                "stock": "$29K",
+                "bonus": "$20K"
+            },
+            "Mechanical Engineer III\nL6": {
+                "total": "$268K",
+                "base": "$162K",
+                "stock": "$89K",
+                "bonus": "$18K"
+            }
+        },
+        "product-designer": {
+            "L4\nDesigner I": {
+                "total": "$140K",
+                "base": "$112K",
+                "stock": "$11K",
+                "bonus": "$17K"
+            },
+            "L5\nDesigner II": {
+                "total": "$213K",
+                "base": "$157K",
+                "stock": "$22K",
+                "bonus": "$34K"
+            },
+            "L6\nDesigner III": {
+                "total": "$271K",
+                "base": "$174K",
+                "stock": "$55K",
+                "bonus": "$41K"
+            },
+            "L7\nPrincipal Designer": {
+                "total": "$365K",
+                "base": "$189K",
+                "stock": "$160K",
+                "bonus": "$16K"
+            }
+        },
+        "business-development": {
+            "L4": {
+                "total": "$87K",
+                "base": "$67K",
+                "stock": "$13K",
+                "bonus": "$7K"
+            },
+            "L5": {
+                "total": "$184K",
+                "base": "$120K",
+                "stock": "$49K",
+                "bonus": "$15K"
+            },
+            "L6": {
+                "total": "$314K",
+                "base": "$174K",
+                "stock": "$112K",
+                "bonus": "$21K"
+            },
+            "L7": {
+                "total": "$388K",
+                "base": "$198K",
+                "stock": "$165K",
+                "bonus": "$25K"
+            }
+        },
+        "accountant": {
+            "L4": {
+                "total": "$82K",
+                "base": "$59K",
+                "stock": "$18K",
+                "bonus": "$5K"
+            },
+            "L5": {
+                "total": "$120K",
+                "base": "$94K",
+                "stock": "$13K",
+                "bonus": "$13K"
+            },
+            "L6": {
+                "total": "$171K",
+                "base": "$127K",
+                "stock": "$32K",
+                "bonus": "$12K"
+            },
+            "L7": {
+                "total": "$291K",
+                "base": "$161K",
+                "stock": "$129K",
+                "bonus": "$800"
+            }
+        },
+        "information-technologist": {
+            "L4": {
+                "total": "$106K",
+                "base": "$89K",
+                "stock": "$10K",
+                "bonus": "$7K"
+            },
+            "L5": {
+                "total": "$195K",
+                "base": "$145K",
+                "stock": "$27K",
+                "bonus": "$23K"
+            },
+            "L6": {
+                "total": "$262K",
+                "base": "$164K",
+                "stock": "$64K",
+                "bonus": "$34K"
+            }
+        },
+        "recruiter": {
+            "Recruiter I\nL4": {
+                "total": "$103K",
+                "base": "$83K",
+                "stock": "$11K",
+                "bonus": "$8K"
+            },
+            "Recruiter II\nL5": {
+                "total": "$138K",
+                "base": "$115K",
+                "stock": "$12K",
+                "bonus": "$11K"
+            },
+            "Recruiter III\nL6": {
+                "total": "$196K",
+                "base": "$150K",
+                "stock": "$24K",
+                "bonus": "$22K"
+            }
+        },
+        "project-manager": {
+            "L4": {
+                "total": "$89K",
+                "base": "$69K",
+                "stock": "$13K",
+                "bonus": "$7K"
+            },
+            "L5": {
+                "total": "$121K",
+                "base": "$103K",
+                "stock": "$12K",
+                "bonus": "$6K"
+            },
+            "L6": {
+                "total": "$227K",
+                "base": "$161K",
+                "stock": "$49K",
+                "bonus": "$17K"
+            }
+        },
+        "marketing-operations": {
+            "L4": {
+                "total": "$75K",
+                "base": "$62K",
+                "stock": "$9K",
+                "bonus": "$3K"
+            },
+            "L5": {
+                "total": "$127K",
+                "base": "$94K",
+                "stock": "$21K",
+                "bonus": "$12K"
+            },
+            "L6": {
+                "total": "$189K",
+                "base": "$135K",
+                "stock": "$45K",
+                "bonus": "$9K"
+            }
+        },
+        "applied-scientist": {
+            "L4": {
+                "total": "$238K",
+                "base": "$163K",
+                "stock": "$38K",
+                "bonus": "$36K"
+            },
+            "L5": {
+                "total": "$339K",
+                "base": "$169K",
+                "stock": "$117K",
+                "bonus": "$53K"
+            },
+            "L6": {
+                "total": "$382K",
+                "base": "$157K",
+                "stock": "$187K",
+                "bonus": "$39K"
+            }
+        },
+        "management-consultant": {
+            "L5": {
+                "total": "$170K",
+                "base": "$127K",
+                "stock": "$17K",
+                "bonus": "$26K"
+            },
+            "L6": {
+                "total": "$252K",
+                "base": "$157K",
+                "stock": "$68K",
+                "bonus": "$26K"
+            },
+            "L7": {
+                "total": "$377K",
+                "base": "$175K",
+                "stock": "$164K",
+                "bonus": "$38K"
+            }
+        },
+        "security-engineer": {
+            "L4": {
+                "total": "$165K",
+                "base": "$126K",
+                "stock": "$28K",
+                "bonus": "$11K"
+            },
+            "L5": {
+                "total": "$270K",
+                "base": "$152K",
+                "stock": "$87K",
+                "bonus": "$31K"
+            },
+            "L6": {
+                "total": "$356K",
+                "base": "$161K",
+                "stock": "$163K",
+                "bonus": "$32K"
+            },
+            "L7": {
+                "total": "$488K",
+                "base": "$160K",
+                "stock": "$328K",
+                "bonus": "$0"
+            }
+        },
+        "customer-service": {
+            "L4": {
+                "total": "$120K",
+                "base": "$98K",
+                "stock": "$7K",
+                "bonus": "$15K"
+            },
+            "L5": {
+                "total": "$118K",
+                "base": "$99K",
+                "stock": "$10K",
+                "bonus": "$9K"
+            },
+            "L6": {
+                "total": "$217K",
+                "base": "$153K",
+                "stock": "$54K",
+                "bonus": "$11K"
+            }
+        },
+        "area-manager": {
+            "L4": {
+                "total": "$72K",
+                "base": "$62K",
+                "stock": "$5K",
+                "bonus": "$5K"
+            },
+            "L5": {
+                "total": "$80K",
+                "base": "$70K",
+                "stock": "$7K",
+                "bonus": "$3K"
+            }
+        },
+        "finance": {
+            "L4": {
+                "total": "$100K",
+                "base": "$73K",
+                "stock": "$18K",
+                "bonus": "$9K"
+            },
+            "L5": {
+                "total": "$114K",
+                "base": "$87K",
+                "stock": "$18K",
+                "bonus": "$9K"
+            },
+            "L6": {
+                "total": "$192K",
+                "base": "$126K",
+                "stock": "$55K",
+                "bonus": "$11K"
+            },
+            "L7": {
+                "total": "$269K",
+                "base": "$149K",
+                "stock": "$115K",
+                "bonus": "$5K"
+            }
+        },
+        "security-analyst": {
+            "L4": {
+                "total": "$192K",
+                "base": "$155K",
+                "stock": "$20K",
+                "bonus": "$17K"
+            },
+            "L5": {
+                "total": "$261K",
+                "base": "$165K",
+                "stock": "$74K",
+                "bonus": "$21K"
+            }
+        },
+        "technical-account-manager": {
+            "L5": {
+                "total": "$177K",
+                "base": "$139K",
+                "stock": "$24K",
+                "bonus": "$13K"
+            },
+            "L6": {
+                "total": "$217K",
+                "base": "$151K",
+                "stock": "$52K",
+                "bonus": "$14K"
+            }
+        },
+        "operations": {
+            "L4": {
+                "total": "$72K",
+                "base": "$57K",
+                "stock": "$8K",
+                "bonus": "$7K"
+            },
+            "L5": {
+                "total": "$121K",
+                "base": "$89K",
+                "stock": "$15K",
+                "bonus": "$17K"
+            },
+            "L6": {
+                "total": "$192K",
+                "base": "$125K",
+                "stock": "$32K",
+                "bonus": "$35K"
+            }
+        },
+        "business-intelligence-engineer": {
+            "L4": {
+                "total": "$128K",
+                "base": "$105K",
+                "stock": "$12K",
+                "bonus": "$11K"
+            },
+            "L5": {
+                "total": "$166K",
+                "base": "$127K",
+                "stock": "$30K",
+                "bonus": "$8K"
+            },
+            "L6": {
+                "total": "$231K",
+                "base": "$149K",
+                "stock": "$83K",
+                "bonus": "$0"
+            }
+        },
+        "data-science-manager": {
+            "L6": {
+                "total": "$384K",
+                "base": "$202K",
+                "stock": "$160K",
+                "bonus": "$23K"
+            },
+            "L7": {
+                "total": "$439K",
+                "base": "$220K",
+                "stock": "$219K",
+                "bonus": "$0"
+            }
+        },
+        "data-engineer": {
+            "L4": {
+                "total": "$143K",
+                "base": "$108K",
+                "stock": "$22K",
+                "bonus": "$13K"
+            },
+            "L5": {
+                "total": "$209K",
+                "base": "$137K",
+                "stock": "$59K",
+                "bonus": "$13K"
+            },
+            "L6": {
+                "total": "$255K",
+                "base": "$145K",
+                "stock": "$110K",
+                "bonus": "$0"
+            }
+        },
+        "technical-writer": {
+            "L5": {
+                "total": "$168K",
+                "base": "$126K",
+                "stock": "$33K",
+                "bonus": "$8K"
+            },
+            "L6": {
+                "total": "$203K",
+                "base": "$147K",
+                "stock": "$49K",
+                "bonus": "$8K"
+            }
+        },
+        "legal": {
+            "L5": {
+                "total": "$227K",
+                "base": "$174K",
+                "stock": "$41K",
+                "bonus": "$13K"
+            },
+            "L6": {
+                "total": "$280K",
+                "base": "$149K",
+                "stock": "$102K",
+                "bonus": "$29K"
+            }
+        },
+        "administrative-assistant": {},
+        "product-design-manager": {},
+        "civil-engineer": {
+            "level": "L5",
+            "salaries": {
+                "total": "$134K",
+                "base": "$102K",
+                "stock": "$22K",
+                "bonus": "$10K"
+            }
+        }
     }
-  }
 }
