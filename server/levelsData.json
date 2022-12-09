@@ -1,0 +1,3955 @@
+{
+    "google": {
+        "software-engineer": {
+            "L3\nSWE II\n(Entry Level)": {
+                "total": "178",
+                "base": "140",
+                "stock": "28",
+                "bonus": "10"
+            },
+            "L4\nSWE III": {
+                "total": "249",
+                "base": "168",
+                "stock": "64",
+                "bonus": "18"
+            },
+            "L5\nSenior SWE": {
+                "total": "333",
+                "base": "197",
+                "stock": "110",
+                "bonus": "26"
+            },
+            "L6\nStaff SWE": {
+                "total": "484",
+                "base": "237",
+                "stock": "219",
+                "bonus": "29"
+            },
+            "L7\nSenior Staff SWE": {
+                "total": "688",
+                "base": "270",
+                "stock": "348",
+                "bonus": "70"
+            },
+            "L8\nPrincipal Engineer": {
+                "total": "1.13",
+                "base": "327",
+                "stock": "697",
+                "bonus": "101"
+            }
+        },
+        "technical-program-manager": {
+            "L3\nTPM II": {
+                "total": "165",
+                "base": "124",
+                "stock": "27",
+                "bonus": "14"
+            },
+            "L4\nTPM III": {
+                "total": "236",
+                "base": "148",
+                "stock": "63",
+                "bonus": "25"
+            },
+            "L5\nSenior TPM": {
+                "total": "271",
+                "base": "174",
+                "stock": "70",
+                "bonus": "27"
+            },
+            "L6\nStaff TPM": {
+                "total": "395",
+                "base": "211",
+                "stock": "141",
+                "bonus": "43"
+            },
+            "L7\nSenior Staff TPM": {
+                "total": "527",
+                "base": "240",
+                "stock": "218",
+                "bonus": "69"
+            },
+            "L8\nPrincipal TPM": {
+                "total": "890",
+                "base": "318",
+                "stock": "450",
+                "bonus": "122"
+            }
+        },
+        "product-designer": {
+            "L3\nDesigner II": {
+                "total": "148",
+                "base": "133",
+                "stock": "11",
+                "bonus": "4"
+            },
+            "L4\nDesigner III": {
+                "total": "197",
+                "base": "155",
+                "stock": "28",
+                "bonus": "14"
+            },
+            "L5\nSenior Designer": {
+                "total": "298",
+                "base": "187",
+                "stock": "89",
+                "bonus": "22"
+            },
+            "L6\nStaff Designer": {
+                "total": "421",
+                "base": "214",
+                "stock": "158",
+                "bonus": "49"
+            },
+            "L7\nSenior Staff Designer": {
+                "total": "655",
+                "base": "250",
+                "stock": "336",
+                "bonus": "69"
+            }
+        },
+        "product-manager": {
+            "Associate Product Manager 1\nAPM1": {
+                "total": "159",
+                "base": "145",
+                "stock": "6",
+                "bonus": "7"
+            },
+            "Product Manager 1\nL4": {
+                "total": "237",
+                "base": "158",
+                "stock": "60",
+                "bonus": "19"
+            },
+            "Product Manager 2\nL5": {
+                "total": "316",
+                "base": "189",
+                "stock": "102",
+                "bonus": "25"
+            },
+            "Senior PM\nL6": {
+                "total": "377",
+                "base": "226",
+                "stock": "115",
+                "bonus": "36"
+            },
+            "Group PM\nL7": {
+                "total": "652",
+                "base": "268",
+                "stock": "306",
+                "bonus": "79"
+            },
+            "Director\nL8": {
+                "total": "1.06",
+                "base": "307",
+                "stock": "652",
+                "bonus": "107"
+            },
+            "Senior Director / VP\nL9 / L10": {
+                "total": "2.41",
+                "base": "422",
+                "stock": "1.71",
+                "bonus": "276"
+            }
+        },
+        "sales": {
+            "L3": {
+                "total": "108",
+                "base": "80",
+                "stock": "11",
+                "bonus": "10"
+            },
+            "L4": {
+                "total": "171",
+                "base": "123",
+                "stock": "23",
+                "bonus": "20"
+            },
+            "L5": {
+                "total": "267",
+                "base": "148",
+                "stock": "43",
+                "bonus": "49"
+            },
+            "L6": {
+                "total": "372",
+                "base": "196",
+                "stock": "86",
+                "bonus": "64"
+            },
+            "L7": {
+                "total": "506",
+                "base": "208",
+                "stock": "108",
+                "bonus": "165"
+            }
+        },
+        "hardware-engineer": {
+            "L3\nHardware Engineer II": {
+                "total": "199",
+                "base": "137",
+                "stock": "42",
+                "bonus": "19"
+            },
+            "L4\nHardware Engineer III": {
+                "total": "275",
+                "base": "164",
+                "stock": "83",
+                "bonus": "28"
+            },
+            "L5\nSenior Hardware Engineer": {
+                "total": "351",
+                "base": "194",
+                "stock": "127",
+                "bonus": "30"
+            },
+            "L6\nStaff Hardware Engineer": {
+                "total": "442",
+                "base": "217",
+                "stock": "176",
+                "bonus": "48"
+            },
+            "L7\nSenior Staff Hardware Engineer": {
+                "total": "598",
+                "base": "269",
+                "stock": "259",
+                "bonus": "70"
+            }
+        },
+        "marketing": {
+            "L3": {
+                "total": "154",
+                "base": "129",
+                "stock": "16",
+                "bonus": "10"
+            },
+            "L4": {
+                "total": "189",
+                "base": "146",
+                "stock": "23",
+                "bonus": "19"
+            },
+            "L5": {
+                "total": "245",
+                "base": "173",
+                "stock": "43",
+                "bonus": "28"
+            },
+            "L6": {
+                "total": "350",
+                "base": "207",
+                "stock": "93",
+                "bonus": "50"
+            },
+            "L7": {
+                "total": "540",
+                "base": "245",
+                "stock": "234",
+                "bonus": "61"
+            }
+        },
+        "software-engineering-manager": {
+            "Manager\nL5": {
+                "total": "387",
+                "base": "217",
+                "stock": "134",
+                "bonus": "35"
+            },
+            "Manager (L6)\nL6": {
+                "total": "547",
+                "base": "242",
+                "stock": "256",
+                "bonus": "50"
+            },
+            "Senior Manager\nL7": {
+                "total": "618",
+                "base": "266",
+                "stock": "293",
+                "bonus": "60"
+            },
+            "Director\nL8": {
+                "total": "1.18",
+                "base": "330",
+                "stock": "725",
+                "bonus": "127"
+            },
+            "Senior Director\nL9": {
+                "total": "2.18",
+                "base": "519",
+                "stock": "1.53",
+                "bonus": "140"
+            }
+        },
+        "program-manager": {
+            "L3\nProgram Manager II": {
+                "total": "132",
+                "base": "106",
+                "stock": "15",
+                "bonus": "10"
+            },
+            "L4\nProgram Manager III": {
+                "total": "204",
+                "base": "139",
+                "stock": "44",
+                "bonus": "20"
+            },
+            "L5\nSenior Program Manager": {
+                "total": "260",
+                "base": "165",
+                "stock": "68",
+                "bonus": "27"
+            },
+            "L6\nStaff Program Manager": {
+                "total": "359",
+                "base": "200",
+                "stock": "116",
+                "bonus": "43"
+            },
+            "L7\nSenior Staff Program Manager": {
+                "total": "505",
+                "base": "244",
+                "stock": "189",
+                "bonus": "73"
+            }
+        },
+        "business-analyst": {
+            "L3\nBusiness Analyst II": {
+                "total": "134",
+                "base": "115",
+                "stock": "9",
+                "bonus": "10"
+            },
+            "L4\nBusiness Analyst III": {
+                "total": "210",
+                "base": "145",
+                "stock": "42",
+                "bonus": "23"
+            },
+            "L5\nSenior Business Analyst": {
+                "total": "265",
+                "base": "179",
+                "stock": "59",
+                "bonus": "27"
+            }
+        },
+        "data-scientist": {
+            "L3\nData Scientist II": {
+                "total": "163",
+                "base": "142",
+                "stock": "13",
+                "bonus": "6"
+            },
+            "L4\nData Scientist III": {
+                "total": "230",
+                "base": "161",
+                "stock": "50",
+                "bonus": "19"
+            },
+            "L5\nSenior Data Scientist": {
+                "total": "319",
+                "base": "195",
+                "stock": "95",
+                "bonus": "29"
+            },
+            "L6\nStaff Data Scientist": {
+                "total": "468",
+                "base": "218",
+                "stock": "209",
+                "bonus": "41"
+            }
+        },
+        "solution-architect": {
+            "L3\nSA II": {
+                "total": "155",
+                "base": "116",
+                "stock": "23",
+                "bonus": "16"
+            },
+            "L4\nSA III": {
+                "total": "221",
+                "base": "139",
+                "stock": "55",
+                "bonus": "27"
+            },
+            "L5\nSenior SA": {
+                "total": "237",
+                "base": "171",
+                "stock": "40",
+                "bonus": "18"
+            },
+            "L6\nStaff SA": {
+                "total": "372",
+                "base": "193",
+                "stock": "117",
+                "bonus": "37"
+            },
+            "L7\nSenior Staff SA": {
+                "total": "535",
+                "base": "220",
+                "stock": "246",
+                "bonus": "70"
+            }
+        },
+        "recruiter": {
+            "L3\nRecruiter II": {
+                "total": "131",
+                "base": "117",
+                "stock": "10",
+                "bonus": "4"
+            },
+            "L4\nRecruiter III": {
+                "total": "158",
+                "base": "125",
+                "stock": "20",
+                "bonus": "13"
+            },
+            "L5\nSenior Recruiter": {
+                "total": "222",
+                "base": "165",
+                "stock": "38",
+                "bonus": "19"
+            },
+            "L6\nStaff Recruiter": {
+                "total": "335",
+                "base": "200",
+                "stock": "90",
+                "bonus": "45"
+            }
+        },
+        "human-resources": {
+            "L3": {
+                "total": "115",
+                "base": "94",
+                "stock": "12",
+                "bonus": "8"
+            },
+            "L4": {
+                "total": "179",
+                "base": "122",
+                "stock": "38",
+                "bonus": "19"
+            },
+            "L5": {
+                "total": "267",
+                "base": "160",
+                "stock": "77",
+                "bonus": "29"
+            },
+            "L6": {
+                "total": "319",
+                "base": "200",
+                "stock": "75",
+                "bonus": "44"
+            }
+        },
+        "mechanical-engineer": {
+            "L3\nMechanical Engineer II": {
+                "total": "172",
+                "base": "132",
+                "stock": "28",
+                "bonus": "12"
+            },
+            "L4\nMechanical Engineer III": {
+                "total": "277",
+                "base": "158",
+                "stock": "91",
+                "bonus": "27"
+            },
+            "L5\nSenior Mechanical Engineer": {
+                "total": "341",
+                "base": "188",
+                "stock": "119",
+                "bonus": "33"
+            },
+            "L6\nStaff Mechanical Engineer": {
+                "total": "371",
+                "base": "197",
+                "stock": "135",
+                "bonus": "39"
+            }
+        },
+        "accountant": {
+            "L3": {
+                "total": "127",
+                "base": "109",
+                "stock": "12",
+                "bonus": "6"
+            },
+            "L4": {
+                "total": "176",
+                "base": "129",
+                "stock": "29",
+                "bonus": "17"
+            },
+            "L5": {
+                "total": "212",
+                "base": "144",
+                "stock": "43",
+                "bonus": "24"
+            },
+            "L6": {
+                "total": "277",
+                "base": "182",
+                "stock": "64",
+                "bonus": "31"
+            }
+        },
+        "project-manager": {
+            "L3\nProject Manager II": {
+                "total": "172",
+                "base": "155",
+                "stock": "10",
+                "bonus": "7"
+            },
+            "L4\nProject Manager III": {
+                "total": "188",
+                "base": "139",
+                "stock": "26",
+                "bonus": "23"
+            },
+            "L5\nSenior Project Manager": {
+                "total": "262",
+                "base": "176",
+                "stock": "67",
+                "bonus": "19"
+            },
+            "L6": {
+                "total": "294",
+                "base": "183",
+                "stock": "82",
+                "bonus": "29"
+            }
+        },
+        "marketing-operations": {
+            "L3": {
+                "total": "153",
+                "base": "85",
+                "stock": "50",
+                "bonus": "18"
+            },
+            "L4": {
+                "total": "174",
+                "base": "132",
+                "stock": "23",
+                "bonus": "19"
+            },
+            "L5": {
+                "total": "312",
+                "base": "178",
+                "stock": "113",
+                "bonus": "21"
+            },
+            "L6": {
+                "total": "372",
+                "base": "203",
+                "stock": "125",
+                "bonus": "44"
+            },
+            "L7": {
+                "total": "462",
+                "base": "234",
+                "stock": "142",
+                "bonus": "86"
+            }
+        },
+        "management-consultant": {
+            "L4": {
+                "total": "203",
+                "base": "157",
+                "stock": "30",
+                "bonus": "16"
+            },
+            "L5": {
+                "total": "231",
+                "base": "165",
+                "stock": "40",
+                "bonus": "26"
+            },
+            "L6": {
+                "total": "327",
+                "base": "196",
+                "stock": "84",
+                "bonus": "47"
+            }
+        },
+        "information-technologist": {
+            "L3": {
+                "total": "157",
+                "base": "136",
+                "stock": "10",
+                "bonus": "11"
+            },
+            "L4": {
+                "total": "215",
+                "base": "136",
+                "stock": "56",
+                "bonus": "23"
+            },
+            "L6": {
+                "total": "355",
+                "base": "199",
+                "stock": "122",
+                "bonus": "34"
+            }
+        },
+        "financial-analyst": {
+            "L4": {
+                "total": "200",
+                "base": "137",
+                "stock": "36",
+                "bonus": "27"
+            },
+            "L5": {
+                "total": "223",
+                "base": "150",
+                "stock": "48",
+                "bonus": "25"
+            },
+            "L6": {
+                "total": "312",
+                "base": "195",
+                "stock": "80",
+                "bonus": "37"
+            }
+        },
+        "business-development": {
+            "L5": {
+                "total": "267",
+                "base": "185",
+                "stock": "57",
+                "bonus": "25"
+            },
+            "L6": {
+                "total": "340",
+                "base": "219",
+                "stock": "74",
+                "bonus": "40"
+            }
+        },
+        "legal": {
+            "L4": {
+                "total": "204",
+                "base": "146",
+                "stock": "42",
+                "bonus": "16"
+            }
+        },
+        "sales-engineer": {
+            "L5": {
+                "total": "284",
+                "base": "161",
+                "stock": "55",
+                "bonus": "68"
+            }
+        },
+        "technical-writer": {
+            "L4": {
+                "total": "206",
+                "base": "121",
+                "stock": "65",
+                "bonus": "20"
+            }
+        },
+        "security-analyst": {
+            "L4": {
+                "total": "226",
+                "base": "169",
+                "stock": "38",
+                "bonus": "20"
+            }
+        },
+        "product-design-manager": {
+            "L5": {
+                "total": "259",
+                "base": "190",
+                "stock": "40",
+                "bonus": "29"
+            }
+        }
+    },
+    "apple": {
+        "software-engineer": {
+            "ICT2\nJunior Software Engineer\n(Entry Level)": {
+                "total": "166",
+                "base": "132",
+                "stock": "27",
+                "bonus": "5"
+            },
+            "ICT3\nSoftware Engineer": {
+                "total": "220",
+                "base": "154",
+                "stock": "56",
+                "bonus": "9"
+            },
+            "ICT4\nSenior Software Engineer": {
+                "total": "328",
+                "base": "207",
+                "stock": "105",
+                "bonus": "16"
+            },
+            "ICT5": {
+                "total": "481",
+                "base": "239",
+                "stock": "207",
+                "bonus": "35"
+            },
+            "ICT6": {
+                "total": "677",
+                "base": "275",
+                "stock": "354",
+                "bonus": "48"
+            }
+        },
+        "hardware-engineer": {
+            "ICT2\nJunior Hardware Engineer": {
+                "total": "160",
+                "base": "130",
+                "stock": "20",
+                "bonus": "10"
+            },
+            "ICT3\nHardware Engineer": {
+                "total": "207",
+                "base": "156",
+                "stock": "40",
+                "bonus": "11"
+            },
+            "ICT4\nSenior Hardware Engineer": {
+                "total": "305",
+                "base": "189",
+                "stock": "100",
+                "bonus": "16"
+            },
+            "ICT5": {
+                "total": "455",
+                "base": "228",
+                "stock": "192",
+                "bonus": "35"
+            },
+            "ICT6": {
+                "total": "723",
+                "base": "285",
+                "stock": "363",
+                "bonus": "75"
+            }
+        },
+        "mechanical-engineer": {
+            "ICT2\nJunior Mechanical Engineer": {
+                "total": "148",
+                "base": "120",
+                "stock": "12",
+                "bonus": "16"
+            },
+            "ICT3\nMechanical Engineer": {
+                "total": "228",
+                "base": "155",
+                "stock": "55",
+                "bonus": "18"
+            },
+            "ICT4\nSenior Mechanical Engineer": {
+                "total": "306",
+                "base": "179",
+                "stock": "103",
+                "bonus": "24"
+            },
+            "ICT5": {
+                "total": "412",
+                "base": "206",
+                "stock": "174",
+                "bonus": "33"
+            }
+        },
+        "product-manager": {
+            "ICT2\nJunior Product Manager": {
+                "total": "252",
+                "base": "155",
+                "stock": "82",
+                "bonus": "15"
+            },
+            "ICT3\nProduct Manager": {
+                "total": "205",
+                "base": "148",
+                "stock": "46",
+                "bonus": "11"
+            },
+            "ICT4\nSenior Product Manager": {
+                "total": "274",
+                "base": "179",
+                "stock": "74",
+                "bonus": "22"
+            },
+            "ICT5": {
+                "total": "454",
+                "base": "247",
+                "stock": "178",
+                "bonus": "29"
+            }
+        },
+        "technical-program-manager": {
+            "ICT2\nJunior TPM": {
+                "total": "246",
+                "base": "146",
+                "stock": "75",
+                "bonus": "25"
+            },
+            "ICT3\nTPM": {
+                "total": "195",
+                "base": "154",
+                "stock": "34",
+                "bonus": "8"
+            },
+            "ICT4\nSenior TPM": {
+                "total": "305",
+                "base": "192",
+                "stock": "90",
+                "bonus": "23"
+            },
+            "ICT5": {
+                "total": "430",
+                "base": "216",
+                "stock": "179",
+                "bonus": "36"
+            }
+        },
+        "data-scientist": {
+            "ICT2\nJunior Data Scientist": {
+                "total": "187",
+                "base": "119",
+                "stock": "56",
+                "bonus": "11"
+            },
+            "ICT3\nData Scientist": {
+                "total": "202",
+                "base": "159",
+                "stock": "32",
+                "bonus": "11"
+            },
+            "ICT4\nSenior Data Scientist": {
+                "total": "264",
+                "base": "175",
+                "stock": "71",
+                "bonus": "18"
+            },
+            "ICT5": {
+                "total": "404",
+                "base": "208",
+                "stock": "161",
+                "bonus": "35"
+            }
+        },
+        "product-designer": {
+            "ICT2\nJunior Product Designer": {
+                "total": "205",
+                "base": "153",
+                "stock": "41",
+                "bonus": "11"
+            },
+            "ICT3\nProduct Designer": {
+                "total": "158",
+                "base": "138",
+                "stock": "15",
+                "bonus": "5"
+            },
+            "ICT4\nSenior Product Designer": {
+                "total": "288",
+                "base": "185",
+                "stock": "86",
+                "bonus": "17"
+            },
+            "ICT5": {
+                "total": "423",
+                "base": "214",
+                "stock": "161",
+                "bonus": "49"
+            }
+        },
+        "program-manager": {
+            "ICT2\nJunior Program Manager": {
+                "total": "214",
+                "base": "145",
+                "stock": "53",
+                "bonus": "16"
+            },
+            "ICT3\nProgram Manager": {
+                "total": "234",
+                "base": "146",
+                "stock": "73",
+                "bonus": "15"
+            },
+            "ICT4\nSenior Program Manager": {
+                "total": "285",
+                "base": "172",
+                "stock": "94",
+                "bonus": "20"
+            },
+            "ICT5": {
+                "total": "259",
+                "base": "171",
+                "stock": "65",
+                "bonus": "23"
+            }
+        },
+        "software-engineering-manager": {
+            "M1\nManager 1": {
+                "total": "402",
+                "base": "207",
+                "stock": "167",
+                "bonus": "29"
+            },
+            "M2\nManager 2": {
+                "total": "452",
+                "base": "238",
+                "stock": "180",
+                "bonus": "34"
+            },
+            "M3\nSenior Manager": {
+                "total": "681",
+                "base": "283",
+                "stock": "340",
+                "bonus": "58"
+            }
+        },
+        "business-analyst": {
+            "ICT2\nJunior Business Analyst": {
+                "total": "110",
+                "base": "98",
+                "stock": "9",
+                "bonus": "3"
+            },
+            "ICT3\nBusiness Analyst": {
+                "total": "158",
+                "base": "120",
+                "stock": "25",
+                "bonus": "13"
+            },
+            "ICT4\nSenior Business Analyst": {
+                "total": "221",
+                "base": "152",
+                "stock": "54",
+                "bonus": "16"
+            }
+        },
+        "marketing": {
+            "ICT3": {
+                "total": "156",
+                "base": "119",
+                "stock": "32",
+                "bonus": "5"
+            },
+            "ICT4": {
+                "total": "205",
+                "base": "157",
+                "stock": "39",
+                "bonus": "9"
+            }
+        },
+        "recruiter": {
+            "ICT3\nRecruiter": {
+                "total": "127",
+                "base": "120",
+                "stock": "4",
+                "bonus": "3"
+            },
+            "ICT5": {
+                "total": "282",
+                "base": "184",
+                "stock": "77",
+                "bonus": "21"
+            }
+        },
+        "project-manager": {
+            "ICT3\nProject Manager": {
+                "total": "200",
+                "base": "141",
+                "stock": "36",
+                "bonus": "23"
+            },
+            "ICT4\nSenior Project Manager": {
+                "total": "210",
+                "base": "166",
+                "stock": "36",
+                "bonus": "7"
+            }
+        },
+        "sales": {
+            "ICT2": {
+                "total": "93",
+                "base": "60",
+                "stock": "30",
+                "bonus": "3"
+            },
+            "ICT3": {
+                "total": "88",
+                "base": "74",
+                "stock": "7",
+                "bonus": "1"
+            },
+            "ICT4": {
+                "total": "162",
+                "base": "125",
+                "stock": "20",
+                "bonus": "8"
+            }
+        },
+        "financial-analyst": {
+            "ICT3": {
+                "total": "133",
+                "base": "111",
+                "stock": "16",
+                "bonus": "5"
+            },
+            "ICT4": {
+                "total": "209",
+                "base": "157",
+                "stock": "39",
+                "bonus": "14"
+            }
+        },
+        "information-technologist": {
+            "ICT3": {
+                "total": "171",
+                "base": "132",
+                "stock": "24",
+                "bonus": "15"
+            }
+        },
+        "customer-service": {
+            "ICT4": {
+                "total": "130",
+                "base": "97",
+                "stock": "26",
+                "bonus": "7"
+            }
+        },
+        "data-science-manager": {
+            "ICT2": {
+                "total": "460",
+                "base": "241",
+                "stock": "175",
+                "bonus": "45"
+            }
+        },
+        "human-resources": {
+            "ICT5": {
+                "total": "289",
+                "base": "203",
+                "stock": "57",
+                "bonus": "28"
+            }
+        },
+        "accountant": {
+            "ICT3": {
+                "total": "130",
+                "base": "100",
+                "stock": "20",
+                "bonus": "10"
+            }
+        },
+        "security-analyst": {}
+    },
+    "amazon": {
+        "software-engineer": {
+            "SDE I\nL4\n(Entry Level)": {
+                "total": "172",
+                "base": "136",
+                "stock": "21",
+                "bonus": "15"
+            },
+            "SDE II\nL5": {
+                "total": "244",
+                "base": "168",
+                "stock": "64",
+                "bonus": "12"
+            },
+            "SDE III\nL6": {
+                "total": "343",
+                "base": "196",
+                "stock": "145",
+                "bonus": "2"
+            },
+            "Principal SDE\nL7": {
+                "total": "543",
+                "base": "240",
+                "stock": "303",
+                "bonus": ""
+            },
+            "Senior Principal SDE\nL8": {
+                "total": "901",
+                "base": "275",
+                "stock": "626",
+                "bonus": ""
+            }
+        },
+        "data-scientist": {
+            "DS I\nL4": {
+                "total": "178",
+                "base": "141",
+                "stock": "16",
+                "bonus": "21"
+            },
+            "DS II\nL5": {
+                "total": "242",
+                "base": "162",
+                "stock": "56",
+                "bonus": "24"
+            },
+            "DS III\nL6": {
+                "total": "326",
+                "base": "187",
+                "stock": "127",
+                "bonus": "12"
+            },
+            "Principal DS\nL7": {
+                "total": "664",
+                "base": "223",
+                "stock": "384",
+                "bonus": "56"
+            }
+        },
+        "technical-program-manager": {
+            "TPM I\nL4": {
+                "total": "146",
+                "base": "114",
+                "stock": "21",
+                "bonus": "11"
+            },
+            "TPM II\nL5": {
+                "total": "195",
+                "base": "159",
+                "stock": "21",
+                "bonus": "15"
+            },
+            "TPM III\nL6": {
+                "total": "273",
+                "base": "189",
+                "stock": "44",
+                "bonus": "40"
+            },
+            "Principal TPM\nL7": {
+                "total": "402",
+                "base": "206",
+                "stock": "182",
+                "bonus": "14"
+            }
+        },
+        "solution-architect": {
+            "SA I\nL4": {
+                "total": "161",
+                "base": "120",
+                "stock": "24",
+                "bonus": "17"
+            },
+            "SA II\nL5": {
+                "total": "209",
+                "base": "154",
+                "stock": "50",
+                "bonus": "5"
+            },
+            "SA III\nL6": {
+                "total": "256",
+                "base": "192",
+                "stock": "54",
+                "bonus": "10"
+            },
+            "Principal SA\nL7": {
+                "total": "432",
+                "base": "215",
+                "stock": "162",
+                "bonus": "55"
+            }
+        },
+        "program-manager": {
+            "Program Manager I\nL4": {
+                "total": "95",
+                "base": "73",
+                "stock": "14",
+                "bonus": "8"
+            },
+            "Program Manager II\nL5": {
+                "total": "131",
+                "base": "105",
+                "stock": "18",
+                "bonus": "9"
+            },
+            "Program Manager III\nL6": {
+                "total": "179",
+                "base": "140",
+                "stock": "25",
+                "bonus": "14"
+            },
+            "Principal Program Manager\nL7": {
+                "total": "254",
+                "base": "168",
+                "stock": "76",
+                "bonus": "10"
+            }
+        },
+        "sales": {
+            "L4": {
+                "total": "123",
+                "base": "78",
+                "stock": "19",
+                "bonus": "19"
+            },
+            "L5": {
+                "total": "212",
+                "base": "119",
+                "stock": "37",
+                "bonus": "14"
+            },
+            "L6": {
+                "total": "278",
+                "base": "155",
+                "stock": "42",
+                "bonus": "48"
+            },
+            "L7": {
+                "total": "400",
+                "base": "195",
+                "stock": "112",
+                "bonus": "44"
+            }
+        },
+        "product-manager": {
+            "Product Manager\nL5": {
+                "total": "183",
+                "base": "138",
+                "stock": "33",
+                "bonus": "12"
+            },
+            "Senior Product Manager\nL6": {
+                "total": "233",
+                "base": "161",
+                "stock": "42",
+                "bonus": "29"
+            },
+            "Principal Product Manager\nSenior Manager PM": {
+                "total": "424",
+                "base": "219",
+                "stock": "172",
+                "bonus": "33"
+            },
+            "Director\nL8": {
+                "total": "770",
+                "base": "251",
+                "stock": "476",
+                "bonus": "43"
+            }
+        },
+        "human-resources": {
+            "L4": {
+                "total": "77",
+                "base": "61",
+                "stock": "9",
+                "bonus": "7"
+            },
+            "L5": {
+                "total": "130",
+                "base": "96",
+                "stock": "23",
+                "bonus": "11"
+            },
+            "L6": {
+                "total": "197",
+                "base": "144",
+                "stock": "39",
+                "bonus": "13"
+            },
+            "L7": {
+                "total": "309",
+                "base": "173",
+                "stock": "115",
+                "bonus": "21"
+            }
+        },
+        "software-engineering-manager": {
+            "L5 SDM\nSoftware Dev Manager": {
+                "total": "289",
+                "base": "191",
+                "stock": "83",
+                "bonus": "15"
+            },
+            "L6 SDM": {
+                "total": "388",
+                "base": "220",
+                "stock": "144",
+                "bonus": "24"
+            },
+            "Senior SDM\nL7": {
+                "total": "599",
+                "base": "248",
+                "stock": "319",
+                "bonus": "32"
+            },
+            "Director\nL8": {
+                "total": "1.19",
+                "base": "265",
+                "stock": "804",
+                "bonus": "120"
+            }
+        },
+        "business-analyst": {
+            "Business Analyst I\nL4": {
+                "total": "116",
+                "base": "95",
+                "stock": "7",
+                "bonus": "14"
+            },
+            "Business Analyst II\nL5": {
+                "total": "133",
+                "base": "112",
+                "stock": "9",
+                "bonus": "11"
+            },
+            "Business Analyst III\nL6": {
+                "total": "205",
+                "base": "152",
+                "stock": "36",
+                "bonus": "17"
+            },
+            "Principal Business Analyst\nL7": {
+                "total": "319",
+                "base": "161",
+                "stock": "123",
+                "bonus": "35"
+            }
+        },
+        "marketing": {
+            "L4": {
+                "total": "98",
+                "base": "84",
+                "stock": "7",
+                "bonus": "7"
+            },
+            "L5": {
+                "total": "159",
+                "base": "127",
+                "stock": "12",
+                "bonus": "20"
+            },
+            "L6": {
+                "total": "200",
+                "base": "149",
+                "stock": "39",
+                "bonus": "12"
+            },
+            "L7": {
+                "total": "301",
+                "base": "210",
+                "stock": "80",
+                "bonus": "11"
+            }
+        },
+        "financial-analyst": {
+            "L4": {
+                "total": "87",
+                "base": "76",
+                "stock": "5",
+                "bonus": "5"
+            },
+            "L5": {
+                "total": "112",
+                "base": "91",
+                "stock": "12",
+                "bonus": "10"
+            },
+            "L6": {
+                "total": "182",
+                "base": "139",
+                "stock": "34",
+                "bonus": "10"
+            },
+            "L7": {
+                "total": "294",
+                "base": "178",
+                "stock": "103",
+                "bonus": "12"
+            }
+        },
+        "hardware-engineer": {
+            "Hardware Engineer I\nL4": {
+                "total": "152",
+                "base": "117",
+                "stock": "21",
+                "bonus": "14"
+            },
+            "Hardware Engineer II\nL5": {
+                "total": "224",
+                "base": "153",
+                "stock": "44",
+                "bonus": "27"
+            },
+            "Hardware Engineer III\nL6": {
+                "total": "308",
+                "base": "192",
+                "stock": "85",
+                "bonus": "31"
+            },
+            "Principal Hardware Engineer\nL7": {
+                "total": "468",
+                "base": "180",
+                "stock": "269",
+                "bonus": "19"
+            }
+        },
+        "mechanical-engineer": {
+            "Mechanical Engineer I\nL4": {
+                "total": "145",
+                "base": "115",
+                "stock": "17",
+                "bonus": "14"
+            },
+            "Mechanical Engineer II\nL5": {
+                "total": "178",
+                "base": "129",
+                "stock": "29",
+                "bonus": "20"
+            },
+            "Mechanical Engineer III\nL6": {
+                "total": "268",
+                "base": "162",
+                "stock": "89",
+                "bonus": "18"
+            }
+        },
+        "product-designer": {
+            "L4\nDesigner I": {
+                "total": "140",
+                "base": "112",
+                "stock": "11",
+                "bonus": "17"
+            },
+            "L5\nDesigner II": {
+                "total": "213",
+                "base": "157",
+                "stock": "22",
+                "bonus": "34"
+            },
+            "L6\nDesigner III": {
+                "total": "271",
+                "base": "174",
+                "stock": "55",
+                "bonus": "41"
+            },
+            "L7\nPrincipal Designer": {
+                "total": "365",
+                "base": "189",
+                "stock": "160",
+                "bonus": "16"
+            }
+        },
+        "business-development": {
+            "L4": {
+                "total": "87",
+                "base": "67",
+                "stock": "13",
+                "bonus": "7"
+            },
+            "L5": {
+                "total": "184",
+                "base": "120",
+                "stock": "49",
+                "bonus": "15"
+            },
+            "L6": {
+                "total": "314",
+                "base": "174",
+                "stock": "112",
+                "bonus": "21"
+            },
+            "L7": {
+                "total": "388",
+                "base": "198",
+                "stock": "165",
+                "bonus": "25"
+            }
+        },
+        "accountant": {
+            "L4": {
+                "total": "82",
+                "base": "59",
+                "stock": "18",
+                "bonus": "5"
+            },
+            "L5": {
+                "total": "120",
+                "base": "94",
+                "stock": "13",
+                "bonus": "13"
+            },
+            "L6": {
+                "total": "171",
+                "base": "127",
+                "stock": "32",
+                "bonus": "12"
+            },
+            "L7": {
+                "total": "291",
+                "base": "161",
+                "stock": "129",
+                "bonus": "80"
+            }
+        },
+        "information-technologist": {
+            "L4": {
+                "total": "106",
+                "base": "89",
+                "stock": "10",
+                "bonus": "7"
+            },
+            "L5": {
+                "total": "195",
+                "base": "145",
+                "stock": "27",
+                "bonus": "23"
+            },
+            "L6": {
+                "total": "262",
+                "base": "164",
+                "stock": "64",
+                "bonus": "34"
+            }
+        },
+        "recruiter": {
+            "Recruiter I\nL4": {
+                "total": "103",
+                "base": "83",
+                "stock": "11",
+                "bonus": "8"
+            },
+            "Recruiter II\nL5": {
+                "total": "138",
+                "base": "115",
+                "stock": "12",
+                "bonus": "11"
+            },
+            "Recruiter III\nL6": {
+                "total": "196",
+                "base": "150",
+                "stock": "24",
+                "bonus": "22"
+            }
+        },
+        "project-manager": {
+            "L4": {
+                "total": "89",
+                "base": "69",
+                "stock": "13",
+                "bonus": "7"
+            },
+            "L5": {
+                "total": "121",
+                "base": "103",
+                "stock": "12",
+                "bonus": "6"
+            },
+            "L6": {
+                "total": "227",
+                "base": "161",
+                "stock": "49",
+                "bonus": "17"
+            }
+        },
+        "marketing-operations": {
+            "L4": {
+                "total": "75",
+                "base": "62",
+                "stock": "9",
+                "bonus": "3"
+            },
+            "L5": {
+                "total": "127",
+                "base": "94",
+                "stock": "21",
+                "bonus": "12"
+            },
+            "L6": {
+                "total": "189",
+                "base": "135",
+                "stock": "45",
+                "bonus": "9"
+            }
+        },
+        "applied-scientist": {
+            "L4": {
+                "total": "238",
+                "base": "163",
+                "stock": "38",
+                "bonus": "36"
+            },
+            "L5": {
+                "total": "340",
+                "base": "170",
+                "stock": "118",
+                "bonus": "52"
+            },
+            "L6": {
+                "total": "382",
+                "base": "157",
+                "stock": "187",
+                "bonus": "39"
+            }
+        },
+        "management-consultant": {
+            "L5": {
+                "total": "170",
+                "base": "127",
+                "stock": "17",
+                "bonus": "26"
+            },
+            "L6": {
+                "total": "252",
+                "base": "157",
+                "stock": "68",
+                "bonus": "26"
+            },
+            "L7": {
+                "total": "377",
+                "base": "175",
+                "stock": "164",
+                "bonus": "38"
+            }
+        },
+        "security-engineer": {
+            "L4": {
+                "total": "165",
+                "base": "126",
+                "stock": "28",
+                "bonus": "11"
+            },
+            "L5": {
+                "total": "270",
+                "base": "152",
+                "stock": "87",
+                "bonus": "31"
+            },
+            "L6": {
+                "total": "356",
+                "base": "161",
+                "stock": "163",
+                "bonus": "32"
+            },
+            "L7": {
+                "total": "488",
+                "base": "160",
+                "stock": "328",
+                "bonus": ""
+            }
+        },
+        "customer-service": {
+            "L4": {
+                "total": "120",
+                "base": "98",
+                "stock": "7",
+                "bonus": "15"
+            },
+            "L5": {
+                "total": "118",
+                "base": "99",
+                "stock": "10",
+                "bonus": "9"
+            },
+            "L6": {
+                "total": "217",
+                "base": "153",
+                "stock": "54",
+                "bonus": "11"
+            }
+        },
+        "area-manager": {
+            "L4": {
+                "total": "72",
+                "base": "62",
+                "stock": "5",
+                "bonus": "5"
+            },
+            "L5": {
+                "total": "80",
+                "base": "70",
+                "stock": "7",
+                "bonus": "3"
+            }
+        },
+        "finance": {
+            "L4": {
+                "total": "100",
+                "base": "73",
+                "stock": "18",
+                "bonus": "9"
+            },
+            "L5": {
+                "total": "114",
+                "base": "87",
+                "stock": "18",
+                "bonus": "9"
+            },
+            "L6": {
+                "total": "192",
+                "base": "126",
+                "stock": "55",
+                "bonus": "11"
+            },
+            "L7": {
+                "total": "269",
+                "base": "149",
+                "stock": "115",
+                "bonus": "5"
+            }
+        },
+        "security-analyst": {
+            "L4": {
+                "total": "192",
+                "base": "155",
+                "stock": "20",
+                "bonus": "17"
+            },
+            "L5": {
+                "total": "261",
+                "base": "165",
+                "stock": "74",
+                "bonus": "21"
+            }
+        },
+        "technical-account-manager": {
+            "L5": {
+                "total": "177",
+                "base": "139",
+                "stock": "24",
+                "bonus": "13"
+            },
+            "L6": {
+                "total": "217",
+                "base": "151",
+                "stock": "52",
+                "bonus": "14"
+            }
+        },
+        "operations": {
+            "L4": {
+                "total": "72",
+                "base": "57",
+                "stock": "8",
+                "bonus": "7"
+            },
+            "L5": {
+                "total": "121",
+                "base": "89",
+                "stock": "15",
+                "bonus": "17"
+            },
+            "L6": {
+                "total": "192",
+                "base": "125",
+                "stock": "32",
+                "bonus": "35"
+            }
+        },
+        "business-intelligence-engineer": {
+            "L4": {
+                "total": "128",
+                "base": "105",
+                "stock": "12",
+                "bonus": "11"
+            },
+            "L5": {
+                "total": "166",
+                "base": "127",
+                "stock": "30",
+                "bonus": "8"
+            },
+            "L6": {
+                "total": "231",
+                "base": "149",
+                "stock": "83",
+                "bonus": ""
+            }
+        },
+        "data-science-manager": {
+            "L6": {
+                "total": "384",
+                "base": "202",
+                "stock": "160",
+                "bonus": "23"
+            },
+            "L7": {
+                "total": "439",
+                "base": "220",
+                "stock": "219",
+                "bonus": ""
+            }
+        },
+        "data-engineer": {
+            "L4": {
+                "total": "143",
+                "base": "108",
+                "stock": "22",
+                "bonus": "13"
+            },
+            "L5": {
+                "total": "209",
+                "base": "137",
+                "stock": "59",
+                "bonus": "13"
+            },
+            "L6": {
+                "total": "255",
+                "base": "145",
+                "stock": "110",
+                "bonus": ""
+            }
+        },
+        "technical-writer": {
+            "L5": {
+                "total": "168",
+                "base": "126",
+                "stock": "33",
+                "bonus": "8"
+            },
+            "L6": {
+                "total": "203",
+                "base": "147",
+                "stock": "49",
+                "bonus": "8"
+            }
+        },
+        "legal": {
+            "L5": {
+                "total": "227",
+                "base": "174",
+                "stock": "41",
+                "bonus": "13"
+            },
+            "L6": {
+                "total": "280",
+                "base": "149",
+                "stock": "102",
+                "bonus": "29"
+            }
+        },
+        "administrative-assistant": {},
+        "product-design-manager": {},
+        "civil-engineer": {
+            "L5": {
+                "total": "134",
+                "base": "102",
+                "stock": "22",
+                "bonus": "10"
+            }
+        }
+    },
+    "microsoft": {
+        "software-engineer": {
+            "60": {
+                "total": "157",
+                "base": "128",
+                "stock": "25",
+                "bonus": "4"
+            },
+            "62": {
+                "total": "203",
+                "base": "158",
+                "stock": "32",
+                "bonus": "14"
+            },
+            "64": {
+                "total": "271",
+                "base": "195",
+                "stock": "45",
+                "bonus": "31"
+            },
+            "66": {
+                "total": "421",
+                "base": "234",
+                "stock": "134",
+                "bonus": "53"
+            },
+            "67": {
+                "total": "547",
+                "base": "246",
+                "stock": "226",
+                "bonus": "74"
+            },
+            "69": {
+                "total": "1.12",
+                "base": "286",
+                "stock": "685",
+                "bonus": "151"
+            },
+            "SDE\n59\n(Entry Level)": {
+                "total": "164",
+                "base": "119",
+                "stock": "33",
+                "bonus": "11"
+            },
+            "SDE II\n61": {
+                "total": "195",
+                "base": "142",
+                "stock": "38",
+                "bonus": "15"
+            },
+            "Senior SDE\n63": {
+                "total": "227",
+                "base": "175",
+                "stock": "36",
+                "bonus": "16"
+            },
+            "Principal SDE\n65": {
+                "total": "329",
+                "base": "215",
+                "stock": "75",
+                "bonus": "38"
+            },
+            "Partner\n68": {
+                "total": "839",
+                "base": "283",
+                "stock": "403",
+                "bonus": "154"
+            }
+        },
+        "technical-program-manager": {
+            "60": {
+                "total": "166",
+                "base": "126",
+                "stock": "23",
+                "bonus": "16"
+            },
+            "62": {
+                "total": "189",
+                "base": "149",
+                "stock": "23",
+                "bonus": "17"
+            },
+            "64": {
+                "total": "243",
+                "base": "180",
+                "stock": "32",
+                "bonus": "30"
+            },
+            "66": {
+                "total": "392",
+                "base": "225",
+                "stock": "101",
+                "bonus": "65"
+            },
+            "67": {
+                "total": "511",
+                "base": "239",
+                "stock": "197",
+                "bonus": "75"
+            },
+            "Technical Program Manager I\n59": {
+                "total": "146",
+                "base": "111",
+                "stock": "20",
+                "bonus": "14"
+            },
+            "Technical Program Manager II\n61": {
+                "total": "173",
+                "base": "137",
+                "stock": "18",
+                "bonus": "18"
+            },
+            "Senior Technical Program Manager\n63": {
+                "total": "236",
+                "base": "176",
+                "stock": "35",
+                "bonus": "25"
+            },
+            "Principal Technical Program Manager\n65": {
+                "total": "302",
+                "base": "200",
+                "stock": "60",
+                "bonus": "42"
+            }
+        },
+        "product-manager": {
+            "59\nPM 1": {
+                "total": "183",
+                "base": "120",
+                "stock": "36",
+                "bonus": "27"
+            },
+            "60\nPM 1": {
+                "total": "173",
+                "base": "128",
+                "stock": "28",
+                "bonus": "17"
+            },
+            "61\nPM 2": {
+                "total": "191",
+                "base": "144",
+                "stock": "28",
+                "bonus": "19"
+            },
+            "62\nPM 2": {
+                "total": "201",
+                "base": "157",
+                "stock": "30",
+                "bonus": "14"
+            },
+            "63\nSenior PM": {
+                "total": "237",
+                "base": "174",
+                "stock": "34",
+                "bonus": "29"
+            },
+            "64\nSenior PM": {
+                "total": "245",
+                "base": "192",
+                "stock": "29",
+                "bonus": "24"
+            },
+            "65\nPrincipal PM": {
+                "total": "306",
+                "base": "205",
+                "stock": "59",
+                "bonus": "42"
+            },
+            "66\nPrincipal PM": {
+                "total": "381",
+                "base": "224",
+                "stock": "106",
+                "bonus": "51"
+            },
+            "67\nGroup PM": {
+                "total": "514",
+                "base": "236",
+                "stock": "203",
+                "bonus": "75"
+            },
+            "Partner\n68": {
+                "total": "773",
+                "base": "247",
+                "stock": "384",
+                "bonus": "142"
+            }
+        },
+        "product-designer": {
+            "60": {
+                "total": "150",
+                "base": "129",
+                "stock": "12",
+                "bonus": "9"
+            },
+            "62": {
+                "total": "191",
+                "base": "151",
+                "stock": "27",
+                "bonus": "13"
+            },
+            "64": {
+                "total": "261",
+                "base": "183",
+                "stock": "47",
+                "bonus": "32"
+            },
+            "66": {
+                "total": "348",
+                "base": "214",
+                "stock": "84",
+                "bonus": "50"
+            },
+            "Product Designer I\n59": {
+                "total": "121",
+                "base": "109",
+                "stock": "6",
+                "bonus": "6"
+            },
+            "Product Designer II\n61": {
+                "total": "186",
+                "base": "144",
+                "stock": "24",
+                "bonus": "19"
+            },
+            "Senior Product Designer\n63": {
+                "total": "221",
+                "base": "167",
+                "stock": "29",
+                "bonus": "26"
+            },
+            "Principal Product Designer\n65": {
+                "total": "286",
+                "base": "201",
+                "stock": "50",
+                "bonus": "34"
+            }
+        },
+        "data-scientist": {
+            "60": {
+                "total": "184",
+                "base": "134",
+                "stock": "26",
+                "bonus": "24"
+            },
+            "62": {
+                "total": "187",
+                "base": "151",
+                "stock": "23",
+                "bonus": "13"
+            },
+            "64": {
+                "total": "262",
+                "base": "196",
+                "stock": "42",
+                "bonus": "24"
+            },
+            "66": {
+                "total": "390",
+                "base": "231",
+                "stock": "113",
+                "bonus": "47"
+            },
+            "Data Scientist I\n59": {
+                "total": "178",
+                "base": "121",
+                "stock": "37",
+                "bonus": "20"
+            },
+            "Data Scientist II\n61": {
+                "total": "187",
+                "base": "141",
+                "stock": "28",
+                "bonus": "18"
+            },
+            "Senior Data Scientist\n63": {
+                "total": "247",
+                "base": "186",
+                "stock": "36",
+                "bonus": "24"
+            },
+            "Principal Data Scientist\n65": {
+                "total": "323",
+                "base": "209",
+                "stock": "69",
+                "bonus": "45"
+            }
+        },
+        "software-engineering-manager": {
+            "64": {
+                "total": "261",
+                "base": "186",
+                "stock": "44",
+                "bonus": "31"
+            },
+            "66": {
+                "total": "391",
+                "base": "219",
+                "stock": "114",
+                "bonus": "57"
+            },
+            "63\nSenior Manager": {
+                "total": "222",
+                "base": "162",
+                "stock": "39",
+                "bonus": "21"
+            },
+            "Principal EM\nPrincipal Director of Engineering": {
+                "total": "320",
+                "base": "224",
+                "stock": "47",
+                "bonus": "45"
+            },
+            "Senior Director\n67": {
+                "total": "530",
+                "base": "240",
+                "stock": "210",
+                "bonus": "80"
+            },
+            "GM, Partner\nSDE Group Manager": {
+                "total": "814",
+                "base": "276",
+                "stock": "382",
+                "bonus": "156"
+            },
+            "VP\n70": {
+                "total": "1.45",
+                "base": "319",
+                "stock": "942",
+                "bonus": "193"
+            }
+        },
+        "sales": {
+            "59": {
+                "total": "99",
+                "base": "83",
+                "stock": "2",
+                "bonus": "14"
+            },
+            "60": {
+                "total": "162",
+                "base": "98",
+                "stock": "12",
+                "bonus": "40"
+            },
+            "61": {
+                "total": "178",
+                "base": "118",
+                "stock": "14",
+                "bonus": "30"
+            },
+            "62": {
+                "total": "226",
+                "base": "121",
+                "stock": "16",
+                "bonus": "63"
+            },
+            "63": {
+                "total": "264",
+                "base": "148",
+                "stock": "34",
+                "bonus": "56"
+            },
+            "64": {
+                "total": "294",
+                "base": "169",
+                "stock": "38",
+                "bonus": "38"
+            },
+            "65": {
+                "total": "355",
+                "base": "185",
+                "stock": "51",
+                "bonus": "74"
+            },
+            "66": {
+                "total": "437",
+                "base": "214",
+                "stock": "89",
+                "bonus": "98"
+            },
+            "67": {
+                "total": "789",
+                "base": "224",
+                "stock": "393",
+                "bonus": "173"
+            }
+        },
+        "marketing": {
+            "59": {
+                "total": "104",
+                "base": "93",
+                "stock": "5",
+                "bonus": "7"
+            },
+            "60": {
+                "total": "122",
+                "base": "99",
+                "stock": "12",
+                "bonus": "11"
+            },
+            "61": {
+                "total": "175",
+                "base": "127",
+                "stock": "17",
+                "bonus": "31"
+            },
+            "62": {
+                "total": "176",
+                "base": "141",
+                "stock": "20",
+                "bonus": "15"
+            },
+            "63": {
+                "total": "212",
+                "base": "156",
+                "stock": "32",
+                "bonus": "25"
+            },
+            "64": {
+                "total": "221",
+                "base": "166",
+                "stock": "30",
+                "bonus": "25"
+            },
+            "65": {
+                "total": "294",
+                "base": "186",
+                "stock": "65",
+                "bonus": "42"
+            },
+            "66": {
+                "total": "328",
+                "base": "201",
+                "stock": "85",
+                "bonus": "40"
+            }
+        },
+        "hardware-engineer": {
+            "60": {
+                "total": "169",
+                "base": "123",
+                "stock": "27",
+                "bonus": "19"
+            },
+            "62": {
+                "total": "195",
+                "base": "147",
+                "stock": "29",
+                "bonus": "18"
+            },
+            "64": {
+                "total": "264",
+                "base": "191",
+                "stock": "41",
+                "bonus": "31"
+            },
+            "66": {
+                "total": "367",
+                "base": "226",
+                "stock": "90",
+                "bonus": "51"
+            },
+            "67": {
+                "total": "606",
+                "base": "298",
+                "stock": "190",
+                "bonus": "119"
+            },
+            "Hardware Engineer I\n59": {
+                "total": "152",
+                "base": "110",
+                "stock": "30",
+                "bonus": "13"
+            },
+            "Hardware Engineer II\n61": {
+                "total": "185",
+                "base": "140",
+                "stock": "31",
+                "bonus": "14"
+            },
+            "Senior Hardware Engineer\n63": {
+                "total": "240",
+                "base": "177",
+                "stock": "36",
+                "bonus": "27"
+            },
+            "Principal Hardware Engineer\n65": {
+                "total": "296",
+                "base": "198",
+                "stock": "46",
+                "bonus": "52"
+            }
+        },
+        "solution-architect": {
+            "62": {
+                "total": "185",
+                "base": "136",
+                "stock": "25",
+                "bonus": "22"
+            },
+            "64": {
+                "total": "253",
+                "base": "172",
+                "stock": "38",
+                "bonus": "43"
+            },
+            "66": {
+                "total": "372",
+                "base": "216",
+                "stock": "101",
+                "bonus": "55"
+            },
+            "Solution Architect I\n59": {
+                "total": "93",
+                "base": "89",
+                "stock": "18",
+                "bonus": "4"
+            },
+            "Solution Architect II\n61": {
+                "total": "159",
+                "base": "121",
+                "stock": "18",
+                "bonus": "19"
+            },
+            "Senior Solution Architect\n63": {
+                "total": "219",
+                "base": "155",
+                "stock": "29",
+                "bonus": "36"
+            },
+            "Principal Solution Architect\n65": {
+                "total": "289",
+                "base": "189",
+                "stock": "52",
+                "bonus": "46"
+            }
+        },
+        "program-manager": {
+            "60": {
+                "total": "147",
+                "base": "124",
+                "stock": "10",
+                "bonus": "12"
+            },
+            "62": {
+                "total": "168",
+                "base": "133",
+                "stock": "19",
+                "bonus": "15"
+            },
+            "64": {
+                "total": "224",
+                "base": "171",
+                "stock": "29",
+                "bonus": "24"
+            },
+            "Program Manager I\n59": {
+                "total": "140",
+                "base": "104",
+                "stock": "20",
+                "bonus": "16"
+            },
+            "Program Manager II\n61": {
+                "total": "156",
+                "base": "124",
+                "stock": "13",
+                "bonus": "19"
+            },
+            "Senior Program Manager\n63": {
+                "total": "200",
+                "base": "156",
+                "stock": "23",
+                "bonus": "20"
+            },
+            "Principal Program Manager\n65": {
+                "total": "305",
+                "base": "203",
+                "stock": "61",
+                "bonus": "40"
+            }
+        },
+        "business-analyst": {
+            "60": {
+                "total": "129",
+                "base": "109",
+                "stock": "11",
+                "bonus": "9"
+            },
+            "62": {
+                "total": "171",
+                "base": "131",
+                "stock": "14",
+                "bonus": "26"
+            },
+            "64": {
+                "total": "223",
+                "base": "167",
+                "stock": "29",
+                "bonus": "28"
+            },
+            "Business Analyst II\n61": {
+                "total": "136",
+                "base": "116",
+                "stock": "10",
+                "bonus": "10"
+            },
+            "Senior Business Analyst\n63": {
+                "total": "202",
+                "base": "158",
+                "stock": "17",
+                "bonus": "27"
+            },
+            "Principal Business Analyst\n65": {
+                "total": "271",
+                "base": "188",
+                "stock": "49",
+                "bonus": "35"
+            }
+        },
+        "mechanical-engineer": {
+            "62": {
+                "total": "176",
+                "base": "146",
+                "stock": "15",
+                "bonus": "15"
+            },
+            "64": {
+                "total": "288",
+                "base": "196",
+                "stock": "58",
+                "bonus": "34"
+            },
+            "Mechanical Engineer II\n61": {
+                "total": "173",
+                "base": "141",
+                "stock": "21",
+                "bonus": "10"
+            },
+            "Senior Mechanical Engineer\n63": {
+                "total": "226",
+                "base": "175",
+                "stock": "24",
+                "bonus": "27"
+            }
+        },
+        "recruiter": {
+            "59": {
+                "total": "97",
+                "base": "90",
+                "stock": "2",
+                "bonus": "5"
+            },
+            "60": {
+                "total": "136",
+                "base": "110",
+                "stock": "15",
+                "bonus": "11"
+            },
+            "61": {
+                "total": "146",
+                "base": "119",
+                "stock": "16",
+                "bonus": "11"
+            },
+            "62": {
+                "total": "145",
+                "base": "124",
+                "stock": "10",
+                "bonus": "11"
+            }
+        },
+        "project-manager": {
+            "62": {
+                "total": "166",
+                "base": "140",
+                "stock": "15",
+                "bonus": "11"
+            },
+            "Project Manager I\n59": {
+                "total": "134",
+                "base": "110",
+                "stock": "17",
+                "bonus": "7"
+            },
+            "Project Manager II\n61": {
+                "total": "155",
+                "base": "131",
+                "stock": "16",
+                "bonus": "8"
+            },
+            "Senior Project Manager\n63": {
+                "total": "199",
+                "base": "156",
+                "stock": "21",
+                "bonus": "22"
+            }
+        },
+        "information-technologist": {
+            "61": {
+                "total": "130",
+                "base": "117",
+                "stock": "4",
+                "bonus": "9"
+            },
+            "62": {
+                "total": "162",
+                "base": "130",
+                "stock": "14",
+                "bonus": "18"
+            },
+            "63": {
+                "total": "188",
+                "base": "153",
+                "stock": "16",
+                "bonus": "19"
+            }
+        },
+        "human-resources": {
+            "63": {
+                "total": "186",
+                "base": "147",
+                "stock": "19",
+                "bonus": "20"
+            },
+            "64": {
+                "total": "231",
+                "base": "167",
+                "stock": "38",
+                "bonus": "26"
+            }
+        },
+        "business-development": {
+            "63": {
+                "total": "219",
+                "base": "158",
+                "stock": "39",
+                "bonus": "23"
+            },
+            "64": {
+                "total": "271",
+                "base": "175",
+                "stock": "40",
+                "bonus": "57"
+            },
+            "65": {
+                "total": "293",
+                "base": "195",
+                "stock": "43",
+                "bonus": "56"
+            }
+        },
+        "marketing-operations": {
+            "63": {
+                "total": "202",
+                "base": "149",
+                "stock": "24",
+                "bonus": "30"
+            },
+            "65": {
+                "total": "268",
+                "base": "201",
+                "stock": "28",
+                "bonus": "39"
+            }
+        },
+        "management-consultant": {
+            "61": {
+                "total": "135",
+                "base": "97",
+                "stock": "14",
+                "bonus": "24"
+            },
+            "64": {
+                "total": "221",
+                "base": "164",
+                "stock": "34",
+                "bonus": "24"
+            }
+        },
+        "accountant": {
+            "61": {
+                "total": "145",
+                "base": "123",
+                "stock": "7",
+                "bonus": "16"
+            },
+            "62": {
+                "total": "153",
+                "base": "129",
+                "stock": "13",
+                "bonus": "11"
+            }
+        },
+        "financial-analyst": {
+            "62": {
+                "total": "161",
+                "base": "131",
+                "stock": "14",
+                "bonus": "16"
+            }
+        },
+        "customer-service": {
+            "59": {
+                "total": "96",
+                "base": "90",
+                "stock": "3",
+                "bonus": "3"
+            },
+            "61": {
+                "total": "155",
+                "base": "121",
+                "stock": "20",
+                "bonus": "14"
+            }
+        },
+        "security-analyst": {
+            "false": {
+                "total": "149",
+                "base": "126",
+                "stock": "20",
+                "bonus": "3"
+            }
+        },
+        "data-science-manager": {
+            "65": {
+                "total": "351",
+                "base": "221",
+                "stock": "70",
+                "bonus": "60"
+            }
+        },
+        "legal": {
+            "65": {
+                "total": "280",
+                "base": "185",
+                "stock": "65",
+                "bonus": "30"
+            }
+        },
+        "product-design-manager": {
+            "63": {
+                "total": "298",
+                "base": "190",
+                "stock": "64",
+                "bonus": "44"
+            }
+        }
+    },
+    "facebook": {
+        "software-engineer": {
+            "E3\n(Entry Level)": {
+                "total": "187",
+                "base": "129",
+                "stock": "46",
+                "bonus": "13"
+            },
+            "E4": {
+                "total": "240",
+                "base": "170",
+                "stock": "60",
+                "bonus": "10"
+            },
+            "E5": {
+                "total": "325",
+                "base": "201",
+                "stock": "105",
+                "bonus": "19"
+            },
+            "E6": {
+                "total": "458",
+                "base": "237",
+                "stock": "185",
+                "bonus": "36"
+            },
+            "E7": {
+                "total": "831",
+                "base": "275",
+                "stock": "496",
+                "bonus": "60"
+            },
+            "E8": {
+                "total": "1.82",
+                "base": "336",
+                "stock": "1.4",
+                "bonus": "79"
+            }
+        },
+        "product-designer": {
+            "IC3": {
+                "total": "143",
+                "base": "118",
+                "stock": "16",
+                "bonus": "9"
+            },
+            "IC4": {
+                "total": "186",
+                "base": "153",
+                "stock": "21",
+                "bonus": "12"
+            },
+            "IC5": {
+                "total": "259",
+                "base": "185",
+                "stock": "52",
+                "bonus": "23"
+            },
+            "IC6": {
+                "total": "327",
+                "base": "208",
+                "stock": "80",
+                "bonus": "39"
+            },
+            "IC7": {
+                "total": "503",
+                "base": "240",
+                "stock": "213",
+                "bonus": "51"
+            }
+        },
+        "product-manager": {
+            "Rotational Product Manager (RPM)\nL3": {
+                "total": "166",
+                "base": "123",
+                "stock": "31",
+                "bonus": "12"
+            },
+            "L4 Product Manager": {
+                "total": "244",
+                "base": "169",
+                "stock": "52",
+                "bonus": "23"
+            },
+            "L5 Product Manager": {
+                "total": "298",
+                "base": "208",
+                "stock": "68",
+                "bonus": "21"
+            },
+            "L6 Product Manager": {
+                "total": "403",
+                "base": "226",
+                "stock": "132",
+                "bonus": "44"
+            },
+            "L7 Product Manager": {
+                "total": "765",
+                "base": "272",
+                "stock": "435",
+                "bonus": "58"
+            },
+            "Director": {
+                "total": "1.32",
+                "base": "322",
+                "stock": "882",
+                "bonus": "113"
+            }
+        },
+        "software-engineering-manager": {
+            "M0": {
+                "total": "394",
+                "base": "209",
+                "stock": "158",
+                "bonus": "27"
+            },
+            "M1": {
+                "total": "535",
+                "base": "240",
+                "stock": "256",
+                "bonus": "39"
+            },
+            "M2": {
+                "total": "908",
+                "base": "283",
+                "stock": "549",
+                "bonus": "76"
+            },
+            "D1": {
+                "total": "1.55",
+                "base": "325",
+                "stock": "1.14",
+                "bonus": "92"
+            },
+            "D2": {
+                "total": "3.06",
+                "base": "395",
+                "stock": "2.5",
+                "bonus": "159"
+            }
+        },
+        "data-scientist": {
+            "IC3": {
+                "total": "166",
+                "base": "135",
+                "stock": "20",
+                "bonus": "11"
+            },
+            "IC4": {
+                "total": "214",
+                "base": "149",
+                "stock": "46",
+                "bonus": "19"
+            },
+            "IC5": {
+                "total": "264",
+                "base": "190",
+                "stock": "54",
+                "bonus": "19"
+            },
+            "IC6": {
+                "total": "350",
+                "base": "227",
+                "stock": "86",
+                "bonus": "37"
+            }
+        },
+        "technical-program-manager": {
+            "IC3": {
+                "total": "148",
+                "base": "131",
+                "stock": "11",
+                "bonus": "6"
+            },
+            "IC4": {
+                "total": "204",
+                "base": "157",
+                "stock": "34",
+                "bonus": "14"
+            },
+            "IC5": {
+                "total": "269",
+                "base": "186",
+                "stock": "60",
+                "bonus": "22"
+            },
+            "IC6": {
+                "total": "351",
+                "base": "227",
+                "stock": "83",
+                "bonus": "41"
+            },
+            "IC7": {
+                "total": "599",
+                "base": "265",
+                "stock": "265",
+                "bonus": "69"
+            }
+        },
+        "hardware-engineer": {
+            "IC3": {
+                "total": "156",
+                "base": "131",
+                "stock": "11",
+                "bonus": "14"
+            },
+            "IC4": {
+                "total": "231",
+                "base": "159",
+                "stock": "48",
+                "bonus": "24"
+            },
+            "IC5": {
+                "total": "289",
+                "base": "195",
+                "stock": "73",
+                "bonus": "21"
+            },
+            "IC6": {
+                "total": "465",
+                "base": "234",
+                "stock": "180",
+                "bonus": "51"
+            },
+            "IC7": {
+                "total": "485",
+                "base": "262",
+                "stock": "172",
+                "bonus": "52"
+            }
+        },
+        "recruiter": {
+            "IC3": {
+                "total": "114",
+                "base": "97",
+                "stock": "12",
+                "bonus": "5"
+            },
+            "IC4": {
+                "total": "145",
+                "base": "122",
+                "stock": "10",
+                "bonus": "13"
+            },
+            "IC5": {
+                "total": "188",
+                "base": "157",
+                "stock": "10",
+                "bonus": "21"
+            },
+            "IC6": {
+                "total": "268",
+                "base": "189",
+                "stock": "42",
+                "bonus": "37"
+            }
+        },
+        "marketing": {
+            "IC3": {
+                "total": "122",
+                "base": "112",
+                "stock": "5",
+                "bonus": "5"
+            },
+            "IC4": {
+                "total": "170",
+                "base": "153",
+                "stock": "9",
+                "bonus": "8"
+            },
+            "IC5": {
+                "total": "231",
+                "base": "171",
+                "stock": "35",
+                "bonus": "26"
+            },
+            "IC6": {
+                "total": "299",
+                "base": "209",
+                "stock": "48",
+                "bonus": "41"
+            },
+            "IC7": {
+                "total": "358",
+                "base": "230",
+                "stock": "75",
+                "bonus": "53"
+            }
+        },
+        "project-manager": {
+            "IC3": {
+                "total": "136",
+                "base": "116",
+                "stock": "13",
+                "bonus": "7"
+            },
+            "IC4": {
+                "total": "153",
+                "base": "128",
+                "stock": "13",
+                "bonus": "13"
+            },
+            "IC5": {
+                "total": "195",
+                "base": "150",
+                "stock": "27",
+                "bonus": "17"
+            },
+            "IC6": {
+                "total": "288",
+                "base": "199",
+                "stock": "55",
+                "bonus": "34"
+            }
+        },
+        "program-manager": {
+            "IC3": {
+                "total": "124",
+                "base": "107",
+                "stock": "8",
+                "bonus": "9"
+            },
+            "IC4": {
+                "total": "147",
+                "base": "125",
+                "stock": "11",
+                "bonus": "10"
+            },
+            "IC5": {
+                "total": "219",
+                "base": "162",
+                "stock": "34",
+                "bonus": "23"
+            },
+            "IC6": {
+                "total": "293",
+                "base": "199",
+                "stock": "54",
+                "bonus": "41"
+            }
+        },
+        "business-analyst": {
+            "IC3": {
+                "total": "124",
+                "base": "105",
+                "stock": "10",
+                "bonus": "10"
+            },
+            "IC4": {
+                "total": "174",
+                "base": "139",
+                "stock": "20",
+                "bonus": "14"
+            },
+            "IC5": {
+                "total": "230",
+                "base": "175",
+                "stock": "32",
+                "bonus": "23"
+            }
+        },
+        "human-resources": {
+            "IC3": {
+                "total": "109",
+                "base": "93",
+                "stock": "10",
+                "bonus": "6"
+            },
+            "IC4": {
+                "total": "159",
+                "base": "130",
+                "stock": "15",
+                "bonus": "14"
+            },
+            "IC5": {
+                "total": "200",
+                "base": "152",
+                "stock": "25",
+                "bonus": "23"
+            },
+            "IC6": {
+                "total": "263",
+                "base": "184",
+                "stock": "41",
+                "bonus": "38"
+            }
+        },
+        "mechanical-engineer": {
+            "IC4": {
+                "total": "229",
+                "base": "157",
+                "stock": "47",
+                "bonus": "24"
+            },
+            "IC5": {
+                "total": "306",
+                "base": "187",
+                "stock": "90",
+                "bonus": "29"
+            },
+            "IC6": {
+                "total": "380",
+                "base": "215",
+                "stock": "122",
+                "bonus": "43"
+            }
+        },
+        "sales": {
+            "IC3": {
+                "total": "136",
+                "base": "97",
+                "stock": "10",
+                "bonus": "16"
+            },
+            "IC4": {
+                "total": "166",
+                "base": "124",
+                "stock": "11",
+                "bonus": "17"
+            },
+            "IC5": {
+                "total": "243",
+                "base": "166",
+                "stock": "26",
+                "bonus": "25"
+            }
+        },
+        "data-science-manager": {
+            "IC6": {
+                "total": "350",
+                "base": "205",
+                "stock": "111",
+                "bonus": "34"
+            }
+        },
+        "data-engineer": {
+            "IC4": {
+                "total": "219",
+                "base": "156",
+                "stock": "49",
+                "bonus": "14"
+            },
+            "IC5": {
+                "total": "311",
+                "base": "187",
+                "stock": "93",
+                "bonus": "31"
+            },
+            "IC6": {
+                "total": "430",
+                "base": "223",
+                "stock": "156",
+                "bonus": "51"
+            }
+        },
+        "marketing-operations": {
+            "IC4": {
+                "total": "157",
+                "base": "130",
+                "stock": "18",
+                "bonus": "10"
+            },
+            "IC5": {
+                "total": "213",
+                "base": "174",
+                "stock": "19",
+                "bonus": "20"
+            }
+        },
+        "accountant": {
+            "IC5": {
+                "total": "215",
+                "base": "151",
+                "stock": "41",
+                "bonus": "23"
+            }
+        },
+        "information-technologist": {
+            "IC4": {
+                "total": "167",
+                "base": "135",
+                "stock": "20",
+                "bonus": "12"
+            }
+        },
+        "solution-architect": {
+            "IC4": {
+                "total": "219",
+                "base": "158",
+                "stock": "43",
+                "bonus": "18"
+            },
+            "IC5": {
+                "total": "239",
+                "base": "178",
+                "stock": "36",
+                "bonus": "25"
+            }
+        },
+        "business-development": {
+            "IC5": {
+                "total": "239",
+                "base": "180",
+                "stock": "42",
+                "bonus": "17"
+            }
+        },
+        "legal": {
+            "IC5": {
+                "total": "270",
+                "base": "199",
+                "stock": "45",
+                "bonus": "26"
+            },
+            "IC6": {
+                "total": "338",
+                "base": "234",
+                "stock": "57",
+                "bonus": "48"
+            }
+        },
+        "product-design-manager": {
+            "IC6": {
+                "total": "368",
+                "base": "223",
+                "stock": "98",
+                "bonus": "48"
+            },
+            "IC7": {
+                "total": "639",
+                "base": "264",
+                "stock": "300",
+                "bonus": "74"
+            }
+        },
+        "administrative-assistant": {
+            "IC3": {
+                "total": "96",
+                "base": "82",
+                "stock": "6",
+                "bonus": "8"
+            }
+        },
+        "customer-service": {
+            "IC2": {
+                "total": "118",
+                "base": "85",
+                "stock": "24",
+                "bonus": "9"
+            }
+        }
+    },
+    "hubspot": {
+        "software-engineer": {
+            "Software Engineer\nEntry\n(Entry Level)": {
+                "total": "152",
+                "base": "132",
+                "stock": "18",
+                "bonus": "2"
+            },
+            "Senior Software Engineer I\nSenior I": {
+                "total": "204",
+                "base": "161",
+                "stock": "43",
+                "bonus": "41"
+            },
+            "Senior Software Engineer II\nSenior II": {
+                "total": "252",
+                "base": "176",
+                "stock": "71",
+                "bonus": "5"
+            }
+        },
+        "product-manager": {},
+        "business-analyst": {
+            "2": {
+                "total": "140",
+                "base": "100",
+                "stock": "40",
+                "bonus": ""
+            }
+        },
+        "product-designer": {
+            "Senior": {
+                "total": "185",
+                "base": "160",
+                "stock": "25",
+                "bonus": ""
+            }
+        },
+        "program-manager": {}
+    },
+    "lyft": {
+        "software-engineer": {
+            "T3\nSoftware Engineer\n(Entry Level)": {
+                "total": "219",
+                "base": "135",
+                "stock": "64",
+                "bonus": "19"
+            },
+            "T4": {
+                "total": "281",
+                "base": "164",
+                "stock": "115",
+                "bonus": "2"
+            },
+            "T5": {
+                "total": "361",
+                "base": "199",
+                "stock": "162",
+                "bonus": ""
+            },
+            "T6\nStaff Engineer": {
+                "total": "541",
+                "base": "232",
+                "stock": "309",
+                "bonus": ""
+            },
+            "T7": {
+                "total": "848",
+                "base": "244",
+                "stock": "603",
+                "bonus": "83"
+            }
+        },
+        "data-scientist": {
+            "T3": {
+                "total": "229",
+                "base": "142",
+                "stock": "79",
+                "bonus": "8"
+            },
+            "T4": {
+                "total": "288",
+                "base": "164",
+                "stock": "118",
+                "bonus": "6"
+            },
+            "T5": {
+                "total": "378",
+                "base": "186",
+                "stock": "191",
+                "bonus": "2"
+            },
+            "T6": {
+                "total": "514",
+                "base": "232",
+                "stock": "279",
+                "bonus": "3"
+            }
+        },
+        "product-manager": {
+            "T3": {
+                "total": "213",
+                "base": "136",
+                "stock": "74",
+                "bonus": "2"
+            },
+            "T4": {
+                "total": "292",
+                "base": "169",
+                "stock": "123",
+                "bonus": ""
+            },
+            "T5": {
+                "total": "422",
+                "base": "200",
+                "stock": "219",
+                "bonus": "3"
+            },
+            "T6": {
+                "total": "607",
+                "base": "224",
+                "stock": "383",
+                "bonus": ""
+            }
+        },
+        "product-designer": {
+            "T3": {
+                "total": "234",
+                "base": "136",
+                "stock": "68",
+                "bonus": "30"
+            },
+            "T4": {
+                "total": "294",
+                "base": "157",
+                "stock": "137",
+                "bonus": ""
+            },
+            "T5": {
+                "total": "375",
+                "base": "194",
+                "stock": "181",
+                "bonus": ""
+            }
+        },
+        "software-engineering-manager": {
+            "M1\nManager": {
+                "total": "534",
+                "base": "234",
+                "stock": "270",
+                "bonus": "29"
+            },
+            "D1\nDirector": {
+                "total": "643",
+                "base": "249",
+                "stock": "378",
+                "bonus": "16"
+            }
+        },
+        "business-analyst": {
+            "T3": {
+                "total": "149",
+                "base": "123",
+                "stock": "24",
+                "bonus": "3"
+            },
+            "T4": {
+                "total": "144",
+                "base": "113",
+                "stock": "30",
+                "bonus": "60"
+            }
+        },
+        "recruiter": {
+            "T4": {
+                "total": "145",
+                "base": "109",
+                "stock": "36",
+                "bonus": ""
+            }
+        },
+        "technical-program-manager": {
+            "T6": {
+                "total": "463",
+                "base": "228",
+                "stock": "206",
+                "bonus": "29"
+            }
+        },
+        "marketing-operations": {
+            "T3": {
+                "total": "150",
+                "base": "110",
+                "stock": "40",
+                "bonus": ""
+            }
+        }
+    },
+    "uber": {
+        "software-engineer": {
+            "Software Engineer I\n3\n(Entry Level)": {
+                "total": "168",
+                "base": "126",
+                "stock": "30",
+                "bonus": "12"
+            },
+            "Software Engineer II\n4": {
+                "total": "258",
+                "base": "169",
+                "stock": "68",
+                "bonus": "21"
+            },
+            "Senior Software Engineer\n5a": {
+                "total": "357",
+                "base": "202",
+                "stock": "128",
+                "bonus": "28"
+            },
+            "Staff Software Engineer\n5b": {
+                "total": "564",
+                "base": "232",
+                "stock": "284",
+                "bonus": "49"
+            },
+            "Senior Staff Software Engineer\n6": {
+                "total": "917",
+                "base": "269",
+                "stock": "584",
+                "bonus": "61"
+            }
+        },
+        "product-manager": {
+            "Associate Product Manager": {
+                "total": "155",
+                "base": "122",
+                "stock": "17",
+                "bonus": "15"
+            },
+            "Product Manager I\nL3": {
+                "total": "177",
+                "base": "129",
+                "stock": "31",
+                "bonus": "16"
+            },
+            "Product Manager II\nL4": {
+                "total": "258",
+                "base": "167",
+                "stock": "69",
+                "bonus": "22"
+            },
+            "Senior Product Manager\nL5a": {
+                "total": "376",
+                "base": "192",
+                "stock": "148",
+                "bonus": "36"
+            },
+            "Lead Product Manager\nL5b": {
+                "total": "526",
+                "base": "223",
+                "stock": "255",
+                "bonus": "49"
+            },
+            "Group Product Manager\nL6": {
+                "total": "753",
+                "base": "263",
+                "stock": "430",
+                "bonus": "60"
+            }
+        },
+        "software-engineering-manager": {
+            "EM 1\nL5A": {
+                "total": "412",
+                "base": "195",
+                "stock": "179",
+                "bonus": "38"
+            },
+            "EM 2\nL5B": {
+                "total": "642",
+                "base": "235",
+                "stock": "341",
+                "bonus": "65"
+            },
+            "Sr Eng Manager\nL6": {
+                "total": "700",
+                "base": "247",
+                "stock": "401",
+                "bonus": "52"
+            }
+        },
+        "data-scientist": {
+            "Data Scientist I\n3": {
+                "total": "181",
+                "base": "128",
+                "stock": "38",
+                "bonus": "15"
+            },
+            "Data Scientist II\n4": {
+                "total": "227",
+                "base": "161",
+                "stock": "49",
+                "bonus": "17"
+            },
+            "Senior Data Scientist I\n5a": {
+                "total": "327",
+                "base": "176",
+                "stock": "129",
+                "bonus": "22"
+            }
+        },
+        "recruiter": {
+            "Recruiter I\n3": {
+                "total": "106",
+                "base": "89",
+                "stock": "9",
+                "bonus": "8"
+            },
+            "Recruiter II\n4": {
+                "total": "139",
+                "base": "118",
+                "stock": "12",
+                "bonus": "9"
+            }
+        },
+        "product-designer": {
+            "Product Designer I\n3": {
+                "total": "143",
+                "base": "114",
+                "stock": "19",
+                "bonus": "9"
+            },
+            "Product Designer II\n4": {
+                "total": "201",
+                "base": "140",
+                "stock": "48",
+                "bonus": "13"
+            },
+            "Senior Designer I\n5a": {
+                "total": "288",
+                "base": "168",
+                "stock": "99",
+                "bonus": "22"
+            },
+            "Senior Designer II\n5b": {
+                "total": "409",
+                "base": "194",
+                "stock": "174",
+                "bonus": "41"
+            }
+        },
+        "marketing": {
+            "4": {
+                "total": "161",
+                "base": "126",
+                "stock": "21",
+                "bonus": "13"
+            }
+        },
+        "sales": {},
+        "business-analyst": {
+            "Business Analyst I\n3": {
+                "total": "111",
+                "base": "97",
+                "stock": "6",
+                "bonus": "9"
+            },
+            "Business Analyst II\n4": {
+                "total": "136",
+                "base": "121",
+                "stock": "7",
+                "bonus": "8"
+            }
+        },
+        "program-manager": {
+            "Program Manager II\n4": {
+                "total": "159",
+                "base": "122",
+                "stock": "25",
+                "bonus": "12"
+            }
+        },
+        "technical-program-manager": {
+            "TPM II\n4": {
+                "total": "168",
+                "base": "131",
+                "stock": "20",
+                "bonus": "17"
+            }
+        },
+        "accountant": {
+            "5a": {
+                "total": "178",
+                "base": "140",
+                "stock": "25",
+                "bonus": "14"
+            }
+        },
+        "human-resources": {
+            "5a": {
+                "total": "203",
+                "base": "149",
+                "stock": "36",
+                "bonus": "18"
+            }
+        },
+        "marketing-operations": {
+            "4": {
+                "total": "130",
+                "base": "114",
+                "stock": "10",
+                "bonus": "7"
+            }
+        },
+        "business-development": {},
+        "financial-analyst": {}
+    },
+    "miro": {
+        "software-engineer": {
+            "SWE II": {
+                "total": "131",
+                "base": "104",
+                "stock": "27",
+                "bonus": ""
+            }
+        }
+    },
+    "hpe": {
+        "software-engineer": {
+            "Entry\n(Entry Level)": {
+                "total": "102",
+                "base": "97",
+                "stock": "4",
+                "bonus": "2"
+            },
+            "Intermediate": {
+                "total": "126",
+                "base": "119",
+                "stock": "85",
+                "bonus": "6"
+            },
+            "Specialist": {
+                "total": "148",
+                "base": "139",
+                "stock": "5",
+                "bonus": "3"
+            },
+            "Expert": {
+                "total": "186",
+                "base": "155",
+                "stock": "18",
+                "bonus": "13"
+            },
+            "Master\nMaster Technologist": {
+                "total": "247",
+                "base": "201",
+                "stock": "34",
+                "bonus": "11"
+            }
+        },
+        "marketing": {},
+        "software-engineering-manager": {
+            "L6": {
+                "total": "260",
+                "base": "204",
+                "stock": "26",
+                "bonus": "30"
+            }
+        },
+        "technical-program-manager": {
+            "Technical Program Manager IV\nExpert": {
+                "total": "177",
+                "base": "155",
+                "stock": "8",
+                "bonus": "14"
+            },
+            "Technical Program Manager V\nMaster": {
+                "total": "204",
+                "base": "169",
+                "stock": "11",
+                "bonus": "24"
+            }
+        },
+        "hardware-engineer": {
+            "Specialist": {
+                "total": "111",
+                "base": "107",
+                "stock": "83",
+                "bonus": "3"
+            },
+            "Expert": {
+                "total": "149",
+                "base": "129",
+                "stock": "8",
+                "bonus": "12"
+            }
+        },
+        "data-scientist": {
+            "5": {
+                "total": "207",
+                "base": "180",
+                "stock": "4",
+                "bonus": "23"
+            }
+        },
+        "product-designer": {
+            "L3": {
+                "total": "152",
+                "base": "132",
+                "stock": "10",
+                "bonus": "10"
+            }
+        },
+        "product-manager": {
+            "Product manager IV\nExpert": {
+                "total": "170",
+                "base": "147",
+                "stock": "9",
+                "bonus": "14"
+            }
+        },
+        "solution-architect": {
+            "Master Technologist": {
+                "total": "181",
+                "base": "141",
+                "stock": "20",
+                "bonus": "20"
+            }
+        },
+        "information-technologist": {
+            "L4": {
+                "total": "145",
+                "base": "118",
+                "stock": "12",
+                "bonus": "15"
+            }
+        },
+        "mechanical-engineer": {
+            "Specialist": {
+                "total": "115",
+                "base": "105",
+                "stock": "3",
+                "bonus": "7"
+            }
+        },
+        "sales": {},
+        "business-analyst": {},
+        "financial-analyst": {},
+        "management-consultant": {
+            "Master": {
+                "total": "219",
+                "base": "155",
+                "stock": "15",
+                "bonus": "49"
+            }
+        }
+    },
+    "grab": {
+        "software-engineer": {
+            "G3\nSoftware Engineer\n(Entry Level)": {
+                "total": "201",
+                "base": "135",
+                "stock": "56",
+                "bonus": "9"
+            },
+            "G4\nSenior Software Engineer": {
+                "total": "242",
+                "base": "172",
+                "stock": "55",
+                "bonus": "16"
+            }
+        },
+        "data-scientist": {
+            "G3": {
+                "total": "74",
+                "base": "58",
+                "stock": "7",
+                "bonus": "9"
+            },
+            "G4": {
+                "total": "88",
+                "base": "74",
+                "stock": "5",
+                "bonus": "10"
+            },
+            "G5": {
+                "total": "143",
+                "base": "103",
+                "stock": "25",
+                "bonus": "15"
+            }
+        },
+        "product-manager": {
+            "G5": {
+                "total": "153",
+                "base": "120",
+                "stock": "17",
+                "bonus": "16"
+            }
+        },
+        "product-designer": {
+            "G4": {
+                "total": "87",
+                "base": "63",
+                "stock": "14",
+                "bonus": "10"
+            }
+        },
+        "software-engineering-manager": {
+            "G5": {
+                "total": "176",
+                "base": "114",
+                "stock": "43",
+                "bonus": "19"
+            }
+        }
+    },
+    "godaddy": {
+        "software-engineer": {
+            "Software Development Engineer (SDE) 1\n(Entry Level)": {
+                "total": "135",
+                "base": "105",
+                "stock": "19",
+                "bonus": "10"
+            },
+            "SDE 2": {
+                "total": "147",
+                "base": "118",
+                "stock": "20",
+                "bonus": "9"
+            },
+            "SDE 3": {
+                "total": "181",
+                "base": "137",
+                "stock": "31",
+                "bonus": "14"
+            },
+            "SDE 4": {
+                "total": "198",
+                "base": "142",
+                "stock": "36",
+                "bonus": "19"
+            },
+            "SDE 5": {
+                "total": "250",
+                "base": "161",
+                "stock": "68",
+                "bonus": "21"
+            }
+        },
+        "business-analyst": {
+            "SDE 3": {
+                "total": "165",
+                "base": "133",
+                "stock": "21",
+                "bonus": "12"
+            }
+        },
+        "product-manager": {
+            "SDE 3": {
+                "total": "159",
+                "base": "125",
+                "stock": "22",
+                "bonus": "12"
+            }
+        },
+        "software-engineering-manager": {
+            "SDE 4": {
+                "total": "205",
+                "base": "142",
+                "stock": "45",
+                "bonus": "18"
+            }
+        }
+    },
+    "adp": {
+        "product-manager": {},
+        "software-engineer": {
+            "Associate Software Engineer": {
+                "total": "100",
+                "base": "96",
+                "stock": "",
+                "bonus": "4"
+            }
+        },
+        "product-designer": {
+            "5": {
+                "total": "193",
+                "base": "169",
+                "stock": "12",
+                "bonus": "12"
+            }
+        },
+        "software-engineering-manager": {
+            "false": {
+                "total": "250",
+                "base": "197",
+                "stock": "18",
+                "bonus": "35"
+            }
+        }
+    },
+    "netscout": {
+        "software-engineer": {
+            "false": {
+                "total": "112",
+                "base": "104",
+                "stock": "3",
+                "bonus": "5"
+            }
+        }
+    },
+    "csg": {
+        "software-engineer": {}
+    },
+    "unisys": {
+        "software-engineer": {}
+    }
+}

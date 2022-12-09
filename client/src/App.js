@@ -35,6 +35,11 @@ import CreatePersonalWebsite from "./pages/PersonalWebsite/CreatePersonalWebsite
 
 import ParserResume from "./pages/Profile/ParseResume";
 
+import Salary from "./components/Salary/salary";
+import SalaryPage from "./components/Salary/salaryPage";
+import Company from "./components/Salary/company";
+import Role from "./components/Salary/role";
+import AddSalary from "./components/Salary/addSalary";
 import InterviewList from "./pages/Interviews/InterviewList";
 import CreateInterviewTip from "./pages/Interviews/CreateInterviewTip";
 
@@ -75,6 +80,13 @@ const App = () => {
         <Route path="/sampleForm" element={<SampleForm />} />
         <Route path="/personalwebsiteedit" element={<PersonalWebsiteEdit />} />
         <Route path="/personalwebsiteview" element={<PersonalWebsiteView />} />
+        <Route path="/personalwebsite" element={<PersonalWebsite />} />
+        <Route path="/salary1" element={<Salary />} />
+        <Route path="/ParseResume" element={<ParserResume />} />
+        <Route path="/salary" element={<SalaryPage />} />
+        <Route path="/salary/company/:id" element={<Company />} />
+        <Route path="/salary/role/:id" element={<Role />} />
+        <Route path="/addsalary" element={<AddSalary />} />
         <Route path="/personalwebsite/:id" element={<PersonalWebsite />} />
         <Route path="/ParseResume" element={<ParserResume />} />
         <Route path="/interviewlist" element={<InterviewList />} />

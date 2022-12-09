@@ -36,8 +36,6 @@ export default function EditReview() {
       await axios
         .post("http://localhost:5000/reviews/get", data)
         .then((res) => {
-          console.log("res: ", res);
-          console.log("res.data: ", res.data);
           review = res.data;
         })
         .catch((err) => window.alert(err));
