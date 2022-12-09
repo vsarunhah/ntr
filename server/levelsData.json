@@ -2,43 +2,31 @@
   "hubspot": {
     "software-engineer": {
       "Software Engineer\nEntry\n(Entry Level)": {
-        "total": "$143K",
-        "base": "$126K",
-        "stock": "$16K",
-        "bonus": "$2K"
+        "total": "152",
+        "base": "132",
+        "stock": "17",
+        "bonus": "2"
       },
       "Senior Software Engineer I\nSenior I": {
-        "total": "$201K",
-        "base": "$161K",
-        "stock": "$38K",
-        "bonus": "$2K"
+        "total": "202",
+        "base": "161",
+        "stock": "41",
+        "bonus": "38"
       },
       "Senior Software Engineer II\nSenior II": {
-        "total": "$252K",
-        "base": "$176K",
-        "stock": "$71K",
-        "bonus": "$5K"
+        "total": "252",
+        "base": "176",
+        "stock": "71",
+        "bonus": "5"
       }
     },
-    "program-manager": {},
     "product-manager": {},
     "business-analyst": {
-      "level": "2",
-      "salaries": {
-        "total": "$140K",
-        "base": "$100K",
-        "stock": "$40K",
-        "bonus": "$0"
-      }
+      "2": { "total": "140", "base": "100", "stock": "40", "bonus": "$0" }
     },
     "product-designer": {
-      "level": "Senior",
-      "salaries": {
-        "total": "$185K",
-        "base": "$160K",
-        "stock": "$25K",
-        "bonus": "$0"
-      }
-    }
+      "Senior": { "total": "185", "base": "160", "stock": "25", "bonus": "$0" }
+    },
+    "program-manager": {}
   }
 }
