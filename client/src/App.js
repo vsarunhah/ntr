@@ -36,6 +36,8 @@ import ParserResume from "./pages/Profile/ParseResume";
 import Salary from "./components/Salary/salary";
 import SalaryPage from "./components/Salary/salaryPage";
 import Company from "./components/Salary/company";
+import Role from "./components/Salary/role";
+import AddSalary from "./components/Salary/addSalary";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -77,6 +79,8 @@ const App = () => {
         <Route path="/ParseResume" element={<ParserResume />} />
         <Route path="/salary" element={<SalaryPage />} />
         <Route path="/salary/company/:id" element={<Company />} />
+        <Route path="/salary/role/:id" element={<Role />} />
+        <Route path="/addsalary" element={<AddSalary />} />
       </Routes>
     </div>
   );

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Box, Button, Typography, Grid, Stack } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 import SearchIcon from "@mui/icons-material/Search";
+import AddIcon from '@mui/icons-material/Add';
 import TextField from "@mui/material/TextField";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useNavigate } from "react-router";
@@ -15,7 +16,9 @@ export default function SalaryPage() {
   /* constants */
 
   const navigate = useNavigate();
-
+  const [companyData, setCompanyData] = useState([]);
+  const [roleData, setRoleData] = useState([]);
+  const [popup, setPopup] = useState(false);
 
   function switchToCompany() {
     document.getElementById("company-search").style.display = "block";
@@ -34,24 +37,28 @@ export default function SalaryPage() {
   function searchCompany(company) {
     console.log("searching for ", company);
     let path = `/salary/company/` + company;
-    console.log("path: ", path);
     navigate(path);
   }
 
   function searchRole(role) {
     console.log("searching for ", role);
-    navigate("/salary/role/" + role);
-  }
+    let path = `/salary/role/` + role;
+    navigate(path);
+  } 
 
-  function DisplaySampleData(data) {
+  function DisplayCompanyData(data) {
+    console.log("displaying: ", data);
+    console.log("data.data: ", data.data);
+    const arr = Array.from(data.data.keys());
+    console.log("arr: ", arr);
     return (
       <Stack direction="row" sx={{ flexWrap: "wrap" }}>
-        {data.data.map(({ name }) => (
-          <Typography variant="h6">
-            <Button key={name}
+        {arr.map((key) => (
+          <Typography variant="h5">
+            <Button key={key}
               sx={{
-                width: 100,
-                height: 50,
+                width: 150,
+                height: 75,
                 backgroundColor: grey[500],
                 '&:hover': {
                   backgroundColor: grey[300],
@@ -60,9 +67,9 @@ export default function SalaryPage() {
                 color: "black",
                 margin: 1,
               }}
-              onClick={() => searchCompany(name.toLowerCase())}
+              onClick={() => searchCompany(key.toLowerCase())}
             >
-              {name}
+              {key}
             </Button>
           </Typography>
         ))}
@@ -70,6 +77,35 @@ export default function SalaryPage() {
     )
   }
 
+  function DisplayRoleData(data) {
+    console.log("display role data.data: ", data.data);
+    const arr = Array.from(data.data.keys());
+    console.log("arr: ", arr);
+    return (
+      <Stack direction="row" sx={{ flexWrap: "wrap" }}>
+        {arr.map((key) => (
+          <Typography variant="h6">
+            <Button key={key}
+              sx={{
+                width: 150,
+                height: 75,
+                backgroundColor: grey[500],
+                '&:hover': {
+                  backgroundColor: grey[300],
+                  opacity: [0.9, 0.8, 0.7],
+                },
+                color: "black",
+                margin: 1,
+              }}
+              onClick={() => searchRole(key.toLowerCase())}
+            >
+              {key}
+            </Button>
+          </Typography>
+        ))}
+      </Stack>
+    )
+  }
 
   function DisplayCompanyGraph() {
     return (
@@ -119,17 +155,27 @@ export default function SalaryPage() {
     )
   }
 
-  async function scrapeSalary() {
-    console.log("before scraper");
-    await axios.get("http://localhost:5000/salary/scrape").then((res) => {
-      console.log("after scraper: ", res.data);
-      return res.data;
-    });
-    return;
-  }
  
   useEffect(() => {
-    scrapeSalary();
+    const scrapeSalary = async() => {
+      console.log("before scraper");
+      await axios.get("http://localhost:5000/salary/scrape").then((res) => {
+        const map = new Map(Object.entries(res.data.data));
+        console.log("\n\n MAP: ", map);
+        console.log("keys: ", map.keys());
+        setCompanyData(map);
+        setRoleData(new Map(Object.entries(map.get("google"))));
+        console.log("setting company data to be: ", map);
+        console.log("setting role to be ", map.get("google"));
+        return res.data;
+      });
+      return;
+    }
+    
+    scrapeSalary()
+    // make sure to catch any error
+    .catch(console.error);;
+
     return;
   }, []);
 
@@ -146,7 +192,7 @@ export default function SalaryPage() {
 
         <Typography variant="body2">
           <Grid item>
-            <Grid item xs={10} display="block" id="company-search" direction="column">
+            <Grid item xs={11} display="block" id="company-search" direction="column">
               <TextField
                 sx={{ width: "800px" }}
                 id="company-search-text"
@@ -157,6 +203,11 @@ export default function SalaryPage() {
               <Button onClick={() => searchCompany(document.getElementById("company-search-text").value)}>
                 <SearchIcon fontSize="large" />
               </Button>
+              
+              <Button variant="outlined" startIcon={<AddIcon />} onClick={() => navigate("/addsalary")}>
+                Add
+              </Button>
+
               <Link onClick={switchToRole}> Search by Role instead </Link>
 
             </Grid>
@@ -177,15 +228,15 @@ export default function SalaryPage() {
           </Grid>
           <Grid item id="discover-salaries">
             <h2>Discover Salaries:</h2>
-            <DisplaySampleData data={defaultCompanyData} />
-            <h2>Statistics</h2>
-            <DisplayCompanyGraph />
+            <DisplayCompanyData data={companyData} />
+            {/* <h2>Statistics</h2> */}
+            {/* <DisplayCompanyGraph /> */}
           </Grid>
           <Grid item id="discover-roles" display="none">
             <h2>Discover Roles:</h2>
-            <DisplaySampleData data={defaultRoleList} />
-            <h2>Statistics</h2>
-            <DisplayRoleGraph />
+            <DisplayRoleData data={roleData} />
+            {/* <h2>Statistics</h2>
+            <DisplayRoleGraph /> */}
           </Grid>
         </Typography>
       </Grid>

@@ -12,7 +12,7 @@ const fileSystem = require("fs");
  */
 
 // List of Companies
-const companies = ["hubspot", "google", "apple", "amazon"];
+const companies = ["google", "apple", "amazon", "microsoft", "facebook", "hubspot", "lyft", "uber", "miro", "hpe", "grab", "godaddy", "adp", "netscout", "csg", "unisys"];
 
 // Create urls for each company
 const urlArray = companies.map((company) => {
@@ -29,7 +29,7 @@ scrapeLevels = async () => {
 
   //Loop through each company url
   for (let i = 0; i < urlArray.length; i++) {
-    console.log("url: ", urlArray[i]);
+    // console.log("url: ", urlArray[i]);
     await page.goto(urlArray[i], { waitUntil: "domcontentloaded" });
     await page.waitForSelector("h6");
     await page.content();
@@ -62,7 +62,7 @@ scrapeLevels = async () => {
     //Loop through each position link
     //TODO: change limit back to 0
     for (let i = 0; i < positionLinks.length; i++) {
-      console.log("position link: ", positionLinks[i]);
+      // console.log("position link: ", positionLinks[i]);
       await page.goto(positionLinks[i], { waitUntil: "domcontentloaded" });
       await page.waitForSelector("a");
 
@@ -119,7 +119,7 @@ scrapeLevels = async () => {
         const levelSalaryData = new Map();
         levelSalaryData.set(level, salaries);
         // const levelSalaryData = { level, salaries };
-        console.log("levelSalaryData: ", levelSalaryData);
+        // console.log("levelSalaryData: ", levelSalaryData);
 
         const position = positionLinks[i].split("/").pop();
         positionSalaryData.set(position, Object.fromEntries(levelSalaryData));
@@ -180,7 +180,7 @@ scrapeLevels = async () => {
           };
           levelSalaryData.set(level, salaries);
           //   console.log("levelSalaryData: ", levelSalaryData);
-          console.log("level: ", level);
+          // console.log("level: ", level);
         }
         //Outer map
         const position = positionLinks[i].split("/").pop();
